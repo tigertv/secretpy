@@ -11,5 +11,6 @@ from symcryptmachine import SymCryptMachine
 from polybius import Polybius
 from zigzag import Zigzag
 from keyword import Keyword
+from adfgx import ADFGX
 
 __all__ = ["caesar","vigener","symcryptmachine"]
