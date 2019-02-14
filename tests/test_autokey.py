@@ -51,12 +51,12 @@ class TestAutokey(unittest.TestCase):
 
 	def test_encrypt(self):
 		for i,alphabet in enumerate(self.alphabet):
-			enc = Autokey().encrypt(alphabet, self.key[i], self.plaintext[i])
+			enc = Autokey().encrypt(self.key[i], self.plaintext[i], alphabet)
 			self.assertEqual(enc, self.ciphertext[i])
 
 	def test_decrypt(self):
 		for i,alphabet in enumerate(self.alphabet):
-			dec = Autokey().decrypt(alphabet, self.key[i], self.ciphertext[i])
+			dec = Autokey().decrypt(self.key[i], self.ciphertext[i], alphabet)
 			self.assertEqual(dec, self.plaintext[i])
 
 if __name__ == '__main__': 

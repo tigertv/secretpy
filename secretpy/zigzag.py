@@ -43,8 +43,8 @@ class Zigzag:
 			ans = "".join(ans)
 		return ans
 
-	def encrypt(self, alphabet, key, plaintext):
+	def encrypt(self, key, plaintext, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
 		return self.__encDec(key, plaintext, 1)
 
-	def decrypt(self, alphabet, key, ciphertext):
+	def decrypt(self, key, ciphertext, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
 		return self.__encDec(key, ciphertext, -1)

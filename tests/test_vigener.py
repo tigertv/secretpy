@@ -51,12 +51,12 @@ class TestVigener(unittest.TestCase):
 
 	def test_encrypt(self):
 		for i,alphabet in enumerate(self.alphabet):
-			enc = Vigener().encrypt(alphabet, self.key[i], self.plaintext[i])
+			enc = Vigener().encrypt(self.key[i], self.plaintext[i], alphabet)
 			self.assertEqual(enc, self.ciphertext[i])
 
 	def test_decrypt(self):
 		for i,alphabet in enumerate(self.alphabet):
-			dec = Vigener().decrypt(alphabet, self.key[i], self.ciphertext[i])
+			dec = Vigener().decrypt(self.key[i], self.ciphertext[i], alphabet)
 			self.assertEqual(dec, self.plaintext[i])
 
 if __name__ == '__main__': 

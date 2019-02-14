@@ -24,8 +24,8 @@ class Polybius:
 			ans += alphabet[alphIndex][0]
 		return ans
 
-	def encrypt(self, alphabet, key, plaintext):
+	def encrypt(self, key, plaintext, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
 		return self.__encDec(alphabet, key, plaintext, 1)
 
-	def decrypt(self, alphabet, key, ciphertext):
+	def decrypt(self, key, ciphertext, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
 		return self.__encDec(alphabet, key, ciphertext, -1)

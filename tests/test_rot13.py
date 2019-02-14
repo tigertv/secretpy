@@ -47,12 +47,12 @@ class TestRot13(unittest.TestCase):
 
 	def test_encrypt(self):
 		for i,alphabet in enumerate(self.alphabet):
-			enc = Rot13().encrypt(alphabet, self.key, self.plaintext[i])
+			enc = Rot13().encrypt(self.key, self.plaintext[i], alphabet)
 			self.assertEqual(enc, self.ciphertext[i])
 
 	def test_decrypt(self):
 		for i,alphabet in enumerate(self.alphabet):
-			dec = Rot13().decrypt(alphabet, self.key, self.ciphertext[i])
+			dec = Rot13().decrypt(self.key, self.ciphertext[i], alphabet)
 			self.assertEqual(dec, self.plaintext[i])
 
 if __name__ == '__main__': 

@@ -11,10 +11,10 @@ class Rot13:
 			ans += alphabet[alphIndex]
 		return ans
 
-	def encrypt(self, alphabet, key, plaintext):
+	def encrypt(self, key, plaintext, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
 		key = len(alphabet) / 2
 		return self.__encDec(alphabet, key, plaintext, 1)
 
-	def decrypt(self, alphabet, key, ciphertext):
+	def decrypt(self, key, ciphertext, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
 		key = len(alphabet) / 2
 		return self.__encDec(alphabet, key, ciphertext, -1)

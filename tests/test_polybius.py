@@ -51,12 +51,12 @@ class TestPolybius(unittest.TestCase):
 
 	def test_encrypt(self):
 		for i,alphabet in enumerate(self.alphabet):
-			enc = Polybius().encrypt(alphabet, self.key[i], self.plaintext[i])
+			enc = Polybius().encrypt(self.key[i], self.plaintext[i], alphabet)
 			self.assertEqual(enc, self.ciphertext[i])
 
 	def test_decrypt(self):
 		for i,alphabet in enumerate(self.alphabet):
-			dec = Polybius().decrypt(alphabet, self.key[i], self.ciphertext[i])
+			dec = Polybius().decrypt(self.key[i], self.ciphertext[i], alphabet)
 
 			plaintext = list(self.plaintext[i])
 			for i in range(len(plaintext)):

@@ -38,13 +38,13 @@ class TestADFGX(unittest.TestCase):
 	def test_encrypt(self):
 		chipher = ADFGX() 
 		for i,alphabet in enumerate(self.alphabet):
-			enc = chipher.encrypt(alphabet, self.key[i], self.plaintext[i])
+			enc = chipher.encrypt(self.key[i], self.plaintext[i], alphabet)
 			self.assertEqual(enc, self.ciphertext[i])
 
 	def tst_decrypt(self):
 		chipher = ADFGX() 
 		for i,alphabet in enumerate(self.alphabet):
-			dec = chipher.decrypt(alphabet, self.key[i], self.ciphertext[i])
+			dec = chipher.decrypt(self.key[i], self.ciphertext[i], alphabet)
 
 			plaintext = self.plaintext[i]
 			"""

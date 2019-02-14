@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 class SymCryptMachine:
-	def __init__(self, alphabet, key):
+	def __init__(self, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
 		self.alphabet = alphabet
 		self.key = key
 
@@ -15,7 +15,7 @@ class SymCryptMachine:
 		self.algorithm = algorithm
 		
 	def encrypt(self, plaintext):
-		return self.algorithm.encrypt(self.alphabet, self.key, plaintext)
+		return self.algorithm.encrypt(self.key, plaintext, self.alphabet)
 		
 	def decrypt(self, ciphertext):
-		return self.algorithm.decrypt(self.alphabet, self.key, ciphertext)
+		return self.algorithm.decrypt(self.key, ciphertext, self.alphabet)

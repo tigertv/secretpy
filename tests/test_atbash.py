@@ -47,12 +47,12 @@ class TestAtbash(unittest.TestCase):
 
 	def test_encrypt(self):
 		for i,alphabet in enumerate(self.alphabet):
-			enc = Atbash().encrypt(alphabet, self.key, self.plaintext[i])
+			enc = Atbash().encrypt(self.key, self.plaintext[i], alphabet)
 			self.assertEqual(enc, self.ciphertext[i])
 
 	def test_decrypt(self):
 		for i,alphabet in enumerate(self.alphabet):
-			dec = Atbash().decrypt(alphabet, self.key, self.ciphertext[i])
+			dec = Atbash().decrypt(self.key, self.ciphertext[i], alphabet)
 			self.assertEqual(dec, self.plaintext[i])
 
 if __name__ == '__main__': 
