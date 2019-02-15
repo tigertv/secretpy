@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy.polybius import Polybius 
+from secretpy import Polybius 
 
 alphabet = [
 	u"p", u"h", u"q", u"g", u"m",

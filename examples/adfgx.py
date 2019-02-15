@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy.adfgx import ADFGX
+from secretpy import ADFGX
 
 alphabet = [u"b", u"t", u"a", u"l", u"p", u"d", u"h", u"o", u"z", u"k", u"q", u"f", u"v", u"s", u"n", u"g", u"ij", u"c", u"u", u"x", u"m", u"r", u"e", u"w", u"y"]
 plaintext  = u"attackatonce"
