@@ -25,7 +25,7 @@ class TestADFGX(unittest.TestCase):
 		u"attackatonce",
 		#u"текст",
 		u"textnachtricht",
-		u"unmensajedetexto",
+		u"unmensaiedetexto",
 	)
 
 	ciphertext = (
@@ -41,29 +41,11 @@ class TestADFGX(unittest.TestCase):
 			enc = chipher.encrypt(self.key[i], self.plaintext[i], alphabet)
 			self.assertEqual(enc, self.ciphertext[i])
 
-	def tst_decrypt(self):
+	def test_decrypt(self):
 		chipher = ADFGX() 
 		for i,alphabet in enumerate(self.alphabet):
 			dec = chipher.decrypt(self.key[i], self.ciphertext[i], alphabet)
-
-			plaintext = self.plaintext[i]
-			"""
-			plaintext = list(self.plaintext[i])
-			for i in range(len(plaintext)):
-				char = plaintext[i]
-
-				for j in range(len(alphabet)):
-					try:
-						alphabet[j].index(char)
-						break
-					except:
-						pass
-				
-				plaintext[i] = list(alphabet[j])[0]
-			plaintext = "".join(plaintext)
-			"""
-
-			self.assertEqual(dec, plaintext)
+			self.assertEqual(dec, self.plaintext[i])
 
 if __name__ == '__main__': 
 	unittest.main()

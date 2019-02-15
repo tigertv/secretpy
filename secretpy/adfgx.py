@@ -10,7 +10,46 @@ class ADFGX:
 	def __init__(self):
 		return
 
-	def __encDec(self, alphabet, key, text, isEncrypt):
+	def __dec(self, alphabet, key, text, isEncrypt):
+		keysize = len(key)
+		side = int(math.ceil(math.sqrt(len(alphabet))))
+		size = len(text)
+		rows = int(math.ceil(size/keysize))
+		reminder = size % keysize
+		keyword = list(key)
+		indices = sorted(range(len(keyword)), key=lambda k: keyword[k])
+
+		myarr = list(indices)
+		lefti = 0
+		righti = 0
+		for key, value in enumerate(indices):
+			righti = lefti
+			righti += rows
+			if reminder > 0 and value > reminder-1: righti -= 1
+			myarr[value] = text[lefti:righti]
+			lefti = righti
+
+		column = 0
+		row = 0
+		res = ''
+		for i in range(size):
+			res += (myarr[column][row])
+			column += 1
+			if column == keysize: 
+				column = 0
+				row += 1
+
+		# now get resulting symbols from alphabet and the res variable
+		dec = ""
+		for i in range(int(size/2)):
+			row = self.header.index(res[i*2])
+			column = self.header.index(res[i*2+1])
+			index = row*side + column
+			dec += alphabet[index][0]
+
+		return dec
+
+	def __enc(self, alphabet, key, text, isEncrypt):
 		ans0 = ""
 		size = int(math.ceil(math.sqrt(len(alphabet))))
 		for i in range(len(text)):
@@ -49,9 +88,10 @@ class ADFGX:
 		
 		return ans2
 	
-	def encrypt(self, key, plaintext, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
-		return self.__encDec(alphabet, key, plaintext, 1)
+	def encrypt(self, key, plaintext, alphabet=None):
+		alphabet = alphabet or [u"a", u"b", u"c", u"d", u"e", u"f", u"g", u"h", u"ij", u"k", u"l", u"m", u"n", u"o", u"p", u"q", u"r", u"s", u"t", u"u", u"v", u"w", u"x", u"y", u"z"]
+		return self.__enc(alphabet, key, plaintext, 1)
 
-	def decrypt(self, key, ciphertext, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
-		#return "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-		return self.__encDec(alphabet, key, ciphertext, -1)
+	def decrypt(self, key, ciphertext, alphabet=None):
+		alphabet = alphabet or [u"a", u"b", u"c", u"d", u"e", u"f", u"g", u"h", u"ij", u"k", u"l", u"m", u"n", u"o", u"p", u"q", u"r", u"s", u"t", u"u", u"v", u"w", u"x", u"y", u"z"]
+		return self.__dec(alphabet, key, ciphertext, -1)
