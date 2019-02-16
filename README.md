@@ -1,6 +1,21 @@
-# SecretPy
+SecretPy
+===========
 
-Classical cipher algorithms
+[![](https://badge.fury.io/py/secretpy.svg)](https://pypi.org/project/secretpy)
+[![](https://img.shields.io/pypi/pyversions/secretpy.svg)](https://pypi.org/project/secretpy)
+
+***Download:***
+
+https://pypi.org/project/secretpy
+
+***Source code & Development:***
+
+https://github.com/tigertv/secretpy
+
+Description
+-----------
+
+SecretPy is a cryptographic library. It uses the following classical cipher algorithms:
 
 - ADFGX
 - Affine
@@ -15,12 +30,26 @@ Classical cipher algorithms
 - Vigenere
 - Zigzag
 
-Installation:
+
+Installation
+------------
+
+To install this library, you can use pip:
+
 ```bash
 pip install secretpy
 ```
 
-Sample code:
+Alternatively, you can install the package using the repo's cloning and the make:
+
+```bash
+git clone https://github.com/tigertv/secretpy
+cd secretpy
+make install
+```
+
+Usage
+-----
 
 ```python
 #!/usr/bin/python
@@ -45,7 +74,7 @@ dec = cipher.decrypt(enc, key)
 print(dec)
 ```
 
-Sample with CryptMachine:
+You can use CryptMachine:
 
 ```python
 #!/usr/bin/python
@@ -80,4 +109,9 @@ cm.setCipher(Atbash())
 encdec(cm, plaintext)
 ```
 
-It uses Python 2.7
+Maintainers
+-----------
+
+- [@tigertv](https://github.com/tigertv) (Max Vetrov)
+
+
