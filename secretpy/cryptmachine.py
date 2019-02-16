@@ -1,9 +1,10 @@
 #!/usr/bin/python
 
 class CryptMachine:
-	def __init__(self, key=None, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+	def __init__(self, cipher, key=None, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
 		self.alphabet = alphabet
 		self.key = key or ""
+		self.cipher = cipher
 
 	def setKey(self, key):
 		self.key = key

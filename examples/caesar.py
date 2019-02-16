@@ -6,7 +6,7 @@ from secretpy import Caesar
 alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
 plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
 key = 3
-cipher = Caesar();
+cipher = Caesar()
 
 enc = cipher.encrypt(plaintext, key, alphabet)
 print(enc)
