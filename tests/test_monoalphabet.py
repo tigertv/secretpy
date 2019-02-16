@@ -1,10 +1,10 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy.monosub import Monosub 
+from secretpy.monoalphabet import Monoalphabet 
 import unittest
 
-class TestMonosub(unittest.TestCase):
+class TestMonoalphabet(unittest.TestCase):
 	alphabet = (u"abcdefghijklmnopqrstuvwxyz",
 		u"абвгдеёжзийклмнопрстуфхцчшщъыьэюя",
 		u"abcdefghijklmnopqrstuvwxyzäöüß",
@@ -70,13 +70,15 @@ class TestMonosub(unittest.TestCase):
 		u"ぢゆぐほげよづ")
 
 	def test_encrypt(self):
+		cipher = Monoalphabet()
 		for i,alphabet in enumerate(self.alphabet):
-			enc = Monosub().encrypt(self.plaintext[i], self.key[i], alphabet)
+			enc = cipher.encrypt(self.plaintext[i], self.key[i], alphabet)
 			self.assertEqual(enc, self.ciphertext[i])
 
 	def test_decrypt(self):
+		cipher = Monoalphabet()
 		for i,alphabet in enumerate(self.alphabet):
-			dec = Monosub().decrypt(self.ciphertext[i], self.key[i], alphabet)
+			dec = cipher.decrypt(self.ciphertext[i], self.key[i], alphabet)
 			self.assertEqual(dec, self.plaintext[i])
 
 if __name__ == '__main__': 

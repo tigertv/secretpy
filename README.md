@@ -9,7 +9,7 @@ Classical cipher algorithms
 - Beaufort 
 - Caesar
 - Keyword
-- Monosub
+- Monoalphabet
 - Polybius
 - Rot13
 - Vigenere
