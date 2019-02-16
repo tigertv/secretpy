@@ -52,13 +52,13 @@ class TestPolybius(unittest.TestCase):
 	def test_encrypt(self):
 		cipher = Polybius()
 		for i,alphabet in enumerate(self.alphabet):
-			enc = cipher.encrypt(self.key[i], self.plaintext[i], alphabet)
+			enc = cipher.encrypt(self.plaintext[i], self.key[i], alphabet)
 			self.assertEqual(enc, self.ciphertext[i])
 
 	def test_decrypt(self):
 		cipher = Polybius()
 		for i,alphabet in enumerate(self.alphabet):
-			dec = cipher.decrypt(self.key[i], self.ciphertext[i], alphabet)
+			dec = cipher.decrypt(self.ciphertext[i], self.key[i], alphabet)
 			self.assertEqual(dec, self.plaintext[i])
 
 if __name__ == '__main__': 

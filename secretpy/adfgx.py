@@ -88,10 +88,10 @@ class ADFGX:
 		
 		return ans2
 	
-	def encrypt(self, key, plaintext, alphabet=None):
+	def encrypt(self, text, key, alphabet=None):
 		alphabet = alphabet or [u"a", u"b", u"c", u"d", u"e", u"f", u"g", u"h", u"ij", u"k", u"l", u"m", u"n", u"o", u"p", u"q", u"r", u"s", u"t", u"u", u"v", u"w", u"x", u"y", u"z"]
-		return self.__enc(alphabet, key, plaintext, 1)
+		return self.__enc(alphabet, key, text, 1)
 
-	def decrypt(self, key, ciphertext, alphabet=None):
+	def decrypt(self, text, key, alphabet=None):
 		alphabet = alphabet or [u"a", u"b", u"c", u"d", u"e", u"f", u"g", u"h", u"ij", u"k", u"l", u"m", u"n", u"o", u"p", u"q", u"r", u"s", u"t", u"u", u"v", u"w", u"x", u"y", u"z"]
-		return self.__dec(alphabet, key, ciphertext, -1)
+		return self.__dec(alphabet, key, text, -1)

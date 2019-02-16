@@ -55,8 +55,8 @@ class Zigzag:
 		
 		return "".join(decrypted)
 
-	def encrypt(self, key, plaintext, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
-		return self.__enc(key, plaintext)
+	def encrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+		return self.__enc(key, text)
 
-	def decrypt(self, key, ciphertext, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
-		return self.__dec(key, ciphertext)
+	def decrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+		return self.__dec(key, text)

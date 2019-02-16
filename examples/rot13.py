@@ -10,9 +10,9 @@ key = u""
 cipher = Rot13();
 print(plaintext)
 
-enc = cipher.encrypt(key, plaintext, alphabet)
+enc = cipher.encrypt(plaintext, key, alphabet)
 print(enc)
-dec = cipher.decrypt(key, enc, alphabet)
+dec = cipher.decrypt(enc, key, alphabet)
 print(dec)
 
 #######################################################
@@ -24,7 +24,7 @@ plaintext  = u"thisisasecretmessage"
 print(plaintext)
 
 # use default english alphabet 5x5
-enc = cipher.encrypt(key, plaintext)
+enc = cipher.encrypt(plaintext)
 print(enc)
-dec = cipher.decrypt(key, enc)
+dec = cipher.decrypt(enc)
 print(dec)

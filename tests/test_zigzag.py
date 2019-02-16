@@ -24,13 +24,13 @@ class TestZigzag(unittest.TestCase):
 	def test_encrypt(self):
 		algorithm = Zigzag() 
 		for i,plaintext in enumerate(self.plaintext):
-			enc = algorithm.encrypt(self.key[i], plaintext)
+			enc = algorithm.encrypt(plaintext, self.key[i])
 			self.assertEqual(enc, self.ciphertext[i])
 
 	def test_decrypt(self):
 		algorithm = Zigzag() 
 		for i,ciphertext in enumerate(self.ciphertext):
-			dec = algorithm.decrypt(self.key[i], ciphertext)
+			dec = algorithm.decrypt(ciphertext, self.key[i])
 			self.assertEqual(dec, self.plaintext[i])
 
 if __name__ == '__main__': 
