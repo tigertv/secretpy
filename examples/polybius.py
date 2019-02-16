@@ -16,10 +16,10 @@ key = ""
 cipher = Polybius();
 
 print(plaintext)
-enc = cipher.encrypt(key, plaintext, alphabet)
+enc = cipher.encrypt(plaintext, key, alphabet)
 print(enc)
 
-dec = cipher.decrypt(key, enc, alphabet) 
+dec = cipher.decrypt(enc, key, alphabet) 
 print(dec)
 
 
@@ -29,10 +29,10 @@ print("-------------------------------")
 plaintext = "sometext"
 
 print(plaintext)
-enc = cipher.encrypt(key, plaintext) 
+enc = cipher.encrypt(plaintext) 
 print(enc)
 
-dec = cipher.decrypt(key, enc) 
+dec = cipher.decrypt(enc) 
 print(dec)
 
 ##################################################################################
@@ -41,9 +41,9 @@ print("-------------------------------")
 plaintext = "thisisasecretmessage"
 
 print(plaintext)
-enc = cipher.encrypt(key, plaintext) 
+enc = cipher.encrypt(plaintext) 
 print(enc)
 
-dec = cipher.decrypt(key, enc) 
+dec = cipher.decrypt(enc) 
 print(dec)
 

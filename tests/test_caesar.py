@@ -47,12 +47,12 @@ class TestCaesar(unittest.TestCase):
 
 	def test_encrypt(self):
 		for i,alphabet in enumerate(self.alphabet):
-			enc = Caesar().encrypt(self.key[i], self.plaintext[i], alphabet)
+			enc = Caesar().encrypt(self.plaintext[i], self.key[i], alphabet)
 			self.assertEqual(enc, self.ciphertext[i])
 
 	def test_decrypt(self):
 		for i,alphabet in enumerate(self.alphabet):
-			dec = Caesar().decrypt(self.key[i], self.ciphertext[i], alphabet)
+			dec = Caesar().decrypt(self.ciphertext[i], self.key[i], alphabet)
 			self.assertEqual(dec, self.plaintext[i])
 
 if __name__ == '__main__': 

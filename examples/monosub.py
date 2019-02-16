@@ -10,9 +10,9 @@ key = u"dabcghijokzlmnpqrstuvfwxyäöeüß"
 cipher = Monosub();
 print(plaintext)
 
-enc = cipher.encrypt(key, plaintext, alphabet)
+enc = cipher.encrypt(plaintext, key, alphabet)
 print(enc)
-dec = cipher.decrypt(key, enc, alphabet)
+dec = cipher.decrypt(enc, key, alphabet)
 print(dec)
 
 #######################################################
@@ -24,7 +24,7 @@ alphabet = u"abcdefghijklmnopqrstuvwxyz"
 key      = u"dabcghijokzlmnpqrstuvfwxye"
 
 print(plaintext)
-enc = cipher.encrypt(key, plaintext, alphabet)
+enc = cipher.encrypt(plaintext, key, alphabet)
 print(enc)
-dec = cipher.decrypt(key, enc, alphabet)
+dec = cipher.decrypt(enc, key, alphabet)
 print(dec)

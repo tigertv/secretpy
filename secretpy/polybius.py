@@ -9,7 +9,7 @@ class Polybius:
 	def __init__(self):
 		return
 		
-	def __enc(self, alphabet, key, text):
+	def __enc(self, alphabet, text):
 		ans0 = ""
 		size = int(math.ceil(math.sqrt(len(alphabet))))
 		header = range(1,(size+1))
@@ -28,7 +28,7 @@ class Polybius:
 			ans0 += header[row] + header[column]
 		return ans0
 
-	def __dec(self, alphabet, key, text):
+	def __dec(self, alphabet, text):
 		dec = ""
 		size = len(text)
 		side = int(math.ceil(math.sqrt(len(alphabet))))
@@ -41,10 +41,10 @@ class Polybius:
 			dec += alphabet[index][0]
 		return dec
 
-	def encrypt(self, key, plaintext, alphabet=None):
+	def encrypt(self, text, key=None, alphabet=None):
 		alphabet = alphabet or [u"a", u"b", u"c", u"d", u"e", u"f", u"g", u"h", u"ij", u"k", u"l", u"m", u"n", u"o", u"p", u"q", u"r", u"s", u"t", u"u", u"v", u"w", u"x", u"y", u"z"]
-		return self.__enc(alphabet, key, plaintext)
+		return self.__enc(alphabet, text)
 
-	def decrypt(self, key, ciphertext, alphabet=None):
+	def decrypt(self, text, key=None, alphabet=None):
 		alphabet = alphabet or [u"a", u"b", u"c", u"d", u"e", u"f", u"g", u"h", u"ij", u"k", u"l", u"m", u"n", u"o", u"p", u"q", u"r", u"s", u"t", u"u", u"v", u"w", u"x", u"y", u"z"]
-		return self.__dec(alphabet, key, ciphertext)
+		return self.__dec(alphabet, text)

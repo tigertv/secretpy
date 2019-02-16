@@ -51,12 +51,12 @@ class TestKeyword(unittest.TestCase):
 
 	def test_encrypt(self):
 		for i,alphabet in enumerate(self.alphabet):
-			enc = Keyword().encrypt(self.key[i], self.plaintext[i], alphabet)
+			enc = Keyword().encrypt(self.plaintext[i], self.key[i], alphabet)
 			self.assertEqual(enc, self.ciphertext[i])
 
 	def test_decrypt(self):
 		for i,alphabet in enumerate(self.alphabet):
-			dec = Keyword().decrypt(self.key[i], self.ciphertext[i], alphabet)
+			dec = Keyword().decrypt(self.ciphertext[i], self.key[i], alphabet)
 			self.assertEqual(dec, self.plaintext[i])
 
 if __name__ == '__main__': 

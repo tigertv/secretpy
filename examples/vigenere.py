@@ -10,9 +10,9 @@ key = u"kss"
 cipher = Vigenere();
 print(plaintext)
 
-enc = cipher.encrypt(key, plaintext, alphabet)
+enc = cipher.encrypt(plaintext, key, alphabet)
 print(enc)
-dec = cipher.decrypt(key, enc, alphabet)
+dec = cipher.decrypt(enc, key, alphabet)
 print(dec)
 
 #######################################################
@@ -23,7 +23,7 @@ plaintext  = u"attackatdawn"
 key      = u"lemon"
 
 print(plaintext)
-enc = cipher.encrypt(key, plaintext)
+enc = cipher.encrypt(plaintext, key)
 print(enc)
-dec = cipher.decrypt(key, enc)
+dec = cipher.decrypt(enc, key)
 print(dec)

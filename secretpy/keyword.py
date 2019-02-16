@@ -33,8 +33,8 @@ class Keyword:
 			ans += enc
 		return ans
 
-	def encrypt(self, key, plaintext, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
-		return self.__encDec(alphabet, key, plaintext, 1)
+	def encrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+		return self.__encDec(alphabet, key, text, 1)
 
-	def decrypt(self, key, ciphertext, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
-		return self.__encDec(alphabet, key, ciphertext, -1)
+	def decrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+		return self.__encDec(alphabet, key, text, -1)
