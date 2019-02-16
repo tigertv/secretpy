@@ -7,12 +7,12 @@ alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
 plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
 key = "queenly"
 
-chipher = Keyword();
+cipher = Keyword();
 print(plaintext)
 
-enc = chipher.encrypt(key, plaintext, alphabet)
+enc = cipher.encrypt(key, plaintext, alphabet)
 print(enc)
-dec = chipher.decrypt(key, enc, alphabet)
+dec = cipher.decrypt(key, enc, alphabet)
 print(dec)
 
 #######################################################
@@ -24,7 +24,7 @@ key = "keyword"
 
 # use default english alphabet
 print(plaintext)
-enc = chipher.encrypt(key, plaintext)
+enc = cipher.encrypt(key, plaintext)
 print(enc)
-dec = chipher.decrypt(key, enc)
+dec = cipher.decrypt(key, enc)
 print(dec)

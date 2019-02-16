@@ -7,12 +7,12 @@ alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
 plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
 key = u""
 
-chipher = Rot13();
+cipher = Rot13();
 print(plaintext)
 
-enc = chipher.encrypt(key, plaintext, alphabet)
+enc = cipher.encrypt(key, plaintext, alphabet)
 print(enc)
-dec = chipher.decrypt(key, enc, alphabet)
+dec = cipher.decrypt(key, enc, alphabet)
 print(dec)
 
 #######################################################
@@ -24,7 +24,7 @@ plaintext  = u"thisisasecretmessage"
 print(plaintext)
 
 # use default english alphabet 5x5
-enc = chipher.encrypt(key, plaintext)
+enc = cipher.encrypt(key, plaintext)
 print(enc)
-dec = chipher.decrypt(key, enc)
+dec = cipher.decrypt(key, enc)
 print(dec)

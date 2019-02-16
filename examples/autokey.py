@@ -7,12 +7,12 @@ alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
 plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
 key = "queenly"
 
-chipher = Autokey();
+cipher = Autokey();
 print(plaintext)
 
-enc = chipher.encrypt(key, plaintext, alphabet)
+enc = cipher.encrypt(key, plaintext, alphabet)
 print(enc)
-dec = chipher.decrypt(key, enc, alphabet)
+dec = cipher.decrypt(key, enc, alphabet)
 print(dec)
 
 #######################################################
@@ -23,7 +23,7 @@ plaintext  = u"attackatdawn"
 
 # use default english alphabet
 print(plaintext)
-enc = chipher.encrypt(key, plaintext)
+enc = cipher.encrypt(key, plaintext)
 print(enc)
-dec = chipher.decrypt(key, enc)
+dec = cipher.decrypt(key, enc)
 print(dec)

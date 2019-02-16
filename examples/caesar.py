@@ -6,15 +6,15 @@ from secretpy import Caesar
 alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
 plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
 key = 3
-chipher = Caesar();
+cipher = Caesar();
 
-enc = chipher.encrypt(key, plaintext, alphabet)
+enc = cipher.encrypt(key, plaintext, alphabet)
 print(enc)
-dec = chipher.decrypt(key, enc, alphabet)
+dec = cipher.decrypt(key, enc, alphabet)
 print(dec)
 
 # use default english alphabet
-enc = chipher.encrypt(key, plaintext)
+enc = cipher.encrypt(key, plaintext)
 print(enc)
-dec = chipher.decrypt(key, enc)
+dec = cipher.decrypt(key, enc)
 print(dec)

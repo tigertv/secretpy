@@ -13,13 +13,13 @@ alphabet = [
 
 plaintext  = u"defendtheeastwallofthecastle"
 key = ""
-chipher = Polybius();
+cipher = Polybius();
 
 print(plaintext)
-enc = chipher.encrypt(key, plaintext, alphabet)
+enc = cipher.encrypt(key, plaintext, alphabet)
 print(enc)
 
-dec = chipher.decrypt(key, enc, alphabet) 
+dec = cipher.decrypt(key, enc, alphabet) 
 print(dec)
 
 
@@ -29,10 +29,10 @@ print("-------------------------------")
 plaintext = "sometext"
 
 print(plaintext)
-enc = chipher.encrypt(key, plaintext) 
+enc = cipher.encrypt(key, plaintext) 
 print(enc)
 
-dec = chipher.decrypt(key, enc) 
+dec = cipher.decrypt(key, enc) 
 print(dec)
 
 ##################################################################################
@@ -41,9 +41,9 @@ print("-------------------------------")
 plaintext = "thisisasecretmessage"
 
 print(plaintext)
-enc = chipher.encrypt(key, plaintext) 
+enc = cipher.encrypt(key, plaintext) 
 print(enc)
 
-dec = chipher.decrypt(key, enc) 
+dec = cipher.decrypt(key, enc) 
 print(dec)
 

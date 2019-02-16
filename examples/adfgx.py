@@ -6,13 +6,13 @@ from secretpy import ADFGX
 alphabet = [u"b", u"t", u"a", u"l", u"p", u"d", u"h", u"o", u"z", u"k", u"q", u"f", u"v", u"s", u"n", u"g", u"ij", u"c", u"u", u"x", u"m", u"r", u"e", u"w", u"y"]
 plaintext  = u"attackatonce"
 key = "cargo"
-chipher = ADFGX();
+cipher = ADFGX();
 
 print(plaintext)
-enc = chipher.encrypt(key, plaintext, alphabet)
+enc = cipher.encrypt(key, plaintext, alphabet)
 print(enc)
 
-dec = chipher.decrypt(key, enc, alphabet)
+dec = cipher.decrypt(key, enc, alphabet)
 print(dec)
 
 ##################################################################################
@@ -29,10 +29,10 @@ key = "battle"
 plaintext = "attackatdawn"
 
 print(plaintext)
-enc = chipher.encrypt(key, plaintext, alphabet)
+enc = cipher.encrypt(key, plaintext, alphabet)
 print(enc)
 
-dec = chipher.decrypt(key, enc, alphabet)
+dec = cipher.decrypt(key, enc, alphabet)
 print(dec)
 
 ##################################################################################
@@ -43,9 +43,9 @@ plaintext = "howstuffworks"
 
 # use default english alphabet 5x5
 print(plaintext)
-enc = chipher.encrypt(key, plaintext)
+enc = cipher.encrypt(key, plaintext)
 print(enc)
 
-dec = chipher.decrypt(key, enc)
+dec = cipher.decrypt(key, enc)
 print(dec)
 
