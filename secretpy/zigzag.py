@@ -4,47 +4,59 @@
 class Zigzag:
 	def __init__(self):
 		return
-	# traspositional cipher, no need an alphabet
-	def __encDec(self, key, text, isEncrypt):
-		ans = ""
-		j = 0
-		if isEncrypt == -1:
-			ans = "." * len(text)
-			ans = list(ans)
 
-		shift1 = key << 1
-		shift2 = -2
-		isPlusShift1 = True
+	def __enc(self, key, text):
+		crypted = ""
+		step = (key - 1) << 1
+		textlen = len(text)
 
-		for row in range(key):
-			shift1 -= 2
-			shift2 += 2
-			i = row
-			while i < len(text):
-				if isEncrypt == 1:
-					ans += text[i]
-				else:
-					ans[i] = text[j]
-					j += 1
-				if isPlusShift1:
-					if shift1 == 0:
-						i += shift2
-					else:
-						i += shift1
-					isPlusShift1 = False
-				else:
-					if shift2 == 0:
-						i += shift1
-					else:
-						i += shift2
-					isPlusShift1 = True
+		# first row
+		left = 0
+		while (left < textlen):
+			crypted += text[left]
+			left += step
 
-		if isEncrypt == -1:
-			ans = "".join(ans)
-		return ans
+		#next rows
+		for row in range(1,key):
+			left = row
+			while (left < textlen):
+				crypted += text[left]
+				right = left + step - (row << 1)
+				if right < textlen and right!=left:
+					crypted += text[right]
+				left += step
+
+		return crypted
+
+	def __dec(self, key, text):
+		step = (key - 1) << 1
+		textlen = len(text)
+		decrypted = ["."] * textlen
+
+		# first row
+		left = 0
+		i = 0
+		while (left < textlen):
+			decrypted[left] = text[i]
+			left += step
+			i += 1
+
+		#next rows
+		for row in range(1,key):
+			left = row
+			while (left < textlen):
+				decrypted[left] = text[i]
+				i += 1
+				right = left + step - (row << 1)
+				if right < textlen and right!=left:
+					decrypted[right] = text[i]
+					i += 1
+				left += step
+		
+		return "".join(decrypted)
 
 	def encrypt(self, key, plaintext, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
-		return self.__encDec(key, plaintext, 1)
+		return self.__enc(key, plaintext)
 
 	def decrypt(self, key, ciphertext, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
-		return self.__encDec(key, ciphertext, -1)
+		return self.__dec(key, ciphertext)

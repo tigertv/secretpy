@@ -1,36 +1,30 @@
-# SecretPy
-
-Classical cipher algorithms
-
-
-Installation:
-```
-pip install secretpy
-```
-
-Sample usage:
-
-```python
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import Caesar
+from secretpy import Keyword
 
 alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
 plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
-key = 3
-cipher = Caesar();
+key = "queenly"
+
+cipher = Keyword();
+print(plaintext)
 
 enc = cipher.encrypt(key, plaintext, alphabet)
 print(enc)
 dec = cipher.decrypt(key, enc, alphabet)
 print(dec)
 
+#######################################################
+
+print("----------------------------------")
+
+plaintext  = u"thisisasecretmessage"
+key = "keyword"
+
 # use default english alphabet
+print(plaintext)
 enc = cipher.encrypt(key, plaintext)
 print(enc)
 dec = cipher.decrypt(key, enc)
 print(dec)
-```
-
-It uses Python 2.7

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-class Vigener:
+class Vigenere:
 	def __init__(self):
 		return
 
