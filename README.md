@@ -2,9 +2,21 @@
 
 Classical cipher algorithms
 
+- ADFGX
+- Affine
+- Atbash
+- Autokey
+- Beaufort 
+- Caesar
+- Keyword
+- Monosub
+- Polybius
+- Rot13
+- Vigenere
+- Zigzag
 
 Installation:
-```
+```bash
 pip install secretpy
 ```
 
