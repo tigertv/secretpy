@@ -12,7 +12,7 @@ from rot13 import Rot13
 from vigenere import Vigenere
 from zigzag import Zigzag
 
-from symcryptmachine import SymCryptMachine
+from cryptmachine import CryptMachine
 
 __all__ = [
 	"ADFGX", "Affine", "Atbash", "Autokey", "Caesar", "Keyword", "Monosub",
