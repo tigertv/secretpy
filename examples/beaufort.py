@@ -7,22 +7,22 @@ from secretpy import Beaufort
 plaintext  = u"helloworld"
 key = "key"
 
-machine = CryptMachine(Beaufort(), key)
+cm = CryptMachine(Beaufort(), key)
 
 print(plaintext)
-enc = machine.encrypt(plaintext)
+enc = cm.encrypt(plaintext)
 print(enc)
-dec = machine.decrypt(enc)
+dec = cm.decrypt(enc)
 print(dec)
 
 print("-----------------------------------")
 
 alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
-machine.setAlphabet(alphabet)
+cm.setAlphabet(alphabet)
 
 print(plaintext)
-enc = machine.encrypt(plaintext)
+enc = cm.encrypt(plaintext)
 print(enc)
-dec = machine.decrypt(enc)
+dec = cm.decrypt(enc)
 print(dec)
 
