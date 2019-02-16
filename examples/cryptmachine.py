@@ -12,7 +12,7 @@ cipher = Caesar()
 
 print("-----------------------------------")
 
-machine = CryptMachine(cipher, key);
+machine = CryptMachine(cipher, key)
 enc = machine.encrypt(plaintext)
 print(enc)
 dec = machine.decrypt(enc)
