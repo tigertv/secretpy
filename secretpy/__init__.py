@@ -1,21 +1,20 @@
 #!/usr/bin/python
 
-from secretpy.caesar import Caesar
-
 from adfgx import ADFGX
 from affine import Affine 
 from atbash import Atbash
 from autokey import Autokey
+from caesar import Caesar
 from keyword import Keyword
 from monosub import Monosub
 from polybius import Polybius
 from rot13 import Rot13
-from vigener import Vigener
+from vigenere import Vigenere
 from zigzag import Zigzag
 
 from symcryptmachine import SymCryptMachine
 
 __all__ = [
-	"Caesar","ADFGX", "Affine", "Atbash","Autokey","Keyword","Monosub",
-	"Polybius","Rot13","Vigener","Zigzag",
+	"ADFGX", "Affine", "Atbash", "Autokey", "Caesar", "Keyword", "Monosub",
+	"Polybius", "Rot13", "Vigenere", "Zigzag",
 	"SymCryptMachine"]

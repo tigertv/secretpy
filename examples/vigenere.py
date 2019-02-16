@@ -1,13 +1,13 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import Vigener
+from secretpy import Vigenere
 
 alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
 plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
 key = u"kss"
 
-chipher = Vigener();
+chipher = Vigenere();
 print(plaintext)
 
 enc = chipher.encrypt(key, plaintext, alphabet)

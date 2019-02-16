@@ -1,10 +1,10 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy.vigener import Vigener 
+from secretpy.vigenere import Vigenere 
 import unittest
 
-class TestVigener(unittest.TestCase):
+class TestVigenere(unittest.TestCase):
 	alphabet = (u"abcdefghijklmnopqrstuvwxyz",
 		u"абвгдеёжзийклмнопрстуфхцчшщъыьэюя",
 		u"abcdefghijklmnopqrstuvwxyzäöüß",
@@ -51,12 +51,12 @@ class TestVigener(unittest.TestCase):
 
 	def test_encrypt(self):
 		for i,alphabet in enumerate(self.alphabet):
-			enc = Vigener().encrypt(self.key[i], self.plaintext[i], alphabet)
+			enc = Vigenere().encrypt(self.key[i], self.plaintext[i], alphabet)
 			self.assertEqual(enc, self.ciphertext[i])
 
 	def test_decrypt(self):
 		for i,alphabet in enumerate(self.alphabet):
-			dec = Vigener().decrypt(self.key[i], self.ciphertext[i], alphabet)
+			dec = Vigenere().decrypt(self.key[i], self.ciphertext[i], alphabet)
 			self.assertEqual(dec, self.plaintext[i])
 
 if __name__ == '__main__': 
