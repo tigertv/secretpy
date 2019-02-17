@@ -23,7 +23,8 @@ cm.setAlphabet(alphabet)
 encdec(cm, plaintext)
 
 alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
-plaintext  = u"achtung"
+plaintext  = u"Achtung Minen"
 cm.setAlphabet(alphabet)
 cm.setUpperCase()
+cm.setRemoveSpaces()
 encdec(cm, plaintext)

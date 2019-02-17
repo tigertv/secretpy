@@ -107,6 +107,8 @@ encdec(cm, plaintext)
 
 cm.setCipher(Atbash())
 cm.setUpperCase()
+cm.setRemoveSpaces()
+plaintext  = u"Achtung Minen"
 encdec(cm, plaintext)
 ```
 

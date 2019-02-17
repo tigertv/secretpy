@@ -6,6 +6,7 @@ class CryptMachine:
 		self.key = key or ""
 		self.cipher = cipher
 		self.uppercase = False
+		self.removeSpaces = False
 
 	def setKey(self, key):
 		self.key = key
@@ -19,6 +20,8 @@ class CryptMachine:
 	def encrypt(self, text):
 		if self.uppercase:
 			text = text.lower()
+		if self.removeSpaces:
+			text = text.replace(" ", "")
 		res = self.cipher.encrypt(text, self.key, self.alphabet)
 		if self.uppercase:
 			res = res.upper()
@@ -27,6 +30,8 @@ class CryptMachine:
 	def decrypt(self, text):
 		if self.uppercase:
 			text = text.lower()
+		if self.removeSpaces:
+			text = text.replace(" ", "")
 		res = self.cipher.decrypt(text, self.key, self.alphabet)
 		if self.uppercase:
 			res = res.upper()
@@ -38,3 +43,8 @@ class CryptMachine:
 	def resetUpperCase(self):
 		self.uppercase = False
 
+	def setRemoveSpaces(self):
+		self.removeSpaces = True
+
+	def resetRemoveSpaces(self):
+		self.removeSpaces = False
