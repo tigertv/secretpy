@@ -35,5 +35,5 @@ test3: setup.py
 upload: 
 	python -m twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
 clean:
-	rm -rf dist build secretpy.egg-info secretpy/*.pyc secretpy/__pycache__ tests/*.pyc test/__pycache__
+	rm -rf dist build secretpy.egg-info secretpy/*.pyc secretpy/__pycache__ tests/*.pyc tests/__pycache__
 	
