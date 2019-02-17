@@ -16,7 +16,9 @@ install2: setup.py
 install3: setup.py
 	python3 setup.py install --user
 
-uninstall: uninstall2 uninstall3
+uninstall: 
+	make -i uninstall2	
+	make -i uninstall3	
 
 uninstall2: 
 	pip uninstall secretpy
