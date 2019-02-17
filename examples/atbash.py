@@ -2,28 +2,28 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import Atbash
+from secretpy import CryptMachine
 
-alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
-plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
-key = ""
+def encdec(machine, plaintext):
+	print(plaintext)
+	enc = cm.encrypt(plaintext)
+	print(enc)
+	dec = cm.decrypt(enc)
+	print(dec)
+	print("----------------------------------")
 
-cipher = Atbash();
-print(plaintext)
-
-enc = cipher.encrypt(plaintext, key, alphabet)
-print(enc)
-dec = cipher.decrypt(enc, key, alphabet)
-print(dec)
-
-#######################################################
-
-print("----------------------------------")
+cm = CryptMachine(Atbash())
 
 plaintext  = u"attackatdawn"
+encdec(cm, plaintext)
 
-# use default english alphabet
-print(plaintext)
-enc = cipher.encrypt(plaintext)
-print(enc)
-dec = cipher.decrypt(enc)
-print(dec)
+alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
+plaintext  = u"achtung"
+cm.setAlphabet(alphabet)
+encdec(cm, plaintext)
+
+alphabet = u"אבגדהוזחטיךכלםמןנסעףפץצקרשת"
+plaintext  = u"במקום"
+cm.setAlphabet(alphabet)
+encdec(cm, plaintext)
+
