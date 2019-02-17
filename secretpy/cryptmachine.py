@@ -1,6 +1,8 @@
 #!/usr/bin/python
 
-class CryptMachine:
+from .abstractmachine import AbstractCryptMachine
+
+class CryptMachine(AbstractCryptMachine):
 	def __init__(self, cipher, key=None, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
 		self.__alphabet = alphabet
 		self.__key = key or ""

@@ -1,7 +1,9 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-class AbstractMachineDecorator:
+from ..abstractmachine import AbstractCryptMachine
+
+class AbstractMachineDecorator(AbstractCryptMachine):
 	def __init__(self, machine):
 		self._machine = machine 
 
