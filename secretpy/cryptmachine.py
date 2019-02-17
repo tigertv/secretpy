@@ -9,7 +9,7 @@ class CryptMachine:
 	def setKey(self, key):
 		self.key = key
 
-	def setAlphabet(self, alphabet):
+	def setAlphabet(self, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
 		self.alphabet = alphabet
 	
 	def setCipher(self, cipher):
