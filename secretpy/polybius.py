@@ -34,7 +34,7 @@ class Polybius:
 		side = int(math.ceil(math.sqrt(len(alphabet))))
 		header = range(1,(size+1))
 		header = "".join(map(str,header))
-		for i in range(int(size/2)):
+		for i in range(size >> 1):
 			row = header.index(text[i*2])
 			column = header.index(text[i*2+1])
 			index = row*side + column

@@ -41,7 +41,7 @@ class ADFGX:
 
 		# now get resulting symbols from alphabet and the res variable
 		dec = ""
-		for i in range(int(size/2)):
+		for i in range(size >> 1):
 			row = self.header.index(res[i*2])
 			column = self.header.index(res[i*2+1])
 			index = row*side + column
