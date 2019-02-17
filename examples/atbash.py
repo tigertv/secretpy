@@ -4,6 +4,8 @@
 from secretpy import Atbash
 from secretpy import CryptMachine
 
+import secretpy.cmdecorators as md
+
 def encdec(machine, plaintext):
 	print(plaintext)
 	enc = cm.encrypt(plaintext)
@@ -13,6 +15,7 @@ def encdec(machine, plaintext):
 	print("----------------------------------")
 
 cm = CryptMachine(Atbash())
+cm = md.NoSpaces(md.UpperCase(cm))
 
 plaintext  = u"attackatdawn"
 encdec(cm, plaintext)
@@ -22,9 +25,11 @@ plaintext  = u"במקום"
 cm.setAlphabet(alphabet)
 encdec(cm, plaintext)
 
+plaintext  = u"The Fox jumps in Zoo too Achtung minen"
+
 alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
-plaintext  = u"Achtung Minen"
 cm.setAlphabet(alphabet)
-cm.setUpperCase()
-cm.setRemoveSpaces()
+encdec(cm, plaintext)
+
+plaintext  = u"Achtung Minen"
 encdec(cm, plaintext)
