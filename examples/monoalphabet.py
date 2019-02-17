@@ -1,13 +1,13 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import Monosub
+from secretpy import Monoalphabet
 
 alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
 plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
 key = u"dabcghijokzlmnpqrstuvfwxyäöeüß"
 
-cipher = Monosub();
+cipher = Monoalphabet();
 print(plaintext)
 
 enc = cipher.encrypt(plaintext, key, alphabet)

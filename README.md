@@ -1,14 +1,55 @@
-# SecretPy
+SecretPy
+===========
 
-Classical cipher algorithms
+[![](https://badge.fury.io/py/secretpy.svg)](https://pypi.org/project/secretpy)
+[![](https://img.shields.io/pypi/pyversions/secretpy.svg)](https://pypi.org/project/secretpy)
+
+***Download:***
+
+https://pypi.org/project/secretpy
+
+***Source code & Development:***
+
+https://github.com/tigertv/secretpy
+
+Description
+-----------
+
+SecretPy is a cryptographic library. It uses the following classical cipher algorithms:
+
+- ADFGX
+- Affine
+- Atbash
+- Autokey
+- Beaufort 
+- Caesar
+- Keyword
+- Monoalphabet
+- Polybius
+- Rot13
+- Vigenere
+- Zigzag
 
 
-Installation:
-```
+Installation
+------------
+
+To install this library, you can use pip:
+
+```bash
 pip install secretpy
 ```
 
-Sample code:
+Alternatively, you can install the package using the repo's cloning and the make:
+
+```bash
+git clone https://github.com/tigertv/secretpy
+cd secretpy
+make install
+```
+
+Usage
+-----
 
 ```python
 #!/usr/bin/python
@@ -33,7 +74,7 @@ dec = cipher.decrypt(enc, key)
 print(dec)
 ```
 
-Sample with CryptMachine:
+You can use CryptMachine:
 
 ```python
 #!/usr/bin/python
@@ -43,42 +84,34 @@ from secretpy import CryptMachine
 from secretpy import Caesar
 from secretpy import Atbash 
 
+def encdec(machine, plaintext):
+	enc = machine.encrypt(plaintext)
+	print(enc)
+	dec = machine.decrypt(enc)
+	print(dec)
+	print("-----------------------------------")
+
 alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
 plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
 key = 3
 cipher = Caesar()
 
-print("-----------------------------------")
+cm = CryptMachine(cipher, key)
+encdec(cm, plaintext)
 
-machine = CryptMachine(cipher, key);
-enc = machine.encrypt(plaintext)
-print(enc)
-dec = machine.decrypt(enc)
-print(dec)
+cm.setAlphabet(alphabet)
+encdec(cm, plaintext)
 
-print("-----------------------------------")
+cm.setKey(9)
+encdec(cm, plaintext)
 
-machine.setAlphabet(alphabet)
-enc = machine.encrypt(plaintext)
-print(enc)
-dec = machine.decrypt(enc)
-print(dec)
-
-print("-----------------------------------")
-
-machine.setKey(9)
-enc = machine.encrypt(plaintext)
-print(enc)
-dec = machine.decrypt(enc)
-print(dec)
-
-print("-----------------------------------")
-
-machine.setCipher(Atbash())
-enc = machine.encrypt(plaintext)
-print(enc)
-dec = machine.decrypt(enc)
-print(dec)
+cm.setCipher(Atbash())
+encdec(cm, plaintext)
 ```
 
-It uses Python 2.7
+Maintainers
+-----------
+
+- [@tigertv](https://github.com/tigertv) (Max Vetrov)
+
+

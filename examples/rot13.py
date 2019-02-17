@@ -3,17 +3,20 @@
 
 from secretpy import Rot13 
 
+def encdec(cipher, plaintext, alphabet):
+	print("----------------------------------")
+	print(plaintext)
+	enc = cipher.encrypt(plaintext, "", alphabet)
+	print(enc)
+	dec = cipher.decrypt(enc, "", alphabet)
+	print(dec)
+
 alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
 plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
-key = u""
 
 cipher = Rot13();
-print(plaintext)
 
-enc = cipher.encrypt(plaintext, key, alphabet)
-print(enc)
-dec = cipher.decrypt(enc, key, alphabet)
-print(dec)
+encdec(cipher, plaintext, alphabet)
 
 #######################################################
 
@@ -28,3 +31,10 @@ enc = cipher.encrypt(plaintext)
 print(enc)
 dec = cipher.decrypt(enc)
 print(dec)
+
+#######################################################
+
+alphabet = u"абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+plaintext  = u"текст"
+encdec(cipher, plaintext, alphabet)
+

@@ -5,10 +5,10 @@ class Rot13:
 		return
 	
 	def __encDec(self, alphabet, text, isEncrypt):
-		key = len(alphabet) / 2
+		key = (int)(len(alphabet) / 2)
 		ans = ""
 		for char in text:
-			alphIndex = (alphabet.index(char) + isEncrypt * key) % len(alphabet)
+			alphIndex = (int)(alphabet.index(char) + isEncrypt * key) % len(alphabet)
 			ans += alphabet[alphIndex]
 		return ans
 
