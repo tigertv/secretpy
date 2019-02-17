@@ -1,13 +1,9 @@
-.PHONY: all package package2 package3 install install2 install3 uninstall uninstall2 uninstall3 test test2 test3 upload clean
+.PHONY: all package install install2 install3 uninstall uninstall2 uninstall3 test test2 test3 upload clean
 
 all: package
 
-package: package2 package3
-
-package2: setup.py
-	python setup.py sdist bdist_wheel
-package3: setup.py
-	python3 setup.py sdist bdist_wheel
+package: 
+	python setup.py sdist bdist_wheel --universal
 
 install: install2 install3
 
