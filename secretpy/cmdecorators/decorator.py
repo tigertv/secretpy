@@ -3,16 +3,16 @@
 
 class AbstractMachineDecorator:
 	def __init__(self, machine):
-		self.machine = machine 
+		self._machine = machine 
 
 	def setKey(self, key):
-		self.machine.setKey(key)
+		self._machine.setKey(key)
 
 	def setAlphabet(self, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
-		self.machine.setAlphabet(alphabet)
+		self._machine.setAlphabet(alphabet)
 	
 	def setCipher(self, cipher):
-		self.machine.setCipher(cipher)
+		self._machine.setCipher(cipher)
 		
 	def encrypt(self, text):
 		pass

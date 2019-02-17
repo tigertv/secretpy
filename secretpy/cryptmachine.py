@@ -2,23 +2,21 @@
 
 class CryptMachine:
 	def __init__(self, cipher, key=None, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
-		self.alphabet = alphabet
-		self.key = key or ""
-		self.cipher = cipher
+		self.__alphabet = alphabet
+		self.__key = key or ""
+		self.__cipher = cipher
 
 	def setKey(self, key):
-		self.key = key
+		self.__key = key
 
 	def setAlphabet(self, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
-		self.alphabet = alphabet
+		self.__alphabet = alphabet
 	
 	def setCipher(self, cipher):
-		self.cipher = cipher
+		self.__cipher = cipher
 		
 	def encrypt(self, text):
-		res = self.cipher.encrypt(text, self.key, self.alphabet)
-		return res
+		return self.__cipher.encrypt(text, self.__key, self.__alphabet)
 		
 	def decrypt(self, text):
-		res = self.cipher.decrypt(text, self.key, self.alphabet)
-		return res
+		return self.__cipher.decrypt(text, self.__key, self.__alphabet)
