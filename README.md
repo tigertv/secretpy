@@ -74,6 +74,7 @@ dec = cipher.decrypt(enc, key)
 print(dec)
 ```
 
+
 You can use CryptMachine:
 
 ```python
@@ -91,14 +92,13 @@ def encdec(machine, plaintext):
 	print(dec)
 	print("-----------------------------------")
 
-alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
 plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
 key = 3
-cipher = Caesar()
 
-cm = CryptMachine(cipher, key)
+cm = CryptMachine(Caesar(), key)
 encdec(cm, plaintext)
 
+alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
 cm.setAlphabet(alphabet)
 encdec(cm, plaintext)
 
@@ -106,6 +106,7 @@ cm.setKey(9)
 encdec(cm, plaintext)
 
 cm.setCipher(Atbash())
+cm.setUpperCase()
 encdec(cm, plaintext)
 ```
 

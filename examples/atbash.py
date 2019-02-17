@@ -17,13 +17,13 @@ cm = CryptMachine(Atbash())
 plaintext  = u"attackatdawn"
 encdec(cm, plaintext)
 
-alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
-plaintext  = u"achtung"
-cm.setAlphabet(alphabet)
-encdec(cm, plaintext)
-
 alphabet = u"אבגדהוזחטיךכלםמןנסעףפץצקרשת"
 plaintext  = u"במקום"
 cm.setAlphabet(alphabet)
 encdec(cm, plaintext)
 
+alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
+plaintext  = u"achtung"
+cm.setAlphabet(alphabet)
+cm.setUpperCase()
+encdec(cm, plaintext)

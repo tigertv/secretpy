@@ -5,6 +5,7 @@ class CryptMachine:
 		self.alphabet = alphabet
 		self.key = key or ""
 		self.cipher = cipher
+		self.uppercase = False
 
 	def setKey(self, key):
 		self.key = key
@@ -16,7 +17,24 @@ class CryptMachine:
 		self.cipher = cipher
 		
 	def encrypt(self, text):
-		return self.cipher.encrypt(text, self.key, self.alphabet)
+		if self.uppercase:
+			text = text.lower()
+		res = self.cipher.encrypt(text, self.key, self.alphabet)
+		if self.uppercase:
+			res = res.upper()
+		return res
 		
 	def decrypt(self, text):
-		return self.cipher.decrypt(text, self.key, self.alphabet)
+		if self.uppercase:
+			text = text.lower()
+		res = self.cipher.decrypt(text, self.key, self.alphabet)
+		if self.uppercase:
+			res = res.upper()
+		return res
+	
+	def setUpperCase(self):
+		self.uppercase = True
+
+	def resetUpperCase(self):
+		self.uppercase = False
+
