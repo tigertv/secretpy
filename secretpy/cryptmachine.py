@@ -9,14 +9,16 @@ class CryptMachine:
 	def setKey(self, key):
 		self.key = key
 
-	def setAlphabet(self, alphabet):
+	def setAlphabet(self, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
 		self.alphabet = alphabet
 	
 	def setCipher(self, cipher):
 		self.cipher = cipher
 		
 	def encrypt(self, text):
-		return self.cipher.encrypt(text, self.key, self.alphabet)
+		res = self.cipher.encrypt(text, self.key, self.alphabet)
+		return res
 		
 	def decrypt(self, text):
-		return self.cipher.decrypt(text, self.key, self.alphabet)
+		res = self.cipher.decrypt(text, self.key, self.alphabet)
+		return res

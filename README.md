@@ -74,17 +74,21 @@ dec = cipher.decrypt(enc, key)
 print(dec)
 ```
 
-You can use CryptMachine:
+
+You can use CryptMachine and decorators for that:
 
 ```python
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import CryptMachine 
-from secretpy import Caesar
 from secretpy import Atbash 
+from secretpy import Caesar
+
+from secretpy import CryptMachine 
+import secretpy.cmdecorators as md
 
 def encdec(machine, plaintext):
+	print(plaintext)
 	enc = machine.encrypt(plaintext)
 	print(enc)
 	dec = machine.decrypt(enc)
@@ -102,10 +106,14 @@ encdec(cm, plaintext)
 cm.setAlphabet(alphabet)
 encdec(cm, plaintext)
 
+cm = md.NoSpaces(cm)
 cm.setKey(9)
+plaintext  = u"the quick brown fox jumps over the lazy dog"
 encdec(cm, plaintext)
 
+cm = md.UpperCase(cm)
 cm.setCipher(Atbash())
+plaintext  = u"Achtung Minen"
 encdec(cm, plaintext)
 ```
 

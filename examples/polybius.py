@@ -2,6 +2,20 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import Polybius 
+from secretpy import CryptMachine
+
+def encdec(machine, plaintext):
+	print(plaintext)
+	enc = cm.encrypt(plaintext)
+	print(enc)
+	dec = cm.decrypt(enc)
+	print(dec)
+	print("----------------------------------")
+
+cm = CryptMachine(Polybius())
+
+plaintext  = u"defendtheeastwallofthecastle"
+encdec(cm, plaintext)
 
 alphabet = [
 	u"p", u"h", u"q", u"g", u"m",
@@ -10,40 +24,20 @@ alphabet = [
 	u"r", u"c", u"v", u"s", u"z", 
 	u"w", u"b", u"u", u"t", u"ij"
 ]
-
-plaintext  = u"defendtheeastwallofthecastle"
-key = ""
-cipher = Polybius();
-
-print(plaintext)
-enc = cipher.encrypt(plaintext, key, alphabet)
-print(enc)
-
-dec = cipher.decrypt(enc, key, alphabet) 
-print(dec)
-
-
-##################################################################################
-print("-------------------------------")
-
+cm.setAlphabet(alphabet)
 plaintext = "sometext"
-
-print(plaintext)
-enc = cipher.encrypt(plaintext) 
-print(enc)
-
-dec = cipher.decrypt(enc) 
-print(dec)
-
-##################################################################################
-print("-------------------------------")
+encdec(cm, plaintext)
 
 plaintext = "thisisasecretmessage"
+encdec(cm, plaintext)
 
-print(plaintext)
-enc = cipher.encrypt(plaintext) 
-print(enc)
-
-dec = cipher.decrypt(enc) 
-print(dec)
-
+alphabet = [
+	u"Α", u"Β", u"Γ", u"Δ", u"Ε", 
+	u"Ζ", u"Η", u"Θ", u"Ι", u"Κ", 
+	u"Λ", u"Μ", u"Ν", u"Ξ", u"Ο", 
+	u"Π", u"Ρ", u"Σ", u"Τ", u"Υ", 
+	u"Φ", u"Χ", u"Ψ", u"Ω"
+]
+cm.setAlphabet(alphabet)
+plaintext = u"ΠΙΝΑΚΑΣ"
+encdec(cm, plaintext)
