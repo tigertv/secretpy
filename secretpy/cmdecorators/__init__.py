@@ -2,7 +2,8 @@
 
 from .uppercase import UpperCase
 from .nospaces import NoSpaces
+from .savespaces import SaveSpaces
 
 __all__ = [
-	"UpperCase", "NoSpaces",
+	"UpperCase", "NoSpaces", "SaveSpaces",
 ]
