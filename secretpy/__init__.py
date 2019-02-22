@@ -5,6 +5,7 @@ from .affine import Affine
 from .atbash import Atbash
 from .autokey import Autokey
 from .beaufort import Beaufort
+from .bifid import Bifid
 from .caesar import Caesar
 from .keyword import Keyword
 from .monoalphabet import Monoalphabet
@@ -17,6 +18,6 @@ from .cryptmachine import CryptMachine
 
 __all__ = [
 	"ADFGX", "Affine", "Atbash", "Autokey", "Beaufort", 
-	"Caesar", "Keyword", "Monoalphabet", "Polybius", "Rot13", 
-	"Vigenere", "Zigzag",
-	"SymCryptMachine"]
+	"Bifid", "Caesar", "Keyword", "Monoalphabet", "Polybius", 
+	"Rot13", "Vigenere", "Zigzag",
+	"CryptMachine"]

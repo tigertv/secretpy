@@ -22,6 +22,7 @@ SecretPy is a cryptographic library. It uses the following classical cipher algo
 - Atbash
 - Autokey
 - Beaufort 
+- Bifid
 - Caesar
 - Keyword
 - Monoalphabet
