@@ -1,19 +1,26 @@
 #!/usr/bin/python
 
+from .caesar import Caesar
+
 class Rot13:
-	def __init__(self):
-		return
-	
+	__caesar = Caesar()
+	__alphabet = u"abcdefghijklmnopqrstuvwxyz"
+
 	def __encDec(self, alphabet, text, isEncrypt):
 		key = len(alphabet) >> 1
-		ans = ""
-		for char in text:
-			alphIndex = (int)(alphabet.index(char) + isEncrypt * key) % len(alphabet)
-			ans += alphabet[alphIndex]
-		return ans
+		ret = ""
+		if isEncrypt == 1:
+			ret = self.__caesar.encrypt(text, key, alphabet)
+		else:
+			ret = self.__caesar.decrypt(text, key, alphabet)
+		return ret
 
-	def encrypt(self, text, key=None, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+	def encrypt(self, text, key=None, alphabet=None):
+		alphabet = alphabet or self.__alphabet
 		return self.__encDec(alphabet, text, 1)
 
-	def decrypt(self, text, key=None, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+	def decrypt(self, text, key=None, alphabet=None):
+		alphabet = alphabet or self.__alphabet
 		return self.__encDec(alphabet, text, -1)
+
+
