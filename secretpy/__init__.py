@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 from .adfgx import ADFGX
+from .adfgvx import ADFGVX
 from .affine import Affine 
 from .atbash import Atbash
 from .autokey import Autokey
@@ -17,7 +18,7 @@ from .zigzag import Zigzag
 from .cryptmachine import CryptMachine
 
 __all__ = [
-	"ADFGX", "Affine", "Atbash", "Autokey", "Beaufort", 
-	"Bifid", "Caesar", "Keyword", "Monoalphabet", "Polybius", 
-	"Rot13", "Vigenere", "Zigzag",
+	"ADFGX", "ADFGVX", "Affine", "Atbash", "Autokey", 
+	"Beaufort", "Bifid", "Caesar", "Keyword", "Monoalphabet", 
+	"Polybius", "Rot13", "Vigenere", "Zigzag",
 	"CryptMachine"]

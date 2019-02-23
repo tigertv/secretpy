@@ -18,6 +18,7 @@ Description
 SecretPy is a cryptographic library. It uses the following classical cipher algorithms:
 
 - ADFGX
+- ADFGVX
 - Affine
 - Atbash
 - Autokey
