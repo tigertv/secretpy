@@ -1,5 +1,6 @@
 #!/usr/bin/python
-	
+# -*- encoding: utf-8 -*-
+
 class Caesar:
 	def __init__(self):
 		return
@@ -7,7 +8,12 @@ class Caesar:
 	def __encDec(self, alphabet, key, text, isEncrypt):
 		ans = ""
 		for char in text:
-			alphIndex = (alphabet.index(char) + isEncrypt * key) % len(alphabet)
+			try:
+				alphIndex = alphabet.index(char)
+			except ValueError as e:
+				e.args = ("Can't find char '" + char.encode('utf-8') + "' of text in alphabet!",)
+				raise 
+			alphIndex = (alphIndex + isEncrypt * key) % len(alphabet)
 			ans += alphabet[alphIndex]
 		return ans
 

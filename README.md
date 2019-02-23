@@ -18,15 +18,18 @@ Description
 SecretPy is a cryptographic library. It uses the following classical cipher algorithms:
 
 - ADFGX
+- ADFGVX
 - Affine
 - Atbash
 - Autokey
 - Beaufort 
+- Bifid
 - Caesar
 - Keyword
 - Monoalphabet
 - Polybius
 - Rot13
+- Trifid
 - Vigenere
 - Zigzag
 
@@ -62,18 +65,33 @@ plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
 key = 3
 cipher = Caesar()
 
+print(plaintext)
 enc = cipher.encrypt(plaintext, key, alphabet)
 print(enc)
 dec = cipher.decrypt(enc, key, alphabet)
 print(dec)
 
+print('=====================================')
+
+print(plaintext)
 # use default english alphabet
 enc = cipher.encrypt(plaintext, key)
 print(enc)
 dec = cipher.decrypt(enc, key)
 print(dec)
-```
 
+'''
+Output:
+
+thequickbrownfoxjumpsoverthelazydog
+wkhtxlfneurzqirämxpsvryhuwkhodüögrj
+thequickbrownfoxjumpsoverthelazydog
+=====================================
+thequickbrownfoxjumpsoverthelazydog
+wkhtxlfneurzqiramxpsvryhuwkhodcbgrj
+thequickbrownfoxjumpsoverthelazydog
+'''
+```
 
 You can use CryptMachine and decorators for that:
 
@@ -85,7 +103,7 @@ from secretpy import Atbash
 from secretpy import Caesar
 
 from secretpy import CryptMachine 
-import secretpy.cmdecorators as md
+from secretpy.cmdecorators import *
 
 def encdec(machine, plaintext):
 	print(plaintext)
@@ -106,15 +124,36 @@ encdec(cm, plaintext)
 cm.setAlphabet(alphabet)
 encdec(cm, plaintext)
 
-cm = md.NoSpaces(cm)
+cm = SaveSpaces(cm)
 cm.setKey(9)
 plaintext  = u"the quick brown fox jumps over the lazy dog"
 encdec(cm, plaintext)
 
-cm = md.UpperCase(cm)
+cm = NoSpaces(UpperCase(cm))
 cm.setCipher(Atbash())
 plaintext  = u"Achtung Minen"
 encdec(cm, plaintext)
+
+'''
+Output:
+
+thequickbrownfoxjumpsoverthelazydog
+wkhtxlfneurzqiramxpsvryhuwkhodcbgrj
+thequickbrownfoxjumpsoverthelazydog
+-----------------------------------
+thequickbrownfoxjumpsoverthelazydog
+wkhtxlfneurzqirämxpsvryhuwkhodüögrj
+thequickbrownfoxjumpsoverthelazydog
+-----------------------------------
+the quick brown fox jumps over the lazy dog
+üqn zßrlt käxbw oxc sßvyö xanä üqn ujed mxp
+the quick brown fox jumps over the lazy dog
+-----------------------------------
+Achtung Minen
+ßÖWKJQXRVQZQ
+ACHTUNGMINEN
+-----------------------------------
+'''
 ```
 
 Maintainers
