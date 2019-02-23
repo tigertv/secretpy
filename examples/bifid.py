@@ -6,10 +6,9 @@ from secretpy import CryptMachine
 
 def encdec(machine, plaintext):
 	print(plaintext)
-	enc = cm.encrypt(plaintext)
+	enc = machine.encrypt(plaintext)
 	print(enc)
-	dec = cm.decrypt(enc)
-	print(dec)
+	print(machine.decrypt(enc))
 	print("----------------------------------")
 
 key = 5
