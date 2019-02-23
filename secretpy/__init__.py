@@ -12,6 +12,7 @@ from .keyword import Keyword
 from .monoalphabet import Monoalphabet
 from .polybius import Polybius
 from .rot13 import Rot13
+from .trifid import Trifid
 from .vigenere import Vigenere
 from .zigzag import Zigzag
 
@@ -20,5 +21,5 @@ from .cryptmachine import CryptMachine
 __all__ = [
 	"ADFGX", "ADFGVX", "Affine", "Atbash", "Autokey", 
 	"Beaufort", "Bifid", "Caesar", "Keyword", "Monoalphabet", 
-	"Polybius", "Rot13", "Vigenere", "Zigzag",
+	"Polybius", "Rot13", "Trifid", "Vigenere", "Zigzag",
 	"CryptMachine"]
