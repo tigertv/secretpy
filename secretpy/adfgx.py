@@ -3,9 +3,11 @@
 from __future__ import division
 import sys
 import math
+from .polybius import Polybius
 
 class ADFGX:
-	header = u"adfgx"
+	__header = u"adfgx"
+	__polybius = Polybius()
 
 	def __init__(self):
 		return
@@ -39,32 +41,17 @@ class ADFGX:
 				column = 0
 				row += 1
 
-		# now get resulting symbols from alphabet and the res variable
-		dec = ""
-		for i in range(size >> 1):
-			row = self.header.index(res[i*2])
-			column = self.header.index(res[i*2+1])
-			index = row*side + column
-			dec += alphabet[index][0]
-
+		code = [str(self.__header.index(char)+1) for char in res]
+		code = "".join(code)
+		dec = self.__polybius.decrypt(code, alphabet=alphabet)
 		return dec
 
 	def __enc(self, alphabet, key, text, isEncrypt):
-		ans0 = ""
 		size = int(math.ceil(math.sqrt(len(alphabet))))
-		for i in range(len(text)):
-			char = text[i]
-			for j in range(len(alphabet)):
-				try:
-					alphabet[j].index(char)
-					break
-				except:
-					pass
-			row = int(j/size)
-			column  = j % size
-			ans0 += self.header[row] + self.header[column]
-		
-		ans = list(ans0)
+
+		ans0 = self.__polybius.encrypt(text, alphabet=alphabet)
+		ans = [self.__header[int(char)-1] for char in ans0]
+	
 		keyword = list(key)
 		keysize = len(key)
 		size = len(ans)
@@ -89,9 +76,21 @@ class ADFGX:
 		return ans2
 	
 	def encrypt(self, text, key, alphabet=None):
-		alphabet = alphabet or [u"a", u"b", u"c", u"d", u"e", u"f", u"g", u"h", u"ij", u"k", u"l", u"m", u"n", u"o", u"p", u"q", u"r", u"s", u"t", u"u", u"v", u"w", u"x", u"y", u"z"]
+		alphabet = alphabet or [
+			u"a", u"b", u"c", u"d", u"e", 
+			u"f", u"g", u"h", u"ij", u"k", 
+			u"l", u"m", u"n", u"o", u"p", 
+			u"q", u"r", u"s", u"t", u"u",
+			u"v", u"w", u"x", u"y", u"z"
+		]
 		return self.__enc(alphabet, key, text, 1)
 
 	def decrypt(self, text, key, alphabet=None):
-		alphabet = alphabet or [u"a", u"b", u"c", u"d", u"e", u"f", u"g", u"h", u"ij", u"k", u"l", u"m", u"n", u"o", u"p", u"q", u"r", u"s", u"t", u"u", u"v", u"w", u"x", u"y", u"z"]
+		alphabet = alphabet or [
+			u"a", u"b", u"c", u"d", u"e", 
+			u"f", u"g", u"h", u"ij", u"k", 
+			u"l", u"m", u"n", u"o", u"p", 
+			u"q", u"r", u"s", u"t", u"u",
+			u"v", u"w", u"x", u"y", u"z"
+		]
 		return self.__dec(alphabet, key, text, -1)
