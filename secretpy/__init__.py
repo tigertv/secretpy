@@ -12,6 +12,7 @@ from .keyword import Keyword
 from .monoalphabet import Monoalphabet
 from .polybius import Polybius
 from .rot13 import Rot13
+from .rot18 import Rot18
 from .rot5 import Rot5
 from .trifid import Trifid
 from .vigenere import Vigenere
