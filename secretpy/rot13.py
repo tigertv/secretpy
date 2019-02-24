@@ -9,7 +9,8 @@ class Rot13:
 	def __encDec(self, alphabet, text):
 		alphabet = alphabet or self.__alphabet
 		key = len(alphabet) >> 1
-		if len(alphabet) % 2 == 1:
+		# if number letters in the alphabet is odd
+		if len(alphabet) & 1:
 			alphabet += alphabet[key]
 			key += 1
 		return self.__caesar.encrypt(text, key, alphabet)
