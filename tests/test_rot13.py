@@ -33,17 +33,21 @@ class TestRot13(unittest.TestCase):
 
 	key = 0
 
-	plaintext  = (u"whydidthechickencrosstheroad",
+	plaintext  = (
+		u"whydidthechickencrosstheroad",
 		u"текст",
 		u"textnachtricht",
 		u"unmensajedetexto",
-		u"だやぎへぐゆぢ")
+		u"だやぎへぐゆぢ"
+	)
 
-	ciphertext = (u"julqvqgurpuvpxrapebffgurebnq",
-		u"вфъбв",
+	ciphertext = (
+		u"julqvqgurpuvpxrapebffgurebnq",
+		u"вхыбв",
 		u"etieüprwecxrwe",
-		u"hzyqzfnvqpqgqkgb",
-		u"をじぱおぴずん")
+		u"hnzrnfñwrqrgrkgb",
+		u"をじぱおぴずん"
+	)
 
 	def test_encrypt(self):
 		for i,alphabet in enumerate(self.alphabet):
