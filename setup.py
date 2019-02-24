@@ -7,17 +7,21 @@ with open("README.md", "r") as fh:
 	long_description = fh.read()
 
 setuptools.setup(
-    name="secretpy",
-    version="0.3.1",
-    author="Max Vetrov",
-    author_email="maxvetrov555@yandex.ru",
-    description="Classic ciphers package",
-    long_description=long_description,
-    long_description_content_type="text/markdown",
-    url="https://github.com/tigertv/secretpy",
-    packages=setuptools.find_packages(exclude=['tests','tests.*']),
+	name="secretpy",
+	version="0.3.1",
+	author="Max Vetrov",
+	author_email="maxvetrov555@yandex.ru",
+	description="Classic ciphers package",
+	long_description=long_description,
+	long_description_content_type="text/markdown",
+	url="https://github.com/tigertv/secretpy",
+	packages=setuptools.find_packages(exclude=['tests','tests.*']),
 	test_suite='tests',
-    classifiers=[
+	project_urls={
+		"Source code": "https://github.com/tigertv/secretpy",
+		"Bug tracker": "https://github.com/tigertv/secretpy/issues",
+	},
+	classifiers=[
 		'Development Status :: 3 - Alpha',
 		'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
 		'Intended Audience :: Developers',
@@ -34,4 +38,5 @@ setuptools.setup(
 		'Programming Language :: Python :: 3',
 		'Programming Language :: Python :: 3.6',
 	],
+	keywords="classic ciphers cipher secret",
 )
