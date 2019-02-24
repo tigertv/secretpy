@@ -28,7 +28,7 @@ SecretPy is a cryptographic library. It uses the following classical cipher algo
 - Keyword
 - Monoalphabet
 - Polybius
-- Rot13, Rot5, Rot18
+- Rot13, Rot5, Rot18, Rot47
 - Trifid
 - Vigenere
 - Zigzag
