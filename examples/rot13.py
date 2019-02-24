@@ -13,14 +13,14 @@ def encdec(machine, plaintext):
 	dec = machine.decrypt(enc)
 	print(dec)
 
-cm = CryptMachine(Rot13())
+cm = SaveCase(CryptMachine(Rot13()))
 
 plaintext  = u"thisisasecretmessage"
 encdec(cm, plaintext)
 
 cm = SaveSpaces(cm)
 
-plaintext  = u"why did the chicken cross the road gb trg gb gur bgure fvqr"
+plaintext  = u"Why did the chicken cross the road Gb trg gb gur bgure fvqr"
 encdec(cm, plaintext)
 
 alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
