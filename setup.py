@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="secretpy",
-    version="0.3",
+    version="0.3.1",
     author="Max Vetrov",
     author_email="maxvetrov555@yandex.ru",
     description="Classic ciphers package",
