@@ -30,3 +30,7 @@ encdec(cm, plaintext)
 
 plaintext  = u"Achtung Minen"
 encdec(cm, plaintext)
+
+cm.setAlphabet(alphabet.ARABIC)
+plaintext  = u"قط"
+encdec(cm, plaintext)
