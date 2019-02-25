@@ -7,8 +7,9 @@ Usage
 	# -*- encoding: utf-8 -*-
 
 	from secretpy import Caesar
+	from secretpy import alphabet
 
-	alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
+	alphabet = alphabet.GERMAN
 	plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
 	key = 3
 	cipher = Caesar()
@@ -52,6 +53,7 @@ You can use CryptMachine and decorators for that:
 
 	from secretpy import CryptMachine 
 	from secretpy.cmdecorators import *
+	from secretpy import alphabet
 
 	def encdec(machine, plaintext):
 		print(plaintext)
@@ -61,7 +63,6 @@ You can use CryptMachine and decorators for that:
 		print(dec)
 		print("-----------------------------------")
 
-	alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
 	plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
 	key = 3
 	cipher = Caesar()
@@ -69,7 +70,7 @@ You can use CryptMachine and decorators for that:
 	cm = CryptMachine(cipher, key)
 	encdec(cm, plaintext)
 
-	cm.setAlphabet(alphabet)
+	cm.setAlphabet(alphabet.GERMAN)
 	encdec(cm, plaintext)
 
 	cm = SaveSpaces(cm)

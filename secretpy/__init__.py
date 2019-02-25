@@ -19,6 +19,7 @@ from .trifid import Trifid
 from .vigenere import Vigenere
 from .zigzag import Zigzag
 
+import alphabet
 from .cryptmachine import CryptMachine
 
 __all__ = [
@@ -26,4 +27,4 @@ __all__ = [
 	"Beaufort", "Bifid", "Caesar", "Keyword", "Monoalphabet", 
 	"Polybius", "Rot13", "Rot18", "Rot47", "Rot5",
 	"Trifid", "Vigenere", "Zigzag",
-	"CryptMachine"]
+	"CryptMachine", "alphabet"]

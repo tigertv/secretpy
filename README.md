@@ -63,8 +63,9 @@ Usage
 # -*- encoding: utf-8 -*-
 
 from secretpy import Caesar
+from secretpy import alphabet
 
-alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
+alphabet = alphabet.GERMAN
 plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
 key = 3
 cipher = Caesar()
@@ -108,6 +109,7 @@ from secretpy import Caesar
 
 from secretpy import CryptMachine 
 from secretpy.cmdecorators import *
+from secretpy import alphabet
 
 def encdec(machine, plaintext):
 	print(plaintext)
@@ -117,7 +119,6 @@ def encdec(machine, plaintext):
 	print(dec)
 	print("-----------------------------------")
 
-alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
 plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
 key = 3
 cipher = Caesar()
@@ -125,7 +126,7 @@ cipher = Caesar()
 cm = CryptMachine(cipher, key)
 encdec(cm, plaintext)
 
-cm.setAlphabet(alphabet)
+cm.setAlphabet(alphabet.GERMAN)
 encdec(cm, plaintext)
 
 cm = SaveSpaces(cm)
