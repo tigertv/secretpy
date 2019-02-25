@@ -3,7 +3,7 @@
 
 from secretpy import Atbash
 from secretpy import CryptMachine
-
+from secretpy import alphabet
 import secretpy.cmdecorators as md
 
 def encdec(machine, plaintext):
@@ -20,15 +20,12 @@ cm = md.NoSpaces(md.UpperCase(cm))
 plaintext  = u"attackatdawn"
 encdec(cm, plaintext)
 
-alphabet = u"אבגדהוזחטיךכלםמןנסעףפץצקרשת"
 plaintext  = u"במקום"
-cm.setAlphabet(alphabet)
+cm.setAlphabet(alphabet.HEBREW)
 encdec(cm, plaintext)
 
 plaintext  = u"The Fox jumps in Zoo too Achtung minen"
-
-alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
-cm.setAlphabet(alphabet)
+cm.setAlphabet(alphabet.GERMAN)
 encdec(cm, plaintext)
 
 plaintext  = u"Achtung Minen"
