@@ -1,8 +1,7 @@
 Description
 -----------
 
-SecretPy is a cryptographic Python module.  
-It uses the following classical cipher algorithms:
+SecretPy is a cryptographic Python package. It uses the following classical cipher algorithms:
 
 - ADFGX, ADFGVX
 - Affine
@@ -19,4 +18,3 @@ It uses the following classical cipher algorithms:
 - Vigenere
 - Zigzag
 
- 
