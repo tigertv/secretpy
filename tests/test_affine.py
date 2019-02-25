@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy.affine import Affine
+from secretpy import Affine
 import unittest
 
 class TestAffine(unittest.TestCase):

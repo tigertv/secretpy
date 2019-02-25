@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy.adfgx import ADFGX
+from secretpy import ADFGX
 import unittest
 
 class TestADFGX(unittest.TestCase):

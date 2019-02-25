@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy.rot18 import Rot18
+from secretpy import Rot18
 from unittest import TestCase
 
 class TestRot18(TestCase):

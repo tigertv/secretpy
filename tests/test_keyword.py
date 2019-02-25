@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy.keyword import Keyword
+from secretpy import Keyword
 import unittest
 
 class TestKeyword(unittest.TestCase):

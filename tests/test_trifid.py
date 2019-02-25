@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy.trifid import Trifid
+from secretpy import Trifid
 from unittest import TestCase
 
 class TestTrifid(TestCase):

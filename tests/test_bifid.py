@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy.bifid import Bifid
+from secretpy import Bifid
 from unittest import TestCase
 
 class TestBifid(TestCase):
