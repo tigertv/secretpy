@@ -1,0 +1,22 @@
+Description
+-----------
+
+SecretPy is a cryptographic Python module.  
+It uses the following classical cipher algorithms:
+
+- ADFGX, ADFGVX
+- Affine
+- Atbash
+- Autokey
+- Beaufort 
+- Bifid
+- Caesar
+- Keyword
+- Monoalphabet
+- Polybius
+- Rot13, Rot5, Rot18, Rot47
+- Trifid
+- Vigenere
+- Zigzag
+
+ 

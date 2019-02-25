@@ -1,12 +1,17 @@
 SecretPy
 ===========
 
-[![](https://badge.fury.io/py/secretpy.svg)](https://pypi.org/project/secretpy)
-[![](https://img.shields.io/pypi/pyversions/secretpy.svg)](https://pypi.org/project/secretpy)
+[![Go to PyPi](https://badge.fury.io/py/secretpy.svg)](https://pypi.org/project/secretpy)
+[![Go to PyPi](https://img.shields.io/pypi/pyversions/secretpy.svg)](https://pypi.org/project/secretpy)
+[![Read the Docs](https://img.shields.io/readthedocs/secretpy.svg)](https://secretpy.readthedocs.io/en/latest)
 
 ***Download:***
 
 https://pypi.org/project/secretpy
+
+***Documentation:***
+
+https://secretpy.readthedocs.io
 
 ***Source code & Development:***
 
@@ -15,10 +20,10 @@ https://github.com/tigertv/secretpy
 Description
 -----------
 
-SecretPy is a cryptographic library. It uses the following classical cipher algorithms:
+SecretPy is a cryptographic Python module.   
+It uses the following classical cipher algorithms:
 
-- ADFGX
-- ADFGVX
+- ADFGX, ADFGVX
 - Affine
 - Atbash
 - Autokey
@@ -32,7 +37,6 @@ SecretPy is a cryptographic library. It uses the following classical cipher algo
 - Trifid
 - Vigenere
 - Zigzag
-
 
 Installation
 ------------

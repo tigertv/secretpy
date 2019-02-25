@@ -19,6 +19,7 @@ setuptools.setup(
 	test_suite='tests',
 	project_urls={
 		"Source code": "https://github.com/tigertv/secretpy",
+		"Documentation": "https://secretpy.readthedocs.io",
 		"Bug tracker": "https://github.com/tigertv/secretpy/issues",
 	},
 	classifiers=[
