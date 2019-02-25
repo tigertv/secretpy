@@ -1,10 +1,11 @@
 #!/usr/bin/python
 
 from .caesar import Caesar
+import secretpy.alphabet as al
 
 class Rot13:
 	__caesar = Caesar()
-	__alphabet = u"abcdefghijklmnopqrstuvwxyz"
+	__alphabet = al.ENGLISH
 
 	def __encDec(self, alphabet, text):
 		alphabet = alphabet or self.__alphabet
