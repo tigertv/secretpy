@@ -30,7 +30,7 @@ SecretPy is a cryptographic Python package. It uses the following classical ciph
 - Bifid
 - Caesar
 - Keyword
-- Monoalphabet
+- Simple Substitution
 - Polybius
 - Rot13, Rot5, Rot18, Rot47
 - Trifid
