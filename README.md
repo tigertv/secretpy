@@ -57,6 +57,8 @@ make install
 Usage
 -----
 
+### Simple way
+
 ```python
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
@@ -97,7 +99,9 @@ thequickbrownfoxjumpsoverthelazydog
 '''
 ```
 
-In the previous example plaintext contains only letters existing in the alphabet and in the lower case without spaces.
+### CryptMachine
+
+In the previous example, plaintext contains only letters existing in the alphabet and in the lower case without spaces.
 To change the behaviour you can use CryptMachine and decorators(UpperCase, NoSpace, SaveCase and etc.):
 
 ```python
@@ -160,6 +164,8 @@ ACHTUNGMINEN
 -----------------------------------
 '''
 ```
+
+### CompositeMachine
 
 Combining several ciphers to get more complex cipher, you can use CompositeMachine:
 

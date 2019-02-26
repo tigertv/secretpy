@@ -1,7 +1,11 @@
 Usage
 =====
 
+Simple way
+----------
+
 .. code-block:: python
+	:linenos:
 
 	#!/usr/bin/python
 	# -*- encoding: utf-8 -*-
@@ -41,10 +45,14 @@ Usage
 	thequickbrownfoxjumpsoverthelazydog
 	'''
 
-In the previous example plaintext contains only letters existing in the alphabet and in the lower case without spaces.
+CryptMachine
+------------
+
+In the previous example, plaintext contains only letters existing in the alphabet and in the lower case without spaces.
 To change the behaviour you can use CryptMachine and decorators(UpperCase, NoSpace, SaveCase and etc.):
 
 .. code-block:: python
+	:linenos:
 
 	#!/usr/bin/python
 	# -*- encoding: utf-8 -*-
@@ -105,9 +113,13 @@ To change the behaviour you can use CryptMachine and decorators(UpperCase, NoSpa
 	-----------------------------------
 	'''
 
+CompositeMachine
+----------------
+
 Combining several ciphers to get more complex cipher, you can use CompositeMachine:
 
 .. code-block:: python
+	:linenos:
 
 	#!/usr/bin/python
 	# -*- encoding: utf-8 -*-
