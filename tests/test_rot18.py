@@ -34,7 +34,6 @@ class TestRot18(TestCase):
 	def test_encrypt(self):
 		for i,plaintext in enumerate(self.plaintext):
 			enc = self.cipher.encrypt(plaintext, alphabet=self.alphabets[i])
-			print(enc)
 			self.assertEqual(enc, self.ciphertext[i])
 
 	def test_decrypt(self):
