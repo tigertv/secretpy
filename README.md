@@ -208,22 +208,19 @@ encdec(cm, plaintext)
 '''
 Output:
 
-thequickbrownfoxjumpsoverthelazydog
-wkhtxlfneurzqiramxpsvryhuwkhodcbgrj
-thequickbrownfoxjumpsoverthelazydog
------------------------------------
-thequickbrownfoxjumpsoverthelazydog
-wkhtxlfneurzqirämxpsvryhuwkhodüögrj
-thequickbrownfoxjumpsoverthelazydog
------------------------------------
-the quick brown fox jumps over the lazy dog
-üqn zßrlt käxbw oxc sßvyö xanä üqn ujed mxp
-the quick brown fox jumps over the lazy dog
------------------------------------
-Achtung Minen
-ßÖWKJQXRVQZQ
-ACHTUNGMINEN
------------------------------------
+Dog jumps four times and cat six times
+Itl ozrux ktzw ynrjx fsi hfy xnc ynrjx
+Vgy bmehk xgmj laewk sfv usl kap laewk
+=======================================
+Vgy bmehk xgmj laewk sfv usl kap laewk
+=======================================
+Dog jumps four times and cat six times
+Vgy bmehk xgmj laewk sfv usl kap laewk
+Dog jumps four times and cat six times
+=======================================
+Dog jumps four times and cat six times
+Nyq tewzc pyeb dswoc kxn mkd csh dswoc
+Dog jumps four times and cat six times
 '''
 ```
 
