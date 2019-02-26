@@ -8,18 +8,18 @@ class CompositeMachine(AbstractCryptMachine):
 	def __init__(self, *machines):
 		for machine in machines:
 			self.__machines.append(machine)
+	
+	def __encDec(self, text, func):
+		ret = text 
+		for machine in self.__machines:
+			ret = func(machine, ret)
+		return ret
 
 	def encrypt(self, text):
-		ret = text 
-		for machine in self.__machines:
-			ret = machine.encrypt(ret)
-		return ret
+		return self.__encDec(text, lambda machine, text: machine.encrypt(text))
 
 	def decrypt(self, text):
-		ret = text 
-		for machine in self.__machines:
-			ret = machine.decrypt(ret)
-		return ret
+		return self.__encDec(text, lambda machine, text: machine.decrypt(text))
 	
 	def addMachine(self, *machines):
 		for machine in machines:
