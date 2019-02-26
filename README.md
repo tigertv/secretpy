@@ -97,7 +97,8 @@ thequickbrownfoxjumpsoverthelazydog
 '''
 ```
 
-You can use CryptMachine and decorators for that:
+In the previous example plaintext contains letters only in the alphabet.
+To change the behaviour you can use CryptMachine and decorators(UpperCase, NoSpace, SaveCase and etc.):
 
 ```python
 #!/usr/bin/python
@@ -160,9 +161,74 @@ ACHTUNGMINEN
 '''
 ```
 
+Combining several ciphers to get more complex cipher, you can use CompositeMachine:
+
+```python
+#!/usr/bin/python
+# -*- encoding: utf-8 -*-
+
+from secretpy import Rot13
+from secretpy import Caesar
+from secretpy import CryptMachine
+from secretpy import CompositeMachine
+from secretpy.cmdecorators import *
+
+def encdec(machine, plaintext):
+	print("=======================================")
+	print(plaintext)
+	enc = machine.encrypt(plaintext)
+	print(enc)
+	dec = machine.decrypt(enc)
+	print(dec)
+
+key = 5
+plaintext = u"Dog jumps four times and cat six times"
+print(plaintext)
+
+cm1 = SaveSpaces(SaveCase(CryptMachine(Caesar(), key)))
+enc = cm1.encrypt(plaintext)
+print(enc)
+
+cm2 = SaveSpaces(SaveCase(CryptMachine(Rot13())))
+enc = cm2.encrypt(enc)
+print(enc)
+
+print("=======================================")
+
+cm = CompositeMachine(cm1)
+cm.addMachine(cm2)
+enc = cm.encrypt(plaintext)
+print(enc)
+
+encdec(cm, plaintext)
+
+cm.addMachine(cm1, cm2)
+encdec(cm, plaintext)
+
+'''
+Output:
+
+thequickbrownfoxjumpsoverthelazydog
+wkhtxlfneurzqiramxpsvryhuwkhodcbgrj
+thequickbrownfoxjumpsoverthelazydog
+-----------------------------------
+thequickbrownfoxjumpsoverthelazydog
+wkhtxlfneurzqirämxpsvryhuwkhodüögrj
+thequickbrownfoxjumpsoverthelazydog
+-----------------------------------
+the quick brown fox jumps over the lazy dog
+üqn zßrlt käxbw oxc sßvyö xanä üqn ujed mxp
+the quick brown fox jumps over the lazy dog
+-----------------------------------
+Achtung Minen
+ßÖWKJQXRVQZQ
+ACHTUNGMINEN
+-----------------------------------
+'''
+```
+
 Maintainers
 -----------
 
 - [@tigertv](https://github.com/tigertv) (Max Vetrov)
-
 
