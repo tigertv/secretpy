@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy.polybius import Polybius
+from secretpy import Polybius
 import unittest
 
 class TestPolybius(unittest.TestCase):

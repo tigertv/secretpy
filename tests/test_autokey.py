@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy.autokey import Autokey
+from secretpy import Autokey
 import unittest
 
 class TestAutokey(unittest.TestCase):

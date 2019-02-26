@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy.beaufort import Beaufort 
+from secretpy import Beaufort 
 import unittest
 
 class TestBeaufort(unittest.TestCase):

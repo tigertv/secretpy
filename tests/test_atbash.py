@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy.atbash import Atbash
+from secretpy import Atbash
 import unittest
 
 class TestAtbash(unittest.TestCase):

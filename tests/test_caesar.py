@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy.caesar import Caesar
+from secretpy import Caesar
 import unittest
 
 class TestCaesar(unittest.TestCase):

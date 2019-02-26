@@ -3,6 +3,8 @@
 
 from secretpy import Polybius 
 from secretpy import CryptMachine
+from secretpy.cmdecorators import *
+import secretpy.alphabet as alph
 
 def encdec(machine, plaintext):
 	print(plaintext)
@@ -31,13 +33,7 @@ encdec(cm, plaintext)
 plaintext = "thisisasecretmessage"
 encdec(cm, plaintext)
 
-alphabet = [
-	u"Α", u"Β", u"Γ", u"Δ", u"Ε", 
-	u"Ζ", u"Η", u"Θ", u"Ι", u"Κ", 
-	u"Λ", u"Μ", u"Ν", u"Ξ", u"Ο", 
-	u"Π", u"Ρ", u"Σ", u"Τ", u"Υ", 
-	u"Φ", u"Χ", u"Ψ", u"Ω"
-]
-cm.setAlphabet(alphabet)
+cm.setAlphabet(alph.GREEK)
 plaintext = u"ΠΙΝΑΚΑΣ"
+cm = LowerCase(cm)
 encdec(cm, plaintext)

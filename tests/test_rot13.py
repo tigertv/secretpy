@@ -1,10 +1,10 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy.rot13 import Rot13
-import unittest
+from secretpy import Rot13
+from unittest import TestCase
 
-class TestRot13(unittest.TestCase):
+class TestRot13(TestCase):
 	alphabet = (u"abcdefghijklmnopqrstuvwxyz",
 		u"абвгдеёжзийклмнопрстуфхцчшщъыьэюя",
 		u"abcdefghijklmnopqrstuvwxyzäöüß",
@@ -49,14 +49,16 @@ class TestRot13(unittest.TestCase):
 		u"をじぱおぴずん"
 	)
 
+	cipher = Rot13()
+
 	def test_encrypt(self):
 		for i,alphabet in enumerate(self.alphabet):
-			enc = Rot13().encrypt(self.plaintext[i], self.key, alphabet)
+			enc = self.cipher.encrypt(self.plaintext[i], self.key, alphabet)
 			self.assertEqual(enc, self.ciphertext[i])
 
 	def test_decrypt(self):
 		for i,alphabet in enumerate(self.alphabet):
-			dec = Rot13().decrypt(self.ciphertext[i], self.key, alphabet)
+			dec = self.cipher.decrypt(self.ciphertext[i], self.key, alphabet)
 			self.assertEqual(dec, self.plaintext[i])
 
 if __name__ == '__main__': 

@@ -2,39 +2,33 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import Rot13 
+from secretpy import CryptMachine
+from secretpy.cmdecorators import *
+from secretpy import alphabet
 
-def encdec(cipher, plaintext, alphabet):
+def encdec(machine, plaintext):
 	print("----------------------------------")
 	print(plaintext)
-	enc = cipher.encrypt(plaintext, "", alphabet)
+	enc = machine.encrypt(plaintext)
 	print(enc)
-	dec = cipher.decrypt(enc, "", alphabet)
+	dec = machine.decrypt(enc)
 	print(dec)
 
-alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
-plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
-
-cipher = Rot13();
-
-encdec(cipher, plaintext, alphabet)
-
-#######################################################
-
-print("----------------------------------")
+cm = SaveCase(CryptMachine(Rot13()))
 
 plaintext  = u"thisisasecretmessage"
+encdec(cm, plaintext)
 
-print(plaintext)
+cm = SaveSpaces(cm)
 
-# use default english alphabet 5x5
-enc = cipher.encrypt(plaintext)
-print(enc)
-dec = cipher.decrypt(enc)
-print(dec)
+plaintext  = u"Why did the chicken cross the road Gb trg gb gur bgure fvqr"
+encdec(cm, plaintext)
 
-#######################################################
+plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
+cm.setAlphabet(alphabet.GERMAN)
+encdec(cm, plaintext)
 
-alphabet = u"абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
 plaintext  = u"текст"
-encdec(cipher, plaintext, alphabet)
+cm.setAlphabet(alphabet.RUSSIAN)
+encdec(cm, plaintext)
 

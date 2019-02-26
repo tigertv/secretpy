@@ -1,25 +1,11 @@
 #!/usr/bin/python
 
-from .adfgx import ADFGX
-from .adfgvx import ADFGVX
-from .affine import Affine 
-from .atbash import Atbash
-from .autokey import Autokey
-from .beaufort import Beaufort
-from .bifid import Bifid
-from .caesar import Caesar
-from .keyword import Keyword
-from .monoalphabet import Monoalphabet
-from .polybius import Polybius
-from .rot13 import Rot13
-from .trifid import Trifid
-from .vigenere import Vigenere
-from .zigzag import Zigzag
-
 from .cryptmachine import CryptMachine
+from .compositemachine import CompositeMachine
+from .ciphers import *
+from .alphabet import *
+from .cmdecorators import *
 
 __all__ = [
-	"ADFGX", "ADFGVX", "Affine", "Atbash", "Autokey", 
-	"Beaufort", "Bifid", "Caesar", "Keyword", "Monoalphabet", 
-	"Polybius", "Rot13", "Trifid", "Vigenere", "Zigzag",
-	"CryptMachine"]
+	"alphabet", "ciphers", "cmdecorators", "CompositeMachine", "CryptMachine", 
+]

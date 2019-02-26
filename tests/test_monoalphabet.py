@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy.monoalphabet import Monoalphabet 
+from secretpy import Monoalphabet 
 import unittest
 
 class TestMonoalphabet(unittest.TestCase):
