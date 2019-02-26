@@ -141,13 +141,13 @@ Combining several ciphers to get more complex cipher, you can use CompositeMachi
 	print("=======================================")
 
 	cm = CompositeMachine(cm1)
-	cm.addMachine(cm2)
+	cm.addMachines(cm2)
 	enc = cm.encrypt(plaintext)
 	print(enc)
 
 	encdec(cm, plaintext)
 
-	cm.addMachine(cm1, cm2)
+	cm.addMachines(cm1, cm2)
 	encdec(cm, plaintext)
 
 	'''
