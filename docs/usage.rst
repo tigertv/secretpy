@@ -41,7 +41,7 @@ Usage
 	thequickbrownfoxjumpsoverthelazydog
 	'''
 
-In the previous example plaintext contains letters only in the alphabet.
+In the previous example plaintext contains only letters existing in the alphabet and in the lower case without spaces.
 To change the behaviour you can use CryptMachine and decorators(UpperCase, NoSpace, SaveCase and etc.):
 
 .. code-block:: python
