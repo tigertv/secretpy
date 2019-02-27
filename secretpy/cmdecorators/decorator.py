@@ -7,14 +7,14 @@ class AbstractMachineDecorator(AbstractCryptMachine):
 	def __init__(self, machine):
 		self._machine = machine 
 
-	def setKey(self, key):
-		self._machine.setKey(key)
+	def set_key(self, key):
+		self._machine.set_key(key)
 
-	def setAlphabet(self, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
-		self._machine.setAlphabet(alphabet)
+	def set_alphabet(self, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+		self._machine.set_alphabet(alphabet)
 	
-	def setCipher(self, cipher):
-		self._machine.setCipher(cipher)
+	def set_cipher(self, cipher):
+		self._machine.set_cipher(cipher)
 		
 	def encrypt(self, text):
 		pass

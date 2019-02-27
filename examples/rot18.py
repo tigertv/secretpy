@@ -20,7 +20,7 @@ plaintext  = u"The man has 536 dogs"
 encdec(cm, plaintext)
 
 plaintext  = alphabet.RUSSIAN + alphabet.DECIMAL
-cm.setAlphabet(alphabet.RUSSIAN)
+cm.set_alphabet(alphabet.RUSSIAN)
 encdec(cm, plaintext)
 
 plaintext  = u"У человека 536 собак"
@@ -28,5 +28,5 @@ encdec(cm, plaintext)
 
 plaintext  = alphabet.GREEK + " " + alphabet.DECIMAL
 cm = UpperCase(cm)
-cm.setAlphabet(alphabet.GREEK)
+cm.set_alphabet(alphabet.GREEK)
 encdec(cm, plaintext)

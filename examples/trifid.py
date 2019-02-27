@@ -29,5 +29,5 @@ alphabet = [
 ]
 
 plaintext  = u"defendtheeastwallofthecastle."
-cm.setAlphabet(alphabet)
+cm.set_alphabet(alphabet)
 encdec(cm, plaintext)

@@ -130,16 +130,16 @@ cipher = Caesar()
 cm = CryptMachine(cipher, key)
 encdec(cm, plaintext)
 
-cm.setAlphabet(alphabet.GERMAN)
+cm.set_alphabet(alphabet.GERMAN)
 encdec(cm, plaintext)
 
 cm = SaveSpaces(cm)
-cm.setKey(9)
+cm.set_key(9)
 plaintext  = u"the quick brown fox jumps over the lazy dog"
 encdec(cm, plaintext)
 
 cm = NoSpaces(UpperCase(cm))
-cm.setCipher(Atbash())
+cm.set_cipher(Atbash())
 plaintext  = u"Achtung Minen"
 encdec(cm, plaintext)
 
@@ -202,13 +202,13 @@ print(enc)
 print("=======================================")
 
 cm = CompositeMachine(cm1)
-cm.addMachines(cm2)
+cm.add_machines(cm2)
 enc = cm.encrypt(plaintext)
 print(enc)
 
 encdec(cm, plaintext)
 
-cm.addMachines(cm1, cm2)
+cm.add_machines(cm1, cm2)
 encdec(cm, plaintext)
 
 '''

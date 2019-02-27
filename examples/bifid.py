@@ -21,7 +21,7 @@ alphabet = [
 	u"щ", u"ы", u"ьъ", u"э", u"ю", u"я",
 	u"1", u"2", u"3", u"4", u"5", u"6"
 ]
-cm.setAlphabet(alphabet)
+cm.set_alphabet(alphabet)
 plaintext  = u"текст"
 encdec(cm, plaintext)
 
@@ -33,7 +33,7 @@ alphabet = [
 	u"w", u"b", u"u", u"t", u"ij"
 ]
 plaintext  = u"defendtheeastwallofthecastle"
-cm.setAlphabet(alphabet)
+cm.set_alphabet(alphabet)
 encdec(cm, plaintext)
 
 alphabet = [
@@ -44,8 +44,8 @@ alphabet = [
 	u"t", u"h", u"y", u"v", u"r"
 ]
 plaintext = "fleeatonce"
-cm.setAlphabet(alphabet)
-cm.setKey(10)
+cm.set_alphabet(alphabet)
+cm.set_key(10)
 encdec(cm, plaintext)
 
 alphabet = [
@@ -56,6 +56,6 @@ alphabet = [
 	u"Φ", u"Χ", u"Ψ", u"Ω"
 ]
 plaintext = u"ΠΙΝΑΚΑΣ"
-cm.setAlphabet(alphabet)
+cm.set_alphabet(alphabet)
 encdec(cm, plaintext)
 

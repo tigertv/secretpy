@@ -1,13 +1,13 @@
 #!/usr/bin/python
 
 class AbstractCryptMachine:
-	def setKey(self, key):
+	def set_key(self, key):
 		pass
 
-	def setAlphabet(self, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+	def set_alphabet(self, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
 		pass
 	
-	def setCipher(self, cipher):
+	def set_cipher(self, cipher):
 		pass
 		
 	def encrypt(self, text):

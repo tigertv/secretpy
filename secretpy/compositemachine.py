@@ -21,6 +21,6 @@ class CompositeMachine(AbstractCryptMachine):
 	def decrypt(self, text):
 		return self.__encDec(text, lambda machine, text: machine.decrypt(text))
 	
-	def addMachines(self, *machines):
+	def add_machines(self, *machines):
 		for machine in machines:
 			self.__machines.append(machine)

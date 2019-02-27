@@ -26,14 +26,14 @@ alphabet = [
 	u"r", u"c", u"v", u"s", u"z", 
 	u"w", u"b", u"u", u"t", u"ij"
 ]
-cm.setAlphabet(alphabet)
+cm.set_alphabet(alphabet)
 plaintext = "sometext"
 encdec(cm, plaintext)
 
 plaintext = "thisisasecretmessage"
 encdec(cm, plaintext)
 
-cm.setAlphabet(alph.GREEK)
+cm.set_alphabet(alph.GREEK)
 plaintext = u"ΠΙΝΑΚΑΣ"
 cm = LowerCase(cm)
 encdec(cm, plaintext)
