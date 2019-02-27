@@ -18,7 +18,7 @@ print(dec)
 print("-----------------------------------")
 
 alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
-cm.setAlphabet(alphabet)
+cm.set_alphabet(alphabet)
 
 print(plaintext)
 enc = cm.encrypt(plaintext)

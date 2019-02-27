@@ -1,10 +1,10 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import Monoalphabet 
-import unittest
+from secretpy import SimpleSubstitution
+from unittest import TestCase
 
-class TestMonoalphabet(unittest.TestCase):
+class TestSimpleSubstitution(TestCase):
 	alphabet = (u"abcdefghijklmnopqrstuvwxyz",
 		u"абвгдеёжзийклмнопрстуфхцчшщъыьэюя",
 		u"abcdefghijklmnopqrstuvwxyzäöüß",
@@ -68,17 +68,18 @@ class TestMonoalphabet(unittest.TestCase):
 		u"ufyuobdiusjdiu",
 		u"vñnfñtbkfefufyup",
 		u"ぢゆぐほげよづ")
+	
+	def setUp(self):
+		self.cipher = SimpleSubstitution()
 
 	def test_encrypt(self):
-		cipher = Monoalphabet()
 		for i,alphabet in enumerate(self.alphabet):
-			enc = cipher.encrypt(self.plaintext[i], self.key[i], alphabet)
+			enc = self.cipher.encrypt(self.plaintext[i], self.key[i], alphabet)
 			self.assertEqual(enc, self.ciphertext[i])
 
 	def test_decrypt(self):
-		cipher = Monoalphabet()
 		for i,alphabet in enumerate(self.alphabet):
-			dec = cipher.decrypt(self.ciphertext[i], self.key[i], alphabet)
+			dec = self.cipher.decrypt(self.ciphertext[i], self.key[i], alphabet)
 			self.assertEqual(dec, self.plaintext[i])
 
 if __name__ == '__main__': 

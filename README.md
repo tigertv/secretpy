@@ -30,7 +30,7 @@ SecretPy is a cryptographic Python package. It uses the following classical ciph
 - Bifid
 - Caesar
 - Keyword
-- Monoalphabet
+- Simple Substitution
 - Polybius
 - Rot13, Rot5, Rot18, Rot47
 - Trifid
@@ -56,6 +56,8 @@ make install
 
 Usage
 -----
+
+### Simple way
 
 ```python
 #!/usr/bin/python
@@ -97,7 +99,9 @@ thequickbrownfoxjumpsoverthelazydog
 '''
 ```
 
-In the previous example plaintext contains letters only in the alphabet.
+### CryptMachine
+
+In the previous example, plaintext contains only letters existing in the alphabet and in the lower case without spaces.
 To change the behaviour you can use CryptMachine and decorators(UpperCase, NoSpace, SaveCase and etc.):
 
 ```python
@@ -126,16 +130,16 @@ cipher = Caesar()
 cm = CryptMachine(cipher, key)
 encdec(cm, plaintext)
 
-cm.setAlphabet(alphabet.GERMAN)
+cm.set_alphabet(alphabet.GERMAN)
 encdec(cm, plaintext)
 
 cm = SaveSpaces(cm)
-cm.setKey(9)
+cm.set_key(9)
 plaintext  = u"the quick brown fox jumps over the lazy dog"
 encdec(cm, plaintext)
 
 cm = NoSpaces(UpperCase(cm))
-cm.setCipher(Atbash())
+cm.set_cipher(Atbash())
 plaintext  = u"Achtung Minen"
 encdec(cm, plaintext)
 
@@ -160,6 +164,8 @@ ACHTUNGMINEN
 -----------------------------------
 '''
 ```
+
+### CompositeMachine
 
 Combining several ciphers to get more complex cipher, you can use CompositeMachine:
 
@@ -196,13 +202,13 @@ print(enc)
 print("=======================================")
 
 cm = CompositeMachine(cm1)
-cm.addMachine(cm2)
+cm.add_machines(cm2)
 enc = cm.encrypt(plaintext)
 print(enc)
 
 encdec(cm, plaintext)
 
-cm.addMachine(cm1, cm2)
+cm.add_machines(cm1, cm2)
 encdec(cm, plaintext)
 
 '''

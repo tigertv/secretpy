@@ -21,12 +21,12 @@ alphabet = [
 	u"x", u"m", u"y", u"t", u"l", u"6",  
 	u"1", u"2", u"3", u"4", u"5", u".",  
 ]
-cm.setAlphabet(alphabet)
+cm.set_alphabet(alphabet)
 key = "battle"
 plaintext = "attackatdawn11.25"
 encdec(cm, plaintext)
 
 key = "deutsch"
-cm.setKey(key)
+cm.set_key(key)
 plaintext = "howstuffworks"
 encdec(cm, plaintext)

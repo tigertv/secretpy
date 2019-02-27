@@ -8,13 +8,13 @@ class CryptMachine(AbstractCryptMachine):
 		self.__key = key or ""
 		self.__cipher = cipher
 
-	def setKey(self, key):
+	def set_key(self, key):
 		self.__key = key
 
-	def setAlphabet(self, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+	def set_alphabet(self, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
 		self.__alphabet = alphabet
 	
-	def setCipher(self, cipher):
+	def set_cipher(self, cipher):
 		self.__cipher = cipher
 		
 	def encrypt(self, text):

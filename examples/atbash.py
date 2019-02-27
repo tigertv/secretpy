@@ -21,16 +21,16 @@ plaintext  = u"attackatdawn"
 encdec(cm, plaintext)
 
 plaintext  = u"במקום"
-cm.setAlphabet(alphabet.HEBREW)
+cm.set_alphabet(alphabet.HEBREW)
 encdec(cm, plaintext)
 
 plaintext  = u"The Fox jumps in Zoo too Achtung minen"
-cm.setAlphabet(alphabet.GERMAN)
+cm.set_alphabet(alphabet.GERMAN)
 encdec(cm, plaintext)
 
 plaintext  = u"Achtung Minen"
 encdec(cm, plaintext)
 
-cm.setAlphabet(alphabet.ARABIC)
+cm.set_alphabet(alphabet.ARABIC)
 plaintext  = u"قط"
 encdec(cm, plaintext)

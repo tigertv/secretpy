@@ -30,13 +30,13 @@ print(enc)
 print("=======================================")
 
 cm = CompositeMachine(cm1)
-cm.addMachine(cm2)
+cm.add_machines(cm2)
 enc = cm.encrypt(plaintext)
 print(enc)
 
 encdec(cm, plaintext)
 
-cm.addMachine(cm1, cm2)
+cm.add_machines(cm1, cm2)
 encdec(cm, plaintext)
 
 '''

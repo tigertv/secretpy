@@ -1,10 +1,11 @@
 #!/usr/bin/python
 
 from .rot13 import Rot13
+import secretpy.alphabet as al
 
 class Rot5:
 	__rot13= Rot13()
-	__alphabet = u"0123456789"
+	__alphabet = al.DECIMAL
 
 	def __encDec(self, text):
 		return self.__rot13.encrypt(text, alphabet=self.__alphabet)
@@ -14,5 +15,3 @@ class Rot5:
 
 	def decrypt(self, text, key=None, alphabet=None):
 		return self.__encDec(text)
-
-

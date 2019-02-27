@@ -25,10 +25,10 @@ plaintext  = u"Why did the chicken cross the road Gb trg gb gur bgure fvqr"
 encdec(cm, plaintext)
 
 plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
-cm.setAlphabet(alphabet.GERMAN)
+cm.set_alphabet(alphabet.GERMAN)
 encdec(cm, plaintext)
 
 plaintext  = u"текст"
-cm.setAlphabet(alphabet.RUSSIAN)
+cm.set_alphabet(alphabet.RUSSIAN)
 encdec(cm, plaintext)
 
