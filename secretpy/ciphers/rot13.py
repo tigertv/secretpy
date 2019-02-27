@@ -4,6 +4,9 @@ from .caesar import Caesar
 import secretpy.alphabet as al
 
 class Rot13:
+	"""
+	The Rot13 Cipher
+	"""
 	__caesar = Caesar()
 	__alphabet = al.ENGLISH
 
@@ -17,9 +20,21 @@ class Rot13:
 		return self.__caesar.encrypt(text, key, alphabet)
 
 	def encrypt(self, text, key=None, alphabet=None):
+		"""
+		Encryption function
+
+		:param text: Text to encrypt
+		:param key: Encryption key
+		:param alphabet: Alphabet which will be used, if there is no a value, English is used
+		"""
 		return self.__encDec(alphabet, text)
 
 	def decrypt(self, text, key=None, alphabet=None):
+		"""
+		Decryption function
+
+		:param text: Text to decrypt
+		:param key: Decryption key
+		:param alphabet: Alphabet which will be used, if there is no a value, English is used
+		"""
 		return self.__encDec(alphabet, text)
-
-

@@ -6,9 +6,12 @@ import math
 from .polybius import Polybius
 
 class Bifid:
-	def __init__(self):
-		self.__polybius = Polybius()
-		
+	"""
+	The Bifid Cipher
+	"""
+
+	__polybius = Polybius()
+	
 	def __enc(self, alphabet, text, key):
 		code = self.__polybius.encrypt(text, alphabet=alphabet)
 		even = code[::2]
@@ -37,6 +40,13 @@ class Bifid:
 		return self.__polybius.decrypt(code, alphabet=alphabet)
 
 	def encrypt(self, text, key=None, alphabet=None):
+		"""
+		Encryption function
+
+		:param text: Text to encrypt
+		:param key: Encryption key
+		:param alphabet: Alphabet which will be used, if there is no a value, English is used
+		"""
 		alphabet = alphabet or [
 			u"a", u"b", u"c", u"d", u"e", 
 			u"f", u"g", u"h", u"ij", u"k", 
@@ -50,6 +60,13 @@ class Bifid:
 		return self.__enc(alphabet, text, key)
 
 	def decrypt(self, text, key=None, alphabet=None):
+		"""
+		Decryption function
+
+		:param text: Text to decrypt
+		:param key: Decryption key
+		:param alphabet: Alphabet which will be used, if there is no a value, English is used
+		"""
 		alphabet = alphabet or [
 			u"a", u"b", u"c", u"d", u"e", 
 			u"f", u"g", u"h", u"ij", u"k", 

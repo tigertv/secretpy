@@ -4,6 +4,9 @@ from .rot13 import Rot13
 import secretpy.alphabet as al
 
 class Rot18:
+	"""
+	The Rot18 Cipher
+	"""
 	__rot13= Rot13()
 
 	def __createAlphabet(self, alphabet):
@@ -17,7 +20,21 @@ class Rot18:
 		return self.__rot13.encrypt(text, alphabet=alphabet)
 
 	def encrypt(self, text, key=None, alphabet=None):
+		"""
+		Encryption function
+
+		:param text: Text to encrypt
+		:param key: Encryption key
+		:param alphabet: Alphabet which will be used, if there is no a value, English is used
+		"""
 		return self.__encDec(text, alphabet)
 
 	def decrypt(self, text, key=None, alphabet=None):
+		"""
+		Decryption function
+
+		:param text: Text to decrypt
+		:param key: Decryption key
+		:param alphabet: Alphabet which will be used, if there is no a value, English is used
+		"""
 		return self.__encDec(text, alphabet)

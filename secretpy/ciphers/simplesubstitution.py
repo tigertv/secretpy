@@ -2,8 +2,9 @@
 # -*- encoding: utf-8 -*-
 
 class SimpleSubstitution:
-	def __init__(self):
-		return
+	"""
+	The Simple Substitution Cipher
+	"""
 
 	def __encDec(self, alphabet, key, text, isEncrypt):
 		if len(alphabet) != len(key): return 
@@ -20,7 +21,21 @@ class SimpleSubstitution:
 		return ans
 
 	def encrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+		"""
+		Encryption function
+
+		:param text: Text to encrypt
+		:param key: Encryption key
+		:param alphabet: Alphabet which will be used, if there is no a value, English is used
+		"""
 		return self.__encDec(alphabet, key, text, 1)
 
 	def decrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+		"""
+		Decryption function
+
+		:param text: Text to decrypt
+		:param key: Decryption key
+		:param alphabet: Alphabet which will be used, if there is no a value, English is used
+		"""
 		return self.__encDec(alphabet, key, text, -1)

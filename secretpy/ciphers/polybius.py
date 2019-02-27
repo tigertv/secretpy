@@ -4,9 +4,10 @@ import sys
 import math
 
 class Polybius:
-	def __init__(self):
-		pass
-		
+	"""
+	The Polybius Cipher
+	"""
+	
 	def __enc(self, alphabet, text):
 		ans0 = ""
 		size = int(math.ceil(math.sqrt(len(alphabet))))
@@ -39,6 +40,13 @@ class Polybius:
 		return dec
 
 	def encrypt(self, text, key=None, alphabet=None):
+		"""
+		Encryption function
+
+		:param text: Text to encrypt
+		:param key: Encryption key
+		:param alphabet: Alphabet which will be used, if there is no a value, English is used
+		"""
 		alphabet = alphabet or [
 			u"a", u"b", u"c", u"d", u"e", 
 			u"f", u"g", u"h", u"ij", u"k", 
@@ -49,6 +57,13 @@ class Polybius:
 		return self.__enc(alphabet, text)
 
 	def decrypt(self, text, key=None, alphabet=None):
+		"""
+		Decryption function
+
+		:param text: Text to decrypt
+		:param key: Decryption key
+		:param alphabet: Alphabet which will be used, if there is no a value, English is used
+		"""
 		alphabet = alphabet or [
 			u"a", u"b", u"c", u"d", u"e", 
 			u"f", u"g", u"h", u"ij", u"k", 

@@ -28,7 +28,7 @@ import os
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = []
+extensions = ['sphinx.ext.autodoc']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -196,7 +196,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'ReadtheDocsTemplate.tex', u'Read the Docs Template Documentation',
+  ('index', 'ReadtheDocsTemplate.tex', u'SecretPy Documentation',
    u'Read the Docs', 'manual'),
 ]
 
@@ -241,7 +241,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'ReadtheDocsTemplate', u'SecretPy Documentation',
-   u'Read the Docs', 'ReadtheDocsTemplate', 'SecretPy is a Python package of classical ciphers.',
+   u'Read the Docs', 'SecretPyTemplate', 'SecretPy is a Python package of classical ciphers.',
    'Miscellaneous'),
 ]
 

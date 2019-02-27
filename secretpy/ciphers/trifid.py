@@ -4,6 +4,9 @@
 #import math
 
 class Trifid:
+	"""
+	The Trifid Cipher
+	"""
 	alphabet = [
 		u"a", u"b", u"c", 
 		u"d", u"e", u"f", 
@@ -17,10 +20,7 @@ class Trifid:
 		u"v", u"w", u"x", 
 		u"y", u"z", u".",
 	]
-
-	def __init__(self):
-		pass
-
+	
 	def __code(self, text, alphabet):
 		code = ""
 		for char in text:
@@ -75,6 +75,13 @@ class Trifid:
 		return code
 
 	def encrypt(self, text, key=None, alphabet=None):
+		"""
+		Encryption function
+
+		:param text: Text to encrypt
+		:param key: Encryption key
+		:param alphabet: Alphabet which will be used, if there is no a value, English is used
+		"""
 		alphabet = alphabet or self.alphabet
 		key = int(key)
 		if not key > 0:
@@ -82,6 +89,13 @@ class Trifid:
 		return self.__enc(alphabet, text, key)
 
 	def decrypt(self, text, key=None, alphabet=None):
+		"""
+		Decryption function
+
+		:param text: Text to decrypt
+		:param key: Decryption key
+		:param alphabet: Alphabet which will be used, if there is no a value, English is used
+		"""
 		alphabet = alphabet or self.alphabet
 		key = int(key)
 		if not key > 0:

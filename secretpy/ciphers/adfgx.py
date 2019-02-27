@@ -6,6 +6,9 @@ import math
 from .polybius import Polybius
 
 class ADFGX:
+	"""
+	The ADFGX Cipher
+	"""
 	__header = u"adfgx"
 	__polybius = Polybius()
 	__alphabet = [
@@ -15,9 +18,6 @@ class ADFGX:
 		u"q", u"r", u"s", u"t", u"u",
 		u"v", u"w", u"x", u"y", u"z"
 	]
-
-	def __init__(self):
-		pass
 
 	def __dec(self, alphabet, key, text, isEncrypt):
 		keysize = len(key)
@@ -83,9 +83,23 @@ class ADFGX:
 		return ans2
 	
 	def encrypt(self, text, key, alphabet=None):
+		"""
+		Encryption function
+
+		:param text: Text to encrypt
+		:param key: Encryption key
+		:param alphabet: Alphabet which will be used, if there is no a value, English is used
+		"""
 		alphabet = alphabet or self.__alphabet
 		return self.__enc(alphabet, key, text, 1)
 
 	def decrypt(self, text, key, alphabet=None):
+		"""
+		Decryption function
+
+		:param text: Text to decrypt
+		:param key: Decryption key
+		:param alphabet: Alphabet which will be used, if there is no a value, English is used
+		"""
 		alphabet = alphabet or self.__alphabet
 		return self.__dec(alphabet, key, text, -1)

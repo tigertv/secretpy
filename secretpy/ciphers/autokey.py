@@ -2,8 +2,9 @@
 # -*- encoding: utf-8 -*-
 
 class Autokey:
-	def __init__(self):
-		return
+	"""
+	The Autokey Cipher
+	"""
 
 	def __encDec(self, alphabet, key, text, isEncrypt):
 		ans = ""
@@ -22,7 +23,21 @@ class Autokey:
 		return ans
 
 	def encrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+		"""
+		Encryption function
+
+		:param text: Text to encrypt
+		:param key: Encryption key
+		:param alphabet: Alphabet which will be used, if there is no a value, English is used
+		"""
 		return self.__encDec(alphabet, key, text, 1)
 
 	def decrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+		"""
+		Decryption function
+
+		:param text: Text to decrypt
+		:param key: Decryption key
+		:param alphabet: Alphabet which will be used, if there is no a value, English is used
+		"""
 		return self.__encDec(alphabet, key, text, -1)

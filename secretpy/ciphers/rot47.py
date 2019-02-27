@@ -3,8 +3,12 @@
 from .rot13 import Rot13
 
 class Rot47:
-	__rot13= Rot13()
+	"""
+	The Rot47 Cipher
+	"""
 
+	__rot13= Rot13()
+	
 	def __init__(self):
 		self.__alphabet = "".join([chr(asc) for asc in range(33, 33 + 47*2 )])
 
@@ -12,9 +16,21 @@ class Rot47:
 		return self.__rot13.encrypt(text, alphabet=self.__alphabet)
 
 	def encrypt(self, text, key=None, alphabet=None):
+		"""
+		Encryption function
+
+		:param text: Text to encrypt
+		:param key: Encryption key
+		:param alphabet: Alphabet which will be used, if there is no a value, English is used
+		"""
 		return self.__encDec(text)
 
 	def decrypt(self, text, key=None, alphabet=None):
+		"""
+		Decryption function
+
+		:param text: Text to decrypt
+		:param key: Decryption key
+		:param alphabet: Alphabet which will be used, if there is no a value, English is used
+		"""
 		return self.__encDec(text)
-
-
