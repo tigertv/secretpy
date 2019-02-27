@@ -1,13 +1,11 @@
 SecretPy Documentation
-==================================================
+======================
 
 .. toctree::
-	:maxdepth: 2
+	:maxdepth: 3
 	:caption: Contents:
 
-	description
-	install
-	usage
+	intro
 
 Indices and tables
 ==================
