@@ -4,6 +4,7 @@ SecretPy
 [![Go to PyPi](https://badge.fury.io/py/secretpy.svg)](https://pypi.org/project/secretpy)
 [![Go to PyPi](https://img.shields.io/pypi/pyversions/secretpy.svg)](https://pypi.org/project/secretpy)
 [![Read the Docs](https://img.shields.io/readthedocs/secretpy.svg)](https://secretpy.readthedocs.io/en/latest)
+[![](https://img.shields.io/github/license/tigertv/secretpy.svg)]()
 
 ***Download:***
 
