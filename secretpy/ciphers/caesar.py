@@ -26,6 +26,13 @@ class Caesar:
 		"""
 		Encryption function
 
+		Example:
+
+		.. code-block:: python
+			
+			enc = Caesar().encrypt("text", 5)
+			enc = Caesar().encrypt("text", 5, alphabet.GERMAN)
+
 		:param text: Text to encrypt
 		:param key: Encryption key
 		:param alphabet: Alphabet which will be used, if there is no a value, English is used
@@ -35,6 +42,13 @@ class Caesar:
 	def decrypt(self, text, key, alphabet=None):
 		"""
 		Decryption function
+
+		Example:
+
+		.. code-block:: python
+			
+			enc = Caesar().decrypt("encrypted", 5)
+			enc = Caesar().decrypt("encrypted", 5, alphabet.GERMAN)
 
 		:param text: Text to decrypt
 		:param key: Decryption key
