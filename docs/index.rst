@@ -6,6 +6,7 @@ SecretPy Documentation
 	:caption: Contents:
 
 	intro
+	api
 
 Indices and tables
 ==================

@@ -24,34 +24,30 @@ class Caesar:
 
 	def encrypt(self, text, key, alphabet=None):
 		"""
-		Encryption function
-
-		Example:
-
-		.. code-block:: python
-			
-			enc = Caesar().encrypt("text", 5)
-			enc = Caesar().encrypt("text", 5, alphabet.GERMAN)
+		Encryption method
 
 		:param text: Text to encrypt
 		:param key: Encryption key
 		:param alphabet: Alphabet which will be used, if there is no a value, English is used
+		:type text: string
+		:type key: integer
+		:type alphabet: string
+		:return: encrypted text
+		:rtype: string
 		"""
 		return self.__encDec(alphabet, key, text, 1)
 
 	def decrypt(self, text, key, alphabet=None):
 		"""
-		Decryption function
-
-		Example:
-
-		.. code-block:: python
-			
-			enc = Caesar().decrypt("encrypted", 5)
-			enc = Caesar().decrypt("encrypted", 5, alphabet.GERMAN)
+		Decryption method
 
 		:param text: Text to decrypt
 		:param key: Decryption key
 		:param alphabet: Alphabet which will be used, if there is no a value, English is used
+		:type text: string
+		:type key: integer
+		:type alphabet: string
+		:return: decrypted text
+		:rtype: string
 		"""
 		return self.__encDec(alphabet, key, text, -1)

@@ -84,22 +84,32 @@ class ADFGX:
 	
 	def encrypt(self, text, key, alphabet=None):
 		"""
-		Encryption function
+		Encryption method
 
 		:param text: Text to encrypt
 		:param key: Encryption key
 		:param alphabet: Alphabet which will be used, if there is no a value, English is used
+		:type text: string
+		:type key: integer
+		:type alphabet: string
+		:return: text
+		:rtype: string
 		"""
 		alphabet = alphabet or self.__alphabet
 		return self.__enc(alphabet, key, text, 1)
 
 	def decrypt(self, text, key, alphabet=None):
 		"""
-		Decryption function
+		Decryption method
 
 		:param text: Text to decrypt
 		:param key: Decryption key
 		:param alphabet: Alphabet which will be used, if there is no a value, English is used
+		:type text: string
+		:type key: integer
+		:type alphabet: string
+		:return: text
+		:rtype: string
 		"""
 		alphabet = alphabet or self.__alphabet
 		return self.__dec(alphabet, key, text, -1)
