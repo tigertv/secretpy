@@ -5,7 +5,8 @@ from secretpy import Rot13
 from secretpy import Caesar
 from secretpy import CryptMachine
 from secretpy import CompositeMachine
-from secretpy.cmdecorators import *
+from secretpy.cmdecorators import SaveCase, SaveSpaces
+
 
 def encdec(machine, plaintext):
     print("=======================================")
@@ -14,6 +15,7 @@ def encdec(machine, plaintext):
     print(enc)
     dec = machine.decrypt(enc)
     print(dec)
+
 
 key = 5
 plaintext = u"Dog jumps four times and cat six times"

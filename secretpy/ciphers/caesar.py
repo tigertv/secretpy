@@ -3,12 +3,13 @@
 
 import secretpy.alphabet as al
 
+
 class Caesar:
     """
     The Caesar Cipher
     """
     __alphabet = al.ENGLISH
-    
+
     def __encDec(self, alphabet, key, text, isEncrypt):
         alphabet = alphabet or self.__alphabet
         ans = ""
@@ -16,8 +17,10 @@ class Caesar:
             try:
                 alphIndex = alphabet.index(char)
             except ValueError as e:
-                e.args = ("Can't find char '" + char.encode('utf-8') + "' of text in alphabet!",)
-                raise 
+                wrchar = char.encode('utf-8')
+                e.args = (
+                    "Can't find char '" + wrchar + "' of text in alphabet!",)
+                raise
             alphIndex = (alphIndex + isEncrypt * key) % len(alphabet)
             ans += alphabet[alphIndex]
         return ans
@@ -28,7 +31,8 @@ class Caesar:
 
         :param text: Text to encrypt
         :param key: Encryption key
-        :param alphabet: Alphabet which will be used, if there is no a value, English is used
+        :param alphabet: Alphabet which will be used,
+                         if there is no a value, English is used
         :type text: string
         :type key: integer
         :type alphabet: string
@@ -43,7 +47,8 @@ class Caesar:
 
         :param text: Text to decrypt
         :param key: Decryption key
-        :param alphabet: Alphabet which will be used, if there is no a value, English is used
+        :param alphabet: Alphabet which will be used,
+                         if there is no a value, English is used
         :type text: string
         :type key: integer
         :type alphabet: string

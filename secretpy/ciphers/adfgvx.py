@@ -1,9 +1,9 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 from __future__ import division
-import sys
 import math
 from .polybius import Polybius
+
 
 class ADFGVX:
     """
@@ -13,16 +13,15 @@ class ADFGVX:
     __polybius = Polybius()
     __alphabet = [
         u"a", u"b", u"c", u"d", u"e", u"f",
-        u"g", u"h", u"ij", u"k", u"l", u"m", 
-        u"n", u"o", u"p", u"q", u"r", u"s", 
-        u"t", u"u", u"v", u"w", u"x", u"y", 
-        u"z", u"1", u"2", u"3", u"4", u"5", 
+        u"g", u"h", u"ij", u"k", u"l", u"m",
+        u"n", u"o", u"p", u"q", u"r", u"s",
+        u"t", u"u", u"v", u"w", u"x", u"y",
+        u"z", u"1", u"2", u"3", u"4", u"5",
         u"6", u"7", u"8", u"9", u"0", u".",
     ]
 
     def __dec(self, alphabet, key, text, isEncrypt):
         keysize = len(key)
-        side = int(math.ceil(math.sqrt(len(alphabet))))
         size = len(text)
         rows = int(math.ceil(size/keysize))
         reminder = size % keysize
@@ -35,7 +34,8 @@ class ADFGVX:
         for key, value in enumerate(indices):
             righti = lefti
             righti += rows
-            if reminder > 0 and value > reminder-1: righti -= 1
+            if reminder > 0 and value > reminder-1:
+                righti -= 1
             myarr[value] = text[lefti:righti]
             lefti = righti
 
@@ -45,21 +45,18 @@ class ADFGVX:
         for i in range(size):
             res += (myarr[column][row])
             column += 1
-            if column == keysize: 
+            if column == keysize:
                 column = 0
                 row += 1
 
         code = [str(self.__header.index(char)+1) for char in res]
         code = "".join(code)
-        dec = self.__polybius.decrypt(code, alphabet=alphabet)
-        return dec
+        return self.__polybius.decrypt(code, alphabet=alphabet)
 
     def __enc(self, alphabet, key, text, isEncrypt):
-        size = int(math.ceil(math.sqrt(len(alphabet))))
-
         ans0 = self.__polybius.encrypt(text, alphabet=alphabet)
         ans = [self.__header[int(char)-1] for char in ans0]
-    
+
         keyword = list(key)
         keysize = len(key)
         size = len(ans)
@@ -80,16 +77,17 @@ class ADFGVX:
                 p = ans[ind]
                 ans2 += p
                 ind += keysize
-        
+
         return ans2
-    
+
     def encrypt(self, text, key, alphabet=None):
         """
         Encryption method
 
         :param text: Text to encrypt
         :param key: Encryption key
-        :param alphabet: Alphabet which will be used, if there is no a value, English is used
+        :param alphabet: Alphabet which will be used, if there is no a value,
+                         English is used
         :type text: string
         :type key: integer
         :type alphabet: string
@@ -105,7 +103,8 @@ class ADFGVX:
 
         :param text: Text to decrypt
         :param key: Decryption key
-        :param alphabet: Alphabet which will be used, if there is no a value, English is used
+        :param alphabet: Alphabet which will be used, if there is no a value,
+                         English is used
         :type text: string
         :type key: integer
         :type alphabet: string

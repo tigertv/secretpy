@@ -3,6 +3,7 @@
 from .caesar import Caesar
 import secretpy.alphabet as al
 
+
 class Rot13:
     """
     The Rot13 Cipher
@@ -25,7 +26,8 @@ class Rot13:
 
         :param text: Text to encrypt
         :param key: Encryption key
-        :param alphabet: Alphabet which will be used, if there is no a value, English is used
+        :param alphabet: Alphabet which will be used,
+                         if there is no a value, English is used
         :type text: string
         :type key: integer
         :type alphabet: string
@@ -40,7 +42,8 @@ class Rot13:
 
         :param text: Text to decrypt
         :param key: Decryption key
-        :param alphabet: Alphabet which will be used, if there is no a value, English is used
+        :param alphabet: Alphabet which will be used,
+                         if there is no a value, English is used
         :type text: string
         :type key: integer
         :type alphabet: string

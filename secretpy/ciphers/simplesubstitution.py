@@ -1,13 +1,15 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
+
 class SimpleSubstitution:
     """
     The Simple Substitution Cipher
     """
 
     def __encDec(self, alphabet, key, text, isEncrypt):
-        if len(alphabet) != len(key): return 
+        if len(alphabet) != len(key):
+            return
 
         ans = ""
         for i in range(len(text)):
@@ -26,7 +28,8 @@ class SimpleSubstitution:
 
         :param text: Text to encrypt
         :param key: Encryption key
-        :param alphabet: Alphabet which will be used, if there is no a value, English is used
+        :param alphabet: Alphabet which will be used,
+                         if there is no a value, English is used
         :type text: string
         :type key: integer
         :type alphabet: string
@@ -41,7 +44,8 @@ class SimpleSubstitution:
 
         :param text: Text to decrypt
         :param key: Decryption key
-        :param alphabet: Alphabet which will be used, if there is no a value, English is used
+        :param alphabet: Alphabet which will be used,
+                         if there is no a value, English is used
         :type text: string
         :type key: integer
         :type alphabet: string

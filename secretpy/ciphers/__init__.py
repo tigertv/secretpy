@@ -2,7 +2,7 @@
 
 from .adfgx import ADFGX
 from .adfgvx import ADFGVX
-from .affine import Affine 
+from .affine import Affine
 from .atbash import Atbash
 from .autokey import Autokey
 from .beaufort import Beaufort
@@ -20,8 +20,8 @@ from .vigenere import Vigenere
 from .zigzag import Zigzag
 
 __all__ = [
-    "ADFGX", "ADFGVX", "Affine", "Atbash", "Autokey", 
-    "Beaufort", "Bifid", "Caesar", "Keyword", "SimpleSubstitution", 
+    "ADFGX", "ADFGVX", "Affine", "Atbash", "Autokey",
+    "Beaufort", "Bifid", "Caesar", "Keyword", "SimpleSubstitution",
     "Polybius", "Rot13", "Rot18", "Rot47", "Rot5",
     "Trifid", "Vigenere", "Zigzag",
 ]

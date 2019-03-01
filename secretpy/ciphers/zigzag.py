@@ -1,11 +1,12 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
+
 class Zigzag:
     """
     The Zigzag Cipher
     """
-    
+
     def __enc(self, key, text):
         crypted = ""
         step = (key - 1) << 1
@@ -53,7 +54,7 @@ class Zigzag:
                     decrypted[right] = text[i]
                     i += 1
                 left += step
-        
+
         return "".join(decrypted)
 
     def encrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
@@ -62,7 +63,8 @@ class Zigzag:
 
         :param text: Text to encrypt
         :param key: Encryption key
-        :param alphabet: Alphabet which will be used, if there is no a value, English is used
+        :param alphabet: Alphabet which will be used,
+                         if there is no a value, English is used
         :type text: string
         :type key: integer
         :type alphabet: string
@@ -77,7 +79,8 @@ class Zigzag:
 
         :param text: Text to decrypt
         :param key: Decryption key
-        :param alphabet: Alphabet which will be used, if there is no a value, English is used
+        :param alphabet: Alphabet which will be used,
+                         if there is no a value, English is used
         :type text: string
         :type key: integer
         :type alphabet: string

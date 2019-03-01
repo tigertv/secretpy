@@ -3,6 +3,7 @@
 
 from .decorator import AbstractMachineDecorator
 
+
 class NoSpaces(AbstractMachineDecorator):
 
     def encrypt(self, text):

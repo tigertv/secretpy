@@ -4,10 +4,10 @@
 from secretpy import Affine
 
 alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
-plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
-key = [7,8]
+plaintext = u"thequickbrownfoxjumpsoverthelazydog"
+key = [7, 8]
 
-cipher = Affine();
+cipher = Affine()
 print(plaintext)
 
 enc = cipher.encrypt(plaintext, key, alphabet)
@@ -19,8 +19,8 @@ print(dec)
 
 print("----------------------------------")
 
-key = [3,4]
-plaintext  = u"attackatdawn"
+key = [3, 4]
+plaintext = u"attackatdawn"
 
 # use default english alphabet
 print(plaintext)

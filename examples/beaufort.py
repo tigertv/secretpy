@@ -1,10 +1,10 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import CryptMachine 
-from secretpy import Beaufort 
+from secretpy import CryptMachine
+from secretpy import Beaufort
 
-plaintext  = u"helloworld"
+plaintext = u"helloworld"
 key = "key"
 
 cm = CryptMachine(Beaufort(), key)
@@ -25,4 +25,3 @@ enc = cm.encrypt(plaintext)
 print(enc)
 dec = cm.decrypt(enc)
 print(dec)
-

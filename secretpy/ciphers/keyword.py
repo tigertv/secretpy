@@ -2,6 +2,7 @@
 # -*- encoding: utf-8 -*-
 from collections import OrderedDict
 
+
 class Keyword:
     """
     The Keyword Cipher
@@ -9,19 +10,19 @@ class Keyword:
 
     def __removeDup(self, input_str):
         newstring = input_str[0]
-        for i in xrange(len(input_str)):
-            if newstring[(len(newstring) - 1 )] != input_str[i]:
+        for i in range(len(input_str)):
+            if newstring[(len(newstring) - 1)] != input_str[i]:
                 newstring += input_str[i]
             else:
                 pass
         return newstring
 
     def __encDec(self, alphabet, key, text, isEncrypt):
-        #remove repeats of letters in the key 
+        # remove repeats of letters in the key
         newkey = "".join(OrderedDict.fromkeys(key))
-        #create the substitution string
+        # create the substitution string
         longkey = "".join(OrderedDict.fromkeys(newkey+"".join(alphabet)))
-        #do encryption
+        # do encryption
         ans = ""
         for i in range(len(text)):
             m = text[i]
@@ -40,7 +41,8 @@ class Keyword:
 
         :param text: Text to encrypt
         :param key: Encryption key
-        :param alphabet: Alphabet which will be used, if there is no a value, English is used
+        :param alphabet: Alphabet which will be used,
+                         if there is no a value, English is used
         :type text: string
         :type key: integer
         :type alphabet: string
@@ -55,7 +57,8 @@ class Keyword:
 
         :param text: Text to decrypt
         :param key: Decryption key
-        :param alphabet: Alphabet which will be used, if there is no a value, English is used
+        :param alphabet: Alphabet which will be used,
+                         if there is no a value, English is used
         :type text: string
         :type key: integer
         :type alphabet: string

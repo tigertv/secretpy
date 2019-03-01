@@ -3,6 +3,7 @@
 
 from .decorator import AbstractMachineDecorator
 
+
 class LowerCase(AbstractMachineDecorator):
 
     def encrypt(self, text):

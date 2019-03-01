@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
+
 class Autokey:
     """
     The Autokey Cipher
@@ -13,12 +14,14 @@ class Autokey:
             if i < len(key):
                 k = key[i]
             else:
-                if isEncrypt == 1:    
+                if isEncrypt == 1:
                     k = text[i - len(key)]
                 else:
                     k = ans[i - len(key)]
-            alphIndex = (alphabet.index(m) + isEncrypt * alphabet.index(k) ) % len(alphabet)
-            enc = alphabet[alphIndex]
+            alphI = (
+                    alphabet.index(m) + isEncrypt * alphabet.index(k)
+                ) % len(alphabet)
+            enc = alphabet[alphI]
             ans += enc
         return ans
 
@@ -28,7 +31,8 @@ class Autokey:
 
         :param text: Text to encrypt
         :param key: Encryption key
-        :param alphabet: Alphabet which will be used, if there is no a value, English is used
+        :param alphabet: Alphabet which will be used, if there is no a value,
+                         English is used
         :type text: string
         :type key: integer
         :type alphabet: string
@@ -43,7 +47,8 @@ class Autokey:
 
         :param text: Text to decrypt
         :param key: Decryption key
-        :param alphabet: Alphabet which will be used, if there is no a value, English is used
+        :param alphabet: Alphabet which will be used, if there is no a value,
+                         English is used
         :type text: string
         :type key: integer
         :type alphabet: string

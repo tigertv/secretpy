@@ -4,10 +4,10 @@
 from secretpy import Autokey
 
 alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
-plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
+plaintext = u"thequickbrownfoxjumpsoverthelazydog"
 key = "queenly"
 
-cipher = Autokey();
+cipher = Autokey()
 print(plaintext)
 
 enc = cipher.encrypt(plaintext, key, alphabet)
@@ -19,7 +19,7 @@ print(dec)
 
 print("----------------------------------")
 
-plaintext  = u"attackatdawn"
+plaintext = u"attackatdawn"
 
 # use default english alphabet
 print(plaintext)

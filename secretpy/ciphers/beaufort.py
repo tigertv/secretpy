@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
+
 class Beaufort:
     """
     The Beaufort Cipher
@@ -11,7 +12,9 @@ class Beaufort:
         for i in range(len(text)):
             char = text[i]
             keychar = key[i % len(key)]
-            alphIndex = (alphabet.index(keychar) - alphabet.index(char)) % len(alphabet)
+            alphIndex = (
+                alphabet.index(keychar) - alphabet.index(char)
+            ) % len(alphabet)
             ans += alphabet[alphIndex]
         return ans
 
@@ -21,7 +24,8 @@ class Beaufort:
 
         :param text: Text to encrypt
         :param key: Encryption key
-        :param alphabet: Alphabet which will be used, if there is no a value, English is used
+        :param alphabet: Alphabet which will be used, if there is no a value,
+                         English is used
         :type text: string
         :type key: integer
         :type alphabet: string
@@ -36,7 +40,8 @@ class Beaufort:
 
         :param text: Text to decrypt
         :param key: Decryption key
-        :param alphabet: Alphabet which will be used, if there is no a value, English is used
+        :param alphabet: Alphabet which will be used,
+                         if there is no a value, English is used
         :type text: string
         :type key: integer
         :type alphabet: string

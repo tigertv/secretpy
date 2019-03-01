@@ -3,19 +3,18 @@
 
 from .decorator import AbstractMachineDecorator
 
+
 class SaveCase(AbstractMachineDecorator):
 
     def encrypt(self, text):
-        func = lambda text : self._machine.encrypt(text)
-        return self.__encDec(text , func)
+        return self.__encDec(text, lambda text: self._machine.encrypt(text))
 
     def decrypt(self, text):
-        func = lambda text : self._machine.decrypt(text)
-        return self.__encDec(text , func)
+        return self.__encDec(text, lambda text: self._machine.decrypt(text))
 
     def __encDec(self, text, func):
         uppercases = []
-        for i,char in enumerate(text):
+        for i, char in enumerate(text):
             if char == char.upper():
                 uppercases.append(i)
         text = text.lower()
