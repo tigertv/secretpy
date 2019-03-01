@@ -19,11 +19,11 @@ print(dec)
 print("-------------------------------")
 
 alphabet = [
-	u"f", u"n", u"h", u"e", u"q",
-	u"r", u"d", u"z", u"o", u"c", 
-	u"ij", u"s", u"a", u"g", u"u", 
-	u"b", u"v", u"k", u"p", u"w", 
-	u"x", u"m", u"y", u"t", u"l"
+    u"f", u"n", u"h", u"e", u"q",
+    u"r", u"d", u"z", u"o", u"c", 
+    u"ij", u"s", u"a", u"g", u"u", 
+    u"b", u"v", u"k", u"p", u"w", 
+    u"x", u"m", u"y", u"t", u"l"
 ]
 key = "battle"
 plaintext = "attackatdawn"

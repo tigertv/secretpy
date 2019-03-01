@@ -8,12 +8,12 @@ from secretpy import CompositeMachine
 from secretpy.cmdecorators import *
 
 def encdec(machine, plaintext):
-	print("=======================================")
-	print(plaintext)
-	enc = machine.encrypt(plaintext)
-	print(enc)
-	dec = machine.decrypt(enc)
-	print(dec)
+    print("=======================================")
+    print(plaintext)
+    enc = machine.encrypt(plaintext)
+    print(enc)
+    dec = machine.decrypt(enc)
+    print(dec)
 
 key = 5
 plaintext = u"Dog jumps four times and cat six times"

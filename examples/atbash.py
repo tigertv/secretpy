@@ -7,12 +7,12 @@ from secretpy import alphabet
 import secretpy.cmdecorators as md
 
 def encdec(machine, plaintext):
-	print(plaintext)
-	enc = cm.encrypt(plaintext)
-	print(enc)
-	dec = cm.decrypt(enc)
-	print(dec)
-	print("----------------------------------")
+    print(plaintext)
+    enc = cm.encrypt(plaintext)
+    print(enc)
+    dec = cm.decrypt(enc)
+    print(dec)
+    print("----------------------------------")
 
 cm = CryptMachine(Atbash())
 cm = md.NoSpaces(md.UpperCase(cm))

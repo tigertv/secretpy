@@ -9,12 +9,12 @@ from secretpy.cmdecorators import *
 from secretpy import alphabet
 
 def encdec(machine, plaintext):
-	print(plaintext)
-	enc = machine.encrypt(plaintext)
-	print(enc)
-	dec = machine.decrypt(enc)
-	print(dec)
-	print("-----------------------------------")
+    print(plaintext)
+    enc = machine.encrypt(plaintext)
+    print(enc)
+    dec = machine.decrypt(enc)
+    print(dec)
+    print("-----------------------------------")
 
 plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
 key = 3

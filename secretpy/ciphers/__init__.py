@@ -20,8 +20,8 @@ from .vigenere import Vigenere
 from .zigzag import Zigzag
 
 __all__ = [
-	"ADFGX", "ADFGVX", "Affine", "Atbash", "Autokey", 
-	"Beaufort", "Bifid", "Caesar", "Keyword", "SimpleSubstitution", 
-	"Polybius", "Rot13", "Rot18", "Rot47", "Rot5",
-	"Trifid", "Vigenere", "Zigzag",
+    "ADFGX", "ADFGVX", "Affine", "Atbash", "Autokey", 
+    "Beaufort", "Bifid", "Caesar", "Keyword", "SimpleSubstitution", 
+    "Polybius", "Rot13", "Rot18", "Rot47", "Rot5",
+    "Trifid", "Vigenere", "Zigzag",
 ]
