@@ -66,8 +66,10 @@ Alternatively, you can install the package using the repo's cloning and the make
 Usage
 =====
 
-Simple way
+Direct way
 ----------
+
+The cipher classes can encrypt only letters which exist in the alphabet, and they don't have a state.
 
 .. code-block:: python
 	
@@ -112,8 +114,9 @@ Simple way
 CryptMachine
 ------------
 
+``CryptMachine`` saves state. There are alphabet, key and cipher, they can be changed in anytime.
 In the previous example, plaintext contains only letters existing in the alphabet and in the lower case without spaces.
-To change the behaviour you can use CryptMachine and decorators(UpperCase, NoSpace, SaveCase and etc.):
+To change the behaviour, you can use ``CryptMachine`` and decorators(``UpperCase``, ``NoSpace``, ``SaveCase`` and etc.), so it's a preferred way to do encryption/decryption:
 
 .. code-block:: python
 
@@ -179,7 +182,7 @@ To change the behaviour you can use CryptMachine and decorators(UpperCase, NoSpa
 CompositeMachine
 ----------------
 
-Combining several ciphers to get more complex cipher, you can use CompositeMachine:
+Combining several ciphers to get more complex cipher, you can use ``CompositeMachine``:
 
 .. code-block:: python
 
