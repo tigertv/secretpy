@@ -2,19 +2,19 @@
 SecretPy
 ========
 
-|PyPIpkg| |PythonVersion| |Docs| |License| |Travis|
+|PyPIpkg| |PythonV| |PythonImplement| |Docs| |Downloads| |License| |Travis|
 
 **Download:**
 
-https://pypi.org/project/secretpy
+*https://pypi.org/project/secretpy*
 
 **Documentation:**
 
-https://secretpy.readthedocs.io
+*https://secretpy.readthedocs.io*
 
 **Source code & Development:**
 
-https://github.com/tigertv/secretpy
+*https://github.com/tigertv/secretpy*
 
 Description
 ===========
@@ -121,12 +121,12 @@ To change the behaviour, you can use ``CryptMachine`` and decorators(``UpperCase
 	from secretpy import alphabet
 
 	def encdec(machine, plaintext):
-		print(plaintext)
-		enc = machine.encrypt(plaintext)
-		print(enc)
-		dec = machine.decrypt(enc)
-		print(dec)
-		print("-----------------------------------")
+	    print(plaintext)
+	    enc = machine.encrypt(plaintext)
+	    print(enc)
+	    dec = machine.decrypt(enc)
+	    print(dec)
+	    print("-----------------------------------")
 
 	plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
 	key = 3
@@ -186,12 +186,12 @@ Combining several ciphers to get more complex cipher, you can use ``CompositeMac
 	from secretpy.cmdecorators import *
 
 	def encdec(machine, plaintext):
-		print("=======================================")
-		print(plaintext)
-		enc = machine.encrypt(plaintext)
-		print(enc)
-		dec = machine.decrypt(enc)
-		print(dec)
+	    print("=======================================")
+	    print(plaintext)
+	    enc = machine.encrypt(plaintext)
+	    print(enc)
+	    dec = machine.decrypt(enc)
+	    print(dec)
 
 	key = 5
 	plaintext = u"Dog jumps four times and cat six times"
@@ -242,16 +242,25 @@ Maintainers
 
 .. Images and Links 
 
-.. |PyPIpkg| image:: https://badge.fury.io/py/secretpy.svg
+.. |PyPIpkg| image:: https://img.shields.io/pypi/v/secretpy.svg?style=flat-square
 	:alt: Go to PyPi
 	:target: https://pypi.org/project/secretpy
-.. |PythonVersion| image:: https://img.shields.io/pypi/pyversions/secretpy.svg
+.. |PythonV| image:: https://img.shields.io/pypi/pyversions/secretpy.svg?style=flat-square
 	:alt: Go to PyPi
 	:target: https://pypi.org/project/secretpy
-.. |Docs| image:: https://img.shields.io/readthedocs/secretpy.svg
+.. |PythonImplement| image:: https://img.shields.io/pypi/implementation/secretpy.svg?style=flat-square
+	:alt: Go to PyPi
+	:target: https://pypi.org/project/secretpy
+.. |Docs| image:: https://img.shields.io/readthedocs/secretpy.svg?style=flat-square
 	:alt: Read the Docs
 	:target: https://secretpy.readthedocs.io/en/latest
-.. |License| image:: https://img.shields.io/github/license/tigertv/secretpy.svg
-
-.. |Travis| image:: https://travis-ci.org/tigertv/secretpy.svg?branch=master
+.. |Downloads| image:: https://img.shields.io/pypi/dm/secretpy.svg?style=flat-square
+	:alt: Go to PyPi
+	:target: https://pypi.org/project/secretpy
+.. |License| image:: https://img.shields.io/github/license/tigertv/secretpy.svg?style=flat-square
+	:alt: Go to Github
+	:target: https://github.com/tigertv/secretpy
+.. |Travis| image:: https://img.shields.io/travis/tigertv/secretpy/master.svg?style=flat-square
+	:alt: Go to Travis
 	:target: https://travis-ci.org/tigertv/secretpy
+
