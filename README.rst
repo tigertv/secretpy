@@ -2,17 +2,7 @@
 SecretPy
 ========
 
-.. image:: https://badge.fury.io/py/secretpy.svg
-	:alt: Go to PyPi
-	:target: https://pypi.org/project/secretpy
-.. image:: https://img.shields.io/pypi/pyversions/secretpy.svg
-	:alt: Go to PyPi
-	:target: https://pypi.org/project/secretpy
-.. image:: https://img.shields.io/readthedocs/secretpy.svg
-	:alt: Read the Docs
-	:target: https://secretpy.readthedocs.io/en/latest
-.. image:: https://img.shields.io/github/license/tigertv/secretpy.svg
-
+|PyPIpkg| |PythonVersion| |Docs| |License| |Travis|
 
 **Download:**
 
@@ -249,3 +239,19 @@ Maintainers
 ===========
 
 - `@tigertv <https://github.com/tigertv>`_ (Max Vetrov)
+
+.. Images and Links 
+
+.. |PyPIpkg| image:: https://badge.fury.io/py/secretpy.svg
+	:alt: Go to PyPi
+	:target: https://pypi.org/project/secretpy
+.. |PythonVersion| image:: https://img.shields.io/pypi/pyversions/secretpy.svg
+	:alt: Go to PyPi
+	:target: https://pypi.org/project/secretpy
+.. |Docs| image:: https://img.shields.io/readthedocs/secretpy.svg
+	:alt: Read the Docs
+	:target: https://secretpy.readthedocs.io/en/latest
+.. |License| image:: https://img.shields.io/github/license/tigertv/secretpy.svg
+
+.. |Travis| image:: https://travis-ci.org/tigertv/secretpy.svg?branch=master
+	:target: https://travis-ci.org/tigertv/secretpy
