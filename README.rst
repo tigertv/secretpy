@@ -2,7 +2,7 @@
 SecretPy
 ========
 
-|PyPIpkg| |PythonV| |PythonImplement| |Docs| |Downloads| |License| |Travis|
+|PyPIpkg| |PythonV| |PythonImplement| |Docs| |Downloads| |License| |Travis| |Status|
 
 **Download:**
 
@@ -263,4 +263,5 @@ Maintainers
 .. |Travis| image:: https://img.shields.io/travis/tigertv/secretpy/master.svg?style=flat-square
 	:alt: Go to Travis
 	:target: https://travis-ci.org/tigertv/secretpy
+.. |Status| image:: https://img.shields.io/:Status-COOL-brightgreen.svg?style=flat-square
 
