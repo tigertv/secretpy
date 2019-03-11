@@ -6,15 +6,15 @@ SecretPy
 
 **Download:**
 
-*https://pypi.org/project/secretpy*
+https://pypi.org/project/secretpy
 
 **Documentation:**
 
-*https://secretpy.readthedocs.io*
+https://secretpy.readthedocs.io
 
 **Source code & Development:**
 
-*https://github.com/tigertv/secretpy*
+https://github.com/tigertv/secretpy
 
 Description
 ===========
