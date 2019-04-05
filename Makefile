@@ -5,6 +5,9 @@ all: package
 package: 
 	python setup.py sdist bdist_wheel --universal
 
+check:
+	twine check dist/*
+
 install: install2 install3
 
 install2: setup.py

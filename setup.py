@@ -8,12 +8,12 @@ with open("README.rst", "r") as fh:
 
 setuptools.setup(
 	name="secretpy",
-	version="0.6.0",
+	version="0.6.1",
 	author="Max Vetrov",
 	author_email="maxvetrov555@yandex.ru",
 	description="Classic ciphers package",
 	long_description=long_description,
-	long_description_content_type="text/markdown",
+	long_description_content_type="text/x-rst",
 	url="https://github.com/tigertv/secretpy",
 	packages=setuptools.find_packages(exclude=['tests','tests.*']),
 	test_suite='tests',
