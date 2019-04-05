@@ -102,6 +102,17 @@ Examples
 .. literalinclude:: ../examples/keyword-ex.py
 	:linenos:
 
+Playfair
+=============
+.. autoclass:: secretpy.Playfair
+	:members:
+
+Examples
+--------
+
+.. literalinclude:: ../examples/playfair.py
+	:linenos:
+
 Polybius
 =============
 .. autoclass:: secretpy.Polybius
