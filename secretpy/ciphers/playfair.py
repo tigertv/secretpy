@@ -42,8 +42,8 @@ class Playfair:
                 i = bcolumn
             b = alphabet[i][0]
         else:
-            a = alphabet[arow * 5 + bcolumn][0]
-            b = alphabet[brow * 5 + acolumn][0]
+            a = alphabet[arow * side + bcolumn][0]
+            b = alphabet[brow * side + acolumn][0]
         return a + b
 
     def __enc_two_letters(self, a, b, alphabet):
