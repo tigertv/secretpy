@@ -32,7 +32,8 @@ test3: setup.py
 	python3 setup.py test
 
 upload: 
-	python -m twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
+	python -m twine upload dist/*
+
 clean:
 	rm -rf dist build secretpy.egg-info 
 	find . -name "*.pyc" -type f -delete
