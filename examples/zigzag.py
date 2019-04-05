@@ -4,10 +4,10 @@
 from secretpy import Zigzag
 
 alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
-plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
+plaintext = u"thequickbrownfoxjumpsoverthelazydog"
 key = 3
 
-chipher = Zigzag();
+chipher = Zigzag()
 print(plaintext)
 
 enc = chipher.encrypt(plaintext, key, alphabet)
@@ -19,7 +19,7 @@ print(dec)
 
 print("----------------------------------")
 
-plaintext  = u"wearediscoveredfleeatonce"
+plaintext = u"wearediscoveredfleeatonce"
 
 print(plaintext)
 enc = chipher.encrypt(plaintext, key)
@@ -31,7 +31,7 @@ print(dec)
 
 print("----------------------------------")
 
-plaintext  = u"defendtheeastwallofthecastle"
+plaintext = u"defendtheeastwallofthecastle"
 key = 4
 
 print(plaintext)

@@ -3,12 +3,12 @@
 import os
 import setuptools 
 
-with open("README.md", "r") as fh:
+with open("README.rst", "r") as fh:
 	long_description = fh.read()
 
 setuptools.setup(
 	name="secretpy",
-	version="0.5.0",
+	version="0.6.0",
 	author="Max Vetrov",
 	author_email="maxvetrov555@yandex.ru",
 	description="Classic ciphers package",
@@ -24,7 +24,7 @@ setuptools.setup(
 	},
 	classifiers=[
 		'Development Status :: 3 - Alpha',
-		'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+		'License :: OSI Approved :: MIT License',
 		'Intended Audience :: Developers',
 		'Intended Audience :: Education',
 		'Intended Audience :: Science/Research',
@@ -34,10 +34,13 @@ setuptools.setup(
 		'Topic :: Software Development :: Libraries :: Python Modules',
 		'Topic :: Education',
 		'Operating System :: OS Independent',
-		'Programming Language :: Python :: 2',
 		'Programming Language :: Python :: 2.7',
-		'Programming Language :: Python :: 3',
+		'Programming Language :: Python :: 3.4',
+		'Programming Language :: Python :: 3.5',
 		'Programming Language :: Python :: 3.6',
+		'Programming Language :: Python :: 3.7',
+		'Programming Language :: Python :: Implementation :: CPython',
+		'Programming Language :: Python :: Implementation :: PyPy',
 	],
 	keywords="classic ciphers cipher secret",
 )

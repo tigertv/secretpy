@@ -4,10 +4,10 @@
 from secretpy import Vigenere
 
 alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
-plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
+plaintext = u"thequickbrownfoxjumpsoverthelazydog"
 key = u"kss"
 
-cipher = Vigenere();
+cipher = Vigenere()
 print(plaintext)
 
 enc = cipher.encrypt(plaintext, key, alphabet)
@@ -19,8 +19,8 @@ print(dec)
 
 print("----------------------------------")
 
-plaintext  = u"attackatdawn"
-key      = u"lemon"
+plaintext = u"attackatdawn"
+key = u"lemon"
 
 print(plaintext)
 enc = cipher.encrypt(plaintext, key)

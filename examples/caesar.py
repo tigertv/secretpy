@@ -5,7 +5,7 @@ from secretpy import Caesar
 from secretpy import alphabet
 
 alphabet = alphabet.GERMAN
-plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
+plaintext = u"thequickbrownfoxjumpsoverthelazydog"
 key = 3
 cipher = Caesar()
 

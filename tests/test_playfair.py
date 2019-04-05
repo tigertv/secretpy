@@ -1,15 +1,33 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import Polybius
+from secretpy import Playfair
 import unittest
 
 
-class TestPolybius(unittest.TestCase):
+class TestPlayfair(unittest.TestCase):
     alphabet = (
+        [
+            u"w", u"h", u"e", u"a", u"t",
+            u"s", u"o", u"n", u"b", u"c",
+            u"d", u"f", u"g", u"ij", u"k",
+            u"l", u"m", u"p", u"q", u"r",
+            u"u", u"v", u"x", u"y", u"z"
+        ],
+        [
+            u"p", u"l", u"a", u"y", u"f",
+            u"ij", u"r", u"e", u"x", u"m",
+            u"b", u"c", u"d", u"g", u"h",
+            u"k", u"n", u"o", u"q", u"s",
+            u"t", u"u", u"v", u"w", u"z",
+        ],
+    )
+
+    """
         [u"a", u"b", u"c", u"d", u"e", u"f", u"g", u"h", u"ij", u"k", u"l",
          u"m", u"n", u"o", u"p", u"q", u"r", u"s", u"t", u"u", u"v", u"w",
-         u"x", u"y", u"z"],
+        u"x", u"y", u"z"],
+
         [u"aä", u"b", u"c", u"d", u"e", u"f", u"g", u"h", u"ij", u"k", u"l",
          u"m", u"n", u"oö", u"p", u"q", u"r", u"sß", u"t", u"uü", u"v", u"w",
          u"x", u"y", u"z"],
@@ -40,6 +58,7 @@ class TestPolybius(unittest.TestCase):
             u"じづ"
         )
     )
+    """
 
     key = (
         u"",
@@ -49,29 +68,34 @@ class TestPolybius(unittest.TestCase):
         u"")
 
     plaintext = (
-        u"sometext",
+        u"idiocyoftenlookslikeintelligence",
+        u"hidethegoldinthetreestump",
+
         u"textnachtricht",
         u"unmensaiedetexto",
         u"текст",
         u"だやぎへぐゆぢ")
 
     ciphertext = (
-        u"4334321544155344",
+        u"kffbbzfmwaspnvcfdukdagcewpqdpnbsne",
+        u"bmodzbxdnabekudmuixmmouvif",
+
         u"4415534433111323444224132344",
         u"45333215334311241514154415534434",
         u"3616243536",
         u"44772358247845")
 
+    cipher = Playfair()
+
     def test_encrypt(self):
-        cipher = Polybius()
         for i, alphabet in enumerate(self.alphabet):
-            enc = cipher.encrypt(self.plaintext[i], self.key[i], alphabet)
+            enc = self.cipher.encrypt(self.plaintext[i], self.key[i], alphabet)
             self.assertEqual(enc, self.ciphertext[i])
 
     def test_decrypt(self):
-        cipher = Polybius()
         for i, alphabet in enumerate(self.alphabet):
-            dec = cipher.decrypt(self.ciphertext[i], self.key[i], alphabet)
+            dec = self.cipher.decrypt(self.ciphertext[i],
+                                      self.key[i], alphabet)
             self.assertEqual(dec, self.plaintext[i])
 
 

@@ -7,5 +7,5 @@ from .savespaces import SaveSpaces
 from .savecase import SaveCase
 
 __all__ = [
-	"UpperCase", "LowerCase", "NoSpaces", "SaveSpaces", "SaveCase",
+    "UpperCase", "LowerCase", "NoSpaces", "SaveSpaces", "SaveCase",
 ]

@@ -7,5 +7,5 @@ from .alphabet import *
 from .cmdecorators import *
 
 __all__ = [
-	"alphabet", "ciphers", "cmdecorators", "CompositeMachine", "CryptMachine", 
+    "alphabet", "ciphers", "cmdecorators", "CompositeMachine", "CryptMachine",
 ]

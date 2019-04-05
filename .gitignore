@@ -3,3 +3,6 @@
 build/
 dist/
 secretpy.egg-info/
+.project
+.pydevproject
+.settings/
