@@ -102,6 +102,17 @@ Examples
 .. literalinclude:: ../examples/keyword-ex.py
 	:linenos:
 
+Nihilist
+=============
+.. autoclass:: secretpy.Nihilist
+	:members:
+
+Examples
+--------
+
+.. literalinclude:: ../examples/nihilist.py
+	:linenos:
+
 Playfair
 =============
 .. autoclass:: secretpy.Playfair
