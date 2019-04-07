@@ -18,6 +18,7 @@ from .rot18 import Rot18
 from .rot47 import Rot47
 from .rot5 import Rot5
 from .trifid import Trifid
+from .vic import Vic
 from .vigenere import Vigenere
 from .zigzag import Zigzag
 
@@ -25,5 +26,6 @@ __all__ = [
     "ADFGX", "ADFGVX", "Affine", "Atbash", "Autokey",
     "Beaufort", "Bifid", "Caesar", "Keyword", "Nihilist",
     "SimpleSubstitution", "Playfair", "Polybius", "Rot13", "Rot18",
-    "Rot47", "Rot5", "Trifid", "Vigenere", "Zigzag",
+    "Rot47", "Rot5", "Trifid", "Vigenere", "Vic",
+    "Zigzag",
 ]

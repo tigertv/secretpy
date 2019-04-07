@@ -190,7 +190,6 @@ Examples
 .. literalinclude:: ../examples/simplesubstitution.py
 	:linenos:
 
-
 Trifid
 =============
 .. autoclass:: secretpy.Trifid
@@ -202,6 +201,16 @@ Examples
 .. literalinclude:: ../examples/trifid.py
 	:linenos:
 
+Vic
+=============
+.. autoclass:: secretpy.Vic
+	:members:
+
+Examples
+--------
+
+.. literalinclude:: ../examples/vic.py
+	:linenos:
 
 Vigenere
 =============
