@@ -102,6 +102,17 @@ Examples
 .. literalinclude:: ../examples/keyword-ex.py
 	:linenos:
 
+Nihilist
+=============
+.. autoclass:: secretpy.Nihilist
+	:members:
+
+Examples
+--------
+
+.. literalinclude:: ../examples/nihilist.py
+	:linenos:
+
 Playfair
 =============
 .. autoclass:: secretpy.Playfair
@@ -179,7 +190,6 @@ Examples
 .. literalinclude:: ../examples/simplesubstitution.py
 	:linenos:
 
-
 Trifid
 =============
 .. autoclass:: secretpy.Trifid
@@ -191,6 +201,27 @@ Examples
 .. literalinclude:: ../examples/trifid.py
 	:linenos:
 
+TwoSquare
+=============
+.. autoclass:: secretpy.TwoSquare
+	:members:
+
+Examples
+--------
+
+.. literalinclude:: ../examples/two_square.py
+	:linenos:
+
+Vic
+=============
+.. autoclass:: secretpy.Vic
+	:members:
+
+Examples
+--------
+
+.. literalinclude:: ../examples/vic.py
+	:linenos:
 
 Vigenere
 =============
