@@ -91,6 +91,17 @@ Examples
 	:language: python
 	:linenos:
 
+FourSquare
+=============
+.. autoclass:: secretpy.FourSquare
+	:members:
+
+Examples
+--------
+
+.. literalinclude:: ../examples/four_square.py
+	:linenos:
+
 Keyword
 =============
 .. autoclass:: secretpy.Keyword
