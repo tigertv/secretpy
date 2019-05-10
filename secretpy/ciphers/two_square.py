@@ -1,8 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-import math
-from collections import OrderedDict
+from .polybius_square import PolybiusSquare
 
 
 class TwoSquare:
@@ -10,37 +9,9 @@ class TwoSquare:
     The Two-Square Cipher
     """
 
-    def __find_index_in_alphabet(self, char, alphabet):
-        for j in range(len(alphabet)):
-            try:
-                alphabet[j].index(char)
-                break
-            except ValueError:
-                pass
-        return j
-
-    def __create_alphabet_by_key(self, alphabet, key):
-        keyi = []
-        for char in key:
-            index = self.__find_index_in_alphabet(char, alphabet)
-            keyi.append(index)
-
-        # remove dublicates
-        keyi = OrderedDict.fromkeys(keyi)
-        alph_out = []
-        for i in keyi:
-            alph_out.append(alphabet[i])
-
-        for i in range(len(alphabet)):
-            if i not in keyi:
-                alph_out.append(alphabet[i])
-
-        return alph_out
-
     def __enc(self, alphabet, text, key):
-        side = int(math.ceil(math.sqrt(len(alphabet))))
-        alphabet1 = self.__create_alphabet_by_key(alphabet, key[0])
-        alphabet2 = self.__create_alphabet_by_key(alphabet, key[1])
+        square1 = PolybiusSquare(alphabet, key[0])
+        square2 = PolybiusSquare(alphabet, key[1])
 
         # text encryption
         if len(text) % 2:
@@ -50,20 +21,20 @@ class TwoSquare:
         enc = u""
 
         for i in range(len(even)):
-            index1 = self.__find_index_in_alphabet(even[i], alphabet1)
-            row1 = int(index1 / side)
-            column1 = index1 % side
+            coords = square1.get_coordinates(even[i])
+            row1 = coords[0]
+            column1 = coords[1]
 
-            index2 = self.__find_index_in_alphabet(odd[i], alphabet2)
-            row2 = int(index2 / side)
-            column2 = index2 % side
+            coords = square2.get_coordinates(odd[i])
+            row2 = coords[0]
+            column2 = coords[1]
 
             if column1 == column2:
-                enc += alphabet1[row2 * side + column1][0]
-                enc += alphabet2[row1 * side + column1][0]
+                enc += square1.get_char(row2, column1)
+                enc += square2.get_char(row1, column1)
             else:
-                enc += alphabet1[row1 * side + column2][0]
-                enc += alphabet2[row2 * side + column1][0]
+                enc += square1.get_char(row1, column2)
+                enc += square2.get_char(row2, column1)
         return enc
 
     def encrypt(self, text, key=None, alphabet=None):

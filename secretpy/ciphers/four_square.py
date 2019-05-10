@@ -1,8 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-import math
-from collections import OrderedDict
+from .polybius_square import PolybiusSquare
 
 
 class FourSquare:
@@ -10,37 +9,10 @@ class FourSquare:
     The Four-Square Cipher
     """
 
-    def __find_index_in_alphabet(self, char, alphabet):
-        for j in range(len(alphabet)):
-            try:
-                alphabet[j].index(char)
-                break
-            except ValueError:
-                pass
-        return j
-
-    def __create_alphabet_by_key(self, alphabet, key):
-        keyi = []
-        for char in key:
-            index = self.__find_index_in_alphabet(char, alphabet)
-            keyi.append(index)
-
-        # remove dublicates
-        keyi = OrderedDict.fromkeys(keyi)
-        alph_out = []
-        for i in keyi:
-            alph_out.append(alphabet[i])
-
-        for i in range(len(alphabet)):
-            if i not in keyi:
-                alph_out.append(alphabet[i])
-
-        return alph_out
-
     def __enc(self, alphabet, text, key, isEncrypt):
-        side = int(math.ceil(math.sqrt(len(alphabet))))
-        alphabet01 = self.__create_alphabet_by_key(alphabet, key[0])
-        alphabet10 = self.__create_alphabet_by_key(alphabet, key[1])
+        square01 = PolybiusSquare(alphabet, key[0])
+        square10 = PolybiusSquare(alphabet, key[1])
+        square = PolybiusSquare(alphabet, "")
 
         # text encryption
         if len(text) % 2:
@@ -50,28 +22,28 @@ class FourSquare:
         enc = u""
         if isEncrypt:
             for i in range(len(even)):
-                index00 = self.__find_index_in_alphabet(even[i], alphabet)
-                row00 = int(index00 / side)
-                column00 = index00 % side
+                coords = square.get_coordinates(even[i])
+                row00 = coords[0]
+                column00 = coords[1]
 
-                index11 = self.__find_index_in_alphabet(odd[i], alphabet)
-                row11 = int(index11 / side)
-                column11 = index11 % side
+                coords = square.get_coordinates(odd[i])
+                row11 = coords[0]
+                column11 = coords[1]
 
-                enc += alphabet01[row00 * side + column11][0]
-                enc += alphabet10[row11 * side + column00][0]
+                enc += square01.get_char(row00, column11)
+                enc += square10.get_char(row11, column00)
         else:
             for i in range(len(even)):
-                index00 = self.__find_index_in_alphabet(even[i], alphabet01)
-                row00 = int(index00 / side)
-                column00 = index00 % side
+                coords = square01.get_coordinates(even[i])
+                row00 = coords[0]
+                column00 = coords[1]
 
-                index11 = self.__find_index_in_alphabet(odd[i], alphabet10)
-                row11 = int(index11 / side)
-                column11 = index11 % side
+                coords = square10.get_coordinates(odd[i])
+                row11 = coords[0]
+                column11 = coords[1]
 
-                enc += alphabet[row00 * side + column11][0]
-                enc += alphabet[row11 * side + column00][0]
+                enc += square.get_char(row00, column11)
+                enc += square.get_char(row11, column00)
         return enc
 
     def encrypt(self, text, key=None, alphabet=None):

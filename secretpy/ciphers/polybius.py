@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-import math
+from .polybius_square import PolybiusSquare
 
 
 class Polybius:
@@ -9,48 +9,23 @@ class Polybius:
     The Polybius Cipher
     """
 
-    def __enc(self, alphabet, text, key):
-        square = None
-        if key is not None:
-            ''' form square using key '''
-            key2 = {}
-            for k in key:
-                key2[k] = True
-            for item in alphabet:
-                square = []
-            square = alphabet
+    def __encDec(self, alphabet, text, key, isEncrypt=True):
+        square = PolybiusSquare(alphabet, key)
+        res = ""
+        header = range(1, square.get_columns() + 1)
+        header = "".join(map(str, header))
+        if isEncrypt:
+            for char in text:
+                coords = square.get_coordinates(char)
+                row = coords[0]
+                column = coords[1]
+                res += header[row] + header[column]
         else:
-            square = alphabet
-
-        ans0 = ""
-        size = int(math.ceil(math.sqrt(len(square))))
-        header = range(1, (size+1))
-        header = "".join(map(str, header))
-        for i in range(len(text)):
-            char = text[i]
-            for j in range(len(square)):
-                try:
-                    square[j].index(char)
-                    break
-                except ValueError:
-                    pass
-            row = int(j/size)
-            column = j % size
-            ans0 += header[row] + header[column]
-        return ans0
-
-    def __dec(self, alphabet, text, key):
-        dec = ""
-        size = len(text)
-        side = int(math.ceil(math.sqrt(len(alphabet))))
-        header = range(1, side + 1)
-        header = "".join(map(str, header))
-        for i in range(size >> 1):
-            row = header.index(text[i*2])
-            column = header.index(text[i*2+1])
-            index = row*side + column
-            dec += alphabet[index][0]
-        return dec
+            for i in range(0, len(text), 2):
+                row = header.index(text[i])
+                column = header.index(text[i+1])
+                res += square.get_char(row, column)
+        return res
 
     def encrypt(self, text, key=None, alphabet=None):
         """
@@ -73,7 +48,7 @@ class Polybius:
             u"q", u"r", u"s", u"t", u"u",
             u"v", u"w", u"x", u"y", u"z"
         )
-        return self.__enc(alphabet, text, key)
+        return self.__encDec(alphabet, text, key, True)
 
     def decrypt(self, text, key=None, alphabet=None):
         """
@@ -96,4 +71,4 @@ class Polybius:
             u"q", u"r", u"s", u"t", u"u",
             u"v", u"w", u"x", u"y", u"z"
         )
-        return self.__dec(alphabet, text, key)
+        return self.__encDec(alphabet, text, key, False)
