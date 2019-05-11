@@ -24,13 +24,10 @@ from .vic import Vic
 from .vigenere import Vigenere
 from .zigzag import Zigzag
 
-from .polybius_square import PolybiusSquare
-
 __all__ = [
     "ADFGX", "ADFGVX", "Affine", "Atbash", "Autokey",
     "Beaufort", "Bifid", "Caesar", "FourSquare", "Keyword",
     "Nihilist", "SimpleSubstitution", "Playfair", "Polybius", "Rot13",
     "Rot18", "Rot47", "Rot5", "Trifid", "TwoSquare",
     "Vigenere", "Vic", "Zigzag",
-    "PolybiusSquare",
 ]
