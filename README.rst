@@ -37,7 +37,7 @@ SecretPy is a cryptographic Python package. It uses the following classical ciph
 - Trifid
 - Two-Square, Four-Square
 - Vic
-- Vigenere
+- Vigenere, Gronsfeld
 - Zigzag
 
 Installation

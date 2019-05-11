@@ -9,6 +9,7 @@ from .beaufort import Beaufort
 from .bifid import Bifid
 from .caesar import Caesar
 from .four_square import FourSquare
+from .gronsfeld import Gronsfeld
 from .keyword import Keyword
 from .nihilist import Nihilist
 from .simplesubstitution import SimpleSubstitution
@@ -26,8 +27,8 @@ from .zigzag import Zigzag
 
 __all__ = [
     "ADFGX", "ADFGVX", "Affine", "Atbash", "Autokey",
-    "Beaufort", "Bifid", "Caesar", "FourSquare", "Keyword",
-    "Nihilist", "SimpleSubstitution", "Playfair", "Polybius", "Rot13",
-    "Rot18", "Rot47", "Rot5", "Trifid", "TwoSquare",
-    "Vigenere", "Vic", "Zigzag",
+    "Beaufort", "Bifid", "Caesar", "FourSquare", "Gronsfeld",
+    "Keyword", "Nihilist", "SimpleSubstitution", "Playfair", "Polybius",
+    "Rot13", "Rot18", "Rot47", "Rot5", "Trifid",
+    "TwoSquare", "Vigenere", "Vic", "Zigzag",
 ]

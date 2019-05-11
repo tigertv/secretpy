@@ -102,6 +102,17 @@ Examples
 .. literalinclude:: ../examples/four_square.py
 	:linenos:
 
+Gronsfeld
+=============
+.. autoclass:: secretpy.Gronsfeld
+	:members:
+
+Examples
+--------
+
+.. literalinclude:: ../examples/gronsfeld.py
+	:linenos:
+	
 Keyword
 =============
 .. autoclass:: secretpy.Keyword
