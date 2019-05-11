@@ -57,6 +57,17 @@ Examples
 .. literalinclude:: ../examples/autokey.py
 	:linenos:
 
+Bazeries
+=============
+.. autoclass:: secretpy.Bazeries
+	:members:
+
+Examples
+--------
+
+.. literalinclude:: ../examples/bazeries.py
+	:linenos:
+	
 Beaufort
 =============
 .. autoclass:: secretpy.Beaufort

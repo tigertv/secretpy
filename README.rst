@@ -25,7 +25,8 @@ SecretPy is a cryptographic Python package. It uses the following classical ciph
 - Affine
 - Atbash
 - Autokey
-- Beaufort 
+- Bazeries
+- Beaufort
 - Bifid
 - Caesar
 - Keyword

@@ -5,6 +5,7 @@ from .adfgvx import ADFGVX
 from .affine import Affine
 from .atbash import Atbash
 from .autokey import Autokey
+from .bazeries import Bazeries
 from .beaufort import Beaufort
 from .bifid import Bifid
 from .caesar import Caesar
@@ -27,8 +28,8 @@ from .zigzag import Zigzag
 
 __all__ = [
     "ADFGX", "ADFGVX", "Affine", "Atbash", "Autokey",
-    "Beaufort", "Bifid", "Caesar", "FourSquare", "Gronsfeld",
-    "Keyword", "Nihilist", "SimpleSubstitution", "Playfair", "Polybius",
-    "Rot13", "Rot18", "Rot47", "Rot5", "Trifid",
-    "TwoSquare", "Vigenere", "Vic", "Zigzag",
+    "Bazeries", "Beaufort", "Bifid", "Caesar", "FourSquare",
+    "Gronsfeld", "Keyword", "Nihilist", "SimpleSubstitution", "Playfair",
+    "Polybius", "Rot13", "Rot18", "Rot47", "Rot5",
+    "Trifid", "TwoSquare", "Vigenere", "Vic", "Zigzag",
 ]
