@@ -11,7 +11,7 @@ setuptools.setup(
     version="0.7.0",
     author="Max Vetrov",
     author_email="maxvetrov555@yandex.ru",
-    description="Classic ciphers package",
+    description="Classical ciphers",
     long_description=long_description,
     long_description_content_type="text/x-rst",
     url="https://github.com/tigertv/secretpy",
