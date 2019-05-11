@@ -31,11 +31,10 @@ SecretPy is a cryptographic Python package. It uses the following classical ciph
 - Keyword
 - Nihilist
 - Simple Substitution
-- Playfair
+- Playfair, Two-Square(Double Playfair), Four-Square
 - Polybius
 - Rot13, Rot5, Rot18, Rot47
 - Trifid
-- Two-Square, Four-Square
 - Vic
 - Vigenere, Gronsfeld
 - Zigzag(Railfence)
