@@ -102,7 +102,7 @@ Examples
 	:language: python
 	:linenos:
 
-FourSquare
+Four Square
 =============
 .. autoclass:: secretpy.FourSquare
 	:members:
@@ -223,6 +223,17 @@ Examples
 .. literalinclude:: ../examples/simplesubstitution.py
 	:linenos:
 
+Three Square
+=============
+.. autoclass:: secretpy.ThreeSquare
+	:members:
+
+Examples
+--------
+
+.. literalinclude:: ../examples/three_square.py
+	:linenos:
+
 Trifid
 =============
 .. autoclass:: secretpy.Trifid
@@ -234,7 +245,7 @@ Examples
 .. literalinclude:: ../examples/trifid.py
 	:linenos:
 
-TwoSquare
+Two Square
 =============
 .. autoclass:: secretpy.TwoSquare
 	:members:
