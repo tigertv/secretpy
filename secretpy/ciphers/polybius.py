@@ -27,7 +27,7 @@ class Polybius:
                 res += square.get_char(row, column)
         return res
 
-    def encrypt(self, text, key=None, alphabet=None):
+    def encrypt(self, text, key="", alphabet=None):
         """
         Encryption method
 
@@ -50,7 +50,7 @@ class Polybius:
         )
         return self.__encDec(alphabet, text, key, True)
 
-    def decrypt(self, text, key=None, alphabet=None):
+    def decrypt(self, text, key="", alphabet=None):
         """
         Decryption method
 

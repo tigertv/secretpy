@@ -102,7 +102,7 @@ class Playfair:
             dec = dec[:-1]
         return dec
 
-    def encrypt(self, text, key=None, alphabet=None):
+    def encrypt(self, text, key="", alphabet=None):
         """
         Encryption method
 
@@ -125,7 +125,7 @@ class Playfair:
         ]
         return self.__enc(alphabet, text, key)
 
-    def decrypt(self, text, key=None, alphabet=None):
+    def decrypt(self, text, key="", alphabet=None):
         """
         Decryption method
 
