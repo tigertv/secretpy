@@ -6,7 +6,7 @@ from secretpy import Caesar
 
 from secretpy import CryptMachine
 from secretpy.cmdecorators import UpperCase, SaveSpaces, NoSpaces
-from secretpy import alphabet
+from secretpy import alphabets
 
 
 def encdec(machine, plaintext):
@@ -25,7 +25,7 @@ cipher = Caesar()
 cm = CryptMachine(cipher, key)
 encdec(cm, plaintext)
 
-cm.set_alphabet(alphabet.GERMAN)
+cm.set_alphabet(alphabets.GERMAN)
 encdec(cm, plaintext)
 
 cm = SaveSpaces(cm)

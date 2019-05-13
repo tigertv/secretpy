@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 from ..abstractmachine import AbstractCryptMachine
-from secretpy import alphabet
+from secretpy import alphabets
 
 
 class AbstractMachineDecorator(AbstractCryptMachine):
@@ -12,7 +12,7 @@ class AbstractMachineDecorator(AbstractCryptMachine):
     def set_key(self, key):
         self._machine.set_key(key)
 
-    def set_alphabet(self, alphabet=alphabet.ENGLISH):
+    def set_alphabet(self, alphabet=alphabets.ENGLISH):
         self._machine.set_alphabet(alphabet)
 
     def set_cipher(self, cipher):

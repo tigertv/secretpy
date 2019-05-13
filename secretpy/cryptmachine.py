@@ -1,11 +1,11 @@
 #!/usr/bin/python
 
 from .abstractmachine import AbstractCryptMachine
-from secretpy import alphabet
+from secretpy import alphabets
 
 
 class CryptMachine(AbstractCryptMachine):
-    def __init__(self, cipher, key=None, alphabet=alphabet.ENGLISH):
+    def __init__(self, cipher, key=None, alphabet=alphabets.ENGLISH):
         self.__alphabet = alphabet
         self.__key = key or ""
         self.__cipher = cipher
@@ -13,7 +13,7 @@ class CryptMachine(AbstractCryptMachine):
     def set_key(self, key):
         self.__key = key
 
-    def set_alphabet(self, alphabet=alphabet.ENGLISH):
+    def set_alphabet(self, alphabet=alphabets.ENGLISH):
         self.__alphabet = alphabet
 
     def set_cipher(self, cipher):

@@ -3,7 +3,7 @@
 
 from secretpy import Rot18
 from unittest import TestCase, main
-from secretpy import alphabet
+from secretpy import alphabets
 
 
 class TestRot18(TestCase):
@@ -22,11 +22,11 @@ class TestRot18(TestCase):
         u"hnñnvañgvrnr67890tñgbf",
     )
 
-    alphabets = (
-        alphabet.ENGLISH,
-        alphabet.RUSSIAN,
-        alphabet.GERMAN,
-        alphabet.SPANISH,
+    alphabet = (
+        alphabets.ENGLISH,
+        alphabets.RUSSIAN,
+        alphabets.GERMAN,
+        alphabets.SPANISH,
     )
 
     def setUp(self):
@@ -34,13 +34,13 @@ class TestRot18(TestCase):
 
     def test_encrypt(self):
         for i, plaintext in enumerate(self.plaintext):
-            enc = self.cipher.encrypt(plaintext, alphabet=self.alphabets[i])
+            enc = self.cipher.encrypt(plaintext, alphabet=self.alphabet[i])
             self.assertEqual(enc, self.ciphertext[i])
 
     def test_decrypt(self):
         for i, plaintext in enumerate(self.plaintext):
             dec = self.cipher.decrypt(
-                self.ciphertext[i], alphabet=self.alphabets[i])
+                self.ciphertext[i], alphabet=self.alphabet[i])
             self.assertEqual(dec, plaintext)
 
 

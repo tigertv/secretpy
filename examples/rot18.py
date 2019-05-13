@@ -4,7 +4,7 @@
 from secretpy import Rot18
 from secretpy import CryptMachine
 from secretpy.cmdecorators import SaveCase, SaveSpaces, UpperCase
-from secretpy import alphabet
+from secretpy import alphabets
 
 
 def encdec(machine, plaintext):
@@ -21,14 +21,14 @@ cm = SaveCase(SaveSpaces(CryptMachine(Rot18())))
 plaintext = u"The man has 536 dogs"
 encdec(cm, plaintext)
 
-plaintext = alphabet.RUSSIAN + alphabet.DECIMAL
-cm.set_alphabet(alphabet.RUSSIAN)
+plaintext = alphabets.RUSSIAN + alphabets.DECIMAL
+cm.set_alphabet(alphabets.RUSSIAN)
 encdec(cm, plaintext)
 
 plaintext = u"У человека 536 собак"
 encdec(cm, plaintext)
 
-plaintext = alphabet.GREEK + " " + alphabet.DECIMAL
+plaintext = alphabets.GREEK + " " + alphabets.DECIMAL
 cm = UpperCase(cm)
-cm.set_alphabet(alphabet.GREEK)
+cm.set_alphabet(alphabets.GREEK)
 encdec(cm, plaintext)

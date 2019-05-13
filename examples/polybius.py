@@ -4,7 +4,7 @@
 from secretpy import Polybius
 from secretpy import CryptMachine
 from secretpy.cmdecorators import LowerCase
-import secretpy.alphabet as alph
+import secretpy.alphabets as alph
 
 
 def encdec(machine, plaintext):

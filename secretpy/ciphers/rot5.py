@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 from .rot13 import Rot13
-import secretpy.alphabet as al
+import secretpy.alphabets as al
 
 
 class Rot5:

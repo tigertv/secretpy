@@ -3,7 +3,7 @@
 
 from secretpy import Atbash
 from secretpy import CryptMachine
-from secretpy import alphabet
+from secretpy import alphabets
 import secretpy.cmdecorators as md
 
 
@@ -23,16 +23,16 @@ plaintext = u"attackatdawn"
 encdec(cm, plaintext)
 
 plaintext = u"במקום"
-cm.set_alphabet(alphabet.HEBREW)
+cm.set_alphabet(alphabets.HEBREW)
 encdec(cm, plaintext)
 
 plaintext = u"The Fox jumps in Zoo too Achtung minen"
-cm.set_alphabet(alphabet.GERMAN)
+cm.set_alphabet(alphabets.GERMAN)
 encdec(cm, plaintext)
 
 plaintext = u"Achtung Minen"
 encdec(cm, plaintext)
 
-cm.set_alphabet(alphabet.ARABIC)
+cm.set_alphabet(alphabets.ARABIC)
 plaintext = u"قط"
 encdec(cm, plaintext)
