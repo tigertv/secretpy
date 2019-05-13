@@ -2,8 +2,9 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import Vigenere
+from secretpy import alphabets
 
-alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
+alphabet = alphabets.GERMAN
 plaintext = u"thequickbrownfoxjumpsoverthelazydog"
 key = u"kss"
 
@@ -27,3 +28,13 @@ enc = cipher.encrypt(plaintext, key)
 print(enc)
 dec = cipher.decrypt(enc, key)
 print(dec)
+
+'''
+thequickbrownfoxjumpsoverthelazydog
+ßzwäiämütöckxxcdöiwdgyjwöhzoßsfmvyy
+thequickbrownfoxjumpsoverthelazydog
+----------------------------------
+attackatdawn
+lxfopvefrnhr
+attackatdawn
+'''

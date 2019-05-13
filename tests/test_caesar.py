@@ -2,35 +2,17 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import Caesar
+from secretpy import alphabets
 import unittest
 
 
 class TestCaesar(unittest.TestCase):
     alphabet = (
-        u"abcdefghijklmnopqrstuvwxyz",
-        u"абвгдеёжзийклмнопрстуфхцчшщъыьэюя",
-        u"abcdefghijklmnopqrstuvwxyzäöüß",
-        u"abcdefghijklmnñopqrstuvwxyz",
-        (
-            u"あいうえお"
-            u"かきくけこ"
-            u"がぎぐげご"
-            u"さしすせそ"
-            u"ざじずぜぞ"
-            u"たちつてと"
-            u"だぢづでど"
-            u"なにぬねの"
-            u"はひふへほ"
-            u"ばびぶべぼ"
-            u"ぱぴぷぺぽ"
-            u"まみむめも"
-            u"やゆよ"
-            u"らりるれろ"
-            u"わを"
-            u"ん"
-            u"ゃゅょぁぇ"
-            u"じづ"
-        )
+        alphabets.ENGLISH,
+        alphabets.RUSSIAN,
+        alphabets.GERMAN,
+        alphabets.SPANISH,
+        alphabets.JAPANESE_HIRAGANA
     )
 
     key = (-3, 3, 3, 3, 3)

@@ -30,6 +30,13 @@ alphabet = [
     u"h", u"a", u"q",
 ]
 
-plaintext = u"defendtheeastwallofthecastle."
+plaintext = u"defendtheeastwallofthecastle"
 cm.set_alphabet(alphabet)
 encdec(cm, plaintext)
+
+'''
+defendtheeastwallofthecastle
+suefecphsegyyjiximfofocejlrf
+defendtheeastwallofthecastle
+----------------------------------
+'''

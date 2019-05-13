@@ -2,8 +2,9 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import Keyword
+from secretpy import alphabets
 
-alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
+alphabet = alphabets.GERMAN
 plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
 key = "queenly"
 

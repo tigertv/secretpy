@@ -8,6 +8,13 @@ from secretpy import alphabets
 
 class TestRot18(TestCase):
 
+    alphabet = (
+        alphabets.ENGLISH,
+        alphabets.RUSSIAN,
+        alphabets.GERMAN,
+        alphabets.SPANISH,
+    )
+
     plaintext = (
         u"agirlhas12345cats",
         u"удевочки12345кошек",
@@ -20,13 +27,6 @@ class TestRot18(TestCase):
         u"гфхтяжыщ67890ыязхы",
         u"txüölsrwtüwpe67890zpekt",
         u"hnñnvañgvrnr67890tñgbf",
-    )
-
-    alphabet = (
-        alphabets.ENGLISH,
-        alphabets.RUSSIAN,
-        alphabets.GERMAN,
-        alphabets.SPANISH,
     )
 
     def setUp(self):
