@@ -9,13 +9,6 @@ import unittest
 class TestTwoSquare(unittest.TestCase):
     alphabet = (
         alphabets.ENGLISH_SQUARE_IJ,
-        (
-            u"p", u"l", u"a", u"y", u"f",
-            u"ij", u"r", u"e", u"x", u"m",
-            u"b", u"c", u"d", u"g", u"h",
-            u"k", u"n", u"o", u"q", u"s",
-            u"t", u"u", u"v", u"w", u"z",
-        ),
         alphabets.GERMAN_SQUARE,
         alphabets.SPANISH_SQUARE,
         alphabets.RUSSIAN_SQUARE,
@@ -23,7 +16,6 @@ class TestTwoSquare(unittest.TestCase):
     )
 
     key = (
-        (u"example", u"keyword"),
         (u"example", u"keyword"),
         (u"mein", u"schlüssel"),
         (u"mis", u"llaves"),
@@ -33,7 +25,6 @@ class TestTwoSquare(unittest.TestCase):
 
     plaintext = (
         u"helpmeobiwankenobi",
-        u"hidethegoldinthetreestumps",
         u"textnachtricht",
         u"unmensaiedetexto",
         u"текстздесь",
@@ -42,7 +33,6 @@ class TestTwoSquare(unittest.TestCase):
 
     ciphertext = (
         u"xgcmxwsrkyxphwpldg",
-        u"cbcyvcxcqpcxugcolsxknzwiez",
         u"qdzqeddctrehpo",
         u"otaloeimedgqxdpr",
         u"рзгцкржгрэ",
