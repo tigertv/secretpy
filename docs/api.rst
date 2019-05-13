@@ -101,6 +101,18 @@ Examples
 .. literalinclude:: ../examples/caesar.py
 	:language: python
 	:linenos:
+	
+Caesar Progressive
+===================
+.. autoclass:: secretpy.CaesarProgressive
+	:members:
+
+Examples
+--------
+
+.. literalinclude:: ../examples/caesar_progressive.py
+	:language: python
+	:linenos:
 
 Four Square
 =============

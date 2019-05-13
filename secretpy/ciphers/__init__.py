@@ -9,6 +9,7 @@ from .bazeries import Bazeries
 from .beaufort import Beaufort
 from .bifid import Bifid
 from .caesar import Caesar
+from .caesar_progressive import CaesarProgressive
 from .four_square import FourSquare
 from .gronsfeld import Gronsfeld
 from .keyword import Keyword
@@ -29,9 +30,9 @@ from .zigzag import Zigzag
 
 __all__ = [
     "ADFGX", "ADFGVX", "Affine", "Atbash", "Autokey",
-    "Bazeries", "Beaufort", "Bifid", "Caesar", "FourSquare",
-    "Gronsfeld", "Keyword", "Nihilist", "SimpleSubstitution", "Playfair",
-    "Polybius", "Rot13", "Rot18", "Rot47", "Rot5",
-    "ThreeSquare", "Trifid", "TwoSquare", "Vigenere", "Vic",
-    "Zigzag",
+    "Bazeries", "Beaufort", "Bifid", "Caesar", "CaesarProgressive",
+    "FourSquare", "Gronsfeld", "Keyword", "Nihilist", "SimpleSubstitution",
+    "Playfair", "Polybius", "Rot13", "Rot18", "Rot47",
+    "Rot5", "ThreeSquare", "Trifid", "TwoSquare", "Vigenere",
+    "Vic", "Zigzag",
 ]
