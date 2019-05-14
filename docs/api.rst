@@ -114,6 +114,17 @@ Examples
 	:language: python
 	:linenos:
 
+Columnar Transposition
+=======================
+.. autoclass:: secretpy.ColumnarTransposition
+	:members:
+
+Examples
+--------
+
+.. literalinclude:: ../examples/columnar_transposition.py
+	:linenos:
+	
 Four Square
 =============
 .. autoclass:: secretpy.FourSquare
