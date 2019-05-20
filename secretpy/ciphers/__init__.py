@@ -16,6 +16,7 @@ from .gronsfeld import Gronsfeld
 from .keyword import Keyword
 from .nihilist import Nihilist
 from .simplesubstitution import SimpleSubstitution
+from .porta import Porta
 from .playfair import Playfair
 from .polybius import Polybius
 from .rot13 import Rot13
@@ -33,7 +34,7 @@ __all__ = [
     "ADFGX", "ADFGVX", "Affine", "Atbash", "Autokey",
     "Bazeries", "Beaufort", "Bifid", "Caesar", "CaesarProgressive",
     "ColumnarTransposition", "FourSquare", "Gronsfeld", "Keyword", "Nihilist",
-    "SimpleSubstitution", "Playfair", "Polybius", "Rot13", "Rot18",
-    "Rot47", "Rot5", "ThreeSquare", "Trifid", "TwoSquare",
-    "Vigenere", "Vic", "Zigzag",
+    "SimpleSubstitution", "Playfair", "Porta", "Polybius", "Rot13",
+    "Rot18", "Rot47", "Rot5", "ThreeSquare", "Trifid",
+    "TwoSquare", "Vigenere", "Vic", "Zigzag",
 ]

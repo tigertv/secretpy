@@ -38,7 +38,7 @@ SecretPy is a cryptographic Python package. It uses the following classical ciph
 - Rot13, Rot5, Rot18, Rot47
 - Trifid
 - Vic
-- Vigenere, Gronsfeld
+- Vigenere, Gronsfeld, Porta
 - Zigzag(Railfence)
 
 Installation

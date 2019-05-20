@@ -191,6 +191,17 @@ Examples
 .. literalinclude:: ../examples/polybius.py
 	:linenos:
 
+Porta
+=============
+.. autoclass:: secretpy.Porta
+	:members:
+
+Examples
+--------
+
+.. literalinclude:: ../examples/porta.py
+	:linenos:
+	
 Rot13
 =============
 .. autoclass:: secretpy.Rot13
