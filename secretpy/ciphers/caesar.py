@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-import secretpy.alphabet as al
+import secretpy.alphabets as al
 
 
 class Caesar:

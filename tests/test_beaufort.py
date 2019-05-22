@@ -2,35 +2,17 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import Beaufort
+from secretpy import alphabets
 import unittest
 
 
 class TestBeaufort(unittest.TestCase):
     alphabet = (
-        u"abcdefghijklmnopqrstuvwxyz",
-        u"abcdefghijklmnopqrstuvwxyzäöüß",
-        u"abcdefghijklmnñopqrstuvwxyz",
-        u"абвгдеёжзийклмнопрстуфхцчшщъыьэюя",
-        (
-            u"あいうえお"
-            u"かきくけこ"
-            u"がぎぐげご"
-            u"さしすせそ"
-            u"ざじずぜぞ"
-            u"たちつてと"
-            u"だぢづでど"
-            u"なにぬねの"
-            u"はひふへほ"
-            u"ばびぶべぼ"
-            u"ぱぴぷぺぽ"
-            u"まみむめも"
-            u"やゆよ"
-            u"らりるれろ"
-            u"わを"
-            u"ん"
-            u"ゃゅょぁぇ"
-            u"じづ"
-        )
+        alphabets.ENGLISH,
+        alphabets.GERMAN,
+        alphabets.SPANISH,
+        alphabets.RUSSIAN,
+        alphabets.JAPANESE_HIRAGANA
     )
 
     key = (

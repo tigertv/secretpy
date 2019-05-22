@@ -2,8 +2,9 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import Affine
+from secretpy import alphabets
 
-alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
+alphabet = alphabets.GERMAN
 plaintext = u"thequickbrownfoxjumpsoverthelazydog"
 key = [7, 8]
 
@@ -28,3 +29,13 @@ enc = cipher.encrypt(plaintext, key)
 print(enc)
 dec = cipher.decrypt(enc, key)
 print(dec)
+
+"""
+thequickbrownfoxjumpsoverthelazydog
+vögaüewsphqmjnqtlücxoqfghvögzidäßqu
+thequickbrownfoxjumpsoverthelazydog
+----------------------------------
+attackatdawn
+ejjekiejnesr
+attackatdawn
+"""

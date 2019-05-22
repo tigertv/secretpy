@@ -3,6 +3,7 @@
 
 from secretpy import CryptMachine
 from secretpy import Beaufort
+from secretpy import alphabets
 
 plaintext = u"helloworld"
 key = "key"
@@ -17,7 +18,7 @@ print(dec)
 
 print("-----------------------------------")
 
-alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
+alphabet = alphabets.GERMAN
 cm.set_alphabet(alphabet)
 
 print(plaintext)
@@ -25,3 +26,13 @@ enc = cm.encrypt(plaintext)
 print(enc)
 dec = cm.decrypt(enc)
 print(dec)
+
+'''
+helloworld
+danzqcwnnh
+helloworld
+-----------------------------------
+helloworld
+danßucärnh
+helloworld
+'''

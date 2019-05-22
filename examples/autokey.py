@@ -2,8 +2,9 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import Autokey
+from secretpy import alphabets
 
-alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
+alphabet = alphabets.GERMAN
 plaintext = u"thequickbrownfoxjumpsoverthelazydog"
 key = "queenly"
 
@@ -27,3 +28,13 @@ enc = cipher.encrypt(plaintext, key)
 print(enc)
 dec = cipher.decrypt(enc, key)
 print(dec)
+
+'''
+thequickbrownfoxjumpsoverthelazydog
+föiudtäßivamvhyyäeeüxüonhbwwzvßlwvk
+thequickbrownfoxjumpsoverthelazydog
+----------------------------------
+attackatdawn
+qnxepvytwtwp
+attackatdawn
+'''

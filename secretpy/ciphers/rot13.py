@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 from .caesar import Caesar
-import secretpy.alphabet as al
+import secretpy.alphabets as al
 
 
 class Rot13:

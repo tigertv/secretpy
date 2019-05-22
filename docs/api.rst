@@ -57,6 +57,17 @@ Examples
 .. literalinclude:: ../examples/autokey.py
 	:linenos:
 
+Bazeries
+=============
+.. autoclass:: secretpy.Bazeries
+	:members:
+
+Examples
+--------
+
+.. literalinclude:: ../examples/bazeries.py
+	:linenos:
+	
 Beaufort
 =============
 .. autoclass:: secretpy.Beaufort
@@ -90,7 +101,52 @@ Examples
 .. literalinclude:: ../examples/caesar.py
 	:language: python
 	:linenos:
+	
+Caesar Progressive
+===================
+.. autoclass:: secretpy.CaesarProgressive
+	:members:
 
+Examples
+--------
+
+.. literalinclude:: ../examples/caesar_progressive.py
+	:language: python
+	:linenos:
+
+Columnar Transposition
+=======================
+.. autoclass:: secretpy.ColumnarTransposition
+	:members:
+
+Examples
+--------
+
+.. literalinclude:: ../examples/columnar_transposition.py
+	:linenos:
+	
+Four Square
+=============
+.. autoclass:: secretpy.FourSquare
+	:members:
+
+Examples
+--------
+
+.. literalinclude:: ../examples/four_square.py
+	:linenos:
+
+Gronsfeld
+=============
+.. autoclass:: secretpy.Gronsfeld
+	:members:
+
+Examples
+--------
+
+.. literalinclude:: ../examples/gronsfeld.py
+	:linenos:
+	
 Keyword
 =============
 .. autoclass:: secretpy.Keyword
@@ -135,6 +191,17 @@ Examples
 .. literalinclude:: ../examples/polybius.py
 	:linenos:
 
+Porta
+=============
+.. autoclass:: secretpy.Porta
+	:members:
+
+Examples
+--------
+
+.. literalinclude:: ../examples/porta.py
+	:linenos:
+	
 Rot13
 =============
 .. autoclass:: secretpy.Rot13
@@ -190,6 +257,17 @@ Examples
 .. literalinclude:: ../examples/simplesubstitution.py
 	:linenos:
 
+Three Square
+=============
+.. autoclass:: secretpy.ThreeSquare
+	:members:
+
+Examples
+--------
+
+.. literalinclude:: ../examples/three_square.py
+	:linenos:
+
 Trifid
 =============
 .. autoclass:: secretpy.Trifid
@@ -201,7 +279,7 @@ Examples
 .. literalinclude:: ../examples/trifid.py
 	:linenos:
 
-TwoSquare
+Two Square
 =============
 .. autoclass:: secretpy.TwoSquare
 	:members:

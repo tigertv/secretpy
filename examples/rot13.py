@@ -4,7 +4,7 @@
 from secretpy import Rot13
 from secretpy import CryptMachine
 from secretpy.cmdecorators import SaveCase, SaveSpaces
-from secretpy import alphabet
+from secretpy import alphabets
 
 
 def encdec(machine, plaintext):
@@ -27,9 +27,9 @@ plaintext = u"Why did the chicken cross the road Gb trg gb gur bgure fvqr"
 encdec(cm, plaintext)
 
 plaintext = u"thequickbrownfoxjumpsoverthelazydog"
-cm.set_alphabet(alphabet.GERMAN)
+cm.set_alphabet(alphabets.GERMAN)
 encdec(cm, plaintext)
 
 plaintext = u"текст"
-cm.set_alphabet(alphabet.RUSSIAN)
+cm.set_alphabet(alphabets.RUSSIAN)
 encdec(cm, plaintext)

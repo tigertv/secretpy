@@ -3,6 +3,7 @@
 
 from secretpy import TwoSquare
 from secretpy import CryptMachine
+from secretpy import alphabets
 from secretpy.cmdecorators import NoSpaces, UpperCase
 
 
@@ -15,13 +16,7 @@ def encdec(machine, plaintext):
     print("----------------------------------")
 
 
-alphabet = (
-    u"a", u"b", u"c", u"d", u"e",
-    u"f", u"g", u"h", u"i", u"j",
-    u"k", u"l", u"m", u"n", u"oq",
-    u"p", u"r", u"s", u"t", u"u",
-    u"v", u"w", u"x", u"y", u"z",
-)
+alphabet = alphabets.ENGLISH_SQUARE_OQ
 
 key = (u"example", u"keyword")
 

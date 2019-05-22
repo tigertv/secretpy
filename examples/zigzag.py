@@ -2,8 +2,9 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import Zigzag
+from secretpy import alphabets
 
-alphabet = u"abcdefghijklmnopqrstuvwxyzäöüß"
+alphabet = alphabets.GERMAN
 plaintext = u"thequickbrownfoxjumpsoverthelazydog"
 key = 3
 
@@ -39,3 +40,17 @@ enc = chipher.encrypt(plaintext, key)
 print(enc)
 dec = chipher.decrypt(enc, key)
 print(dec)
+
+'''
+thequickbrownfoxjumpsoverthelazydog
+tubnjsrldhqikrwfxupoeteayoecoomvhzg
+thequickbrownfoxjumpsoverthelazydog
+----------------------------------
+wearediscoveredfleeatonce
+wecrlteerdsoeefeaocaivden
+wearediscoveredfleeatonce
+----------------------------------
+defendtheeastwallofthecastle
+dttfsedhswotatfneaalhcleelee
+defendtheeastwallofthecastle
+'''

@@ -2,88 +2,47 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import Playfair
+from secretpy import alphabets
 import unittest
 
 
 class TestPlayfair(unittest.TestCase):
     alphabet = (
-        [
-            u"w", u"h", u"e", u"a", u"t",
-            u"s", u"o", u"n", u"b", u"c",
-            u"d", u"f", u"g", u"ij", u"k",
-            u"l", u"m", u"p", u"q", u"r",
-            u"u", u"v", u"x", u"y", u"z"
-        ],
-        [
-            u"p", u"l", u"a", u"y", u"f",
-            u"ij", u"r", u"e", u"x", u"m",
-            u"b", u"c", u"d", u"g", u"h",
-            u"k", u"n", u"o", u"q", u"s",
-            u"t", u"u", u"v", u"w", u"z",
-        ],
+        alphabets.ENGLISH_SQUARE_IJ,
+        alphabets.ENGLISH_SQUARE_IJ,
+        alphabets.GERMAN_SQUARE,
+        alphabets.SPANISH_SQUARE,
     )
-
-    """
-        [u"a", u"b", u"c", u"d", u"e", u"f", u"g", u"h", u"ij", u"k", u"l",
-         u"m", u"n", u"o", u"p", u"q", u"r", u"s", u"t", u"u", u"v", u"w",
-        u"x", u"y", u"z"],
-
-        [u"aä", u"b", u"c", u"d", u"e", u"f", u"g", u"h", u"ij", u"k", u"l",
-         u"m", u"n", u"oö", u"p", u"q", u"r", u"sß", u"t", u"uü", u"v", u"w",
-         u"x", u"y", u"z"],
-        [u"a", u"b", u"c", u"d", u"e", u"f", u"g", u"h", u"ij", u"k", u"l",
-         u"m", u"nñ", u"o", u"p", u"q", u"r", u"s", u"t", u"u", u"v", u"w",
-         u"x", u"y", u"z"],
-        [u"а", u"б", u"в", u"г", u"д", u"её", u"ж", u"з", u"ий", u"к", u"л",
-         u"м", u"н", u"о", u"п", u"р", u"с", u"т", u"у", u"ф", u"х", u"ц",
-         u"ч", u"ш", u"щ", u"ы", u"ьъ", u"э", u"ю", u"я"],
-        (
-            u"あいうえお"
-            u"かきくけこ"
-            u"がぎぐげご"
-            u"さしすせそ"
-            u"ざじずぜぞ"
-            u"たちつてと"
-            u"だぢづでど"
-            u"なにぬねの"
-            u"はひふへほ"
-            u"ばびぶべぼ"
-            u"ぱぴぷぺぽ"
-            u"まみむめも"
-            u"やゆよ"
-            u"らりるれろ"
-            u"わを"
-            u"ん"
-            u"ゃゅょぁぇ"
-            u"じづ"
-        )
-    )
-    """
 
     key = (
-        u"",
-        u"",
-        u"",
-        u"",
-        u"")
+        u"wheatson",
+        u"playfireexample",
+        u"schlüssel",
+        u"llaves",
+
+        u"ключи",
+        u"ぎへぐ"
+    )
 
     plaintext = (
         u"idiocyoftenlookslikeintelligence",
         u"hidethegoldinthetreestump",
-
         u"textnachtricht",
         u"unmensaiedetexto",
-        u"текст",
-        u"だやぎへぐゆぢ")
+
+        u"текстсообщение",
+        u"だやぎへぐゆぢ",
+    )
 
     ciphertext = (
         u"kffbbzfmwaspnvcfdukdagcewpqdpnbsne",
         u"bmodzbxdnabekudmuixmmouvif",
+        u"ofzqifhlotpauq",
+        u"zhrftgcpvfsrvyop",
 
-        u"4415534433111323444224132344",
-        u"45333215334311241514154415534434",
-        u"3616243536",
-        u"44772358247845")
+        u"хвбшутр3здэвпюж4",
+        u"222222",
+    )
 
     cipher = Playfair()
 

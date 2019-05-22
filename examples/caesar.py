@@ -2,9 +2,9 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import Caesar
-from secretpy import alphabet
+from secretpy import alphabets
 
-alphabet = alphabet.GERMAN
+alphabet = alphabets.GERMAN
 plaintext = u"thequickbrownfoxjumpsoverthelazydog"
 key = 3
 cipher = Caesar()
