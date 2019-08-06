@@ -158,6 +158,17 @@ Examples
 .. literalinclude:: ../examples/keyword-ex.py
 	:linenos:
 
+MyszkowskiTransposition
+========================
+.. autoclass:: secretpy.MyszkowskiTransposition
+	:members:
+
+Examples
+--------
+
+.. literalinclude:: ../examples/myszkowski_transposition.py
+	:linenos:
+	
 Nihilist
 =============
 .. autoclass:: secretpy.Nihilist
