@@ -29,6 +29,7 @@ SecretPy is a cryptographic Python package. It uses the following classical ciph
 - Beaufort
 - Bifid
 - Caesar, Caesar Progressive
+- Chaocipher
 - Columnar Transposition, Myszkowski Transposition
 - Keyword
 - Nihilist

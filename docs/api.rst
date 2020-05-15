@@ -114,6 +114,18 @@ Examples
 	:language: python
 	:linenos:
 
+Chao
+=============
+.. autoclass:: secretpy.Chao
+	:members:
+
+Examples
+--------
+
+.. literalinclude:: ../examples/chao.py
+	:language: python
+	:linenos:
+
 Columnar Transposition
 =======================
 .. autoclass:: secretpy.ColumnarTransposition
