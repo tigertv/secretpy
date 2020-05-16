@@ -114,6 +114,18 @@ Examples
 	:language: python
 	:linenos:
 
+Chao
+=============
+.. autoclass:: secretpy.Chao
+	:members:
+
+Examples
+--------
+
+.. literalinclude:: ../examples/chao.py
+	:language: python
+	:linenos:
+
 Columnar Transposition
 =======================
 .. autoclass:: secretpy.ColumnarTransposition
@@ -158,6 +170,17 @@ Examples
 .. literalinclude:: ../examples/keyword-ex.py
 	:linenos:
 
+MyszkowskiTransposition
+========================
+.. autoclass:: secretpy.MyszkowskiTransposition
+	:members:
+
+Examples
+--------
+
+.. literalinclude:: ../examples/myszkowski_transposition.py
+	:linenos:
+	
 Nihilist
 =============
 .. autoclass:: secretpy.Nihilist

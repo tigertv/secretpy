@@ -18,9 +18,17 @@ class Autokey:
                     k = text[i - len(key)]
                 else:
                     k = ans[i - len(key)]
-            alphI = (
-                    alphabet.index(m) + isEncrypt * alphabet.index(k)
-                ) % len(alphabet)
+            try:
+                alphI = alphabet.index(m)
+            except ValueError as e:
+                wrchar = m.encode('utf-8')
+                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
+            try:
+                alphI += isEncrypt * alphabet.index(k)
+            except ValueError as e:
+                wrchar = k.encode('utf-8')
+                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
+            alphI = alphI % len(alphabet)
             enc = alphabet[alphI]
             ans += enc
         return ans

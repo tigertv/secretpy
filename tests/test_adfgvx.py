@@ -51,17 +51,17 @@ class TestADFGVX(unittest.TestCase):
         u"fvavgfgdggavfffdgagvafavvgffaagg",
     )
 
-    chipher = ADFGVX()
+    cipher = ADFGVX()
 
     def test_encrypt(self):
         for i, alphabet in enumerate(self.alphabet):
-            enc = self.chipher.encrypt(
+            enc = self.cipher.encrypt(
                 self.plaintext[i], self.key[i], alphabet)
             self.assertEqual(enc, self.ciphertext[i])
 
     def test_decrypt(self):
         for i, alphabet in enumerate(self.alphabet):
-            dec = self.chipher.decrypt(
+            dec = self.cipher.decrypt(
                 self.ciphertext[i], self.key[i], alphabet)
             self.assertEqual(dec, self.plaintext[i])
 

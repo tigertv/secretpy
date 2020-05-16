@@ -1,46 +1,39 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import ADFGX
+from secretpy import MyszkowskiTransposition
 from secretpy import alphabets
 import unittest
 
 
-class TestADFGX(unittest.TestCase):
+class TestMyszkowskiTransposition(unittest.TestCase):
+
     alphabet = (
-        [
-            u"b", u"t", u"a", u"l", u"p",
-            u"d", u"h", u"o", u"z", u"k",
-            u"q", u"f", u"v", u"s", u"n",
-            u"g", u"ij", u"c", u"u", u"x",
-            u"m", u"r", u"e", u"w", u"y"
-        ],
-        alphabets.GERMAN_SQUARE,
-        alphabets.SPANISH_SQUARE,
+        alphabets.ENGLISH,
     )
 
     key = (
-        u"cargo",
-        # u"ключ",
+        u"tomato",
+        u"german",
         u"schlüssel",
         u"clave",
     )
 
     plaintext = (
-        u"attackatonce",
-        # u"текст",
+        u"wearediscoveredfleeatonce",
+        u"defendtheeastwallofthecastlexx",
         u"textnachtricht",
         u"unmensaiedetexto",
     )
 
     ciphertext = (
-        u"faxdfadddgdgfffafaxafafx",
-        # u"dgxffaaaaa",
-        u"gadggfaadxagfgggfggfdfgfdxfa",
-        u"fxaxgfgdggaxfffdgagxafaxxgffaagg",
+        u"rofoacdtedseeeacweivrlene",
+        u"nalcxehwttdttfseeleedsoaxfeahl",
+        u"111111111",
+        u"222222222222222",
     )
 
-    cipher = ADFGX()
+    cipher = MyszkowskiTransposition()
 
     def test_encrypt(self):
         for i, alphabet in enumerate(self.alphabet):

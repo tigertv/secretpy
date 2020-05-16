@@ -11,13 +11,17 @@ class Affine:
         b = key[1]
         ans = ""
         aInverse = self.__getInverse(a, alphabet)
-        for char in text:
-            if isEncrypt == 1:
-                alphI = (alphabet.index(char) * a + b) % len(alphabet)
-            else:
-                alphI = (aInverse * (alphabet.index(char) - b)) % len(alphabet)
-            enc = alphabet[alphI]
-            ans += enc
+        try:
+            for char in text:
+                if isEncrypt == 1:
+                    alphI = (alphabet.index(char) * a + b) % len(alphabet)
+                else:
+                    alphI = (aInverse * (alphabet.index(char) - b)) % len(alphabet)
+                enc = alphabet[alphI]
+                ans += enc
+        except ValueError as e:
+            wrchar = char.encode('utf-8')
+            raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
         return ans
 
     def __getInverse(self, a, alphabet):

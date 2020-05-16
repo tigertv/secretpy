@@ -10,10 +10,12 @@ from .beaufort import Beaufort
 from .bifid import Bifid
 from .caesar import Caesar
 from .caesar_progressive import CaesarProgressive
+from .chao import Chao
 from .columnar_transposition import ColumnarTransposition
 from .four_square import FourSquare
 from .gronsfeld import Gronsfeld
 from .keyword import Keyword
+from .myszkowski_transposition import MyszkowskiTransposition
 from .nihilist import Nihilist
 from .simplesubstitution import SimpleSubstitution
 from .porta import Porta
@@ -33,8 +35,9 @@ from .zigzag import Zigzag
 __all__ = [
     "ADFGX", "ADFGVX", "Affine", "Atbash", "Autokey",
     "Bazeries", "Beaufort", "Bifid", "Caesar", "CaesarProgressive",
-    "ColumnarTransposition", "FourSquare", "Gronsfeld", "Keyword", "Nihilist",
-    "SimpleSubstitution", "Playfair", "Porta", "Polybius", "Rot13",
-    "Rot18", "Rot47", "Rot5", "ThreeSquare", "Trifid",
-    "TwoSquare", "Vigenere", "Vic", "Zigzag",
+    "Chao","ColumnarTransposition", "FourSquare", "Gronsfeld",
+	"Keyword", "MyszkowskiTransposition",
+    "Nihilist", "SimpleSubstitution", "Playfair", "Porta", "Polybius",
+    "Rot13", "Rot18", "Rot47", "Rot5", "ThreeSquare",
+    "Trifid", "TwoSquare", "Vigenere", "Vic", "Zigzag",
 ]

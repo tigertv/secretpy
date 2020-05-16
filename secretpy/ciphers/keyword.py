@@ -26,12 +26,16 @@ class Keyword:
         ans = ""
         for i in range(len(text)):
             m = text[i]
-            if isEncrypt == 1:
-                index = alphabet.index(m)
-                enc = longkey[index]
-            else:
-                index = longkey.index(m)
-                enc = alphabet[index]
+            try:
+                if isEncrypt == 1:
+                    index = alphabet.index(m)
+                    enc = longkey[index]
+                else:
+                    index = longkey.index(m)
+                    enc = alphabet[index]
+            except ValueError as e:
+                wrchar = m.encode('utf-8')
+                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
             ans += enc
         return ans
 

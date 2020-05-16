@@ -15,10 +15,14 @@ class SimpleSubstitution:
         for i in range(len(text)):
             m = text[i]
             k = ""
-            if isEncrypt == 1:
-                k = key[alphabet.index(m)]
-            else:
-                k = alphabet[key.index(m)]
+            try:
+                if isEncrypt == 1:
+                    k = key[alphabet.index(m)]
+                else:
+                    k = alphabet[key.index(m)]
+            except ValueError as e:
+                wrchar = m.encode('utf-8')
+                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
             ans += k
         return ans
 

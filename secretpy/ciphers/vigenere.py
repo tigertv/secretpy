@@ -12,8 +12,17 @@ class Vigenere:
         for i in range(len(text)):
             char = text[i]
             keychar = key[i % len(key)]
-            alphIndex = (alphabet.index(char) +
-                         isEncrypt * alphabet.index(keychar)) % len(alphabet)
+            try:
+                alphIndex = alphabet.index(char) 
+            except ValueError as e:
+                wrchar = char.encode('utf-8')
+                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
+            try:
+                alphIndex += isEncrypt * alphabet.index(keychar)
+            except ValueError as e:
+                wrchar = keychar.encode('utf-8')
+                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
+            alphIndex %= len(alphabet)
             ans += alphabet[alphIndex]
         return ans
 
