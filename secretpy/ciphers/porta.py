@@ -11,8 +11,16 @@ class Porta:
     def __encDec(self, alphabet, key, text):
         ans = ""
         for i, char in enumerate(text):
-            keychari = alphabet.index(key[i % len(key)]) >> 1
-            textindex = alphabet.index(char)
+            try:
+                keychari = alphabet.index(key[i % len(key)]) >> 1
+            except ValueError as e:
+                wrchar = key[i % len(key)].encode('utf-8')
+                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
+            try:
+                textindex = alphabet.index(char)
+            except ValueError as e:
+                wrchar = char.encode('utf-8')
+                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
             half = len(alphabet) >> 1
             half_alphabet = None
             if textindex < half:

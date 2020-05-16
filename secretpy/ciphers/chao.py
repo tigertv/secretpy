@@ -9,12 +9,16 @@ class Chao:
     def __encDec(self, text, isEncrypt, tp_alphabet, tc_alphabet):
         ret = ''
         for c in text:
-            if isEncrypt:
-                i = tp_alphabet.index(c)
-                ret += tc_alphabet[i]
-            else:
-                i = tc_alphabet.index(c)
-                ret += tp_alphabet[i]
+            try:
+                if isEncrypt:
+                    i = tp_alphabet.index(c)
+                    ret += tc_alphabet[i]
+                else:
+                    i = tc_alphabet.index(c)
+                    ret += tp_alphabet[i]
+            except ValueError as e:
+                wrchar = c.encode('utf-8')
+                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
             tc_alphabet = self.permuteAlphabet(tc_alphabet, i, True)
             tp_alphabet = self.permuteAlphabet(tp_alphabet, i, False)
         return ret 

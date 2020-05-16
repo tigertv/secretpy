@@ -9,9 +9,12 @@ class Atbash:
     def __encDec(self, alphabet, text):
         ans = ""
         for char in text:
-            alphIndex = len(alphabet) - (alphabet.index(char)) - 1
-            enc = alphabet[alphIndex]
-            ans += enc
+            try:
+                alphIndex = len(alphabet) - (alphabet.index(char)) - 1
+            except ValueError as e:
+                wrchar = char.encode('utf-8')
+                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
+            ans += alphabet[alphIndex]
         return ans
 
     def encrypt(self, text, key=None, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
