@@ -8,6 +8,9 @@ class AbstractCryptMachine:
     def set_alphabet(self, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
         pass
 
+    def get_alphabet(self):
+        pass
+
     def set_cipher(self, cipher):
         pass
 
