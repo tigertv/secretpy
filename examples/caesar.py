@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import Caesar, CryptMachine, alphabets
-from secretpy.cmdecorators import SaveAll
+from secretpy.cmdecorators import SaveAll, RemoveNonAlphabet
 
 
 alphabet = alphabets.GERMAN
@@ -35,10 +35,16 @@ def encdec(machine, plaintext):
     print(machine.decrypt(enc))
 
 
-cm = SaveAll(CryptMachine(cipher, key))
-cm.set_alphabet(alphabet)
+
+cm0 = CryptMachine(cipher, key)
+cm0.set_alphabet(alphabet)
 
 plaintext = "I love non-alphabet characters. These are : ^,&@$~(*;?&#. That's it!"
+cm = SaveAll(cm0)
+encdec(cm, plaintext)
+
+plaintext = "I don't love non-alphabet characters. I will remove all of them: ^,&@$~(*;?&#. Great!"
+cm = RemoveNonAlphabet(cm0)
 encdec(cm, plaintext)
 
 '''
@@ -51,8 +57,13 @@ thequickbrownfoxjumpsoverthelazydog
 thequickbrownfoxjumpsoverthelazydog
 wkhtxlfneurzqiramxpsvryhuwkhodcbgrj
 thequickbrownfoxjumpsoverthelazydog
--------------------------------
+--------------------------------------------------------------------
 I love non-alphabet characters. These are : ^,&@$~(*;?&#. That's it!
 L oryh qrq-doskdehw fkdudfwhuv. Wkhvh duh : ^,&@$~(*;?&#. Wkdw'v lw!
 I love non-alphabet characters. These are : ^,&@$~(*;?&#. That's it!
+--------------------------------------------------------------------
+I don't love non-alphabet characters. I will remove all of them: ^,&@$~(*;?&#. Great!
+lgrqworyhqrqdoskdehwfkdudfwhuvlzloouhpryhdooriwkhpjuhdw
+idontlovenonalphabetcharactersiwillremoveallofthemgreat
+
 '''

@@ -6,9 +6,10 @@ from .nospaces import NoSpaces
 from .savespaces import SaveSpaces
 from .savecase import SaveCase
 from .save_all import SaveAll
+from .remove_non_alphabet import RemoveNonAlphabet
 
 
 __all__ = [
     "UpperCase", "LowerCase", "NoSpaces", "SaveSpaces", "SaveCase",
-	"SaveAll"
+	"SaveAll", "RemoveNonAlphabet"
 ]
