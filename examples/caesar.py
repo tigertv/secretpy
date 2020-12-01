@@ -27,13 +27,13 @@ print(dec)
 
 # using cryptmachine
 
+
 def encdec(machine, plaintext):
     print("--------------------------------------------------------------------")
     print(plaintext)
     enc = machine.encrypt(plaintext)
     print(enc)
     print(machine.decrypt(enc))
-
 
 
 cm0 = CryptMachine(cipher, key)

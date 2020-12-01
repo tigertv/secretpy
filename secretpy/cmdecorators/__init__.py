@@ -11,5 +11,5 @@ from .remove_non_alphabet import RemoveNonAlphabet
 
 __all__ = [
     "UpperCase", "LowerCase", "NoSpaces", "SaveSpaces", "SaveCase",
-	"SaveAll", "RemoveNonAlphabet"
+    "SaveAll", "RemoveNonAlphabet"
 ]

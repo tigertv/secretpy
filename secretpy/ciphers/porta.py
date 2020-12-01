@@ -13,12 +13,12 @@ class Porta:
         for i, char in enumerate(text):
             try:
                 keychari = alphabet.index(key[i % len(key)]) >> 1
-            except ValueError as e:
+            except ValueError:
                 wrchar = key[i % len(key)].encode('utf-8')
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
             try:
                 textindex = alphabet.index(char)
-            except ValueError as e:
+            except ValueError:
                 wrchar = char.encode('utf-8')
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
             half = len(alphabet) >> 1

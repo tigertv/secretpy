@@ -17,4 +17,3 @@ class RemoveNonAlphabet(AbstractMachineDecorator):
         text2 = filter(lambda char: char in alphabet, text.lower())
         res = func(text2)
         return res
-

@@ -4,11 +4,12 @@
 from secretpy import Keyword
 from secretpy import alphabets
 
+
 alphabet = alphabets.GERMAN
-plaintext  = u"thequickbrownfoxjumpsoverthelazydog"
+plaintext = u"thequickbrownfoxjumpsoverthelazydog"
 key = "queenly"
 
-cipher = Keyword();
+cipher = Keyword()
 print(plaintext)
 
 enc = cipher.encrypt(plaintext, key, alphabet)
@@ -16,11 +17,9 @@ print(enc)
 dec = cipher.decrypt(enc, key, alphabet)
 print(dec)
 
-#######################################################
-
 print("----------------------------------")
 
-plaintext  = u"thisisasecretmessage"
+plaintext = u"thisisasecretmessage"
 key = "keyword"
 
 # use default english alphabet

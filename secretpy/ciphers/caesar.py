@@ -16,7 +16,7 @@ class Caesar:
         for char in text:
             try:
                 alphIndex = alphabet.index(char)
-            except ValueError as e:
+            except ValueError:
                 wrchar = char.encode('utf-8')
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
             alphIndex = (alphIndex + isEncrypt * key) % len(alphabet)

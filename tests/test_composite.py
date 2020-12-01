@@ -8,10 +8,10 @@ from unittest import TestCase, main
 
 if sys.version_info[0] < 3:
     # Python 2
-    from mock import patch, Mock
+    from mock import patch
 else:
     # Python 3
-    from unittest.mock import patch, Mock
+    from unittest.mock import patch
 
 
 class TestCompositeMachine(TestCase):

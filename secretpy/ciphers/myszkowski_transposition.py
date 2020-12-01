@@ -8,87 +8,58 @@ class MyszkowskiTransposition:
     """
     The Myszkowski Transposition Cipher
     """
-    def __enc(self, alphabet, key, text):
-        chars = [alphabets.get_index_in_alphabet(char, alphabet)
-                 for char in key]
-        keyorder1 = sorted(enumerate(chars), key=lambda x: x[1])
-        prev_key_char = ""
-        cols = []
-        col0 = []
+    def __keycols(self, key, alphabet):
+        chars = [alphabets.get_index_in_alphabet(char, alphabet) for char in key]
+        chars = sorted(enumerate(chars), key=lambda x: x[1])
+        cols = [[chars[0][0]]]
 
-        for i in range(len(key)):
-            key_char = keyorder1[i][1]
-            if prev_key_char != key_char:
-                if len(col0) > 0:
-                    cols.append(col0)
-                col0 = []
-                prev_key_char = key_char
-            col0.append(text[keyorder1[i][0]::len(key)])
-
-        if len(col0) > 0:
-            cols.append(col0)
-
-        ret = u""
-        for col in cols:
-            if len(col) == 1:
-                ret += col[0]
+        for i in range(1, len(key)):
+            if chars[i-1][1] == chars[i][1]:
+                cols[-1].append(chars[i][0])
             else:
-                i = 0
-                for i in range(len(col[0])):
-                    for col0 in col:
-                        try:
-                            ret += col0[i]
-                        except IndexError:
-                            pass
+                cols.append([chars[i][0]])
+        return cols
+
+    def __enc(self, alphabet, key, text):
+        ret = u""
+        cols = self.__keycols(key, alphabet)
+        lines = len(text) // len(key)
+        if len(text) % len(key):
+            lines += 1
+
+        for col in cols:
+            for a in range(lines):
+                for i in col:
+                    if i < len(text):
+                        ret += text[i]
+                col = list(map(lambda x: x + len(key), col))
         return ret
 
     def __dec(self, alphabet, key, text):
-        chars = [alphabets.get_index_in_alphabet(char, alphabet)
-                 for char in key]
-        keyorder1 = sorted(enumerate(chars), key=lambda x: x[1])
+        ret = u""
+        cols = self.__keycols(key, alphabet)
 
-        next_arr = []
-        temp = []
-        it = iter(keyorder1)
-        try:
-            prev, current = None, next(it)
-            while True:
-                prev = current
-                temp.append(prev[0])
-                current = next(it)
-                if (prev and prev[1] != current[1]):
-                    next_arr.append(temp)
-                    temp = []
-        except StopIteration:
-            pass
+        lines = len(text) // len(key)
+        if len(text) % len(key):
+            lines += 1
 
-        if len(temp) > 0:
-            next_arr.append(temp)
+        m = [""] * len(key)
+        ci = 0
+        for col in cols:
+            ccol = col
+            for line in range(lines):
+                for i, value in enumerate(ccol):
+                    if value < len(text):
+                        m[col[i]] += text[ci]
+                        ci += 1
+                ccol = list(map(lambda x: x + len(key), ccol))
 
-        rmd, quotient = len(text) % len(key), int(len(text) / len(key))
-        ret_arr = [None] * len(key)
-        i = 0
-        for ar in next_arr:
-            len_sum = 0
-            for index in ar:
-                index_len = quotient
-                if index < rmd:
-                    index_len += 1
-
-                len_sum += index_len
-            tmp = text[int(i):int(i+len_sum)]
-            i += len_sum
-            for j, index in enumerate(ar):
-                ret_arr[index] = tmp[j::len(ar)]
-
-        ret = ""
-        for row in range(0, quotient):
-            for item in ret_arr:
-                ret += item[row]
-
-        row = quotient
-        for i in range(0, rmd):
-            ret += ret_arr[i][row]
+        for i in range(lines):
+            for j in m:
+                try:
+                    ret += j[i]
+                except IndexError:
+                    pass
         return ret
 
     def encrypt(self, text, key, alphabet=None):
