@@ -16,6 +16,9 @@ class CryptMachine(AbstractCryptMachine):
     def set_alphabet(self, alphabet=alphabets.ENGLISH):
         self.__alphabet = alphabet
 
+    def get_alphabet(self):
+        return self.__alphabet
+
     def set_cipher(self, cipher):
         self.__cipher = cipher
 

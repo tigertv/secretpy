@@ -48,12 +48,13 @@ class ADFGVX:
             if column == keysize:
                 column = 0
                 row += 1
-            
+        code = []
         try:
-            code = [str(self.__header.index(char)+1) for char in res]
-        except ValueError as e:
+            for char in res:
+                code.append(str(self.__header.index(char)+1))
+        except ValueError:
             wrchar = char.encode('utf-8')
-            raise Exception("Can't find char '" + wrchar + "' of text in the alphabet!")
+            raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
 
         code = "".join(code)
         return self.__polybius.decrypt(code, alphabet=alphabet)

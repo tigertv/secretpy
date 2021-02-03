@@ -11,7 +11,7 @@ class Atbash:
         for char in text:
             try:
                 alphIndex = len(alphabet) - (alphabet.index(char)) - 1
-            except ValueError as e:
+            except ValueError:
                 wrchar = char.encode('utf-8')
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
             ans += alphabet[alphIndex]

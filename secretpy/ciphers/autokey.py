@@ -20,12 +20,12 @@ class Autokey:
                     k = ans[i - len(key)]
             try:
                 alphI = alphabet.index(m)
-            except ValueError as e:
+            except ValueError:
                 wrchar = m.encode('utf-8')
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
             try:
                 alphI += isEncrypt * alphabet.index(k)
-            except ValueError as e:
+            except ValueError:
                 wrchar = k.encode('utf-8')
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
             alphI = alphI % len(alphabet)

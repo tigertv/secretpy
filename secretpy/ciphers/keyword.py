@@ -33,7 +33,7 @@ class Keyword:
                 else:
                     index = longkey.index(m)
                     enc = alphabet[index]
-            except ValueError as e:
+            except ValueError:
                 wrchar = m.encode('utf-8')
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
             ans += enc

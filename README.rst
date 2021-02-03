@@ -65,12 +65,11 @@ Usage
 Direct way
 ----------
 
-The cipher classes can encrypt only letters which exist in the alphabet, and they don't have a state.
+The cipher classes can encrypt only characters which exist in the alphabet, and they don't have a state.
 
 .. code-block:: python
 	
-	from secretpy import Caesar
-	from secretpy import alphabets
+	from secretpy import Caesar, alphabets
 
 	alphabet = alphabets.GERMAN
 	plaintext = u"thequickbrownfoxjumpsoverthelazydog"
@@ -107,27 +106,23 @@ The cipher classes can encrypt only letters which exist in the alphabet, and the
 CryptMachine
 ------------
 
-``CryptMachine`` saves state. There are alphabet, key and cipher, they can be changed in anytime.
-In the previous example, plaintext contains only letters existing in the alphabet and in the lower case without spaces.
-To change the behaviour, you can use ``CryptMachine`` and decorators(``UpperCase``, ``NoSpace``, ``SaveCase`` and etc.), so it's a preferred way to do encryption/decryption:
+``CryptMachine`` saves a state. There are alphabet, key and cipher, they can be changed in anytime.
+In the previous example, plaintext contains only characters existing in the alphabet i.e. without spaces.
+To change the behaviour, you can use ``CryptMachine`` and decorators(``SaveAll``, ``RemoveNonAlphabet``), so it's a preferred way to do encryption/decryption:
 
 .. code-block:: python
-
-	from secretpy import Atbash
-	from secretpy import Caesar
-
-	from secretpy import CryptMachine
-	from secretpy.cmdecorators import UpperCase, SaveSpaces, NoSpaces
-	from secretpy import alphabets
+	
+	from secretpy import Atbash, Caesar, CryptMachine, alphabets
+	from secretpy.cmdecorators import SaveAll, RemoveNonAlphabet
 
 
 	def encdec(machine, plaintext):
-	    print(plaintext)
-	    enc = machine.encrypt(plaintext)
-	    print(enc)
-	    dec = machine.decrypt(enc)
-	    print(dec)
-	    print("-----------------------------------")
+		print(plaintext)
+		enc = machine.encrypt(plaintext)
+		print(enc)
+		dec = machine.decrypt(enc)
+		print(dec)
+		print("-----------------------------------")
 
 
 	plaintext = u"thequickbrownfoxjumpsoverthelazydog"
@@ -140,15 +135,16 @@ To change the behaviour, you can use ``CryptMachine`` and decorators(``UpperCase
 	cm.set_alphabet(alphabets.GERMAN)
 	encdec(cm, plaintext)
 
-	cm = SaveSpaces(cm)
-	cm.set_key(9)
+	cm1 = SaveAll(cm)
+	cm1.set_key(9)
 	plaintext = u"the quick brown fox jumps over the lazy dog"
-	encdec(cm, plaintext)
+	encdec(cm1, plaintext)
 
-	cm = NoSpaces(UpperCase(cm))
-	cm.set_cipher(Atbash())
+	cm2 = RemoveNonAlphabet(cm)
+	cm2.set_cipher(Atbash())
 	plaintext = u"Achtung Minen"
-	encdec(cm, plaintext)
+	encdec(cm2, plaintext)
+
 
 	'''
 	Output:
@@ -166,8 +162,8 @@ To change the behaviour, you can use ``CryptMachine`` and decorators(``UpperCase
 	the quick brown fox jumps over the lazy dog
 	-----------------------------------
 	Achtung Minen
-	ßÖWKJQXRVQZQ
-	ACHTUNGMINEN
+	ßöwkjqxrvqzq
+	achtungminen
 	-----------------------------------
 	'''
 
@@ -178,31 +174,28 @@ Combining several ciphers to get more complex cipher, you can use ``CompositeMac
 
 .. code-block:: python
 
-	from secretpy import Rot13
-	from secretpy import Caesar
-	from secretpy import CryptMachine
-	from secretpy import CompositeMachine
-	from secretpy.cmdecorators import SaveCase, SaveSpaces
+	from secretpy import Rot13, Caesar, CryptMachine, CompositeMachine
+	from secretpy.cmdecorators import SaveAll, RemoveNonAlphabet
 
 
 	def encdec(machine, plaintext):
-	    print("=======================================")
-	    print(plaintext)
-	    enc = machine.encrypt(plaintext)
-	    print(enc)
-	    dec = machine.decrypt(enc)
-	    print(dec)
+		print("=======================================")
+		print(plaintext)
+		enc = machine.encrypt(plaintext)
+		print(enc)
+		dec = machine.decrypt(enc)
+		print(dec)
 
 
 	key = 5
 	plaintext = u"Dog jumps four times and cat six times"
 	print(plaintext)
 
-	cm1 = SaveSpaces(SaveCase(CryptMachine(Caesar(), key)))
+	cm1 = SaveAll(CryptMachine(Caesar(), key))
 	enc = cm1.encrypt(plaintext)
 	print(enc)
 
-	cm2 = SaveSpaces(SaveCase(CryptMachine(Rot13())))
+	cm2 = SaveAll(CryptMachine(Rot13()))
 	enc = cm2.encrypt(enc)
 	print(enc)
 
@@ -212,7 +205,6 @@ Combining several ciphers to get more complex cipher, you can use ``CompositeMac
 	cm.add_machines(cm2)
 	enc = cm.encrypt(plaintext)
 	print(enc)
-
 	encdec(cm, plaintext)
 
 	cm.add_machines(cm1, cm2)
@@ -234,6 +226,7 @@ Combining several ciphers to get more complex cipher, you can use ``CompositeMac
 	Dog jumps four times and cat six times
 	Nyq tewzc pyeb dswoc kxn mkd csh dswoc
 	Dog jumps four times and cat six times
+
 	'''
 
 Maintainers

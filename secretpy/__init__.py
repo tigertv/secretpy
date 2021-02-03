@@ -1,11 +1,26 @@
 #!/usr/bin/python
 
+
 from .cryptmachine import CryptMachine
 from .compositemachine import CompositeMachine
-from .ciphers import *
-from .alphabets import *
-from .cmdecorators import *
+from .ciphers import (
+    ADFGX, ADFGVX, Affine, Atbash, Autokey, Bazeries,
+    Beaufort, Bifid, Caesar, CaesarProgressive, Chao,
+    ColumnarTransposition, FourSquare, Gronsfeld, Keyword,
+    MyszkowskiTransposition, Nihilist, SimpleSubstitution,
+    Playfair, Porta, Polybius, Rot13, Rot18, Rot47, Rot5,
+    ThreeSquare, Trifid, TwoSquare, Vigenere, Vic, Zigzag)
+# import alphabets
+# from .cmdecorators import *
 
 __all__ = [
-    "alphabets", "ciphers", "cmdecorators", "CompositeMachine", "CryptMachine",
+    "CompositeMachine", "CryptMachine",
+
+    "ADFGX", "ADFGVX", "Affine", "Atbash", "Autokey",
+    "Bazeries", "Beaufort", "Bifid", "Caesar", "CaesarProgressive",
+    "Chao", "ColumnarTransposition", "FourSquare", "Gronsfeld",
+    "Keyword", "MyszkowskiTransposition",
+    "Nihilist", "SimpleSubstitution", "Playfair", "Porta", "Polybius",
+    "Rot13", "Rot18", "Rot47", "Rot5", "ThreeSquare",
+    "Trifid", "TwoSquare", "Vigenere", "Vic", "Zigzag",
 ]

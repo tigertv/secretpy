@@ -24,12 +24,12 @@ class Polybius:
             for i in range(0, len(text), 2):
                 try:
                     row = header.index(text[i])
-                except ValueError as e:
+                except ValueError:
                     wrchar = text[i].encode('utf-8')
                     raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
                 try:
                     column = header.index(text[i+1])
-                except ValueError as e:
+                except ValueError:
                     wrchar = text[i+1].encode('utf-8')
                     raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
                 res += square.get_char(row, column)

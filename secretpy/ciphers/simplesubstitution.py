@@ -20,7 +20,7 @@ class SimpleSubstitution:
                     k = key[alphabet.index(m)]
                 else:
                     k = alphabet[key.index(m)]
-            except ValueError as e:
+            except ValueError:
                 wrchar = m.encode('utf-8')
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
             ans += k

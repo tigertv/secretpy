@@ -1,12 +1,8 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import Atbash
-from secretpy import Caesar
-
-from secretpy import CryptMachine
-from secretpy.cmdecorators import UpperCase, SaveSpaces, NoSpaces
-from secretpy import alphabets
+from secretpy import Atbash, Caesar, CryptMachine, alphabets
+from secretpy.cmdecorators import SaveAll, RemoveNonAlphabet
 
 
 def encdec(machine, plaintext):
@@ -28,15 +24,16 @@ encdec(cm, plaintext)
 cm.set_alphabet(alphabets.GERMAN)
 encdec(cm, plaintext)
 
-cm = SaveSpaces(cm)
-cm.set_key(9)
+cm1 = SaveAll(cm)
+cm1.set_key(9)
 plaintext = u"the quick brown fox jumps over the lazy dog"
-encdec(cm, plaintext)
+encdec(cm1, plaintext)
 
-cm = NoSpaces(UpperCase(cm))
-cm.set_cipher(Atbash())
+cm2 = RemoveNonAlphabet(cm)
+cm2.set_cipher(Atbash())
 plaintext = u"Achtung Minen"
-encdec(cm, plaintext)
+encdec(cm2, plaintext)
+
 
 '''
 Output:
@@ -54,7 +51,7 @@ the quick brown fox jumps over the lazy dog
 the quick brown fox jumps over the lazy dog
 -----------------------------------
 Achtung Minen
-ßÖWKJQXRVQZQ
-ACHTUNGMINEN
+ßöwkjqxrvqzq
+achtungminen
 -----------------------------------
 '''

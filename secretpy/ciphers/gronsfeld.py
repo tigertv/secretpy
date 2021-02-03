@@ -13,9 +13,8 @@ class Gronsfeld:
             char = text[i]
             keyi = key[i % len(key)]
             try:
-                alphIndex = (alphabet.index(char) +
-                         isEncrypt * keyi) % len(alphabet)
-            except ValueError as e:
+                alphIndex = (alphabet.index(char) + isEncrypt * keyi) % len(alphabet)
+            except ValueError:
                 wrchar = char.encode('utf-8')
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
             ans += alphabet[alphIndex]

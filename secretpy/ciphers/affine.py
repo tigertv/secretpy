@@ -19,7 +19,7 @@ class Affine:
                     alphI = (aInverse * (alphabet.index(char) - b)) % len(alphabet)
                 enc = alphabet[alphI]
                 ans += enc
-        except ValueError as e:
+        except ValueError:
             wrchar = char.encode('utf-8')
             raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
         return ans
