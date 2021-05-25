@@ -88,3 +88,4 @@ class Scytale:
         """
 
         return self.__dec(alphabet, key, text)
+    
