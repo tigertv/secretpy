@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 import secretpy.alphabets as al
-from math import ceil, floor
+from math import floor
 
 
 class Scytale:
@@ -25,7 +25,7 @@ class Scytale:
         # Loop for every char inside a block
         for char_count in range(0, key):
             # Loop for every block defined by key
-            for block_count in range(0, ceil(len(text) / key)):
+            for block_count in range(0, int(floor(len(text) / key) + 1)):
                 if (char_count + (block_count * key)) < len(text):
                     ans = ans + text[char_count + (block_count * key)]
                 else:  # Break loop if last block is not full
@@ -43,13 +43,13 @@ class Scytale:
                 raise Exception("Can't find char '" + char + "' of text in alphabet!")
 
         # Loop for every char inside a block
-        for char_count in range(0, ceil(len(text) / key)):
+        for char_count in range(0, int(floor(len(text) / key) + 1)):
             shift = 0  # Shift for blocks with different sizes
             # Loop for every block defined by key
             for block_count in range(0, key):
                 # Check if current char index is outside text length
                 if (char_count * key + shift) < len(text):
-                    ans = ans + text[char_count + (block_count * (floor(len(text) / key))) + shift]
+                    ans = ans + text[char_count + (block_count * (int(floor(len(text) / key)))) + shift]
                     if shift < (len(text) % key):
                         shift = shift + 1
                 else:  # Break loop if text length is reached
@@ -88,4 +88,3 @@ class Scytale:
         """
 
         return self.__dec(alphabet, key, text)
-    
