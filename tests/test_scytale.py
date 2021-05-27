@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 
-from scytale import Scytale
+from secretpy import Scytale
 import unittest
 
 
