@@ -25,6 +25,7 @@ from .rot13 import Rot13
 from .rot18 import Rot18
 from .rot47 import Rot47
 from .rot5 import Rot5
+from .scytale import Scytale
 from .three_square import ThreeSquare
 from .trifid import Trifid
 from .two_square import TwoSquare
@@ -38,6 +39,6 @@ __all__ = [
     "Chao", "ColumnarTransposition", "FourSquare", "Gronsfeld",
     "Keyword", "MyszkowskiTransposition",
     "Nihilist", "SimpleSubstitution", "Playfair", "Porta", "Polybius",
-    "Rot13", "Rot18", "Rot47", "Rot5", "ThreeSquare",
+    "Rot13", "Rot18", "Rot47", "Rot5", "Scytale", "ThreeSquare",
     "Trifid", "TwoSquare", "Vigenere", "Vic", "Zigzag",
 ]
