@@ -3,10 +3,14 @@
 
 
 from secretpy import Scytale
+from secretpy import alphabets
 import unittest
 
 
 class TestScytale(unittest.TestCase):
+    alphabet = (
+        alphabets.ENGLISH
+    )
 
     key = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
@@ -24,13 +28,13 @@ class TestScytale(unittest.TestCase):
                   "Iyabmahdulrythveelrp"]  # 10
 
     def test_encrypt(self):
-        for i, k in enumerate(self.key):
-            enc = Scytale().encrypt(self.plaintext, k)
+        for i, key in enumerate(self.key):
+            enc = Scytale().encrypt(self.plaintext, key, self.alphabet)
             self.assertEqual(enc, self.ciphertext[i])
 
     def test_decrypt(self):
-        for i, k in enumerate(self.key):
-            dec = Scytale().decrypt(self.ciphertext[i], k)
+        for i, key in enumerate(self.key):
+            dec = Scytale().decrypt(self.ciphertext[i], key, self.alphabet)
             self.assertEqual(dec, self.plaintext)
 
 
