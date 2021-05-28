@@ -11,81 +11,18 @@ class Scytale:
     __alphabet = al.ENGLISH
 
     def __enc(self, text, key, alphabet):
-        block_list = []
-        ans = ""
-        rows = 0
-
-        # Round up number of "rows"
-        # "ceil(len(text) / key" not possible due to compatibility to python 2
-        if (len(text) % key) != 0:
-            rows = int((len(text) / key) + 1)
-        else:
-            rows = int(len(text) / key)
-
-        # split text into blocks (row by row)
-        for i in range(0, rows):
-            if ((i * key) + key) <= len(text):
-                block_list.append(text[(i * key):((i * key) + key)])
-            else:
-                block_list.append(text[(i * key):len(text)])
-
-        # read characters from blocks
-        for char in range(0, key):
-            for block in range(0, rows):
-                try:
-                    ans = ans + block_list[block][char]
-                except:
-                    break
-        return ans
+        # key is columns
+        return "".join(text[i::key] for i in range(key))
 
     def __dec(self, text, key, alphabet):
-        block_list = []
-        ans = ""
-        rows = 0
-        additional_chars = len(text) % key
-        block_start = 0
-        block_end = 0
-
-        # Round up number of "rows" and "block_end"
-        # "ceil(len(text) / key" not possible due to compatibility to python 2
-        if (len(text) % key) != 0:
-            rows = int((len(text) / key) + 1)
-            block_end = int((len(text) / key) + 1)
-        else:
-            rows = int(len(text) / key)
-            block_end = int(len(text) / key)
-
-        # split text into blocks (column by column)
-        for i in range(0, key):
-            # If scytale is fully occupied
-            if (rows * key) == len(text):
-                block_list.append(text[block_start:block_end])
-                block_start = block_start + rows
-                block_end = block_end + rows
-            # If scytale is NOT fully occupied (last row has empty places)
-            elif additional_chars > 1:
-                block_list.append(text[block_start:block_end])
-                additional_chars = additional_chars - 1
-                block_start = block_start + rows
-                block_end = block_end + rows
-            elif additional_chars == 1:
-                block_list.append(text[block_start:block_end])
-                additional_chars = additional_chars - 1
-                block_start = block_start + rows
-                block_end = block_end + (rows - 1)
-            elif additional_chars == 0:
-                block_list.append(text[block_start:block_end])
-                block_start = block_start + (rows - 1)
-                block_end = block_end + (rows - 1)
-
-        # read characters from blocks
-        for char in range(0, rows):
-            for block in range(0, key):
-                try:
-                    ans = ans + block_list[block][char]
-                except:
-                    break
-        return ans
+        full_rows, rmd = len(text) // key, len(text) % key
+        rows = full_rows + (rmd > 0)
+        b_index = rows * rmd
+        res = [text[i:b_index:rows] for i in range(rows)]
+        add_res = [res[i] + text[b_index+i::full_rows] for i in range(full_rows)]
+        if rmd:
+            add_res.append(res[-1])
+        return "".join(add_res)
 
     def encrypt(self, text, key, alphabet=None):
         """
