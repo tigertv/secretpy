@@ -1,19 +1,22 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
+import secretpy.alphabets as al
+
 
 class Scytale:
     """
     The Scytale Cipher
     """
+    __alphabet = al.ENGLISH
 
-    def __enc(self, text: str, key: int):
+    def __enc(self, text, key, alphabet):
         block_list = []
         ans = ""
         rows = 0
 
         # Round up number of "rows"
-        # "ceil(len(text) / key" not possible due to compatibility to python 2)
+        # "ceil(len(text) / key" not possible due to compatibility to python 2
         if (len(text) % key) != 0:
             rows = int((len(text) / key) + 1)
         else:
@@ -35,7 +38,7 @@ class Scytale:
                     break
         return ans
 
-    def __dec(self, text: str, key: int):
+    def __dec(self, text, key, alphabet):
         block_list = []
         ans = ""
         rows = 0
@@ -44,7 +47,7 @@ class Scytale:
         block_end = 0
 
         # Round up number of "rows" and "block_end"
-        # "ceil(len(text) / key" not possible due to compatibility to python 2)
+        # "ceil(len(text) / key" not possible due to compatibility to python 2
         if (len(text) % key) != 0:
             rows = int((len(text) / key) + 1)
             block_end = int((len(text) / key) + 1)
@@ -84,26 +87,30 @@ class Scytale:
                     break
         return ans
 
-    def encrypt(self, text, key):
+    def encrypt(self, text, key, alphabet=None):
         """
         Encryption method
         :param text: Text to encrypt
         :param key: Encryption key - Number of windings
+        :param alphabet: Alphabet which will be used,
+                         if there is no a value, English is used
         :type text: string
         :type key: integer
         :return: encrypted text
         :rtype: string
         """
-        return self.__enc(text, key)
+        return self.__enc(text, key, alphabet)
 
-    def decrypt(self, text, key):
+    def decrypt(self, text, key, alphabet=None):
         """
         Decryption method
         :param text: Text to decrypt
         :param key: Decryption key - Number of windings
+        :param alphabet: Alphabet which will be used,
+                         if there is no a value, English is used
         :type text: string
         :type key: integer
         :return: decrypted text
         :rtype: string
         """
-        return self.__dec(text, key)
+        return self.__dec(text, key, alphabet)
