@@ -10,18 +10,18 @@ class Caesar:
     """
     __alphabet = al.ENGLISH
 
-    def __encDec(self, alphabet, key, text, isEncrypt):
-        alphabet = alphabet or self.__alphabet
-        ans = ""
-        for char in text:
+    def __crypt(self, alphabet, key, text):
+        alph = alphabet or self.__alphabet
+        res = []
+        for c in text:
             try:
-                alphIndex = alphabet.index(char)
+                index = alph.index(c)
             except ValueError:
-                wrchar = char.encode('utf-8')
+                wrchar = c.encode('utf-8')
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
-            alphIndex = (alphIndex + isEncrypt * key) % len(alphabet)
-            ans += alphabet[alphIndex]
-        return ans
+            index = (index + key) % len(alph)
+            res.append(alph[index])
+        return "".join(res)
 
     def encrypt(self, text, key, alphabet=None):
         """
@@ -37,7 +37,7 @@ class Caesar:
         :return: encrypted text
         :rtype: string
         """
-        return self.__encDec(alphabet, key, text, 1)
+        return self.__crypt(alphabet, key, text)
 
     def decrypt(self, text, key, alphabet=None):
         """
@@ -53,4 +53,4 @@ class Caesar:
         :return: decrypted text
         :rtype: string
         """
-        return self.__encDec(alphabet, key, text, -1)
+        return self.__crypt(alphabet, -key, text)
