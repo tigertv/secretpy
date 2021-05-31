@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-from .rot13 import Rot13
+from .caesar import Caesar
 import secretpy.alphabets as al
 
 
@@ -8,11 +8,7 @@ class Rot5:
     """
     The Rot5 Cipher
     """
-    __rot13 = Rot13()
-    __alphabet = al.DECIMAL
-
-    def __encDec(self, text):
-        return self.__rot13.encrypt(text, alphabet=self.__alphabet)
+    __caesar = Caesar()
 
     def encrypt(self, text, key=None, alphabet=None):
         """
@@ -28,7 +24,7 @@ class Rot5:
         :return: text
         :rtype: string
         """
-        return self.__encDec(text)
+        return self.__caesar.encrypt(text, 5, al.DECIMAL)
 
     def decrypt(self, text, key=None, alphabet=None):
         """
@@ -44,4 +40,4 @@ class Rot5:
         :return: text
         :rtype: string
         """
-        return self.__encDec(text)
+        return self.__caesar.encrypt(text, 5, al.DECIMAL)

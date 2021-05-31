@@ -10,17 +10,16 @@ class Rot18:
     """
     __rot13 = Rot13()
 
-    def __createAlphabet(self, alphabet):
+    def __create_alphabet(self, alphabet):
         ahalf = len(alphabet) >> 1
-        dhalf = len(al.DECIMAL) >> 1
         return (
-            alphabet[:ahalf] + al.DECIMAL[:dhalf] +
-            alphabet[ahalf:] + al.DECIMAL[dhalf:]
+            alphabet[:ahalf] + al.DECIMAL[:5] +
+            alphabet[ahalf:] + al.DECIMAL[5:]
         )
 
-    def __encDec(self, text, alphabet=None):
+    def __crypt(self, text, alphabet=None):
         alphabet = alphabet or al.ENGLISH
-        alphabet = self.__createAlphabet(alphabet)
+        alphabet = self.__create_alphabet(alphabet)
         return self.__rot13.encrypt(text, alphabet=alphabet)
 
     def encrypt(self, text, key=None, alphabet=None):
@@ -37,7 +36,7 @@ class Rot18:
         :return: text
         :rtype: string
         """
-        return self.__encDec(text, alphabet)
+        return self.__crypt(text, alphabet)
 
     def decrypt(self, text, key=None, alphabet=None):
         """
@@ -53,4 +52,4 @@ class Rot18:
         :return: text
         :rtype: string
         """
-        return self.__encDec(text, alphabet)
+        return self.__crypt(text, alphabet)
