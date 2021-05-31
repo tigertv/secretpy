@@ -8,22 +8,21 @@ class CaesarProgressive:
     """
     The Caesar Progressive Cipher
     """
-    __alphabet = al.ENGLISH
 
-    def __encDec(self, alphabet, key, text, isEncrypt):
-        alphabet = alphabet or self.__alphabet
-        ans = ""
+    def __crypt(self, alphabet, key, text, isEncrypt):
+        alph = alphabet or al.ENGLISH
+        res = []
         for i, char in enumerate(text):
             try:
-                alphIndex = alphabet.index(char)
+                index = alph.index(char)
             except ValueError as e:
                 wrchar = char.encode('utf-8')
                 e.args = (
                     "Can't find char '" + wrchar + "' of text in alphabet!",)
                 raise
-            alphIndex = (alphIndex + isEncrypt * (key + i)) % len(alphabet)
-            ans += alphabet[alphIndex]
-        return ans
+            index = (index + isEncrypt * (key + i)) % len(alph)
+            res.append(alph[index])
+        return "".join(res)
 
     def encrypt(self, text, key, alphabet=None):
         """
@@ -39,7 +38,7 @@ class CaesarProgressive:
         :return: encrypted text
         :rtype: string
         """
-        return self.__encDec(alphabet, key, text, 1)
+        return self.__crypt(alphabet, key, text, 1)
 
     def decrypt(self, text, key, alphabet=None):
         """
@@ -55,4 +54,4 @@ class CaesarProgressive:
         :return: decrypted text
         :rtype: string
         """
-        return self.__encDec(alphabet, key, text, -1)
+        return self.__crypt(alphabet, key, text, -1)
