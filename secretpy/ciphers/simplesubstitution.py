@@ -7,25 +7,6 @@ class SimpleSubstitution:
     The Simple Substitution Cipher
     """
 
-    def __encDec(self, alphabet, key, text, isEncrypt):
-        if len(alphabet) != len(key):
-            return
-
-        ans = ""
-        for i in range(len(text)):
-            m = text[i]
-            k = ""
-            try:
-                if isEncrypt == 1:
-                    k = key[alphabet.index(m)]
-                else:
-                    k = alphabet[key.index(m)]
-            except ValueError:
-                wrchar = m.encode('utf-8')
-                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
-            ans += k
-        return ans
-
     def encrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
         """
         Encryption method
@@ -40,7 +21,17 @@ class SimpleSubstitution:
         :return: text
         :rtype: string
         """
-        return self.__encDec(alphabet, key, text, 1)
+        if len(alphabet) != len(key):
+            return
+        res = []
+        for c in text:
+            try:
+                k = key[alphabet.index(c)]
+            except ValueError:
+                wrchar = c.encode('utf-8')
+                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
+            res.append(k)
+        return "".join(res)
 
     def decrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
         """
@@ -56,4 +47,14 @@ class SimpleSubstitution:
         :return: text
         :rtype: string
         """
-        return self.__encDec(alphabet, key, text, -1)
+        if len(alphabet) != len(key):
+            return
+        res = []
+        for c in text:
+            try:
+                k = alphabet[key.index(c)]
+            except ValueError:
+                wrchar = c.encode('utf-8')
+                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
+            res.append(k)
+        return "".join(res)
