@@ -2,18 +2,18 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import Zigzag
-from secretpy import alphabets
 
-alphabet = alphabets.GERMAN
+
 plaintext = u"thequickbrownfoxjumpsoverthelazydog"
+plaintext = u"thequick"
 key = 3
 
 chipher = Zigzag()
 print(plaintext)
 
-enc = chipher.encrypt(plaintext, key, alphabet)
+enc = chipher.encrypt(plaintext, key)
 print(enc)
-dec = chipher.decrypt(enc, key, alphabet)
+dec = chipher.decrypt(enc, key)
 print(dec)
 
 #######################################################
