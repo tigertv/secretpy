@@ -1,8 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import Keyword
-from secretpy import alphabets
+from secretpy import Keyword, alphabets
 
 
 alphabet = alphabets.GERMAN
