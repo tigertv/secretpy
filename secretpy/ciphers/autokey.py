@@ -7,31 +7,30 @@ class Autokey:
     The Autokey Cipher
     """
 
-    def __encDec(self, alphabet, key, text, isEncrypt):
-        ans = ""
-        for i in range(len(text)):
-            m = text[i]
+    def __crypt(self, alphabet, key, text, is_encrypt):
+        res = []
+        for i, t in enumerate(text):
+            try:
+                a_index = alphabet.index(t)
+            except ValueError:
+                wrchar = t.encode('utf-8')
+                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
             if i < len(key):
                 k = key[i]
             else:
-                if isEncrypt == 1:
+                if is_encrypt == 1:
                     k = text[i - len(key)]
                 else:
-                    k = ans[i - len(key)]
+                    k = res[i - len(key)]
             try:
-                alphI = alphabet.index(m)
-            except ValueError:
-                wrchar = m.encode('utf-8')
-                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
-            try:
-                alphI += isEncrypt * alphabet.index(k)
+                a_index += is_encrypt * alphabet.index(k)
             except ValueError:
                 wrchar = k.encode('utf-8')
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
-            alphI = alphI % len(alphabet)
-            enc = alphabet[alphI]
-            ans += enc
-        return ans
+            a_index = a_index % len(alphabet)
+            enc = alphabet[a_index]
+            res.append(enc)
+        return "".join(res)
 
     def encrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
         """
@@ -47,7 +46,7 @@ class Autokey:
         :return: text
         :rtype: string
         """
-        return self.__encDec(alphabet, key, text, 1)
+        return self.__crypt(alphabet, key, text, 1)
 
     def decrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
         """
@@ -63,4 +62,4 @@ class Autokey:
         :return: text
         :rtype: string
         """
-        return self.__encDec(alphabet, key, text, -1)
+        return self.__crypt(alphabet, key, text, -1)
