@@ -1,9 +1,8 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import CryptMachine
-from secretpy import Beaufort
-from secretpy import alphabets
+from secretpy import CryptMachine, Beaufort, alphabets
+
 
 plaintext = u"helloworld"
 key = "key"

@@ -7,24 +7,23 @@ class Beaufort:
     The Beaufort Cipher
     """
 
-    def __encDec(self, alphabet, key, text):
-        ans = ""
-        for i in range(len(text)):
-            char = text[i]
-            keychar = key[i % len(key)]
+    def __crypt(self, alphabet, key, text):
+        res = []
+        for i, t in enumerate(text):
+            k = key[i % len(key)]
             try:
-                alphIndex = alphabet.index(keychar)
+                a_index = alphabet.index(k)
             except ValueError:
-                wrchar = keychar.encode('utf-8')
+                wrchar = k.encode('utf-8')
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
             try:
-                alphIndex -= alphabet.index(char)
+                a_index -= alphabet.index(t)
             except ValueError:
-                wrchar = char.encode('utf-8')
+                wrchar = t.encode('utf-8')
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
-            alphIndex %= len(alphabet)
-            ans += alphabet[alphIndex]
-        return ans
+            a_index %= len(alphabet)
+            res.append(alphabet[a_index])
+        return "".join(res)
 
     def encrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
         """
@@ -40,7 +39,7 @@ class Beaufort:
         :return: text
         :rtype: string
         """
-        return self.__encDec(alphabet, key, text)
+        return self.__crypt(alphabet, key, text)
 
     def decrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
         """
@@ -56,4 +55,4 @@ class Beaufort:
         :return: text
         :rtype: string
         """
-        return self.__encDec(alphabet, key, text)
+        return self.__crypt(alphabet, key, text)
