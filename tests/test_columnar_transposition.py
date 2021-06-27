@@ -9,9 +9,14 @@ import unittest
 class TestColumnarTransposition(unittest.TestCase):
     alphabet = (
         alphabets.ENGLISH,
+        alphabets.ENGLISH,
+        alphabets.ENGLISH,
+        alphabets.GERMAN,
+        alphabets.SPANISH,
     )
 
     key = (
+        u"zebras",
         u"zebras",
         u"german",
         u"schlüssel",
@@ -20,6 +25,7 @@ class TestColumnarTransposition(unittest.TestCase):
 
     plaintext = (
         u"wearediscoveredfleeatonceqkjeu",
+        u"wearediscoveredfleeatonce",
         u"defendtheeastwallofthecastlexx",
         u"textnachtricht",
         u"unmensaiedetexto",
@@ -27,9 +33,10 @@ class TestColumnarTransposition(unittest.TestCase):
 
     ciphertext = (
         u"evlneacdtkeseaqrofojdeecuwiree",
+        u"evlnacdtesearofodeecwiree",
         u"nalcxehwttdttfseeleedsoaxfeahl",
-        u"111111111",
-        u"222222222222222",
+        u"eihxcthttracnt",
+        u"mieuseondtnateex",
     )
 
     cipher = ColumnarTransposition()
