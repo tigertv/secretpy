@@ -1,8 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import Polybius
-from secretpy import CryptMachine
+from secretpy import Polybius, CryptMachine
 from secretpy.cmdecorators import LowerCase
 import secretpy.alphabets as alph
 
