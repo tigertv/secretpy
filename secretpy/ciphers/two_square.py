@@ -2,42 +2,43 @@
 # -*- encoding: utf-8 -*-
 
 from .polybius_square import PolybiusSquare
+from secretpy import alphabets as al
 
 
 class TwoSquare:
     """
-    The Two-Square Cipher
+    The Two-Square Cipher, also called Double Playfair
     """
 
-    def __enc(self, alphabet, text, key):
+    def __crypt(self, alphabet, text, key):
         square1 = PolybiusSquare(alphabet, key[0])
         square2 = PolybiusSquare(alphabet, key[1])
 
         # text encryption
-        if len(text) % 2:
-            text += alphabet[-1][0]
-        odd = text[1::2]
-        even = text[::2]
-        enc = u""
-
-        for i in range(len(even)):
-            coords = square1.get_coordinates(even[i])
-            row1 = coords[0]
-            column1 = coords[1]
-
-            coords = square2.get_coordinates(odd[i])
-            row2 = coords[0]
-            column2 = coords[1]
+        res = []
+        it = iter(text)
+        while True:
+            try:
+                even = next(it)
+            except StopIteration:
+                break
+            try:
+                odd = next(it)
+            except StopIteration:
+                # add the last letter in the alphabet
+                odd = alphabet[-1][0]
+            row1, column1 = square1.get_coordinates(even)
+            row2, column2 = square2.get_coordinates(odd)
 
             if column1 == column2:
-                enc += square1.get_char(row2, column1)
-                enc += square2.get_char(row1, column1)
-            else:
-                enc += square1.get_char(row1, column2)
-                enc += square2.get_char(row2, column1)
-        return enc
+                row1, row2 = row2, row1
 
-    def encrypt(self, text, key=None, alphabet=None):
+            res.append(square1.get_char(row1, column2))
+            res.append(square2.get_char(row2, column1))
+
+        return "".join(res)
+
+    def encrypt(self, text, key=None, alphabet=al.ENGLISH_SQUARE_IJ):
         """
         Encryption method
 
@@ -51,16 +52,9 @@ class TwoSquare:
         :return: text
         :rtype: string
         """
-        alphabet = alphabet or [
-            u"a", u"b", u"c", u"d", u"e",
-            u"f", u"g", u"h", u"ij", u"k",
-            u"l", u"m", u"n", u"o", u"p",
-            u"q", u"r", u"s", u"t", u"u",
-            u"v", u"w", u"x", u"y", u"z"
-        ]
-        return self.__enc(alphabet, text, key)
+        return self.__crypt(alphabet, text, key)
 
-    def decrypt(self, text, key=None, alphabet=None):
+    def decrypt(self, text, key=None, alphabet=al.ENGLISH_SQUARE_IJ):
         """
         Decryption method
 
@@ -74,11 +68,4 @@ class TwoSquare:
         :return: text
         :rtype: string
         """
-        alphabet = alphabet or [
-            u"a", u"b", u"c", u"d", u"e",
-            u"f", u"g", u"h", u"ij", u"k",
-            u"l", u"m", u"n", u"o", u"p",
-            u"q", u"r", u"s", u"t", u"u",
-            u"v", u"w", u"x", u"y", u"z"
-        ]
-        return self.__enc(alphabet, text, key)
+        return self.__crypt(alphabet, text, key)

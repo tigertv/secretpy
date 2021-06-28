@@ -1,10 +1,8 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import TwoSquare
-from secretpy import CryptMachine
-from secretpy import alphabets
-from secretpy.cmdecorators import NoSpaces, UpperCase
+from secretpy import TwoSquare, CryptMachine, alphabets
+from secretpy.cmdecorators import RemoveNonAlphabet, UpperCase
 
 
 def encdec(machine, plaintext):
@@ -20,16 +18,23 @@ alphabet = alphabets.ENGLISH_SQUARE_OQ
 
 key = (u"example", u"keyword")
 
-cm = NoSpaces(UpperCase(CryptMachine(TwoSquare())))
+cm = UpperCase(RemoveNonAlphabet(CryptMachine(TwoSquare())))
 
 cm.set_alphabet(alphabet)
 cm.set_key(key)
 plaintext = u"Help me Obi wan Kenobi"
 encdec(cm, plaintext)
 
+plaintext = u"Help me Obi wan Kenobi y"
+encdec(cm, plaintext)
+
 '''
 Help me Obi wan Kenobi
 XGDLXWSDJYRYHOTKDG
 HELPMEOBIWANKENOBI
+----------------------------------
+Help me Obi wan Kenobi y
+XGDLXWSDJYRYHOTKDGZX
+HELPMEOBIWANKENOBIYZ
 ----------------------------------
 '''
