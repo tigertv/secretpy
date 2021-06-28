@@ -2,6 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 from .polybius_square import PolybiusSquare
+from secretpy import alphabets as al
 
 
 class FourSquare:
@@ -9,44 +10,36 @@ class FourSquare:
     The Four-Square Cipher
     """
 
-    def __enc(self, alphabet, text, key, isEncrypt):
+    def __crypt(self, alphabet, text, key, is_encrypt):
         square01 = PolybiusSquare(alphabet, key[0])
         square10 = PolybiusSquare(alphabet, key[1])
-        square = PolybiusSquare(alphabet, "")
+        square = PolybiusSquare(alphabet)
+        square00 = square
+        square11 = square
+
+        res = []
+        if is_encrypt:
+            square01, square10, square00, square11 = square00, square11, square01, square10
 
         # text encryption
-        if len(text) % 2:
-            text += alphabet[-1][0]
-        odd = text[1::2]
-        even = text[::2]
-        enc = u""
-        if isEncrypt:
-            for i in range(len(even)):
-                coords = square.get_coordinates(even[i])
-                row00 = coords[0]
-                column00 = coords[1]
+        it = iter(text)
+        while True:
+            try:
+                even = next(it)
+            except StopIteration:
+                break
+            try:
+                odd = next(it)
+            except StopIteration:
+                # add the last letter in the alphabet
+                odd = alphabet[-1][0]
+            row00, column00 = square01.get_coordinates(even)
+            row11, column11 = square10.get_coordinates(odd)
+            res.append(square00.get_char(row00, column11))
+            res.append(square11.get_char(row11, column00))
+        return "".join(res)
 
-                coords = square.get_coordinates(odd[i])
-                row11 = coords[0]
-                column11 = coords[1]
-
-                enc += square01.get_char(row00, column11)
-                enc += square10.get_char(row11, column00)
-        else:
-            for i in range(len(even)):
-                coords = square01.get_coordinates(even[i])
-                row00 = coords[0]
-                column00 = coords[1]
-
-                coords = square10.get_coordinates(odd[i])
-                row11 = coords[0]
-                column11 = coords[1]
-
-                enc += square.get_char(row00, column11)
-                enc += square.get_char(row11, column00)
-        return enc
-
-    def encrypt(self, text, key=None, alphabet=None):
+    def encrypt(self, text, key=None, alphabet=al.ENGLISH_SQUARE_IJ):
         """
         Encryption method
 
@@ -55,21 +48,14 @@ class FourSquare:
         :param alphabet: Alphabet which will be used,
                          if there is no a value, English is used
         :type text: string
-        :type key: integer
+        :type key: tuple of two strings
         :type alphabet: string
         :return: text
         :rtype: string
         """
-        alphabet = alphabet or [
-            u"a", u"b", u"c", u"d", u"e",
-            u"f", u"g", u"h", u"ij", u"k",
-            u"l", u"m", u"n", u"o", u"p",
-            u"q", u"r", u"s", u"t", u"u",
-            u"v", u"w", u"x", u"y", u"z"
-        ]
-        return self.__enc(alphabet, text, key, True)
+        return self.__crypt(alphabet, text, key, True)
 
-    def decrypt(self, text, key=None, alphabet=None):
+    def decrypt(self, text, key=None, alphabet=al.ENGLISH_SQUARE_IJ):
         """
         Decryption method
 
@@ -78,16 +64,9 @@ class FourSquare:
         :param alphabet: Alphabet which will be used,
                          if there is no a value, English is used
         :type text: string
-        :type key: integer
+        :type key: tuple of two strings
         :type alphabet: string
         :return: text
         :rtype: string
         """
-        alphabet = alphabet or [
-            u"a", u"b", u"c", u"d", u"e",
-            u"f", u"g", u"h", u"ij", u"k",
-            u"l", u"m", u"n", u"o", u"p",
-            u"q", u"r", u"s", u"t", u"u",
-            u"v", u"w", u"x", u"y", u"z"
-        ]
-        return self.__enc(alphabet, text, key, False)
+        return self.__crypt(alphabet, text, key, False)

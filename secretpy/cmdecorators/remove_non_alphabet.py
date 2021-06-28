@@ -26,5 +26,5 @@ class RemoveNonAlphabet(AbstractMachineDecorator):
                     if c in a:
                         txt.append(c)
             text2 = "".join(txt)
-            
+
         return func(text2)
