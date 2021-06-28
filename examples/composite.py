@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import Rot13, Caesar, CryptMachine, CompositeMachine
-from secretpy.cmdecorators import SaveAll, RemoveNonAlphabet
+from secretpy.cmdecorators import SaveAll
 
 
 def encdec(machine, plaintext):

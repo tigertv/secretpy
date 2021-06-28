@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import Playfair, CryptMachine, alphabets
+from secretpy import Playfair, CryptMachine
 from secretpy.cmdecorators import RemoveNonAlphabet, UpperCase
 
 
