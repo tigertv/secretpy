@@ -1,8 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import Bifid
-from secretpy import alphabets
+from secretpy import Bifid, alphabets
 from unittest import TestCase, main
 
 

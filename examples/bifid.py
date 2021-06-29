@@ -1,8 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import Bifid
-from secretpy import CryptMachine
+from secretpy import Bifid, CryptMachine, alphabets
 
 
 def encdec(machine, plaintext):
@@ -23,7 +22,6 @@ alphabet = [
     u"щ", u"ы", u"ьъ", u"э", u"ю", u"я",
     u"1", u"2", u"3", u"4", u"5", u"6"
 ]
-
 cm.set_alphabet(alphabet)
 plaintext = u"текст"
 encdec(cm, plaintext)
@@ -35,8 +33,8 @@ alphabet = [
     u"r", u"c", u"v", u"s", u"z",
     u"w", u"b", u"u", u"t", u"ij"
 ]
-plaintext = u"defendtheeastwallofthecastle"
 cm.set_alphabet(alphabet)
+plaintext = u"defendtheeastwallofthecastle"
 encdec(cm, plaintext)
 
 alphabet = [
@@ -46,18 +44,31 @@ alphabet = [
     u"f", u"c", u"l", u"u", u"m",
     u"t", u"h", u"y", u"v", u"r"
 ]
-plaintext = "fleeatonce"
 cm.set_alphabet(alphabet)
 cm.set_key(10)
+plaintext = "fleeatonce"
 encdec(cm, plaintext)
 
-alphabet = [
-    u"Α", u"Β", u"Γ", u"Δ", u"Ε",
-    u"Ζ", u"Η", u"Θ", u"Ι", u"Κ",
-    u"Λ", u"Μ", u"Ν", u"Ξ", u"Ο",
-    u"Π", u"Ρ", u"Σ", u"Τ", u"Υ",
-    u"Φ", u"Χ", u"Ψ", u"Ω"
-]
+alphabet = alphabets.GREEK.upper()
 plaintext = u"ΠΙΝΑΚΑΣ"
 cm.set_alphabet(alphabet)
 encdec(cm, plaintext)
+
+'''
+текст
+нит4я
+текст
+----------------------------------
+defendtheeastwallofthecastle
+ffyhmkhycpliashadtrlhcchlblr
+defendtheeastwallofthecastle
+----------------------------------
+fleeatonce
+uaeolwrins
+fleeatonce
+----------------------------------
+ΠΙΝΑΚΑΣ
+ΡΛΖΠΣΕΓ
+ΠΙΝΑΚΑΣ
+----------------------------------
+'''
