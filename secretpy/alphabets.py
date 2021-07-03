@@ -31,6 +31,7 @@ NORWEGIAN = DANISH
 POLISH = u"aąbcćdeęfghijklłmnńoóprsśtuwyzźż"
 RUSSIAN = u"абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
 SPANISH = u"abcdefghijklmnñopqrstuvwxyz"
+SWEDISH = u"abcdefghijklmnopqrstuvwxyzåäö"
 TURKISH = u"abcçdefgğhıijklmnoöprsştuüvyz"
 
 ENGLISH_SQUARE_IJ = (
