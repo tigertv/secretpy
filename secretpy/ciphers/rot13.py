@@ -11,7 +11,7 @@ class Rot13:
     __caesar = Caesar()
 
     def __crypt(self, alphabet, text):
-        alph = alphabet or al.ENGLISH
+        alph = alphabet
         key = len(alph) >> 1
         # if number of letters in the alphabet is odd
         if len(alph) & 1:
@@ -19,7 +19,7 @@ class Rot13:
             key += 1
         return self.__caesar.encrypt(text, key, alph)
 
-    def encrypt(self, text, key=None, alphabet=None):
+    def encrypt(self, text, key=None, alphabet=al.ENGLISH):
         """
         Encryption method
 
@@ -35,7 +35,7 @@ class Rot13:
         """
         return self.__crypt(alphabet, text)
 
-    def decrypt(self, text, key=None, alphabet=None):
+    def decrypt(self, text, key=None, alphabet=al.ENGLISH):
         """
         Decryption method
 
