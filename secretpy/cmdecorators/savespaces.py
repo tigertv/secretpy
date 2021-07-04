@@ -4,6 +4,7 @@
 from .decorator import AbstractMachineDecorator
 
 
+# depricated: use SaveAll
 class SaveSpaces(AbstractMachineDecorator):
 
     def encrypt(self, text):

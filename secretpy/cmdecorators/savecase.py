@@ -7,18 +7,18 @@ from .decorator import AbstractMachineDecorator
 class SaveCase(AbstractMachineDecorator):
 
     def encrypt(self, text):
-        return self.__encDec(text, lambda text: self._machine.encrypt(text))
+        return self.__crypt(text, self._machine.encrypt)
 
     def decrypt(self, text):
-        return self.__encDec(text, lambda text: self._machine.decrypt(text))
+        return self.__crypt(text, self._machine.decrypt)
 
-    def __encDec(self, text, func):
-        uppercases = []
-        for i, char in enumerate(text):
-            if char == char.upper():
-                uppercases.append(i)
+    def __crypt(self, text, func):
+        uppercases = [i for i, char in enumerate(text) if char == char.upper()]
         text = text.lower()
+
         res = func(text)
+        res = list(res)
+
         for i in uppercases:
-            res = res[:i] + res[i].upper() + res[i+1:]
-        return res
+            res[i] = res[i].upper()
+        return u"".join(res)

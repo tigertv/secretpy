@@ -4,6 +4,7 @@
 from .decorator import AbstractMachineDecorator
 
 
+# depricated: use RemoveNonAlphabet
 class NoSpaces(AbstractMachineDecorator):
 
     def encrypt(self, text):

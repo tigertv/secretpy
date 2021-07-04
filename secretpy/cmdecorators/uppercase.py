@@ -7,11 +7,9 @@ from .decorator import AbstractMachineDecorator
 class UpperCase(AbstractMachineDecorator):
 
     def encrypt(self, text):
-        text = text.lower()
-        res = self._machine.encrypt(text)
+        res = self._machine.encrypt(text.lower())
         return res.upper()
 
     def decrypt(self, text):
-        text = text.lower()
-        res = self._machine.decrypt(text)
+        res = self._machine.decrypt(text.lower())
         return res.upper()
