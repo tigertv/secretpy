@@ -29,7 +29,7 @@ class TestAtbash(unittest.TestCase):
         u"мъфнм",
         u"kzgkqßöwkmvöwk",
         u"fnñvnhzqvwvgvcgl",
-        u"ぶすれどるしび")
+        u"ばさりづらごほ")
 
     def test_encrypt(self):
         for i, alphabet in enumerate(self.alphabet):

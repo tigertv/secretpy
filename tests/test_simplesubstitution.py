@@ -38,7 +38,7 @@ class TestSimpleSubstitution(TestCase):
             u"わを"
             u"ん"
             u"ゃゅょぁぇ"
-            u"じづあ"
+            u"あ"
         )
     )
 

@@ -30,7 +30,7 @@ class TestRot13(TestCase):
         u"вхыбв",
         u"etieüprwecxrwe",
         u"hnzrnfñwrqrgrkgb",
-        u"をじぱおぴずん"
+        u"わずぼかぱぜを",
     )
 
     cipher = Rot13()

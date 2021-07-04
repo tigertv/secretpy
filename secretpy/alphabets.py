@@ -101,5 +101,4 @@ JAPANESE_HIRAGANA = (
     u"わを"
     u"ん"
     u"ゃゅょぁぇ"
-    u"じづ"
 )
