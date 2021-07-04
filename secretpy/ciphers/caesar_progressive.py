@@ -2,6 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 import secretpy.alphabets as al
+from itertools import chain, cycle
 
 
 class CaesarProgressive:
@@ -9,22 +10,23 @@ class CaesarProgressive:
     The Caesar Progressive Cipher
     """
 
-    def __crypt(self, alphabet, key, text, isEncrypt):
-        alph = alphabet or al.ENGLISH
+    def __crypt(self, alphabet, key, text, is_encrypt):
+        # key should be between 0 and len(alphabet)
+        key %= len(alphabet)
+        # prepare alphabet for substitution
+        subst = {c: i for i, letters in enumerate(alphabet) for c in letters}
         res = []
-        for i, char in enumerate(text):
+        ch = chain(range(key, len(alphabet)), range(key))
+        for k, t in zip(cycle(ch), text):
             try:
-                index = alph.index(char)
-            except ValueError as e:
-                wrchar = char.encode('utf-8')
-                e.args = (
-                    "Can't find char '" + wrchar + "' of text in alphabet!",)
-                raise
-            index = (index + isEncrypt * (key + i)) % len(alph)
-            res.append(alph[index])
+                i = (subst[t] + is_encrypt * k) % len(alphabet)
+            except KeyError:
+                wrchar = t.encode('utf-8')
+                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
+            res.append(alphabet[i][0])
         return "".join(res)
 
-    def encrypt(self, text, key, alphabet=None):
+    def encrypt(self, text, key=3, alphabet=al.ENGLISH):
         """
         Encryption method
 
@@ -40,7 +42,7 @@ class CaesarProgressive:
         """
         return self.__crypt(alphabet, key, text, 1)
 
-    def decrypt(self, text, key, alphabet=None):
+    def decrypt(self, text, key=3, alphabet=al.ENGLISH):
         """
         Decryption method
 

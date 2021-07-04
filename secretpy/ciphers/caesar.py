@@ -2,6 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 import secretpy.alphabets as al
+from itertools import chain
 
 
 class Caesar:
@@ -10,9 +11,12 @@ class Caesar:
     """
 
     def __crypt(self, key, text, alphabet):
-        res = []
+        # key should be between 0 and len(alphabet)
+        key %= len(alphabet)
         # prepare alphabet for substitution
-        subst = {c: alphabet[(i + key) % len(alphabet)][0] for i, letters in enumerate(alphabet) for c in letters}
+        ch = chain(range(key, len(alphabet)), range(key))
+        subst = {c: alphabet[i][0] for i, letters in zip(ch, alphabet) for c in letters}
+        res = []
         for c in text:
             try:
                 res.append(subst[c])
@@ -21,7 +25,7 @@ class Caesar:
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
         return u"".join(res)
 
-    def encrypt(self, text, key, alphabet=al.ENGLISH):
+    def encrypt(self, text, key=3, alphabet=al.ENGLISH):
         """
         Encryption method
 
@@ -37,7 +41,7 @@ class Caesar:
         """
         return self.__crypt(key, text, alphabet)
 
-    def decrypt(self, text, key, alphabet=al.ENGLISH):
+    def decrypt(self, text, key=3, alphabet=al.ENGLISH):
         """
         Decryption method
 

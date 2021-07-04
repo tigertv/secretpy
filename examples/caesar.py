@@ -13,10 +13,10 @@ def encdec(cipher, plaintext, key, alphabet=al.ENGLISH):
     print(cipher.decrypt(enc, key, alphabet))
 
 
-plaintext = u"thequickbrownfoxjumpsoverthelazydog"
 key = 3
 cipher = Caesar()
 
+plaintext = u"thequickbrownfoxjumpsoverthelazydog"
 encdec(cipher, plaintext, key)
 
 alphabet = al.GERMAN
