@@ -7,28 +7,35 @@ from .decorator import AbstractMachineDecorator
 class SaveAll(AbstractMachineDecorator):
 
     def encrypt(self, text):
-        return self.__encDec(text, lambda text: self._machine.encrypt(text))
+        return self.__crypt(text, self._machine.encrypt)
 
     def decrypt(self, text):
-        return self.__encDec(text, lambda text: self._machine.decrypt(text))
+        return self.__crypt(text, self._machine.decrypt)
 
-    def __encDec(self, text, func):
-        chars = []
-        upcases = []
-        alphabet = self._machine.get_alphabet()
-        text2 = text
-        for i, char in enumerate(text2):
-            if char.isupper():
-                upcases.append(i)
-        text2 = text2.lower()
-        for i, char in enumerate(text2):
-            if char not in alphabet:
-                chars.append(i)
-        for i in reversed(chars):
-            text2 = text2[:i] + text2[i+1:]
-        res = func(text2)
-        for i in chars:
-            res = res[:i] + text[i] + res[i:]
+    def __crypt(self, text, func):
+        # make lower case and save indexes
+        upcases = [i for i, char in enumerate(text) if char.isupper()]
+        txt = list(text)
         for i in upcases:
-            res = res[:i] + res[i].upper() + res[i+1:]
-        return res
+            txt[i] = txt[i].lower()
+
+        # remove non-alphabet characters and save indexes
+        alphabet = self._machine.get_alphabet()
+        coords = {c: i for i, letters in enumerate(alphabet) for c in letters}
+        chars = [i for i, char in enumerate(txt) if char not in coords]
+        for i in reversed(chars):
+            del txt[i]
+
+        # execute function
+        res = func("".join(txt))
+        res = list(res)
+
+        # restore non-alphabet characters
+        for i in chars:
+            res.insert(i, text[i])
+
+        # restore uppercase
+        for i in upcases:
+            res[i] = res[i].upper()
+
+        return "".join(res)
