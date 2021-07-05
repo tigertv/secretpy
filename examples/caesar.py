@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import Caesar, CryptMachine, alphabets as al
-from secretpy.cmdecorators import SaveAll, RemoveNonAlphabet
+from secretpy.cmdecorators import SaveAll, RemoveNonAlphabet, Block
 
 
 def encdec(cipher, plaintext, key, alphabet=al.ENGLISH):
@@ -53,9 +53,13 @@ cm.set_key(1)
 plaintext = u"text あい だやぎへぐゆぢ"
 encdec(cm, plaintext)
 
-plaintext = "I don't love non-alphabet characters. I will remove all of them: ^,&@$~(*;?&#. Great!"
 cm = RemoveNonAlphabet(cm0)
 cm.set_alphabet(al.ENGLISH)
+plaintext = "I don't love non-alphabet characters. I will remove all of them: ^,&@$~(*;?&#. Great!"
+encdec(cm, plaintext)
+
+cm = Block(cm, length=5, sep="-")
+plaintext = "This text is divided by blocks of length 5!"
 encdec(cm, plaintext)
 
 '''
@@ -89,4 +93,8 @@ text あい だやぎへぐゆぢ
 I don't love non-alphabet characters. I will remove all of them: ^,&@$~(*;?&#. Great!
 jepoumpwfopobmqibcfudibsbdufstjxjmmsfnpwfbmmpguifnhsfbu
 idontlovenonalphabetcharactersiwillremoveallofthemgreat
+--------------------------------------------------------------------
+This text is divided by blocks of length 5!
+uijtu-fyujt-ejwje-feczc-mpdlt-pgmfo-hui
+thistextisdividedbyblocksoflength
 '''

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 
-class AbstractCryptMachine:
+class AbstractCryptMachine(object):
     def set_key(self, key):
         pass
 

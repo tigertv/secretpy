@@ -11,8 +11,6 @@ from .ciphers import (
     Playfair, Porta, Polybius, Rot13, Rot18, Rot47, Rot5,
     Scytale, ThreeSquare, Trifid, TwoSquare, Vigenere, Vic,
     Zigzag)
-# import alphabets
-# from .cmdecorators import *
 
 __all__ = [
     "CompositeMachine", "CryptMachine",
