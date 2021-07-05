@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import Beaufort, CryptMachine, alphabets as al
-from secretpy.cmdecorators import SaveAll, RemoveNonAlphabet
+from secretpy.cmdecorators import SaveAll
 
 
 def encdec(cipher, plaintext, key, alphabet=al.ENGLISH):
@@ -54,7 +54,7 @@ plaintext = u"text あい だやぎへぐゆぢ"
 encdec(cm, plaintext)
 
 plaintext = "I don't love non-alphabet characters. I will remove all of them: ^,&@$~(*;?&#. Great!"
-cm = RemoveNonAlphabet(cm0)
+cm = cm0
 cm.set_alphabet(al.ENGLISH)
 cm.set_key(key)
 encdec(cm, plaintext)

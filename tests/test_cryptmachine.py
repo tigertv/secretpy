@@ -31,7 +31,7 @@ class TestCryptMachine(TestCase):
         cipher.encrypt.assert_called_with(
             "text", 5, u"abcdefghijklmnopqrstuvwxyz")
         cipher.decrypt.assert_called_with(
-            "ENCRYPTED", 5, u"abcdefghijklmnopqrstuvwxyz")
+            "encrypted", 5, u"abcdefghijklmnopqrstuvwxyz")
 
 
 if __name__ == '__main__':

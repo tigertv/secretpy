@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import TwoSquare, CryptMachine, alphabets
-from secretpy.cmdecorators import RemoveNonAlphabet, UpperCase
+from secretpy.cmdecorators import UpperCase
 
 
 def encdec(machine, plaintext):
@@ -18,7 +18,7 @@ alphabet = alphabets.ENGLISH_SQUARE_OQ
 
 key = (u"example", u"keyword")
 
-cm = UpperCase(RemoveNonAlphabet(CryptMachine(TwoSquare())))
+cm = UpperCase(CryptMachine(TwoSquare()))
 
 cm.set_alphabet(alphabet)
 cm.set_key(key)

@@ -37,9 +37,9 @@ class TestCompositeMachine(TestCase):
         self.assertEqual(dec, "ATBASH_DECRYPTED")
 
         cipher2.encrypt.assert_called_with(
-            "CAESAR_ENCRYPTED", "", u"abcdefghijklmnopqrstuvwxyz")
+            "caesarencrypted", "", u"abcdefghijklmnopqrstuvwxyz")
         cipher2.decrypt.assert_called_with(
-            "CAESAR_DECRYPTED", "", u"abcdefghijklmnopqrstuvwxyz")
+            "caesardecrypted", "", u"abcdefghijklmnopqrstuvwxyz")
 
 
 if __name__ == '__main__':

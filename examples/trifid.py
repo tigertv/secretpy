@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import Trifid, CryptMachine
-from secretpy.cmdecorators import RemoveNonAlphabet, SaveAll
+from secretpy.cmdecorators import SaveAll
 
 
 def encdec(machine, plaintext):
@@ -22,7 +22,7 @@ cm.set_alphabet(alphabet)
 plaintext = u"defendtheeastwallofthecastle"
 encdec(cm, plaintext)
 
-cm1 = RemoveNonAlphabet(cm)
+cm1 = cm
 alphabet = (
     u"aåä", u"b", u"c",
     u"d", u"e",  u"f",

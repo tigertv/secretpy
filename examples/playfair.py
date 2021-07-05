@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import Playfair, CryptMachine
-from secretpy.cmdecorators import RemoveNonAlphabet, UpperCase
+from secretpy.cmdecorators import UpperCase
 
 
 def encdec(machine, plaintext):
@@ -14,7 +14,7 @@ def encdec(machine, plaintext):
     print("----------------------------------")
 
 
-cm = UpperCase(RemoveNonAlphabet(CryptMachine(Playfair())))
+cm = UpperCase(CryptMachine(Playfair()))
 alphabet = [
     u"p", u"l", u"a", u"y", u"f",
     u"i", u"r", u"e", u"x", u"m",

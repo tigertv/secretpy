@@ -4,6 +4,7 @@
 from .decorator import AbstractMachineDecorator
 
 
+# Depricated: the functionality is included in CryptMachine
 class RemoveNonAlphabet(AbstractMachineDecorator):
 
     def encrypt(self, text):

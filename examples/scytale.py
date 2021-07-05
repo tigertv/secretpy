@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import Scytale, CryptMachine, alphabets
-from secretpy.cmdecorators import SaveAll, RemoveNonAlphabet
+from secretpy.cmdecorators import SaveAll
 
 
 alphabet = alphabets.GERMAN
@@ -44,7 +44,7 @@ cm = SaveAll(cm0)
 encdec(cm, plaintext)
 
 plaintext = "I don't love non-alphabet characters. I will remove all of them: ^,&@$~(*;?&#. Great!"
-cm = RemoveNonAlphabet(cm0)
+cm = cm0
 encdec(cm, plaintext)
 
 '''

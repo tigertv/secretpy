@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import Caesar, CryptMachine, alphabets as al
-from secretpy.cmdecorators import SaveAll, RemoveNonAlphabet, Block
+from secretpy.cmdecorators import SaveAll, Block
 
 
 def encdec(cipher, plaintext, key, alphabet=al.ENGLISH):
@@ -40,8 +40,17 @@ def encdec(machine, plaintext):
 
 cm0 = CryptMachine(cipher, key)
 
-plaintext = "I love non-alphabet characters. These are : ^,&@$~(*;?&#. That's it!"
+cm = cm0
+cm.set_alphabet(al.ENGLISH)
+plaintext = "I don't love non-alphabet characters. I will remove all of them: ^,&@$~(*;?&#. Great!"
+encdec(cm, plaintext)
+
+cm = Block(cm, length=5, sep="-")
+plaintext = "This text is divided by blocks of length 5!"
+encdec(cm, plaintext)
+
 cm = SaveAll(cm0)
+plaintext = "I love non-alphabet characters. These are : ^,&@$~(*;?&#. That's it!"
 encdec(cm, plaintext)
 
 cm.set_alphabet(al.ENGLISH_SQUARE_IJ)
@@ -53,14 +62,6 @@ cm.set_key(1)
 plaintext = u"text あい だやぎへぐゆぢ"
 encdec(cm, plaintext)
 
-cm = RemoveNonAlphabet(cm0)
-cm.set_alphabet(al.ENGLISH)
-plaintext = "I don't love non-alphabet characters. I will remove all of them: ^,&@$~(*;?&#. Great!"
-encdec(cm, plaintext)
-
-cm = Block(cm, length=5, sep="-")
-plaintext = "This text is divided by blocks of length 5!"
-encdec(cm, plaintext)
 
 '''
 Output:
@@ -78,6 +79,14 @@ faqomschweizklövdutrångpjäxby
 idtrpvfkzhlönocygxwuaqjsmbåeä
 faqomschweizklövdutrångpjäxby
 --------------------------------------------------------------------
+I don't love non-alphabet characters. I will remove all of them: ^,&@$~(*;?&#. Great!
+lgrqworyhqrqdoskdehwfkdudfwhuvlzloouhpryhdooriwkhpjuhdw
+idontlovenonalphabetcharactersiwillremoveallofthemgreat
+--------------------------------------------------------------------
+This text is divided by blocks of length 5!
+wklvw-hawlv-glylg-hgebe-orfnv-riohq-jwk
+thistextisdividedbyblocksoflength
+--------------------------------------------------------------------
 I love non-alphabet characters. These are : ^,&@$~(*;?&#. That's it!
 L oryh qrq-doskdehw fkdudfwhuv. Wkhvh duh : ^,&@$~(*;?&#. Wkdw'v lw!
 I love non-alphabet characters. These are : ^,&@$~(*;?&#. That's it!
@@ -89,12 +98,4 @@ Ii becomes Ii because we use ENGLISH_SQUARE_II!
 text あい だやぎへぐゆぢ
 text いう ぢゆぐほげよづ
 text あい だやぎへぐゆぢ
---------------------------------------------------------------------
-I don't love non-alphabet characters. I will remove all of them: ^,&@$~(*;?&#. Great!
-jepoumpwfopobmqibcfudibsbdufstjxjmmsfnpwfbmmpguifnhsfbu
-idontlovenonalphabetcharactersiwillremoveallofthemgreat
---------------------------------------------------------------------
-This text is divided by blocks of length 5!
-uijtu-fyujt-ejwje-feczc-mpdlt-pgmfo-hui
-thistextisdividedbyblocksoflength
 '''

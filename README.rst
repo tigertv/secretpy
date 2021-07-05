@@ -21,27 +21,22 @@ Description
 
 SecretPy is a cryptographic Python package. It uses the following classical cipher algorithms:
 
-- ADFGX, ADFGVX
 - Affine
 - Atbash
-- Autokey
 - Bazeries
 - Beaufort
-- Bifid
 - Caesar, Caesar Progressive
 - Chaocipher
-- Columnar Transposition, Myszkowski Transposition
 - Keyword
-- Nihilist
 - Playfair, Two Square(Double Playfair), Three Square, Four Square
-- Polybius
+- Polybius, ADFGX, ADFGVX, Bifid, Trifid, Nihilist
 - Rot13, Rot5, Rot18, Rot47
 - Scytale
 - Simple Substitution
-- Trifid
+- Transposition: 
+    - Columnar, Myszkowski, Zigzag(Railfence)
 - Vic
-- Vigenere, Gronsfeld, Porta
-- Zigzag(Railfence)
+- Vigenere, Autokey, Gronsfeld, Porta
 
 Installation
 ============
@@ -70,102 +65,116 @@ The cipher classes can encrypt only characters which exist in the alphabet, and 
 
 .. code-block:: python
 	
-	from secretpy import Caesar, alphabets
+	from secretpy import Caesar, alphabets as al
 
-	alphabet = alphabets.GERMAN
-	plaintext = u"thequickbrownfoxjumpsoverthelazydog"
+
+	def encdec(cipher, plaintext, key, alphabet=al.ENGLISH):
+	    print('========================================================================================')
+	    print(plaintext)
+	    enc = cipher.encrypt(plaintext, key, alphabet)
+	    print(enc)
+	    print(cipher.decrypt(enc, key, alphabet))
+
+
 	key = 3
 	cipher = Caesar()
 
-	print(plaintext)
-	enc = cipher.encrypt(plaintext, key, alphabet)
-	print(enc)
-	dec = cipher.decrypt(enc, key, alphabet)
-	print(dec)
+	plaintext = u"thequickbrownfoxjumpsoverthelazydog"
+	encdec(cipher, plaintext, key)
 
-	print('=====================================')
+	alphabet = al.GERMAN
+	plaintext = u"schweißgequältvomödentextzürnttypografjakob"
+	encdec(cipher, plaintext, key, alphabet)
 
-	print(plaintext)
-	# use default english alphabet
-	enc = cipher.encrypt(plaintext, key)
-	print(enc)
-	dec = cipher.decrypt(enc, key)
-	print(dec)
+	alphabet = al.SWEDISH
+	plaintext = u"faqomschweizklövdutrångpjäxby"
+	encdec(cipher, plaintext, key, alphabet)
 
 	'''
 	Output:
 
-	thequickbrownfoxjumpsoverthelazydog
-	wkhtxlfneurzqirämxpsvryhuwkhodüögrj
-	thequickbrownfoxjumpsoverthelazydog
-	=====================================
+	========================================================================================
 	thequickbrownfoxjumpsoverthelazydog
 	wkhtxlfneurzqiramxpsvryhuwkhodcbgrj
 	thequickbrownfoxjumpsoverthelazydog
+	========================================================================================
+	schweißgequältvomödentextzürnttypografjakob
+	vfkzhlcjhtxßowyrpaghqwhäwübuqwwösrjudimdnre
+	schweißgequältvomödentextzürnttypografjakob
+	========================================================================================
+	faqomschweizklövdutrångpjäxby
+	idtrpvfkzhlönocygxwuaqjsmbåeä
+	faqomschweizklövdutrångpjäxby
 	'''
 
 CryptMachine
 ------------
 
 ``CryptMachine`` saves a state. There are alphabet, key and cipher, they can be changed in anytime.
-In the previous example, plaintext contains only characters existing in the alphabet i.e. without spaces.
-To change the behaviour, you can use ``CryptMachine`` and decorators(``SaveAll``, ``RemoveNonAlphabet``), so it's a preferred way to do encryption/decryption:
+In the previous example, plaintext contains only characters existing in the alphabet i.e. without spaces and etc.
+To change the behaviour, you can use ``CryptMachine`` and decorators(``SaveAll``, ``Block``), so it's a preferred way to do encryption/decryption:
 
 .. code-block:: python
 	
-	from secretpy import Atbash, Caesar, CryptMachine, alphabets
-	from secretpy.cmdecorators import SaveAll, RemoveNonAlphabet
+	from secretpy import Caesar, CryptMachine, alphabets as al
+	from secretpy.cmdecorators import SaveAll, Block
 
 
 	def encdec(machine, plaintext):
-		print(plaintext)
-		enc = machine.encrypt(plaintext)
-		print(enc)
-		dec = machine.decrypt(enc)
-		print(dec)
-		print("-----------------------------------")
+	    print("--------------------------------------------------------------------")
+	    print(plaintext)
+	    enc = machine.encrypt(plaintext)
+	    print(enc)
+	    print(machine.decrypt(enc))
 
 
-	plaintext = u"thequickbrownfoxjumpsoverthelazydog"
-	key = 3
-	cipher = Caesar()
+	cm0 = CryptMachine(cipher, key)
 
-	cm = CryptMachine(cipher, key)
+	cm = cm0
+	cm.set_alphabet(al.ENGLISH)
+	plaintext = "I don't love non-alphabet characters. I will remove all of them: ^,&@$~(*;?&#. Great!"
 	encdec(cm, plaintext)
 
-	cm.set_alphabet(alphabets.GERMAN)
+	cm = Block(cm, length=5, sep="-")
+	plaintext = "This text is divided by blocks of length 5!"
 	encdec(cm, plaintext)
 
-	cm1 = SaveAll(cm)
-	cm1.set_key(9)
-	plaintext = u"the quick brown fox jumps over the lazy dog"
-	encdec(cm1, plaintext)
+	cm = SaveAll(cm0)
+	plaintext = "I love non-alphabet characters. These are : ^,&@$~(*;?&#. That's it!"
+	encdec(cm, plaintext)
 
-	cm2 = RemoveNonAlphabet(cm)
-	cm2.set_cipher(Atbash())
-	plaintext = u"Achtung Minen"
-	encdec(cm2, plaintext)
+	cm.set_alphabet(al.ENGLISH_SQUARE_IJ)
+	plaintext = "Jj becomes Ii because we use ENGLISH_SQUARE_IJ!"
+	encdec(cm, plaintext)
 
+	cm.set_alphabet(al.JAPANESE_HIRAGANA)
+	cm.set_key(1)
+	plaintext = u"text あい だやぎへぐゆぢ"
+	encdec(cm, plaintext)
 
 	'''
 	Output:
 
-	thequickbrownfoxjumpsoverthelazydog
-	wkhtxlfneurzqiramxpsvryhuwkhodcbgrj
-	thequickbrownfoxjumpsoverthelazydog
-	-----------------------------------
-	thequickbrownfoxjumpsoverthelazydog
-	wkhtxlfneurzqirämxpsvryhuwkhodüögrj
-	thequickbrownfoxjumpsoverthelazydog
-	-----------------------------------
-	the quick brown fox jumps over the lazy dog
-	üqn zßrlt käxbw oxc sßvyö xanä üqn ujed mxp
-	the quick brown fox jumps over the lazy dog
-	-----------------------------------
-	Achtung Minen
-	ßöwkjqxrvqzq
-	achtungminen
-	-----------------------------------
+	--------------------------------------------------------------------
+	I don't love non-alphabet characters. I will remove all of them: ^,&@$~(*;?&#. Great!
+	lgrqworyhqrqdoskdehwfkdudfwhuvlzloouhpryhdooriwkhpjuhdw
+	idontlovenonalphabetcharactersiwillremoveallofthemgreat
+	--------------------------------------------------------------------
+	This text is divided by blocks of length 5!
+	wklvw-hawlv-glylg-hgebe-orfnv-riohq-jwk
+	thistextisdividedbyblocksoflength
+	--------------------------------------------------------------------
+	I love non-alphabet characters. These are : ^,&@$~(*;?&#. That's it!
+	L oryh qrq-doskdehw fkdudfwhuv. Wkhvh duh : ^,&@$~(*;?&#. Wkdw'v lw!
+	I love non-alphabet characters. These are : ^,&@$~(*;?&#. That's it!
+	--------------------------------------------------------------------
+	Jj becomes Ii because we use ENGLISH_SQUARE_IJ!
+	Mm ehfrphv Mm ehfdxvh zh xvh HQKOMVL_VTXDUH_MM!
+	Ii becomes Ii because we use ENGLISH_SQUARE_II!
+	--------------------------------------------------------------------
+	text あい だやぎへぐゆぢ
+	text いう ぢゆぐほげよづ
+	text あい だやぎへぐゆぢ
 	'''
 
 CompositeMachine
@@ -176,16 +185,16 @@ Combining several ciphers to get more complex cipher, you can use ``CompositeMac
 .. code-block:: python
 
 	from secretpy import Rot13, Caesar, CryptMachine, CompositeMachine
-	from secretpy.cmdecorators import SaveAll, RemoveNonAlphabet
+	from secretpy.cmdecorators import SaveAll
 
 
 	def encdec(machine, plaintext):
-		print("=======================================")
-		print(plaintext)
-		enc = machine.encrypt(plaintext)
-		print(enc)
-		dec = machine.decrypt(enc)
-		print(dec)
+	    print("=======================================")
+	    print(plaintext)
+	    enc = machine.encrypt(plaintext)
+	    print(enc)
+	    dec = machine.decrypt(enc)
+	    print(dec)
 
 
 	key = 5
