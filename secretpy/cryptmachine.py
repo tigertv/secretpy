@@ -34,5 +34,5 @@ class CryptMachine(AbstractCryptMachine):
         # prepare alphabet
         alpha = {c: 1 for letters in self.__alphabet for c in letters}
         # filter text by alphabet
-        text = "".join(filter(lambda c: c in alpha, text.lower()))
-        return func(text, self.__key, self.__alphabet)
+        txt = "".join(filter(lambda c: c in alpha, text.lower()))
+        return func(txt, self.__key, self.__alphabet)

@@ -14,21 +14,18 @@ class SaveAll(AbstractMachineDecorator):
 
     def __crypt(self, text, func):
         # make lower case and save indexes
-        upcases = [i for i, char in enumerate(text) if char.isupper()]
-        txt = list(text)
-        for i in upcases:
-            txt[i] = txt[i].lower()
+        upcases = [i for i, c in enumerate(text) if c.isupper()]
+        txt = text.lower()
 
-        # remove non-alphabet characters and save indexes
+        # prepare alphabet
         alphabet = self._machine.get_alphabet()
-        coords = {c: i for i, letters in enumerate(alphabet) for c in letters}
-        chars = [i for i, char in enumerate(txt) if char not in coords]
-        for i in reversed(chars):
-            del txt[i]
+        alpha = {c: 1 for letters in alphabet for c in letters}
+
+        # save indexes of non-alphabet characters
+        chars = [i for i, c in enumerate(txt) if c not in alpha]
 
         # execute function
-        res = func("".join(txt))
-        res = list(res)
+        res = list(func(txt))
 
         # restore non-alphabet characters
         for i in chars:
