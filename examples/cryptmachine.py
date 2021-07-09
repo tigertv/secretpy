@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import Atbash, Caesar, CryptMachine, alphabets
-from secretpy.cmdecorators import SaveAll, RemoveNonAlphabet
+from secretpy.cmdecorators import SaveAll
 
 
 def encdec(machine, plaintext):
@@ -29,7 +29,7 @@ cm1.set_key(9)
 plaintext = u"the quick brown fox jumps over the lazy dog"
 encdec(cm1, plaintext)
 
-cm2 = RemoveNonAlphabet(cm)
+cm2 = cm
 cm2.set_cipher(Atbash())
 plaintext = u"Achtung Minen"
 encdec(cm2, plaintext)

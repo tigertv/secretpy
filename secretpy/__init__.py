@@ -9,9 +9,8 @@ from .ciphers import (
     ColumnarTransposition, FourSquare, Gronsfeld, Keyword,
     MyszkowskiTransposition, Nihilist, SimpleSubstitution,
     Playfair, Porta, Polybius, Rot13, Rot18, Rot47, Rot5,
-    ThreeSquare, Trifid, TwoSquare, Vigenere, Vic, Zigzag)
-# import alphabets
-# from .cmdecorators import *
+    Scytale, ThreeSquare, Trifid, TwoSquare, Vigenere, Vic,
+    Zigzag)
 
 __all__ = [
     "CompositeMachine", "CryptMachine",
@@ -21,6 +20,6 @@ __all__ = [
     "Chao", "ColumnarTransposition", "FourSquare", "Gronsfeld",
     "Keyword", "MyszkowskiTransposition",
     "Nihilist", "SimpleSubstitution", "Playfair", "Porta", "Polybius",
-    "Rot13", "Rot18", "Rot47", "Rot5", "ThreeSquare",
+    "Rot13", "Rot18", "Rot47", "Rot5", "Scytale", "ThreeSquare",
     "Trifid", "TwoSquare", "Vigenere", "Vic", "Zigzag",
 ]

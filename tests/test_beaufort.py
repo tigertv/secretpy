@@ -34,7 +34,7 @@ class TestBeaufort(unittest.TestCase):
         u"ßüowpsqöwbyfej",
         u"iyorrklrrbyrwylñ",
         u"шжуёш",
-        u"だゆいれべやも")
+        u"だもいりべめむ")
 
     def test_encrypt(self):
         cipher = Beaufort()

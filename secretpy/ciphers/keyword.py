@@ -8,36 +8,26 @@ class Keyword:
     The Keyword Cipher
     """
 
-    def __removeDup(self, input_str):
-        newstring = input_str[0]
-        for i in range(len(input_str)):
-            if newstring[(len(newstring) - 1)] != input_str[i]:
-                newstring += input_str[i]
-            else:
-                pass
-        return newstring
-
-    def __encDec(self, alphabet, key, text, isEncrypt):
+    def __crypt(self, alphabet, key, text, is_encrypt):
         # remove repeats of letters in the key
         newkey = "".join(OrderedDict.fromkeys(key))
         # create the substitution string
         longkey = "".join(OrderedDict.fromkeys(newkey+"".join(alphabet)))
         # do encryption
-        ans = ""
-        for i in range(len(text)):
-            m = text[i]
+        res = []
+        for i, t in enumerate(text):
             try:
-                if isEncrypt == 1:
-                    index = alphabet.index(m)
+                if is_encrypt == 1:
+                    index = alphabet.index(t)
                     enc = longkey[index]
                 else:
-                    index = longkey.index(m)
+                    index = longkey.index(t)
                     enc = alphabet[index]
             except ValueError:
-                wrchar = m.encode('utf-8')
+                wrchar = t.encode('utf-8')
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
-            ans += enc
-        return ans
+            res.append(enc)
+        return "".join(res)
 
     def encrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
         """
@@ -53,7 +43,7 @@ class Keyword:
         :return: text
         :rtype: string
         """
-        return self.__encDec(alphabet, key, text, 1)
+        return self.__crypt(alphabet, key, text, 1)
 
     def decrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
         """
@@ -69,4 +59,4 @@ class Keyword:
         :return: text
         :rtype: string
         """
-        return self.__encDec(alphabet, key, text, -1)
+        return self.__crypt(alphabet, key, text, -1)

@@ -20,72 +20,6 @@ class ADFGVX:
         u"6", u"7", u"8", u"9", u"0", u".",
     ]
 
-    def __dec(self, alphabet, key, text, isEncrypt):
-        keysize = len(key)
-        size = len(text)
-        rows = int(math.ceil(size/keysize))
-        reminder = size % keysize
-        keyword = list(key)
-        indices = sorted(range(len(keyword)), key=lambda k: keyword[k])
-
-        myarr = list(indices)
-        lefti = 0
-        righti = 0
-        for key, value in enumerate(indices):
-            righti = lefti
-            righti += rows
-            if reminder > 0 and value > reminder-1:
-                righti -= 1
-            myarr[value] = text[lefti:righti]
-            lefti = righti
-
-        column = 0
-        row = 0
-        res = ''
-        for i in range(size):
-            res += (myarr[column][row])
-            column += 1
-            if column == keysize:
-                column = 0
-                row += 1
-        code = []
-        try:
-            for char in res:
-                code.append(str(self.__header.index(char)+1))
-        except ValueError:
-            wrchar = char.encode('utf-8')
-            raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
-
-        code = "".join(code)
-        return self.__polybius.decrypt(code, alphabet=alphabet)
-
-    def __enc(self, alphabet, key, text, isEncrypt):
-        ans0 = self.__polybius.encrypt(text, alphabet=alphabet)
-        ans = [self.__header[int(char)-1] for char in ans0]
-
-        keyword = list(key)
-        keysize = len(key)
-        size = len(ans)
-        indices = sorted(range(len(keyword)), key=lambda k: keyword[k])
-        row = int(math.ceil(size/keysize))
-        for i in range(row):
-            p = ""
-            for j in range(keysize):
-                myi = i*keysize+j
-                if myi < len(ans):
-                    eee = ans[myi]
-                    p += "".join(eee)
-
-        ans2 = ""
-        for s in indices:
-            ind = s
-            while ind < size:
-                p = ans[ind]
-                ans2 += p
-                ind += keysize
-
-        return ans2
-
     def encrypt(self, text, key, alphabet=None):
         """
         Encryption method
@@ -101,7 +35,13 @@ class ADFGVX:
         :rtype: string
         """
         alphabet = alphabet or self.__alphabet
-        return self.__enc(alphabet, key, text, 1)
+        ans = self.__polybius.encrypt(text, alphabet=alphabet)
+        ans = [self.__header[int(char)-1] for char in ans]
+
+        keysize = len(key)
+        size = len(ans)
+        indices = sorted(range(keysize), key=lambda k: key[k])
+        return "".join(ans[ind] for s in indices for ind in range(s, size, keysize))
 
     def decrypt(self, text, key, alphabet=None):
         """
@@ -118,4 +58,39 @@ class ADFGVX:
         :rtype: string
         """
         alphabet = alphabet or self.__alphabet
-        return self.__dec(alphabet, key, text, -1)
+        keysize = len(key)
+        size = len(text)
+        rows = int(math.ceil(size/keysize))
+        reminder = size % keysize
+        indices = sorted(range(keysize), key=lambda k: key[k])
+
+        myarr = [0] * keysize
+        lefti = 0
+        righti = 0
+        for key, value in enumerate(indices):
+            righti = lefti
+            righti += rows
+            if reminder > 0 and value > reminder-1:
+                righti -= 1
+            myarr[value] = text[lefti:righti]
+            lefti = righti
+
+        column = 0
+        row = 0
+        res = []
+        for i in range(size):
+            res.append(myarr[column][row])
+            column += 1
+            if column == keysize:
+                column = 0
+                row += 1
+        code = []
+        try:
+            for char in res:
+                code.append(self.__header.index(char)+1)
+        except ValueError:
+            wrchar = char.encode('utf-8')
+            raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
+
+        code = "".join(map(str, code))
+        return self.__polybius.decrypt(code, alphabet=alphabet)

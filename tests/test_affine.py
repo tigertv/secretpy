@@ -29,7 +29,7 @@ class TestAffine(unittest.TestCase):
         u"даэяд",
         u"vgtvjiwövhewöv",
         u"fsñbsvizbwbabtac",
-        u"うぁらろわいく")
+        u"きおらゃわこぎ")
 
     def test_encrypt(self):
         for i, alphabet in enumerate(self.alphabet):

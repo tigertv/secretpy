@@ -34,7 +34,7 @@ class TestAutokey(unittest.TestCase):
         u"эриие",
         u"hgaalsulagmzäc",
         u"wxmzqnnuipwtnbws",
-        u"ぐたぜぁふへふ")
+        u"ごつぜぁふばふ")
 
     def test_encrypt(self):
         for i, alphabet in enumerate(self.alphabet):

@@ -34,7 +34,7 @@ class TestVigenere(unittest.TestCase):
         u"эрииэ",
         u"hgaalsulafkjsr",
         u"wxmzquljzhgeesxq",
-        u"ぐたぜぁゅちへ")
+        u"ごつぜぁゅてへ")
 
     def test_encrypt(self):
         for i, alphabet in enumerate(self.alphabet):

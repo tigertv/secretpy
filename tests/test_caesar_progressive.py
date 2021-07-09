@@ -30,7 +30,7 @@ class TestCaesarProgressive(unittest.TestCase):
         u"ъдпдифуфйчпёэкгцыдгррнюмцфйфонызыфшхпмпйяхыйут",
         u"ämcßympvedzuäj",
         u"yrrlubktppritñlh",
-        u"へぁちもといぱ"
+        u"へぁちもとえぱ"
     )
 
     cipher = CaesarProgressive()

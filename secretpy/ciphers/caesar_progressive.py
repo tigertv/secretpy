@@ -2,30 +2,31 @@
 # -*- encoding: utf-8 -*-
 
 import secretpy.alphabets as al
+from itertools import chain, cycle
 
 
 class CaesarProgressive:
     """
     The Caesar Progressive Cipher
     """
-    __alphabet = al.ENGLISH
 
-    def __encDec(self, alphabet, key, text, isEncrypt):
-        alphabet = alphabet or self.__alphabet
-        ans = ""
-        for i, char in enumerate(text):
+    def __crypt(self, alphabet, key, text, is_encrypt):
+        # key should be between 0 and len(alphabet)
+        key %= len(alphabet)
+        # prepare alphabet for substitution
+        subst = {c: i for i, letters in enumerate(alphabet) for c in letters}
+        res = []
+        ch = chain(range(key, len(alphabet)), range(key))
+        for k, t in zip(cycle(ch), text):
             try:
-                alphIndex = alphabet.index(char)
-            except ValueError as e:
-                wrchar = char.encode('utf-8')
-                e.args = (
-                    "Can't find char '" + wrchar + "' of text in alphabet!",)
-                raise
-            alphIndex = (alphIndex + isEncrypt * (key + i)) % len(alphabet)
-            ans += alphabet[alphIndex]
-        return ans
+                i = (subst[t] + is_encrypt * k) % len(alphabet)
+            except KeyError:
+                wrchar = t.encode('utf-8')
+                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
+            res.append(alphabet[i][0])
+        return "".join(res)
 
-    def encrypt(self, text, key, alphabet=None):
+    def encrypt(self, text, key=3, alphabet=al.ENGLISH):
         """
         Encryption method
 
@@ -39,9 +40,9 @@ class CaesarProgressive:
         :return: encrypted text
         :rtype: string
         """
-        return self.__encDec(alphabet, key, text, 1)
+        return self.__crypt(alphabet, key, text, 1)
 
-    def decrypt(self, text, key, alphabet=None):
+    def decrypt(self, text, key=3, alphabet=al.ENGLISH):
         """
         Decryption method
 
@@ -55,4 +56,4 @@ class CaesarProgressive:
         :return: decrypted text
         :rtype: string
         """
-        return self.__encDec(alphabet, key, text, -1)
+        return self.__crypt(alphabet, key, text, -1)

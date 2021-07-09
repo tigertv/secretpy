@@ -6,21 +6,20 @@ import secretpy.alphabets as al
 
 class Rot13:
     """
-    The Rot13 Cipher
+    The Rot13 Cipher (Half)
     """
     __caesar = Caesar()
-    __alphabet = al.ENGLISH
 
-    def __encDec(self, alphabet, text):
-        alphabet = alphabet or self.__alphabet
-        key = len(alphabet) >> 1
-        # if number letters in the alphabet is odd
-        if len(alphabet) & 1:
-            alphabet += alphabet[key]
+    def __crypt(self, alphabet, text):
+        alph = alphabet
+        key = len(alph) >> 1
+        # if number of letters in the alphabet is odd
+        if len(alph) & 1:
+            alph += alph[key]
             key += 1
-        return self.__caesar.encrypt(text, key, alphabet)
+        return self.__caesar.encrypt(text, key, alph)
 
-    def encrypt(self, text, key=None, alphabet=None):
+    def encrypt(self, text, key=None, alphabet=al.ENGLISH):
         """
         Encryption method
 
@@ -34,9 +33,9 @@ class Rot13:
         :return: text
         :rtype: string
         """
-        return self.__encDec(alphabet, text)
+        return self.__crypt(alphabet, text)
 
-    def decrypt(self, text, key=None, alphabet=None):
+    def decrypt(self, text, key=None, alphabet=al.ENGLISH):
         """
         Decryption method
 
@@ -50,4 +49,4 @@ class Rot13:
         :return: text
         :rtype: string
         """
-        return self.__encDec(alphabet, text)
+        return self.__crypt(alphabet, text)

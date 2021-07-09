@@ -7,24 +7,23 @@ class Vigenere:
     The Vigenere Cipher
     """
 
-    def __encDec(self, alphabet, key, text, isEncrypt):
-        ans = ""
-        for i in range(len(text)):
-            char = text[i]
+    def __crypt(self, alphabet, key, text, is_encrypt):
+        res = []
+        for i, char in enumerate(text):
             keychar = key[i % len(key)]
             try:
-                alphIndex = alphabet.index(char)
+                a_index = alphabet.index(char)
             except ValueError:
                 wrchar = char.encode('utf-8')
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
             try:
-                alphIndex += isEncrypt * alphabet.index(keychar)
+                a_index += is_encrypt * alphabet.index(keychar)
             except ValueError:
                 wrchar = keychar.encode('utf-8')
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
-            alphIndex %= len(alphabet)
-            ans += alphabet[alphIndex]
-        return ans
+            a_index %= len(alphabet)
+            res.append(alphabet[a_index])
+        return "".join(res)
 
     def encrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
         """
@@ -40,7 +39,7 @@ class Vigenere:
         :return: text
         :rtype: string
         """
-        return self.__encDec(alphabet, key, text, 1)
+        return self.__crypt(alphabet, key, text, 1)
 
     def decrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
         """
@@ -56,4 +55,4 @@ class Vigenere:
         :return: text
         :rtype: string
         """
-        return self.__encDec(alphabet, key, text, -1)
+        return self.__crypt(alphabet, key, text, -1)

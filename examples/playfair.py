@@ -1,9 +1,8 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import Playfair
-from secretpy import CryptMachine
-from secretpy.cmdecorators import NoSpaces, UpperCase
+from secretpy import Playfair, CryptMachine
+from secretpy.cmdecorators import UpperCase
 
 
 def encdec(machine, plaintext):
@@ -15,7 +14,7 @@ def encdec(machine, plaintext):
     print("----------------------------------")
 
 
-cm = NoSpaces(UpperCase(CryptMachine(Playfair())))
+cm = UpperCase(CryptMachine(Playfair()))
 alphabet = [
     u"p", u"l", u"a", u"y", u"f",
     u"i", u"r", u"e", u"x", u"m",
@@ -32,3 +31,18 @@ encdec(cm, plaintext)
 
 plaintext = "this is a secret message"
 encdec(cm, plaintext)
+
+'''
+Hide the gold in the tree stump
+BMODZBXDNABEKUDMUIXMMOUVIF
+HIDETHEGOLDINTHETREESTUMP
+----------------------------------
+sometext
+KQIXVIIW
+SOMETEXT
+----------------------------------
+this is a secret message
+ZBMKMKFORDEXZIMOOFDX
+THISISASECRETMESSAGE
+----------------------------------
+'''

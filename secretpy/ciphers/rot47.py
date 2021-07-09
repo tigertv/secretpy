@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-from .rot13 import Rot13
+from .caesar import Caesar
 
 
 class Rot47:
@@ -8,13 +8,11 @@ class Rot47:
     The Rot47 Cipher
     """
 
-    __rot13 = Rot13()
+    __caesar = Caesar()
+    __alphabet = "".join(chr(asc) for asc in range(33, 33 + 47 * 2))
 
-    def __init__(self):
-        self.__alphabet = "".join([chr(asc) for asc in range(33, 33 + 47*2)])
-
-    def __encDec(self, text):
-        return self.__rot13.encrypt(text, alphabet=self.__alphabet)
+    def __crypt(self, text):
+        return self.__caesar.encrypt(text, 47, self.__alphabet)
 
     def encrypt(self, text, key=None, alphabet=None):
         """
@@ -30,7 +28,7 @@ class Rot47:
         :return: text
         :rtype: string
         """
-        return self.__encDec(text)
+        return self.__crypt(text)
 
     def decrypt(self, text, key=None, alphabet=None):
         """
@@ -46,4 +44,4 @@ class Rot47:
         :return: text
         :rtype: string
         """
-        return self.__encDec(text)
+        return self.__crypt(text)

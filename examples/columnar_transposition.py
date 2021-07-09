@@ -2,7 +2,6 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import ColumnarTransposition, CryptMachine
-from secretpy import alphabets
 
 
 def encdec(machine, plaintext):
@@ -16,9 +15,6 @@ def encdec(machine, plaintext):
 key = "cargo"
 cm = CryptMachine(ColumnarTransposition(), key)
 
-alphabet = alphabets.ENGLISH
-
-cm.set_alphabet(alphabet)
 plaintext = "attackatdawn"
 encdec(cm, plaintext)
 
@@ -29,11 +25,11 @@ encdec(cm, plaintext)
 
 '''
 attackatdawn
-tanakwadzcazttz
-attackatdawnzzz
+tanakwadcatt
+attackatdawn
 -------------------------------
 howstuffworks
-ushfowfztksrwo
-howstuffworksz
+ushfowftksrwo
+howstuffworks
 -------------------------------
 '''

@@ -271,6 +271,17 @@ Examples
 
 Simple Substitution
 ===================
+.. autoclass:: secretpy.Scytale
+	:members:
+
+Examples
+--------
+
+.. literalinclude:: ../examples/scytale.py
+	:linenos:
+
+Simple Substitution
+===================
 .. autoclass:: secretpy.SimpleSubstitution
 	:members:
 

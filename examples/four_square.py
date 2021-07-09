@@ -1,10 +1,8 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import FourSquare
-from secretpy import CryptMachine
-from secretpy import alphabets
-from secretpy.cmdecorators import NoSpaces, UpperCase
+from secretpy import FourSquare, CryptMachine, alphabets
+from secretpy.cmdecorators import UpperCase
 
 
 def encdec(machine, plaintext):
@@ -18,28 +16,36 @@ def encdec(machine, plaintext):
 
 alphabet = alphabets.ENGLISH_SQUARE_OQ
 
-key = (u"exampl", u"keyword")
+key = (u"example", u"keyword")
 
-cm = NoSpaces(UpperCase(CryptMachine(FourSquare())))
+cm = UpperCase(CryptMachine(FourSquare()))
 
 cm.set_alphabet(alphabet)
 cm.set_key(key)
 plaintext = u"Help me Obi wan Kenobi"
 encdec(cm, plaintext)
 
+plaintext = u"Help me Obi wan Kenobi a"
+encdec(cm, plaintext)
+
 alphabet = alphabets.ENGLISH_SQUARE_IJ
 cm.set_alphabet(alphabet)
 key = (u"criptog", u"segurt")
 cm.set_key(key)
-plaintext = u"attack at dawn"
+plaintext = u"Attack at dawn!"
 encdec(cm, plaintext)
+
 
 '''
 Help me Obi wan Kenobi
 FYGMKYHOBXMFKKKIMD
 HELPMEOBIWANKENOBI
 ----------------------------------
-attack at dawn
+Help me Obi wan Kenobi a
+FYGMKYHOBXMFKKKIMDPT
+HELPMEOBIWANKENOBIAZ
+----------------------------------
+Attack at dawn!
 PMMUTBPMCUXH
 ATTACKATDAWN
 ----------------------------------

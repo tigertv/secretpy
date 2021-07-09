@@ -7,9 +7,10 @@ from .savespaces import SaveSpaces
 from .savecase import SaveCase
 from .save_all import SaveAll
 from .remove_non_alphabet import RemoveNonAlphabet
+from .block import Block
 
 
 __all__ = [
     "UpperCase", "LowerCase", "NoSpaces", "SaveSpaces", "SaveCase",
-    "SaveAll", "RemoveNonAlphabet"
+    "SaveAll", "RemoveNonAlphabet", "Block"
 ]

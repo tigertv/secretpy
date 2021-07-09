@@ -6,25 +6,25 @@ class Affine:
     The Affine Cipher
     """
 
-    def __encDec(self, alphabet, key, text, isEncrypt):
+    def __crypt(self, alphabet, key, text, is_encrypt):
         a = key[0]
         b = key[1]
-        ans = ""
-        aInverse = self.__getInverse(a, alphabet)
+        res = []
+        a_inverse = self.__get_inverse(a, alphabet)
         try:
             for char in text:
-                if isEncrypt == 1:
-                    alphI = (alphabet.index(char) * a + b) % len(alphabet)
+                if is_encrypt == 1:
+                    a_index = (alphabet.index(char) * a + b) % len(alphabet)
                 else:
-                    alphI = (aInverse * (alphabet.index(char) - b)) % len(alphabet)
-                enc = alphabet[alphI]
-                ans += enc
+                    a_index = (a_inverse * (alphabet.index(char) - b)) % len(alphabet)
+                enc = alphabet[a_index]
+                res.append(enc)
         except ValueError:
             wrchar = char.encode('utf-8')
             raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
-        return ans
+        return "".join(res)
 
-    def __getInverse(self, a, alphabet):
+    def __get_inverse(self, a, alphabet):
         for i in range(1, len(alphabet)):
             if ((int(a)*int(i)) % int(len(alphabet))) == 1:
                 return i
@@ -44,7 +44,7 @@ class Affine:
         :return: text
         :rtype: string
         """
-        return self.__encDec(alphabet, key, text, 1)
+        return self.__crypt(alphabet, key, text, 1)
 
     def decrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
         """
@@ -60,4 +60,4 @@ class Affine:
         :return: text
         :rtype: string
         """
-        return self.__encDec(alphabet, key, text, -1)
+        return self.__crypt(alphabet, key, text, -1)

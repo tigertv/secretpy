@@ -8,7 +8,7 @@ with open("README.rst", "r") as fh:
 
 setuptools.setup(
     name="secretpy",
-    version="0.10.0",
+    version="0.11.0",
     author="Max Vetrov",
     author_email="maxvetrov555@yandex.ru",
     description="Classical ciphers",

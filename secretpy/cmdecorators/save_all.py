@@ -7,28 +7,32 @@ from .decorator import AbstractMachineDecorator
 class SaveAll(AbstractMachineDecorator):
 
     def encrypt(self, text):
-        return self.__encDec(text, lambda text: self._machine.encrypt(text))
+        return self.__crypt(text, self._machine.encrypt)
 
     def decrypt(self, text):
-        return self.__encDec(text, lambda text: self._machine.decrypt(text))
+        return self.__crypt(text, self._machine.decrypt)
 
-    def __encDec(self, text, func):
-        chars = []
-        upcases = []
+    def __crypt(self, text, func):
+        # make lower case and save indexes
+        upcases = [i for i, c in enumerate(text) if c.isupper()]
+        txt = text.lower()
+
+        # prepare alphabet
         alphabet = self._machine.get_alphabet()
-        text2 = text
-        for i, char in enumerate(text2):
-            if char.isupper():
-                upcases.append(i)
-        text2 = text2.lower()
-        for i, char in enumerate(text2):
-            if char not in alphabet:
-                chars.append(i)
-        for i in reversed(chars):
-            text2 = text2[:i] + text2[i+1:]
-        res = func(text2)
+        alpha = {c: 1 for letters in alphabet for c in letters}
+
+        # save indexes of non-alphabet characters
+        chars = [i for i, c in enumerate(txt) if c not in alpha]
+
+        # execute function
+        res = list(func(txt))
+
+        # restore non-alphabet characters
         for i in chars:
-            res = res[:i] + text[i] + res[i:]
+            res.insert(i, text[i])
+
+        # restore uppercase
         for i in upcases:
-            res = res[:i] + res[i].upper() + res[i+1:]
-        return res
+            res[i] = res[i].upper()
+
+        return "".join(res)

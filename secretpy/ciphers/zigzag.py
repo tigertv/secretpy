@@ -4,87 +4,74 @@
 
 class Zigzag:
     """
-    The Zigzag Cipher
+    The Zigzag Cipher (Rail-Fence)
     """
 
-    def __enc(self, key, text):
-        crypted = ""
-        step = (key - 1) << 1
-        textlen = len(text)
+    def encrypt(self, text, key, alphabet=None):
+        """
+        Encryption method
 
-        # first row
-        left = 0
-        while (left < textlen):
-            crypted += text[left]
-            left += step
+        :param text: Text to encrypt
+        :param key: Encryption key
+        :param alphabet: unused
+        :type text: string
+        :type key: integer
+        :type alphabet: string
+        :return: text
+        :rtype: string
+        """
+        if key <= 0:
+            return
+        key0 = key - 1
+        step = key0 << 1
+
+        # the first row
+        crypted = [text[::step]]
 
         # next rows
-        for row in range(1, key):
-            left = row
-            while (left < textlen):
-                crypted += text[left]
-                right = left + step - (row << 1)
-                if right < textlen and right != left:
-                    crypted += text[right]
-                left += step
+        textlen = len(text)
+        for row in range(1, key0):
+            right = step - row
+            for left in range(row, textlen, step):
+                crypted.append(text[left])
+                if right < textlen:
+                    crypted.append(text[right])
+                right += step
+        # the last row
+        crypted.append(text[key0::step])
+        return "".join(crypted)
 
-        return crypted
+    def decrypt(self, text, key, alphabet=None):
+        """
+        Decryption method
 
-    def __dec(self, key, text):
+        :param text: Text to decrypt
+        :param key: Decryption key
+        :param alphabet: unused
+        :type text: string
+        :type key: integer
+        :type alphabet: string
+        :return: text
+        :rtype: string
+        """
         step = (key - 1) << 1
         textlen = len(text)
-        decrypted = ["."] * textlen
+        decrypted = [None] * textlen
 
         # first row
-        left = 0
         i = 0
-        while (left < textlen):
+        for left in range(0, textlen, step):
             decrypted[left] = text[i]
-            left += step
             i += 1
 
         # next rows
         for row in range(1, key):
-            left = row
-            while (left < textlen):
+            for left in range(row, textlen, step):
                 decrypted[left] = text[i]
                 i += 1
                 right = left + step - (row << 1)
                 if right < textlen and right != left:
                     decrypted[right] = text[i]
                     i += 1
-                left += step
 
         return "".join(decrypted)
-
-    def encrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
-        """
-        Encryption method
-
-        :param text: Text to encrypt
-        :param key: Encryption key
-        :param alphabet: Alphabet which will be used,
-                         if there is no a value, English is used
-        :type text: string
-        :type key: integer
-        :type alphabet: string
-        :return: text
-        :rtype: string
-        """
-        return self.__enc(key, text)
-
-    def decrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
-        """
-        Decryption method
-
-        :param text: Text to decrypt
-        :param key: Decryption key
-        :param alphabet: Alphabet which will be used,
-                         if there is no a value, English is used
-        :type text: string
-        :type key: integer
-        :type alphabet: string
-        :return: text
-        :rtype: string
-        """
-        return self.__dec(key, text)

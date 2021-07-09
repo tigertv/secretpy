@@ -22,14 +22,16 @@ class TestCaesar(unittest.TestCase):
         u"съешьжеещёэтихмягкихфранцузскихбулокдавыпейчаю",
         u"textnachtricht",
         u"unmensajedetexto",
-        u"だやぎへぐゆぢ")
+        u"あいうえおかきくけこがぎぐげごさしすせそざじずぜぞたちつてとだぢづでどなにぬねのはひふへほばびぶべぼぱぴぷぺぽまみむめもやゆよらりるれろわをんゃゅょぁぇ"
+    )
 
     ciphertext = (
         u"qebnrfzhyoltkclugrjmplsboqebixwvald",
         u"фэзыяйззьиахлшпвёнлшчугрщцкфнлшдцоснжгеютзмъгб",
         u"whäwqdfkwulfkw",
         u"xpohpvdmhghwhawr",
-        u"でらごびさりど")
+        u"えおかきくけこがぎぐげごさしすせそざじずぜぞたちつてとだぢづでどなにぬねのはひふへほばびぶべぼぱぴぷぺぽまみむめもやゆよらりるれろわをんゃゅょぁぇあいう"
+    )
 
     def test_encrypt(self):
         for i, alphabet in enumerate(self.alphabet):
