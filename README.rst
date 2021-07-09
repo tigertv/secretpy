@@ -33,7 +33,7 @@ SecretPy is a cryptographic Python package. It uses the following classical ciph
 - Rot13, Rot5, Rot18, Rot47
 - Scytale
 - Simple Substitution
-- Transposition 
+- Transposition  
   - Columnar, Myszkowski, Zigzag(Railfence)
 - Vic
 - Vigenere, Autokey, Gronsfeld, Porta
@@ -110,7 +110,7 @@ The cipher classes can encrypt only characters which exist in the alphabet, and 
 CryptMachine
 ------------
 
-``CryptMachine`` saves a state. There are alphabet, key and cipher, they can be changed in anytime.
+``CryptMachine`` saves a state. There are alphabet, key and cipher, they can be changed at anytime.
 In the previous example, plaintext contains only characters existing in the alphabet i.e. without spaces and etc.
 To change the behaviour, you can use ``CryptMachine`` and decorators(``SaveAll``, ``Block``), so it's a preferred way to do encryption/decryption:
 
@@ -128,6 +128,8 @@ To change the behaviour, you can use ``CryptMachine`` and decorators(``SaveAll``
 	    print(machine.decrypt(enc))
 
 
+	key = 3
+	cipher = Caesar()
 	cm0 = CryptMachine(cipher, key)
 
 	cm = cm0
