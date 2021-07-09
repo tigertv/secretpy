@@ -269,7 +269,7 @@ Examples
 .. literalinclude:: ../examples/rot47.py
 	:linenos:
 
-Simple Substitution
+Scytale
 ===================
 .. autoclass:: secretpy.Scytale
 	:members:
