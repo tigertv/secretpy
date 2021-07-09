@@ -1,10 +1,8 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import Bazeries
-from secretpy import CryptMachine
-from secretpy import alphabets
-from secretpy.cmdecorators import NoSpaces, UpperCase
+from secretpy import Bazeries, CryptMachine, alphabets
+from secretpy.cmdecorators import UpperCase
 
 
 def encdec(machine, plaintext):
@@ -20,7 +18,7 @@ alphabet = alphabets.ENGLISH_SQUARE_IJ
 
 key = (81257, u"eightyonethousandtwohundredfiftyseven")
 
-cm = NoSpaces(UpperCase(CryptMachine(Bazeries())))
+cm = UpperCase(CryptMachine(Bazeries()))
 
 cm.set_alphabet(alphabet)
 cm.set_key(key)

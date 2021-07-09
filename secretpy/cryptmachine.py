@@ -1,7 +1,6 @@
 #!/usr/bin/python
 
 from .abstractmachine import AbstractCryptMachine
-from .cmdecorators import RemoveNonAlphabet
 from secretpy import alphabets
 
 
@@ -10,7 +9,6 @@ class CryptMachine(AbstractCryptMachine):
         self.__alphabet = alphabet
         self.__key = key or ""
         self.__cipher = cipher
-        self.__decorator = RemoveNonAlphabet(self)
 
     def set_key(self, key):
         self.__key = key

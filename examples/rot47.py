@@ -1,9 +1,8 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import Rot47
-from secretpy import CryptMachine
-from secretpy.cmdecorators import SaveSpaces
+from secretpy import Rot47, CryptMachine
+from secretpy.cmdecorators import SaveAll
 
 
 def encdec(machine, plaintext):
@@ -15,7 +14,7 @@ def encdec(machine, plaintext):
     print(dec)
 
 
-cm = SaveSpaces(CryptMachine(Rot47()))
+cm = SaveAll(CryptMachine(Rot47()))
 
-plaintext = u"The man has 536 dogs"
+plaintext = u"The man has 536 dogs!"
 encdec(cm, plaintext)

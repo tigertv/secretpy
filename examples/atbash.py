@@ -1,9 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import Atbash
-from secretpy import CryptMachine
-from secretpy import alphabets
+from secretpy import Atbash, CryptMachine, alphabets
 import secretpy.cmdecorators as md
 
 
@@ -17,7 +15,7 @@ def encdec(machine, plaintext):
 
 
 cm = CryptMachine(Atbash())
-cm = md.NoSpaces(md.UpperCase(cm))
+cm = md.UpperCase(cm)
 
 plaintext = u"attackatdawn"
 encdec(cm, plaintext)

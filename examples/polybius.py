@@ -1,9 +1,8 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import Polybius, CryptMachine
-from secretpy.cmdecorators import LowerCase
-import secretpy.alphabets as alph
+from secretpy import Polybius, CryptMachine, alphabets as alph
+from secretpy.cmdecorators import SaveAll
 
 
 def encdec(machine, plaintext):
@@ -15,7 +14,7 @@ def encdec(machine, plaintext):
     print("----------------------------------")
 
 
-cm = CryptMachine(Polybius())
+cm = SaveAll(CryptMachine(Polybius()))
 
 plaintext = u"defendtheeastwallofthecastle"
 encdec(cm, plaintext)
@@ -36,5 +35,4 @@ encdec(cm, plaintext)
 
 cm.set_alphabet(alph.GREEK)
 plaintext = u"ΠΙΝΑΚΑΣ"
-cm = LowerCase(cm)
 encdec(cm, plaintext)

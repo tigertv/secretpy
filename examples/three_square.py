@@ -1,10 +1,8 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import ThreeSquare
-from secretpy import CryptMachine
-from secretpy import alphabets
-from secretpy.cmdecorators import NoSpaces, UpperCase
+from secretpy import ThreeSquare, CryptMachine, alphabets
+from secretpy.cmdecorators import UpperCase
 
 
 def encdec(machine, plaintext):
@@ -18,7 +16,7 @@ def encdec(machine, plaintext):
 
 alphabet = alphabets.ENGLISH_SQUARE_OQ
 key = (u"example", u"keyword", u"third")
-cm = NoSpaces(UpperCase(CryptMachine(ThreeSquare())))
+cm = UpperCase(CryptMachine(ThreeSquare()))
 cm.set_alphabet(alphabet)
 cm.set_key(key)
 plaintext = u"Help me Obi wan Kenobi"

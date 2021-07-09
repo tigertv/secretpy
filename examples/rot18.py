@@ -1,10 +1,8 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import Rot18
-from secretpy import CryptMachine
-from secretpy.cmdecorators import SaveCase, SaveSpaces, UpperCase
-from secretpy import alphabets
+from secretpy import Rot18, CryptMachine, alphabets
+from secretpy.cmdecorators import SaveAll, UpperCase
 
 
 def encdec(machine, plaintext):
@@ -16,7 +14,7 @@ def encdec(machine, plaintext):
     print(dec)
 
 
-cm = SaveCase(SaveSpaces(CryptMachine(Rot18())))
+cm = SaveAll(CryptMachine(Rot18()))
 
 plaintext = u"The man has 536 dogs"
 encdec(cm, plaintext)
