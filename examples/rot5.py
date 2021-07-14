@@ -1,9 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import Rot5
-from secretpy import alphabets
-from secretpy import CryptMachine
+from secretpy import Rot5, alphabets, CryptMachine
 
 
 def encdec(machine, plaintext):
@@ -17,11 +15,12 @@ def encdec(machine, plaintext):
 
 cm = CryptMachine(Rot5())
 
-plaintext = alphabets.DECIMAL
+plaintext = "My text " + alphabets.DECIMAL + " your text"
 encdec(cm, plaintext)
+
 '''
 ----------------------------------
-0123456789
+My text 0123456789 your text
 5678901234
 0123456789
 '''

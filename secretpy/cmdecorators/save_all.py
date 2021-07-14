@@ -14,8 +14,10 @@ class SaveAll(AbstractMachineDecorator):
 
     def __crypt(self, text, func):
         # make lower case and save indexes
-        upcases = [i for i, c in enumerate(text) if c.isupper()]
-        txt = text.lower()
+        txt = text
+        if not self._machine.has_mixedcase():
+            upcases = [i for i, c in enumerate(text) if c.isupper()]
+            txt = txt.lower()
 
         # prepare alphabet
         alphabet = self._machine.get_alphabet()
@@ -32,7 +34,8 @@ class SaveAll(AbstractMachineDecorator):
             res.insert(i, text[i])
 
         # restore uppercase
-        for i in upcases:
-            res[i] = res[i].upper()
+        if not self._machine.has_mixedcase():
+            for i in upcases:
+                res[i] = res[i].upper()
 
         return "".join(res)

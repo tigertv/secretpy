@@ -45,3 +45,6 @@ class Rot47:
         :rtype: string
         """
         return self.__crypt(text)
+
+    def get_fixed_alphabet(self):
+        return self.__alphabet

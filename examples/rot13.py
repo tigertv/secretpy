@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import Rot13, CryptMachine, alphabets as al
-from secretpy.cmdecorators import SaveAll
+from secretpy.cmdecorators import SaveAll, Block
 
 
 def encdec(machine, plaintext):
@@ -14,20 +14,22 @@ def encdec(machine, plaintext):
     print(dec)
 
 
-cm = SaveAll(CryptMachine(Rot13()))
+cm = CryptMachine(Rot13())
 
-plaintext = u"This is a secret message"
+plaintext = u"The quick brown fox jumps over the lazydog."
 encdec(cm, plaintext)
 
-plaintext = u"Why did the chicken cross the road Gb trg gb gur bgure fvqr"
+cm = SaveAll(cm)
+
+plaintext = u"Why did the chicken cross the road? Gb trg gb gur bgure fvqr"
 encdec(cm, plaintext)
 
-plaintext = u"The quick brown fox jumps over the lazydog"
+plaintext = u"Die heiße Zypernsonne quälte Max und Victoria ja böse auf dem Weg bis zur Küste."
 cm.set_alphabet(al.GERMAN)
 encdec(cm, plaintext)
 
-plaintext = u"текст"
-cm.set_alphabet(al.RUSSIAN)
+plaintext = u"FAQ om Schweiz: Klöv du trång pjäxby?"
+cm.set_alphabet(al.SWEDISH)
 encdec(cm, plaintext)
 
 cm.set_alphabet(al.JAPANESE_HIRAGANA)
@@ -35,25 +37,32 @@ cm.set_key(1)
 plaintext = u"あいうえおかきくけこがぎぐげごさしすせそざじずぜぞたちつてとだぢづでどなにぬねのはひふへほばびぶべぼぱぴぷぺぽまみむめもやゆよらりるれろわをんゃゅょぁぇ"
 encdec(cm, plaintext)
 
+cm = Block(cm)
+encdec(cm, plaintext)
+
 '''
 ----------------------------------
-This is a secret message
-Guvf vf n frperg zrffntr
-This is a secret message
+The quick brown fox jumps over the lazydog.
+gurdhvpxoebjasbkwhzcfbiregurynmlqbt
+thequickbrownfoxjumpsoverthelazydog
 ----------------------------------
-Why did the chicken cross the road Gb trg gb gur bgure fvqr
-Jul qvq gur puvpxra pebff gur ebnq To get to the other side
-Why did the chicken cross the road Gb trg gb gur bgure fvqr
+Why did the chicken cross the road? Gb trg gb gur bgure fvqr
+Jul qvq gur puvpxra pebff gur ebnq? To get to the other side
+Why did the chicken cross the road? Gb trg gb gur bgure fvqr
 ----------------------------------
-The quick brown fox jumps over the lazydog
-Ewt bfxrz qcßhü ußi yföad ßgtc ewt äpkjsßv
-The quick brown fox jumps over the lazydog
+Die heiße Zypernsonne quälte Max und Victoria ja böse auf dem Weg bis zur Küste.
+Sxt wtxot Kjatcüdßüüt bfläet Öpi füs Gxreßcxp yp qmdt pfu stö Htv qxd kfc Zndet.
+Die heiße Zypernsonne quälte Max und Victoria ja böse auf dem Weg bis zur Küste.
 ----------------------------------
-текст
-вхыбв
-текст
+FAQ om Schweiz: Klöv du trång pjäxby?
+UPB oä Drwhtxk: Zång sf eclöv aymiqj?
+FAQ om Schweiz: Klöv du trång pjäxby?
 ----------------------------------
 あいうえおかきくけこがぎぐげごさしすせそざじずぜぞたちつてとだぢづでどなにぬねのはひふへほばびぶべぼぱぴぷぺぽまみむめもやゆよらりるれろわをんゃゅょぁぇ
 ねのはひふへほばびぶべぼぱぴぷぺぽまみむめもやゆよらりるれろわをんゃゅょぁぇあいうえおかきくけこがぎぐげごさしすせそざじずぜぞたちつてとだぢづでどなにぬ
+あいうえおかきくけこがぎぐげごさしすせそざじずぜぞたちつてとだぢづでどなにぬねのはひふへほばびぶべぼぱぴぷぺぽまみむめもやゆよらりるれろわをんゃゅょぁぇ
+----------------------------------
+あいうえおかきくけこがぎぐげごさしすせそざじずぜぞたちつてとだぢづでどなにぬねのはひふへほばびぶべぼぱぴぷぺぽまみむめもやゆよらりるれろわをんゃゅょぁぇ
+ねのはひふ へほばびぶ べぼぱぴぷ ぺぽまみむ めもやゆよ らりるれろ わをんゃゅ ょぁぇあい うえおかき くけこがぎ ぐげごさし すせそざじ ずぜぞたち つてとだぢ づでどなに ぬ
 あいうえおかきくけこがぎぐげごさしすせそざじずぜぞたちつてとだぢづでどなにぬねのはひふへほばびぶべぼぱぴぷぺぽまみむめもやゆよらりるれろわをんゃゅょぁぇ
 '''

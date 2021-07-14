@@ -24,7 +24,7 @@ class Rot13:
         Encryption method
 
         :param text: Text to encrypt
-        :param key: Encryption key
+        :param key: not used
         :param alphabet: Alphabet which will be used,
                          if there is no a value, English is used
         :type text: string
@@ -40,7 +40,7 @@ class Rot13:
         Decryption method
 
         :param text: Text to decrypt
-        :param key: Decryption key
+        :param key: not used
         :param alphabet: Alphabet which will be used,
                          if there is no a value, English is used
         :type text: string
