@@ -31,7 +31,7 @@ class Vic:
             row = int(j / width)
             if row > 0:
                 column = j % width
-                code += str(columns[row-1]) + str(column)
+                code += str(columns[row - 1]) + str(column)
             else:
                 code += str(j)
 

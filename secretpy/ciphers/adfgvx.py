@@ -36,7 +36,7 @@ class ADFGVX:
         """
         alphabet = alphabet or self.__alphabet
         ans = self.__polybius.encrypt(text, alphabet=alphabet)
-        ans = [self.__header[int(char)-1] for char in ans]
+        ans = [self.__header[int(char) - 1] for char in ans]
 
         keysize = len(key)
         size = len(ans)
@@ -60,7 +60,7 @@ class ADFGVX:
         alphabet = alphabet or self.__alphabet
         keysize = len(key)
         size = len(text)
-        rows = int(math.ceil(size/keysize))
+        rows = int(math.ceil(size / keysize))
         reminder = size % keysize
         indices = sorted(range(keysize), key=lambda k: key[k])
 
@@ -70,7 +70,7 @@ class ADFGVX:
         for key, value in enumerate(indices):
             righti = lefti
             righti += rows
-            if reminder > 0 and value > reminder-1:
+            if reminder > 0 and value > reminder - 1:
                 righti -= 1
             myarr[value] = text[lefti:righti]
             lefti = righti
@@ -87,7 +87,7 @@ class ADFGVX:
         code = []
         try:
             for char in res:
-                code.append(self.__header.index(char)+1)
+                code.append(self.__header.index(char) + 1)
         except ValueError:
             wrchar = char.encode('utf-8')
             raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")

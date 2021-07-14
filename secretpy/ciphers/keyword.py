@@ -12,7 +12,7 @@ class Keyword:
         # remove repeats of letters in the key
         newkey = "".join(OrderedDict.fromkeys(key))
         # create the substitution string
-        longkey = "".join(OrderedDict.fromkeys(newkey+"".join(alphabet)))
+        longkey = "".join(OrderedDict.fromkeys(newkey + "".join(alphabet)))
         # do encryption
         res = []
         for i, t in enumerate(text):

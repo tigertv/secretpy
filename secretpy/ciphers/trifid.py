@@ -25,8 +25,8 @@ class Trifid:
         size = 3
         for i in range(0, len(code), size):
             index = code[i]  # square
-            index = index * size + code[i+1]  # row
-            index = index * size + code[i+2]  # column
+            index = index * size + code[i + 1]  # row
+            index = index * size + code[i + 2]  # column
             text.append(alphabet[index][0])
         return "".join(text)
 
@@ -54,9 +54,9 @@ class Trifid:
         code = self.__code(text, alphabet)
 
         code0 = []
-        for j in range(0, len(text)*size, size*key):
+        for j in range(0, len(text) * size, size * key):
             for i in range(size):
-                for item in code[j+i:j+size*key:size]:
+                for item in code[j + i:j + size * key:size]:
                     code0.append(item)
 
         return self.__decode(code0, alphabet)
@@ -87,9 +87,9 @@ class Trifid:
         res = []
         period = size * key
         for i in range(0, len(code), period):
-            block = code[i:i+period]
+            block = code[i:i + period]
             third = len(block) // size
             # coord : (square, row, column)
-            for coord in zip(block[:third], block[third:2*third], block[2*third:]):
+            for coord in zip(block[:third], block[third:2 * third], block[2 * third:]):
                 res.extend(coord)
         return self.__decode(res, alphabet)

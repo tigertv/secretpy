@@ -25,7 +25,7 @@ encdec(cm, plaintext)
 cm1 = cm
 alphabet = (
     u"aåä", u"b", u"c",
-    u"d", u"e",  u"f",
+    u"d", u"e", u"f",
     u"g", u"h", u"i",
 
     u"j", u"k", u"l",

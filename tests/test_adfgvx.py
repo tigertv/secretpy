@@ -18,8 +18,8 @@ class TestADFGVX(unittest.TestCase):
         [
             u"aä", u"b", u"c", u"d", u"e", u"9",
             u"f", u"g", u"h", u"ij", u"k", u"7",
-            u"l", u"m", u"n", u"oö", u"p",  u"8",
-            u"q", u"r", u"sß", u"t", u"uü",  u"5",
+            u"l", u"m", u"n", u"oö", u"p", u"8",
+            u"q", u"r", u"sß", u"t", u"uü", u"5",
             u"v", u"w", u"x", u"y", u"z", u"0",
             u"1", u"3", u"2", u"4", u"6", u".",
         ],

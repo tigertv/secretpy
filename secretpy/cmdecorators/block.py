@@ -13,10 +13,10 @@ class Block(AbstractMachineDecorator):
 
     def encrypt(self, text):
         txt = self._machine.encrypt(text.lower())
-        return self.sep.join(txt[i:i+self.length] for i in range(0, len(txt), self.length))
+        return self.sep.join(txt[i:i + self.length] for i in range(0, len(txt), self.length))
 
     def decrypt(self, text):
         # remove separator
         step = self.length + len(self.sep)
-        txt = "".join(text[i:i+self.length] for i in range(0, len(text), step))
+        txt = "".join(text[i:i + self.length] for i in range(0, len(text), step))
         return self._machine.decrypt(txt.lower())

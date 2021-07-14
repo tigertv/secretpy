@@ -26,7 +26,7 @@ class Affine:
 
     def __get_inverse(self, a, alphabet):
         for i in range(1, len(alphabet)):
-            if ((int(a)*int(i)) % int(len(alphabet))) == 1:
+            if ((int(a) * int(i)) % int(len(alphabet))) == 1:
                 return i
         return 0
 

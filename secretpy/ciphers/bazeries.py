@@ -29,7 +29,7 @@ class Bazeries:
         revtext = ""
         while i < len(text):
             num = groups[j]
-            str1 = text[int(i):int(i+num)]
+            str1 = text[int(i):int(i + num)]
             revtext += str1[::-1]
             i += num
             j += 1

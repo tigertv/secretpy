@@ -31,7 +31,7 @@ class Nihilist:
         for i in range(0, len(code), 2):
             char = self.__polybius.encrypt(key[(i >> 1) % len(key)],
                                            alphabet=alphabet)
-            enc += str(int(code[i:i+2]) + int(char)) + " "
+            enc += str(int(code[i:i + 2]) + int(char)) + " "
         return enc.rstrip()
 
     def decrypt(self, text, key=None, alphabet=al.ENGLISH_SQUARE_IJ):

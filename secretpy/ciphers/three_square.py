@@ -42,7 +42,7 @@ class ThreeSquare:
             trigrams = []
             i = 0
             while i < len(text):
-                trigrams.append(text[i:i+3])
+                trigrams.append(text[i:i + 3])
                 i += 3
 
             for trigram in trigrams:

@@ -52,9 +52,9 @@ class Polybius:
         res = []
         for i in range(1, len(text), 2):
             try:
-                row = header.index(text[i-1])
+                row = header.index(text[i - 1])
             except ValueError:
-                wrchar = text[i-1].encode('utf-8')
+                wrchar = text[i - 1].encode('utf-8')
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
             try:
                 column = header.index(text[i])

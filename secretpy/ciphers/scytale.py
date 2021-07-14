@@ -38,7 +38,7 @@ class Scytale:
         rows = full_rows + (rmd > 0)
         index = rows * rmd
         res = [text[i:index:rows] for i in range(rows)]
-        add_res = [res[i] + text[index+i::full_rows] for i in range(full_rows)]
+        add_res = [res[i] + text[index + i::full_rows] for i in range(full_rows)]
         if rmd:
             add_res.append(res[-1])
         return "".join(add_res)

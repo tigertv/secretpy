@@ -14,7 +14,7 @@ class MyszkowskiTransposition:
         cols = [[chars[0][0]]]
 
         for i in range(1, len(key)):
-            if chars[i-1][1] == chars[i][1]:
+            if chars[i - 1][1] == chars[i][1]:
                 cols[-1].append(chars[i][0])
             else:
                 cols.append([chars[i][0]])
