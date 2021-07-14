@@ -60,14 +60,23 @@ class CryptMachine(AbstractCryptMachine):
         return self.mixedcase
 
     def encrypt(self, text):
-        return self.__crypt(text, self.__cipher.encrypt)
+        alphabet = self.__alphabet
+        return self.__crypt(text, self.__cipher.encrypt, alphabet)
+
+    def get_crypt_alphabet(self):
+        if hasattr(self.__cipher, 'get_crypt_alphabet'):
+            alphabet = self.__cipher.get_crypt_alphabet()
+        else:
+            alphabet = self.__alphabet
+        return alphabet
 
     def decrypt(self, text):
-        return self.__crypt(text, self.__cipher.decrypt)
+        alphabet = self.get_crypt_alphabet()
+        return self.__crypt(text, self.__cipher.decrypt, alphabet)
 
-    def __crypt(self, text, func):
+    def __crypt(self, text, func, alphabet):
         # prepare alphabet
-        alpha = {c: 1 for letters in self.__alphabet for c in letters}
+        alpha = {c: 1 for letters in alphabet for c in letters}
         if not self.mixedcase:
             txt = text.lower()
         else:

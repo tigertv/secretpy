@@ -7,12 +7,14 @@ from .decorator import AbstractMachineDecorator
 class SaveAll(AbstractMachineDecorator):
 
     def encrypt(self, text):
-        return self.__crypt(text, self._machine.encrypt)
+        alphabet = self._machine.get_alphabet()
+        return self.__crypt(text, self._machine.encrypt, alphabet)
 
     def decrypt(self, text):
-        return self.__crypt(text, self._machine.decrypt)
+        alphabet = self._machine.get_crypt_alphabet()
+        return self.__crypt(text, self._machine.decrypt, alphabet)
 
-    def __crypt(self, text, func):
+    def __crypt(self, text, func, alphabet):
         # make lower case and save indexes
         txt = text
         if not self._machine.has_mixedcase():
@@ -20,7 +22,6 @@ class SaveAll(AbstractMachineDecorator):
             txt = txt.lower()
 
         # prepare alphabet
-        alphabet = self._machine.get_alphabet()
         alpha = {c: 1 for letters in alphabet for c in letters}
 
         # save indexes of non-alphabet characters

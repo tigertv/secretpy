@@ -14,10 +14,12 @@ def encdec(machine, plaintext):
     print("----------------------------------")
 
 
-cm = SaveAll(CryptMachine(Polybius()))
+cm = CryptMachine(Polybius())
 
-plaintext = u"defendtheeastwallofthecastle"
+plaintext = u"Defend the east wall of the castle"
 encdec(cm, plaintext)
+
+cm = SaveAll(cm)
 
 alphabet = [
     u"p", u"h", u"q", u"g", u"m",
@@ -27,7 +29,6 @@ alphabet = [
     u"w", u"b", u"u", u"t", u"ij"
 ]
 cm.set_alphabet(alphabet)
-plaintext = "sometext"
 encdec(cm, plaintext)
 
 plaintext = "thisisasecretmessage"

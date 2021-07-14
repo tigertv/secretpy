@@ -63,3 +63,6 @@ class Polybius:
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
             res.append(square.get_char(row, column))
         return "".join(res)
+
+    def get_crypt_alphabet(self):
+        return al.DECIMAL
