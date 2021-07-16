@@ -35,7 +35,7 @@ class TestADFGVX(unittest.TestCase):
 
     key = (
         u"cargo",
-        u"schlüssel",
+        u"schlussel",
         u"clave",
     )
 
