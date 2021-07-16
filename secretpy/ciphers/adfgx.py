@@ -1,10 +1,10 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from __future__ import division
-import math
-from .polybius import Polybius
+from .polybius_square import PolybiusSquare
+from .columnar_transposition import ColumnarTransposition
 from secretpy import alphabets as al
+from itertools import starmap
 
 
 class ADFGX:
@@ -12,77 +12,64 @@ class ADFGX:
     The ADFGX Cipher
     """
     __header = u"adfgx"
-    __polybius = Polybius()
+    __columnar = ColumnarTransposition()
 
     def encrypt(self, text, key, alphabet=al.ENGLISH_SQUARE_IJ):
         """
         Encryption method
 
         :param text: Text to encrypt
-        :param key: Encryption key
-        :param alphabet: Alphabet which will be used,
-                         if there is no a value, English is used
+        :param key: Encryption key is in ENGLISH
+        :param alphabet: Alphabet which will be used(length=25),
+                         if there is no a value, ENGLISH_SQUARE_IJ is used
         :type text: string
         :type key: integer
         :type alphabet: string
         :return: text
         :rtype: string
         """
-        ans = self.__polybius.encrypt(text, alphabet=alphabet)
-        ans = [self.__header[int(char) - 1] for char in ans]
+        square = PolybiusSquare(alphabet)
+        res = []
+        for i, j in map(square.get_coordinates, text):
+            res.append(self.__header[i])
+            res.append(self.__header[j])
 
-        keysize = len(key)
-        size = len(ans)
-        indices = sorted(range(keysize), key=lambda k: key[k])
-        return "".join(ans[ind] for s in indices for ind in range(s, size, keysize))
+        res = "".join(res)
+        # keyword is in english, alphabet is ENGLISH
+        return self.__columnar.encrypt(res, key, al.ENGLISH)
 
     def decrypt(self, text, key, alphabet=al.ENGLISH_SQUARE_IJ):
         """
         Decryption method
 
         :param text: Text to decrypt
-        :param key: Decryption key
-        :param alphabet: Alphabet which will be used,
-                         if there is no a value, English is used
+        :param key: Decryption key is in ENGLISH
+        :param alphabet: Alphabet which will be used(length=25),
+                         if there is no a value, ENGLISH_SQUARE_IJ is used
         :type text: string
         :type key: integer
         :type alphabet: string
         :return: text
         :rtype: string
         """
-        keysize = len(key)
-        size = len(text)
-        rows = int(math.ceil(size / keysize))
-        reminder = size % keysize
-        indices = sorted(range(keysize), key=lambda k: key[k])
-
-        myarr = [0] * keysize
-        lefti = 0
-        righti = 0
-        for key, value in enumerate(indices):
-            righti = lefti
-            righti += rows
-            if reminder > 0 and value > reminder - 1:
-                righti -= 1
-            myarr[value] = text[lefti:righti]
-            lefti = righti
-
-        column = 0
-        row = 0
-        res = []
-        for i in range(size):
-            res.append(myarr[column][row])
-            column += 1
-            if column == keysize:
-                column = 0
-                row += 1
+        # keyword is in english, alphabet is ENGLISH
+        res = self.__columnar.decrypt(text, key, al.ENGLISH)
         code = []
+        it = iter(res)
         try:
-            for char in res:
-                code.append(self.__header.index(char) + 1)
+            for i, j in zip(it, it):
+                char = i
+                ii = self.__header.index(char)
+                char = j
+                jj = self.__header.index(char)
+                coord = (ii, jj)
+                code.append(coord)
         except ValueError:
             wrchar = char.encode('utf-8')
             raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
 
-        code = "".join(map(str, code))
-        return self.__polybius.decrypt(code, alphabet=alphabet)
+        square = PolybiusSquare(alphabet)
+        return "".join(starmap(square.get_char, code))
+
+    def get_crypt_alphabet(self):
+        return self.__header

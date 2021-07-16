@@ -19,6 +19,7 @@ HEX = u"0123456789abcdef"
 OCTAL = u"01234567"
 
 ARABIC = u"غظضذخثتشرقصفعسنملكيطحزوهدجبأ"
+CZECH = u"aábcčdďeéěfghiíjklmnňoópqrřsštťuúůvwxyýzž"
 DANISH = u"abcdefghijklmnopqrstuvwxyzæøå"
 DUTCH = u"abcdefghijklmnopqrstuvwxyz"
 ENGLISH = u"abcdefghijklmnopqrstuvwxyz"
@@ -30,9 +31,18 @@ ITALIAN = u"abcdefghilmnopqrstuvz"
 NORWEGIAN = DANISH
 POLISH = u"aąbcćdeęfghijklłmnńoóprsśtuwyzźż"
 RUSSIAN = u"абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+SLOVAK = u"aáäbcčdďeéfghiíjklĺľmnňoóôpqrŕsštťuúvwxyýzž"
 SPANISH = u"abcdefghijklmnñopqrstuvwxyz"
 SWEDISH = u"abcdefghijklmnopqrstuvwxyzåäö"
 TURKISH = u"abcçdefgğhıijklmnoöprsştuüvyz"
+
+CZECH_SQUARE = (
+    u"aá", u"b", u"cč", u"dď", u"eéě",
+    u"f", u"g", u"h", u"iíj", u"k",
+    u"l", u"m", u"nň", u"oó", u"p",
+    u"q", u"rř", u"sš", u"tť", u"uúů",
+    u"v", u"w", u"x", u"yý", u"zž",
+)
 
 ENGLISH_SQUARE_IJ = (
     u"a", u"b", u"c", u"d", u"e",
@@ -66,14 +76,6 @@ GERMAN_SQUARE = (
     u"v", u"w", u"x", u"y", u"z"
 )
 
-SPANISH_SQUARE = (
-    u"a", u"b", u"c", u"d", u"e",
-    u"f", u"g", u"h", u"ij", u"k",
-    u"l", u"m", u"nñ", u"o", u"p",
-    u"q", u"r", u"s", u"t", u"u",
-    u"v", u"w", u"x", u"y", u"z"
-)
-
 RUSSIAN_SQUARE = (
     u"а", u"б", u"в", u"г", u"д", u"её",
     u"ж", u"з", u"ий", u"к", u"л", u"м",
@@ -81,6 +83,22 @@ RUSSIAN_SQUARE = (
     u"у", u"ф", u"х", u"ц", u"ч", u"ш",
     u"щ", u"ы", u"ьъ", u"э", u"ю", u"я",
     u"0", u"1", u"2", u"3", u"4", u"5"
+)
+
+SLOVAK_SQUARE = (
+    u"aáä", u"b", u"cč", u"dď", u"eé",
+    u"f", u"g", u"h", u"iíj", u"k",
+    u"lĺľ", u"m", u"nň", u"oóô", u"p",
+    u"q", u"rŕ", u"sš", u"tť", u"uú",
+    u"v", u"w", u"x", u"yý", u"zž",
+)
+
+SPANISH_SQUARE = (
+    u"a", u"b", u"c", u"d", u"e",
+    u"f", u"g", u"h", u"ij", u"k",
+    u"l", u"m", u"nñ", u"o", u"p",
+    u"q", u"r", u"s", u"t", u"u",
+    u"v", u"w", u"x", u"y", u"z"
 )
 
 JAPANESE_HIRAGANA = (
