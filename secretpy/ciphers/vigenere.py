@@ -1,5 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
+from itertools import cycle
+from secretpy import alphabets as al
 
 
 class Vigenere:
@@ -8,24 +10,21 @@ class Vigenere:
     """
 
     def __crypt(self, alphabet, key, text, is_encrypt):
+        # prepare alphabet for substitution
+        indexes = {c: i for i, letters in enumerate(alphabet) for c in letters}
+        # prepare key
+        key_indexes = (is_encrypt * indexes[c] for c in key)
         res = []
-        for i, char in enumerate(text):
-            keychar = key[i % len(key)]
+        for keyi, char in zip(cycle(key_indexes), text):
             try:
-                a_index = alphabet.index(char)
-            except ValueError:
+                i = (indexes[char] + keyi) % len(alphabet)
+                res.append(alphabet[i][0])
+            except KeyError:
                 wrchar = char.encode('utf-8')
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
-            try:
-                a_index += is_encrypt * alphabet.index(keychar)
-            except ValueError:
-                wrchar = keychar.encode('utf-8')
-                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
-            a_index %= len(alphabet)
-            res.append(alphabet[a_index])
         return "".join(res)
 
-    def encrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+    def encrypt(self, text, key, alphabet=al.ENGLISH):
         """
         Encryption method
 
@@ -34,14 +33,14 @@ class Vigenere:
         :param alphabet: Alphabet which will be used,
                          if there is no a value, English is used
         :type text: string
-        :type key: integer
+        :type key: string
         :type alphabet: string
         :return: text
         :rtype: string
         """
         return self.__crypt(alphabet, key, text, 1)
 
-    def decrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+    def decrypt(self, text, key, alphabet=al.ENGLISH):
         """
         Decryption method
 
@@ -50,7 +49,7 @@ class Vigenere:
         :param alphabet: Alphabet which will be used,
                          if there is no a value, English is used
         :type text: string
-        :type key: integer
+        :type key: string
         :type alphabet: string
         :return: text
         :rtype: string
