@@ -1,13 +1,23 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
+from secretpy import alphabets as al
 
 
 class SimpleSubstitution:
     """
     The Simple Substitution Cipher
     """
+    def __crypt(self, subst, text):
+        res = []
+        for c in text:
+            try:
+                res.append(subst[c])
+            except KeyError:
+                wrchar = c.encode('utf-8')
+                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
+        return "".join(res)
 
-    def encrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+    def encrypt(self, text, key, alphabet=al.ENGLISH):
         """
         Encryption method
 
@@ -16,24 +26,18 @@ class SimpleSubstitution:
         :param alphabet: Alphabet which will be used,
                          if there is no a value, English is used
         :type text: string
-        :type key: integer
+        :type key: string
         :type alphabet: string
         :return: text
         :rtype: string
         """
         if len(alphabet) != len(key):
-            return
-        res = []
-        for c in text:
-            try:
-                k = key[alphabet.index(c)]
-            except ValueError:
-                wrchar = c.encode('utf-8')
-                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
-            res.append(k)
-        return "".join(res)
+            raise Exception("Lengths of alphabet and key should be the same")
+        # prepare alphabet for substitution
+        subst = {a: k[0] for k, letters in zip(key, alphabet) for a in letters}
+        return self.__crypt(subst, text)
 
-    def decrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+    def decrypt(self, text, key, alphabet=al.ENGLISH):
         """
         Decryption method
 
@@ -42,19 +46,13 @@ class SimpleSubstitution:
         :param alphabet: Alphabet which will be used,
                          if there is no a value, English is used
         :type text: string
-        :type key: integer
+        :type key: string
         :type alphabet: string
         :return: text
         :rtype: string
         """
         if len(alphabet) != len(key):
-            return
-        res = []
-        for c in text:
-            try:
-                k = alphabet[key.index(c)]
-            except ValueError:
-                wrchar = c.encode('utf-8')
-                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
-            res.append(k)
-        return "".join(res)
+            raise Exception("Lengths of alphabet and key should be the same")
+        # prepare alphabet for substitution
+        subst = {k[0]: a[0] for k, a in zip(key, alphabet)}
+        return self.__crypt(subst, text)
