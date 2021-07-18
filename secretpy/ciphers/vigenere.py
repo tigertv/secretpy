@@ -1,28 +1,20 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
-from itertools import cycle
 from secretpy import alphabets as al
+from .gronsfeld import Gronsfeld
 
 
 class Vigenere:
     """
     The Vigenere Cipher
     """
+    __gronsfeld = Gronsfeld()
 
-    def __crypt(self, alphabet, key, text, is_encrypt):
+    def __crypt(self, alphabet, key):
         # prepare alphabet for substitution
         indexes = {c: i for i, letters in enumerate(alphabet) for c in letters}
         # prepare key
-        key_indexes = (is_encrypt * indexes[c] for c in key)
-        res = []
-        for keyi, char in zip(cycle(key_indexes), text):
-            try:
-                i = (indexes[char] + keyi) % len(alphabet)
-                res.append(alphabet[i][0])
-            except KeyError:
-                wrchar = char.encode('utf-8')
-                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
-        return "".join(res)
+        return (indexes[c] for c in key)
 
     def encrypt(self, text, key, alphabet=al.ENGLISH):
         """
@@ -38,7 +30,8 @@ class Vigenere:
         :return: text
         :rtype: string
         """
-        return self.__crypt(alphabet, key, text, 1)
+        new_key = self.__crypt(alphabet, key)
+        return self.__gronsfeld.encrypt(text, new_key, alphabet)
 
     def decrypt(self, text, key, alphabet=al.ENGLISH):
         """
@@ -54,4 +47,5 @@ class Vigenere:
         :return: text
         :rtype: string
         """
-        return self.__crypt(alphabet, key, text, -1)
+        new_key = self.__crypt(alphabet, key)
+        return self.__gronsfeld.decrypt(text, new_key, alphabet)
