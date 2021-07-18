@@ -12,20 +12,17 @@ class Beaufort:
 
     def __crypt(self, alphabet, key, text):
         # prepare alphabet for substitution
-        indeces = {c: i for i, letters in enumerate(alphabet) for c in letters}
+        indexes = {c: i for i, letters in enumerate(alphabet) for c in letters}
+        # prepare key
+        key_indexes = (indexes[c] for c in key)
         res = []
-        for k, t in zip(cycle(key), text):
+        for k, t in zip(cycle(key_indexes), text):
             try:
-                i = indeces[k]
-            except KeyError:
-                wrchar = k.encode('utf-8')
-                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
-            try:
-                i -= indeces[t]
+                i = k - indexes[t]
+                res.append(alphabet[i][0])
             except KeyError:
                 wrchar = t.encode('utf-8')
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
-            res.append(alphabet[i][0])
         return "".join(res)
 
     def encrypt(self, text, key, alphabet=al.ENGLISH):
