@@ -2,16 +2,6 @@
 # -*- encoding: utf-8 -*-
 
 
-def get_index_in_alphabet(char, alphabet):
-    for j in range(len(alphabet)):
-        try:
-            alphabet[j].index(char)
-            break
-        except ValueError:
-            pass
-    return j
-
-
 BINARY = u"01"
 DECIMAL = u"0123456789"
 DOZENAL = u"0123456789ab"

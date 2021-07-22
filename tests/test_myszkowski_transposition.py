@@ -10,27 +10,22 @@ class TestMyszkowskiTransposition(unittest.TestCase):
 
     alphabet = (
         alphabets.ENGLISH,
+        alphabets.ENGLISH,
     )
 
     key = (
         u"tomato",
         u"german",
-        u"schlüssel",
-        u"clave",
     )
 
     plaintext = (
         u"wearediscoveredfleeatonce",
         u"defendtheeastwallofthecastlexx",
-        u"textnachtricht",
-        u"unmensaiedetexto",
     )
 
     ciphertext = (
         u"rofoacdtedseeeacweivrlene",
         u"nalcxehwttdttfseeleedsoaxfeahl",
-        u"111111111",
-        u"222222222222222",
     )
 
     cipher = MyszkowskiTransposition()
