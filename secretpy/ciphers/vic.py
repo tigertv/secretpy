@@ -1,5 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
+from secretpy import alphabets as al
+from itertools import cycle
 
 
 class Vic:
@@ -7,56 +9,39 @@ class Vic:
     The Vic Cipher
     """
 
-    def __find_index_in_alphabet(self, char, alphabet):
-        for j in range(len(alphabet)):
-            try:
-                alphabet[j].index(char)
-                break
-            except ValueError:
-                pass
-        return j
-
-    def __encDec(self, alphabet, text, key, do_encrypt):
+    def __crypt(self, alphabet, text, key):
         columns = []
+        subst = {}
         width = 10
-        # define columns with null string
+        # prepare substitution from alphabet
         for i, value in enumerate(alphabet):
             if value == "":
                 columns.append(i)
+            elif i < width:
+                subst[value] = (i,)
+            else:
+                row, col = divmod(i, width)
+                subst[value] = (columns[row - 1], col)
 
         # encode chars to numbers
-        code = ""
-        for char in text:
-            j = self.__find_index_in_alphabet(char, alphabet)
-            row = int(j / width)
-            if row > 0:
-                column = j % width
-                code += str(columns[row - 1]) + str(column)
-            else:
-                code += str(j)
+        code = []
+        for t in text:
+            code.extend(subst[t])
 
-        enc = ""
-        if do_encrypt:
-            # addition by key
-            for i in range(0, len(code)):
-                enc += str((int(code[i]) + int(key[i % len(key)])) % 10)
-        else:
-            # subraction by key
-            for i in range(0, len(code)):
-                enc += str((int(code[i]) - int(key[i % len(key)])) % 10)
-
-        # encode numbers to chars
-        enc2 = ""
+        res = []
         row = 0
-        for i in range(0, len(enc)):
-            if row == 0 and (int(enc[i]) in columns):
-                row = columns.index(int(enc[i])) + 1
+        for c, k in zip(code, cycle(key)):
+            # apply the key
+            i = (c + k) % width
+            # encode numbers to chars
+            if row == 0 and (i in columns):
+                row = columns.index(i) + 1
             else:
-                enc2 += alphabet[row * width + int(enc[i])][0]
+                res.append(alphabet[row * width + i][0])
                 row = 0
-        return enc2
+        return u"".join(res)
 
-    def encrypt(self, text, key=None, alphabet=None):
+    def encrypt(self, text, key=None, alphabet=al.ENGLISH_SQUARE_IJ):
         """
         Encryption method
 
@@ -65,21 +50,16 @@ class Vic:
         :param alphabet: Alphabet which will be used,
                          if there is no a value, English is used
         :type text: string
-        :type key: integer
+        :type key: number string
         :type alphabet: string
         :return: text
         :rtype: string
         """
-        alphabet = alphabet or [
-            u"a", u"b", u"c", u"d", u"e",
-            u"f", u"g", u"h", u"ij", u"k",
-            u"l", u"m", u"n", u"o", u"p",
-            u"q", u"r", u"s", u"t", u"u",
-            u"v", u"w", u"x", u"y", u"z"
-        ]
-        return self.__encDec(alphabet, text, key, True)
+        # prepare key
+        new_key = (int(i) for i in key)
+        return self.__crypt(alphabet, text, new_key)
 
-    def decrypt(self, text, key=None, alphabet=None):
+    def decrypt(self, text, key=None, alphabet=al.ENGLISH_SQUARE_IJ):
         """
         Decryption method
 
@@ -88,16 +68,12 @@ class Vic:
         :param alphabet: Alphabet which will be used,
                          if there is no a value, English is used
         :type text: string
-        :type key: integer
+        :type key: number string
         :type alphabet: string
         :return: text
         :rtype: string
         """
-        alphabet = alphabet or [
-            u"a", u"b", u"c", u"d", u"e",
-            u"f", u"g", u"h", u'ij', u"k",
-            u"l", u"m", u"n", u"o", u"p",
-            u"q", u"r", u"s", u"t", u"u",
-            u"v", u"w", u"x", u"y", u"z"
-        ]
-        return self.__encDec(alphabet, text, key, False)
+        width = 10
+        # invert key
+        new_key = (width - int(i) for i in key)
+        return self.__crypt(alphabet, text, new_key)
