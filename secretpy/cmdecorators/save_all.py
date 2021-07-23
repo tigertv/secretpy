@@ -36,7 +36,7 @@ class SaveAll(AbstractMachineDecorator):
 
         # restore uppercase
         if not self._machine.has_mixedcase():
-            for i in upcases:
+            for i in filter(lambda x: x < len(res), upcases):
                 res[i] = res[i].upper()
 
         return "".join(res)
