@@ -10,16 +10,13 @@ class CaesarProgressive:
     The Caesar Progressive Cipher
     """
 
-    def __crypt(self, alphabet, key, text, is_encrypt):
-        # key should be between 0 and len(alphabet)
-        key %= len(alphabet)
+    def __crypt(self, alphabet, key, text):
         # prepare alphabet for substitution
         subst = {c: i for i, letters in enumerate(alphabet) for c in letters}
         res = []
-        ch = chain(range(key, len(alphabet)), range(key))
-        for k, t in zip(cycle(ch), text):
+        for t, k in zip(text, cycle(key)):
             try:
-                i = (subst[t] + is_encrypt * k) % len(alphabet)
+                i = subst[t] - k
             except KeyError:
                 wrchar = t.encode('utf-8')
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
@@ -40,7 +37,9 @@ class CaesarProgressive:
         :return: encrypted text
         :rtype: string
         """
-        return self.__crypt(alphabet, key, text, 1)
+        new_key = -key % len(alphabet)
+        new_key = chain(range(new_key, -1, -1), range(len(alphabet) - 1, new_key, -1))
+        return self.__crypt(alphabet, new_key, text)
 
     def decrypt(self, text, key=3, alphabet=al.ENGLISH):
         """
@@ -56,4 +55,6 @@ class CaesarProgressive:
         :return: decrypted text
         :rtype: string
         """
-        return self.__crypt(alphabet, key, text, -1)
+        new_key = key % len(alphabet)
+        new_key = chain(range(new_key, len(alphabet)), range(new_key))
+        return self.__crypt(alphabet, new_key, text)
