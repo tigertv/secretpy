@@ -9,15 +9,14 @@ class Gronsfeld:
     The Gronsfeld Cipher
     """
 
-    def __crypt(self, alphabet, key, text, is_encrypt):
+    def __crypt(self, alphabet, key, text):
         # prepare alphabet for substitution
         indexes = {c: i for i, letters in enumerate(alphabet) for c in letters}
         # prepare key
-        key_indexes = (is_encrypt * i for i in key)
         res = []
-        for keyi, char in zip(cycle(key_indexes), text):
+        for keyi, char in zip(cycle(key), text):
             try:
-                i = (indexes[char] + keyi) % len(alphabet)
+                i = indexes[char] - keyi
                 res.append(alphabet[i][0])
             except KeyError:
                 wrchar = char.encode('utf-8')
@@ -38,7 +37,9 @@ class Gronsfeld:
         :return: text
         :rtype: string
         """
-        return self.__crypt(alphabet, key, text, 1)
+        # sanitize and invert the key
+        new_key = (-i % len(alphabet) for i in key)
+        return self.__crypt(alphabet, new_key, text)
 
     def decrypt(self, text, key, alphabet=al.ENGLISH):
         """
@@ -54,4 +55,6 @@ class Gronsfeld:
         :return: text
         :rtype: string
         """
-        return self.__crypt(alphabet, key, text, -1)
+        # sanitize the key
+        new_key = (i % len(alphabet) for i in key)
+        return self.__crypt(alphabet, new_key, text)
