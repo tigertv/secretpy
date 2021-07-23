@@ -15,8 +15,17 @@ class AbstractMachineDecorator(AbstractCryptMachine):
     def set_alphabet(self, alphabet=alphabets.ENGLISH):
         self._machine.set_alphabet(alphabet)
 
+    def get_alphabet(self):
+        return self._machine.get_alphabet()
+
+    def get_crypt_alphabet(self):
+        return self._machine.get_crypt_alphabet()
+
     def set_cipher(self, cipher):
         self._machine.set_cipher(cipher)
+
+    def has_mixedcase(self):
+        return self._machine.has_mixedcase()
 
     def encrypt(self, text):
         pass
