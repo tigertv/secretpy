@@ -34,11 +34,12 @@ class Scytale:
         :return: decrypted text
         :rtype: string
         """
-        full_rows, rmd = len(text) // key, len(text) % key
+        full_rows, rmd = divmod(len(text), key)
         rows = full_rows + (rmd > 0)
-        index = rows * rmd
-        res = [text[i:index:rows] for i in range(rows)]
-        add_res = [res[i] + text[index + i::full_rows] for i in range(full_rows)]
-        if rmd:
-            add_res.append(res[-1])
-        return "".join(add_res)
+        middle = rows * rmd
+        res = []
+        for i in range(full_rows):
+            res.append(text[i:middle:rows])
+            res.append(text[middle + i::full_rows])
+        res.append(text[full_rows:middle:rows])
+        return "".join(res)
