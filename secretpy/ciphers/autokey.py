@@ -1,5 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
+from secretpy import alphabets as al
+from itertools import chain
 
 
 class Autokey:
@@ -8,31 +10,31 @@ class Autokey:
     """
 
     def __crypt(self, alphabet, key, text, is_encrypt):
+        indexes = {c: i for i, letters in enumerate(alphabet) for c in letters}
         res = []
-        for i, t in enumerate(text):
+
+        if is_encrypt == 1:
+            new_key = chain(key, text)
+        else:
+            new_key = chain(key, res)
+
+        for t in text:
+            k = next(new_key)
             try:
-                a_index = alphabet.index(t)
+                i = indexes[t]
             except ValueError:
                 wrchar = t.encode('utf-8')
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
-            if i < len(key):
-                k = key[i]
-            else:
-                if is_encrypt == 1:
-                    k = text[i - len(key)]
-                else:
-                    k = res[i - len(key)]
             try:
-                a_index += is_encrypt * alphabet.index(k)
+                i += is_encrypt * indexes[k]
             except ValueError:
                 wrchar = k.encode('utf-8')
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
-            a_index = a_index % len(alphabet)
-            enc = alphabet[a_index]
-            res.append(enc)
+            i = i % len(alphabet)
+            res.append(alphabet[i][0])
         return "".join(res)
 
-    def encrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+    def encrypt(self, text, key, alphabet=al.ENGLISH):
         """
         Encryption method
 
@@ -41,14 +43,14 @@ class Autokey:
         :param alphabet: Alphabet which will be used, if there is no a value,
                          English is used
         :type text: string
-        :type key: integer
-        :type alphabet: string
+        :type key: string
+        :type alphabet: string or tuple of strings
         :return: text
         :rtype: string
         """
         return self.__crypt(alphabet, key, text, 1)
 
-    def decrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+    def decrypt(self, text, key, alphabet=al.ENGLISH):
         """
         Decryption method
 
@@ -57,8 +59,8 @@ class Autokey:
         :param alphabet: Alphabet which will be used, if there is no a value,
                          English is used
         :type text: string
-        :type key: integer
-        :type alphabet: string
+        :type key: string
+        :type alphabet: string or tuple of strings
         :return: text
         :rtype: string
         """
