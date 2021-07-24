@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 from collections import OrderedDict
+from secretpy import alphabets as al
 
 
 class Keyword:
@@ -9,27 +10,29 @@ class Keyword:
     """
 
     def __crypt(self, alphabet, key, text, is_encrypt):
-        # remove repeats of letters in the key
-        newkey = "".join(OrderedDict.fromkeys(key))
-        # create the substitution string
-        longkey = "".join(OrderedDict.fromkeys(newkey + "".join(alphabet)))
+        indexes = {c: i for i, letters in enumerate(alphabet) for c in letters}
+        # remove duplicates
+        keyi = OrderedDict.fromkeys(indexes[char] for char in key)
+        new_key = [alphabet[i] for i in keyi]
+        for i, a in enumerate(alphabet):
+            if i not in keyi:
+                new_key.append(a[0])
+
+        if is_encrypt:
+            subst = {c: new_key[i] for c, i in indexes.items()}
+        else:
+            subst = {c: alphabet[i][0] for i, letters in enumerate(new_key) for c in letters}
         # do encryption
         res = []
-        for i, t in enumerate(text):
+        for t in text:
             try:
-                if is_encrypt == 1:
-                    index = alphabet.index(t)
-                    enc = longkey[index]
-                else:
-                    index = longkey.index(t)
-                    enc = alphabet[index]
-            except ValueError:
+                res.append(subst[t])
+            except KeyError:
                 wrchar = t.encode('utf-8')
                 raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
-            res.append(enc)
         return "".join(res)
 
-    def encrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+    def encrypt(self, text, key, alphabet=al.ENGLISH):
         """
         Encryption method
 
@@ -43,9 +46,9 @@ class Keyword:
         :return: text
         :rtype: string
         """
-        return self.__crypt(alphabet, key, text, 1)
+        return self.__crypt(alphabet, key, text, True)
 
-    def decrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+    def decrypt(self, text, key, alphabet=al.ENGLISH):
         """
         Decryption method
 
@@ -59,4 +62,4 @@ class Keyword:
         :return: text
         :rtype: string
         """
-        return self.__crypt(alphabet, key, text, -1)
+        return self.__crypt(alphabet, key, text, False)
