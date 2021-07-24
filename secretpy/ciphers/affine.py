@@ -1,4 +1,5 @@
 #!/usr/bin/python
+from secretpy import alphabets as al
 
 
 class Affine:
@@ -6,31 +7,23 @@ class Affine:
     The Affine Cipher
     """
 
-    def __crypt(self, alphabet, key, text, is_encrypt):
-        a = key[0]
-        b = key[1]
+    def __crypt(self, subst, text):
         res = []
-        a_inverse = self.__get_inverse(a, alphabet)
         try:
-            for char in text:
-                if is_encrypt == 1:
-                    a_index = (alphabet.index(char) * a + b) % len(alphabet)
-                else:
-                    a_index = (a_inverse * (alphabet.index(char) - b)) % len(alphabet)
-                enc = alphabet[a_index]
-                res.append(enc)
-        except ValueError:
-            wrchar = char.encode('utf-8')
+            for t in text:
+                res.append(subst[t])
+        except KeyError:
+            wrchar = t.encode('utf-8')
             raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
         return "".join(res)
 
     def __get_inverse(self, a, alphabet):
         for i in range(1, len(alphabet)):
-            if ((int(a) * int(i)) % int(len(alphabet))) == 1:
+            if (a * i) % len(alphabet) == 1:
                 return i
-        return 0
+        return 1
 
-    def encrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+    def encrypt(self, text, key, alphabet=al.ENGLISH):
         """
         Encryption method
 
@@ -39,14 +32,17 @@ class Affine:
         :param alphabet: Alphabet which will be used, if there is no a value,
                          English is used
         :type text: string
-        :type key: integer
+        :type key: tuple of 2 integers
         :type alphabet: string
         :return: text
         :rtype: string
         """
-        return self.__crypt(alphabet, key, text, 1)
+        a = int(key[0])
+        b = int(key[1])
+        subst = {c: alphabet[(i * a + b) % len(alphabet)][0] for i, letters in enumerate(alphabet) for c in letters}
+        return self.__crypt(subst, text)
 
-    def decrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+    def decrypt(self, text, key, alphabet=al.ENGLISH):
         """
         Decryption method
 
@@ -55,9 +51,13 @@ class Affine:
         :param alphabet: Alphabet which will be used, if there is no a value,
                          English is used
         :type text: string
-        :type key: integer
+        :type key: tuple of 2 integers
         :type alphabet: string
         :return: text
         :rtype: string
         """
-        return self.__crypt(alphabet, key, text, -1)
+        a = int(key[0])
+        b = int(key[1])
+        a = self.__get_inverse(a, alphabet)
+        subst = {c: alphabet[(a * (i - b)) % len(alphabet)][0] for i, letters in enumerate(alphabet) for c in letters}
+        return self.__crypt(subst, text)
