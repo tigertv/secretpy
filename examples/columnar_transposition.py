@@ -6,24 +6,26 @@ from secretpy.cmdecorators import SaveAll, Block
 
 
 cipher = ColumnarTransposition()
-key = "cargo"
-plaintext = "attackatdawn"
+alphabet = al.GERMAN
+plaintext = u"schweißgequältvomödentextzürnttypografjakob"
+key = u"schlüssel"
 
 print(plaintext)
-enc = cipher.encrypt(plaintext, key)
+enc = cipher.encrypt(plaintext, key, alphabet)
 print(enc)
-print(cipher.decrypt(enc, key))
-print('========================================================================================')
+dec = cipher.decrypt(enc, key, alphabet)
+print(dec)
 
 
 def encdec(machine, plaintext):
+    print("=" * 80)
     print(plaintext)
     enc = machine.encrypt(plaintext)
     print(enc)
     print(machine.decrypt(enc))
-    print("-----------------------------------------------------------")
 
 
+key = "manykeys"
 cm0 = CryptMachine(cipher, key)
 
 cm = cm0
@@ -44,25 +46,33 @@ cm.set_key(u"だやぎへ")
 plaintext = u"text あい だやぎへぐゆぢ"
 encdec(cm, plaintext)
 
+cm.set_alphabet(al.ENGLISH_SQUARE_IJ)
+cm.set_key(u"keyj")
+plaintext = "ENGLISH_SQUARE_IJ doesn't change Ii to Jj because it's a transposition cipher!"
+encdec(cm, plaintext)
+
 '''
-attackatdawn
-tanakwadcatt
-attackatdawn
-========================================================================================
+schweißgequältvomödentextzürnttypografjakob
+cuenfgmzghäntjwlttaeöürsqdraivxpoßotobeteyk
+schweißgequältvomödentextzürnttypografjakob
+================================================================================
 I don't love non-alphabet characters and uppercase. I will remove all of them: ^,&@$~(*;?&#.
-donahtneelvomilohccapslolenelerrucweattnptaspaimlhovabaedriref
+dnbcuemfllhsrlamtacreieeieaadseoooetpiotvhrnarlnntepwvhopaacll
 idontlovenonalphabetcharactersanduppercaseiwillremoveallofthem
------------------------------------------------------------
+================================================================================
 This text is divided by blocks of length 5!
-hxido ftted elogs iiyke tsdbs nitvb clh
+hsboe iontv letid shidy ftekt siblx dcg
 thistextisdividedbyblocksoflength
------------------------------------------------------------
+================================================================================
 I love non-alphabet characters. These are : ^,&@$~(*;?&#. That's it!
-L ohcc taa-inptaseh tvabaeeese. Lerrs tio : ^,&@$~(*;?&#. Naht'h rt!
+L lhse nbc-steaaeai acrrtopatt. Nteai vhr : ^,&@$~(*;?&#. Hhoe't es!
 I love non-alphabet characters. These are : ^,&@$~(*;?&#. That's it!
------------------------------------------------------------
+================================================================================
 text あい だやぎへぐゆぢ
 text だぐ あぎぢやゆいへ
 text あい だやぎへぐゆぢ
------------------------------------------------------------
+================================================================================
+ENGLISH_SQUARE_IJ doesn't change Ii to Jj because it's a transposition cipher!
+NSUIECG_TBUTRP_TC elsrd'n aijcea Ns op Ei qeotnij ai't s inhghajsheoes saoiir!
+ENGLISH_SQUARE_IJ doesn't change Ii to Jj because it's a transposition cipher!
 '''

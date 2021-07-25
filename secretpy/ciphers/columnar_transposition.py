@@ -9,8 +9,9 @@ class ColumnarTransposition:
     """
 
     def __keyorder(self, alphabet, key):
-        chars = map(alphabet.index, key)
-        return [i for i, _ in sorted(enumerate(chars), key=lambda x: x[1])]
+        indexes = {c: i for i, letters in enumerate(alphabet) for c in letters}
+        new_key = map(lambda x: indexes[x], key)
+        return [i for i, _ in sorted(enumerate(new_key), key=lambda x: x[1])]
 
     def encrypt(self, text, key, alphabet=al.ENGLISH):
         """
