@@ -31,11 +31,11 @@ class Bifid:
         coords = tuple(map(square.get_coordinates, text))
         res = []
         for i in range(0, len(coords), key):
-            block = coords[i:i+key]
+            block = coords[i:i + key]
             block = list(zip(*block))
             block = block[0] + block[1]
             for j in range(1, len(block), 2):
-                res.append(square.get_char(block[j-1], block[j]))
+                res.append(square.get_char(block[j - 1], block[j]))
         return "".join(res)
 
     def decrypt(self, text, key=None, alphabet=al.ENGLISH_SQUARE_IJ):
@@ -60,7 +60,7 @@ class Bifid:
         res = []
         for i in range(0, len(coords), key):
             block = []
-            for coord in coords[i:i+key]:
+            for coord in coords[i:i + key]:
                 block.append(coord[0])
                 block.append(coord[1])
             half = len(block) // 2

@@ -12,7 +12,7 @@ class TestBazeries(unittest.TestCase):
         alphabets.GERMAN_SQUARE,
         alphabets.SPANISH_SQUARE,
         alphabets.RUSSIAN_SQUARE,
-        alphabets.JAPANESE_HIRAGANA
+        # alphabets.JAPANESE_HIRAGANA
     )
 
     key = (
@@ -48,8 +48,7 @@ class TestBazeries(unittest.TestCase):
 
     def test_decrypt(self):
         for i, alphabet in enumerate(self.alphabet):
-            dec = self.cipher.decrypt(self.ciphertext[i],
-                                      self.key[i], alphabet)
+            dec = self.cipher.decrypt(self.ciphertext[i], self.key[i], alphabet)
             self.assertEqual(dec, self.plaintext[i])
 
 

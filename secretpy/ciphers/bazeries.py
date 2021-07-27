@@ -1,7 +1,8 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
-
+from secretpy import alphabets as al
 from .polybius_square import PolybiusSquare
+from itertools import cycle
 
 
 class Bazeries:
@@ -9,46 +10,38 @@ class Bazeries:
     The Bazeries Cipher
     """
 
-    def __encDec(self, alphabet, text, key, isEncrypt=True):
-        square1 = PolybiusSquare(alphabet)
-
-        # key is a number, make it a string
-        square2 = PolybiusSquare(alphabet, key[1])
-
-        # prepare text: group and reverse
+    def __crypt(self, alphabet, text, key, is_encrypt=True):
+        # prepare digit key
         temp = key[0]
-        groups = []
-        while temp > 0:
-            rmd = temp % 10
-            temp = int(temp / 10)
-            groups.append(rmd)
-        groups = groups[::-1]
+        digitkey = []
+        while temp:
+            temp, rmd = divmod(temp, 10)
+            digitkey.append(rmd)
+        digitkey = digitkey[::-1]
 
+        # prepare text: reversion
         i = 0
-        j = 0
-        revtext = ""
+        revtext = []
+        digitkey = cycle(digitkey)
         while i < len(text):
-            num = groups[j]
-            str1 = text[int(i):int(i+num)]
-            revtext += str1[::-1]
+            num = next(digitkey)
+            s = text[i:i + num]
+            revtext.append(s[::-1])
             i += num
-            j += 1
-            if j == len(groups):
-                j = 0
+        revtext = u"".join(revtext)
 
-        # now we have reversed text and we encrypt
-        ret = ""
-        if isEncrypt:
-            for char in revtext:
-                coords = square1.get_coordinates(char)
-                ret += square2.get_char(coords[1], coords[0])
-        else:
-            for char in revtext:
-                coords = square2.get_coordinates(char)
-                ret += square1.get_char(coords[1], coords[0])
-        return ret
+        sq1 = PolybiusSquare(alphabet)
+        # key is a number, make it a string
+        sq2 = PolybiusSquare(alphabet, key[1])
+        if is_encrypt:
+            sq1, sq2 = sq2, sq1
 
-    def encrypt(self, text, key=None, alphabet=None):
+        # prepare substitution from alphabet
+        subst = {c: sq1.get_char(*reversed(sq2.get_coordinates(c))) for letters in alphabet for c in letters}
+        # cryption
+        return u"".join(subst[t] for t in revtext)
+
+    def encrypt(self, text, key, alphabet=al.ENGLISH_SQUARE_IJ):
         """
         Encryption method
 
@@ -62,16 +55,9 @@ class Bazeries:
         :return: text
         :rtype: string
         """
-        alphabet = alphabet or [
-            u"a", u"b", u"c", u"d", u"e",
-            u"f", u"g", u"h", u"ij", u"k",
-            u"l", u"m", u"n", u"o", u"p",
-            u"q", u"r", u"s", u"t", u"u",
-            u"v", u"w", u"x", u"y", u"z"
-        ]
-        return self.__encDec(alphabet, text, key, True)
+        return self.__crypt(alphabet, text, key, True)
 
-    def decrypt(self, text, key=None, alphabet=None):
+    def decrypt(self, text, key, alphabet=al.ENGLISH_SQUARE_IJ):
         """
         Decryption method
 
@@ -85,11 +71,4 @@ class Bazeries:
         :return: text
         :rtype: string
         """
-        alphabet = alphabet or [
-            u"a", u"b", u"c", u"d", u"e",
-            u"f", u"g", u"h", u"ij", u"k",
-            u"l", u"m", u"n", u"o", u"p",
-            u"q", u"r", u"s", u"t", u"u",
-            u"v", u"w", u"x", u"y", u"z"
-        ]
-        return self.__encDec(alphabet, text, key, False)
+        return self.__crypt(alphabet, text, key, False)

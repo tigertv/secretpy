@@ -41,3 +41,6 @@ class Rot5:
         :rtype: string
         """
         return self.__caesar.encrypt(text, 5, al.DECIMAL)
+
+    def get_fixed_alphabet(self):
+        return al.DECIMAL

@@ -16,13 +16,6 @@ def encdec(cipher, plaintext, key, alphabet=al.ENGLISH):
 key = 3
 cipher = Caesar()
 
-plaintext = u"thequickbrownfoxjumpsoverthelazydog"
-encdec(cipher, plaintext, key)
-
-alphabet = al.GERMAN
-plaintext = u"schweißgequältvomödentextzürnttypografjakob"
-encdec(cipher, plaintext, key, alphabet)
-
 alphabet = al.SWEDISH
 plaintext = u"faqomschweizklövdutrångpjäxby"
 encdec(cipher, plaintext, key, alphabet)
@@ -62,18 +55,15 @@ cm.set_key(1)
 plaintext = u"text あい だやぎへぐゆぢ"
 encdec(cm, plaintext)
 
+alphabet = u"abcdeABCDEfghijFGHIJ"
+cm.set_alphabet(alphabet)
+cm.set_key(3)
+plaintext = u"Text aBcdeHijf"
+encdec(cm, plaintext)
 
 '''
 Output:
 
-========================================================================================
-thequickbrownfoxjumpsoverthelazydog
-wkhtxlfneurzqiramxpsvryhuwkhodcbgrj
-thequickbrownfoxjumpsoverthelazydog
-========================================================================================
-schweißgequältvomödentextzürnttypografjakob
-vfkzhlcjhtxßowyrpaghqwhäwübuqwwösrjudimdnre
-schweißgequältvomödentextzürnttypografjakob
 ========================================================================================
 faqomschweizklövdutrångpjäxby
 idtrpvfkzhlönocygxwuaqjsmbåeä
@@ -98,4 +88,8 @@ Ii becomes Ii because we use ENGLISH_SQUARE_II!
 text あい だやぎへぐゆぢ
 text いう ぢゆぐほげよづ
 text あい だやぎへぐゆぢ
+--------------------------------------------------------------------
+Text aBcdeHijf
+TCxt dEABCaGHi
+Text aBcdeHijf
 '''

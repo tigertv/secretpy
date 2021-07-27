@@ -1,31 +1,22 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
+from secretpy import alphabets as al
+from .gronsfeld import Gronsfeld
 
 
 class Vigenere:
     """
     The Vigenere Cipher
     """
+    __gronsfeld = Gronsfeld()
 
-    def __crypt(self, alphabet, key, text, is_encrypt):
-        res = []
-        for i, char in enumerate(text):
-            keychar = key[i % len(key)]
-            try:
-                a_index = alphabet.index(char)
-            except ValueError:
-                wrchar = char.encode('utf-8')
-                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
-            try:
-                a_index += is_encrypt * alphabet.index(keychar)
-            except ValueError:
-                wrchar = keychar.encode('utf-8')
-                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
-            a_index %= len(alphabet)
-            res.append(alphabet[a_index])
-        return "".join(res)
+    def __crypt(self, alphabet, key):
+        # prepare alphabet for substitution
+        indexes = {c: i for i, letters in enumerate(alphabet) for c in letters}
+        # prepare key
+        return (indexes[c] for c in key)
 
-    def encrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+    def encrypt(self, text, key, alphabet=al.ENGLISH):
         """
         Encryption method
 
@@ -34,14 +25,15 @@ class Vigenere:
         :param alphabet: Alphabet which will be used,
                          if there is no a value, English is used
         :type text: string
-        :type key: integer
+        :type key: string
         :type alphabet: string
         :return: text
         :rtype: string
         """
-        return self.__crypt(alphabet, key, text, 1)
+        new_key = self.__crypt(alphabet, key)
+        return self.__gronsfeld.encrypt(text, new_key, alphabet)
 
-    def decrypt(self, text, key, alphabet=u"abcdefghijklmnopqrstuvwxyz"):
+    def decrypt(self, text, key, alphabet=al.ENGLISH):
         """
         Decryption method
 
@@ -50,9 +42,10 @@ class Vigenere:
         :param alphabet: Alphabet which will be used,
                          if there is no a value, English is used
         :type text: string
-        :type key: integer
+        :type key: string
         :type alphabet: string
         :return: text
         :rtype: string
         """
-        return self.__crypt(alphabet, key, text, -1)
+        new_key = self.__crypt(alphabet, key)
+        return self.__gronsfeld.decrypt(text, new_key, alphabet)

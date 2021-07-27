@@ -55,8 +55,8 @@ class Playfair:
         txt = []
         i = 1
         while i < len(text):
-            txt.append(text[i-1])
-            if text[i-1] == text[i]:
+            txt.append(text[i - 1])
+            if text[i - 1] == text[i]:
                 txt.append(insert_char)
                 i += 1
             else:
@@ -64,10 +64,10 @@ class Playfair:
                 i += 2
         # add the last character
         if i == len(text):
-            txt.append(text[i-1])
+            txt.append(text[i - 1])
             txt.append(insert_char)
 
-        return "".join(self.__crypt(txt[i-1], txt[i], square, 1) for i in range(1, len(txt), 2))
+        return "".join(self.__crypt(txt[i - 1], txt[i], square, 1) for i in range(1, len(txt), 2))
 
     def decrypt(self, text, key="", alphabet=al.ENGLISH_SQUARE_IJ):
         """
@@ -86,11 +86,11 @@ class Playfair:
         insert_char = 'x'
         square = PolybiusSquare(alphabet, key)
 
-        res = [self.__crypt(text[i-1], text[i], square, -1) for i in range(1, len(text), 2)]
+        res = [self.__crypt(text[i - 1], text[i], square, -1) for i in range(1, len(text), 2)]
         # remove the insert character
         for i in range(1, len(res)):
-            if res[i-1][0] == res[i][0] and res[i-1][1] == insert_char:
-                res[i-1] = res[i-1][0]
+            if res[i - 1][0] == res[i][0] and res[i - 1][1] == insert_char:
+                res[i - 1] = res[i - 1][0]
         # check the last character
         if res[-1][1] == insert_char:
             res[-1] = res[-1][0]

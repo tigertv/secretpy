@@ -196,8 +196,8 @@ latex_elements = {}
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'ReadtheDocsTemplate.tex', u'SecretPy Documentation',
-   u'Read the Docs', 'manual'),
+    ('index', 'ReadtheDocsTemplate.tex', u'SecretPy Documentation',
+     u'Read the Docs', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -240,9 +240,9 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'ReadtheDocsTemplate', u'SecretPy Documentation',
-   u'Read the Docs', 'SecretPyTemplate', 'SecretPy is a Python package of classical ciphers.',
-   'Miscellaneous'),
+    ('index', 'ReadtheDocsTemplate', u'SecretPy Documentation',
+     u'Read the Docs', 'SecretPyTemplate', 'SecretPy is a Python package of classical ciphers.',
+     'Miscellaneous'),
 ]
 
 # Documents to append as an appendix to all manuals.

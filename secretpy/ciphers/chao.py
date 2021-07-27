@@ -60,8 +60,8 @@ class Chao:
         alphabet = alphabet[i:] + alphabet[:i]
         nadir = len(alphabet) / 2
         if isCrypt:
-            alphabet = alphabet[0] + alphabet[2:int(nadir)+1] + alphabet[1] + alphabet[int(nadir)+1:]
+            alphabet = alphabet[0] + alphabet[2:int(nadir) + 1] + alphabet[1] + alphabet[int(nadir) + 1:]
         else:
             alphabet = alphabet[1:] + alphabet[0]
-            alphabet = alphabet[:2] + alphabet[3:int(nadir)+1] + alphabet[2] + alphabet[int(nadir)+1:]
+            alphabet = alphabet[:2] + alphabet[3:int(nadir) + 1] + alphabet[2] + alphabet[int(nadir) + 1:]
         return alphabet

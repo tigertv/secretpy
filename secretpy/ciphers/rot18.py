@@ -10,46 +10,43 @@ class Rot18:
     """
     __rot13 = Rot13()
 
-    def __create_alphabet(self, alphabet):
-        ahalf = len(alphabet) >> 1
-        return (
-            alphabet[:ahalf] + al.DECIMAL[:5] +
-            alphabet[ahalf:] + al.DECIMAL[5:]
-        )
+    def __init__(self):
+        alphabet = al.ENGLISH
+        half = len(alphabet) >> 1
+        self.__alphabet = alphabet[:half] + al.DECIMAL[:5] + alphabet[half:] + al.DECIMAL[5:]
 
-    def __crypt(self, text, alphabet=None):
-        alphabet = alphabet or al.ENGLISH
-        alphabet = self.__create_alphabet(alphabet)
-        return self.__rot13.encrypt(text, alphabet=alphabet)
+    def __crypt(self, text, alphabet):
+        return self.__rot13.encrypt(text, alphabet=self.__alphabet)
 
     def encrypt(self, text, key=None, alphabet=None):
         """
         Encryption method
 
         :param text: Text to encrypt
-        :param key: Encryption key
-        :param alphabet: Alphabet which will be used,
-                         if there is no a value, English is used
+        :param key: is not used
+        :param alphabet: is not used
         :type text: string
         :type key: integer
         :type alphabet: string
         :return: text
         :rtype: string
         """
-        return self.__crypt(text, alphabet)
+        return self.__crypt(text, self.__alphabet)
 
     def decrypt(self, text, key=None, alphabet=None):
         """
         Decryption method
 
         :param text: Text to decrypt
-        :param key: Decryption key
-        :param alphabet: Alphabet which will be used,
-                         if there is no a value, English is used
+        :param key: is not used
+        :param alphabet: is not used
         :type text: string
         :type key: integer
         :type alphabet: string
         :return: text
         :rtype: string
         """
-        return self.__crypt(text, alphabet)
+        return self.__crypt(text, self.__alphabet)
+
+    def get_fixed_alphabet(self):
+        return self.__alphabet

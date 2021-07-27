@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
-from secretpy import alphabets
+from secretpy import alphabets as al
 
 
 class ColumnarTransposition:
@@ -9,10 +9,11 @@ class ColumnarTransposition:
     """
 
     def __keyorder(self, alphabet, key):
-        chars = [alphabet.index(char) for char in key]
-        return [i for i, _ in sorted(enumerate(chars), key=lambda x: x[1])]
+        indexes = {c: i for i, letters in enumerate(alphabet) for c in letters}
+        new_key = map(lambda x: indexes[x], key)
+        return [i for i, _ in sorted(enumerate(new_key), key=lambda x: x[1])]
 
-    def encrypt(self, text, key, alphabet=alphabets.ENGLISH):
+    def encrypt(self, text, key, alphabet=al.ENGLISH):
         """
         Encryption method
 
@@ -29,7 +30,7 @@ class ColumnarTransposition:
         keyorder = self.__keyorder(alphabet, key)
         return u"".join(text[i::len(key)] for i in keyorder)
 
-    def decrypt(self, text, key, alphabet=alphabets.ENGLISH):
+    def decrypt(self, text, key, alphabet=al.ENGLISH):
         """
         Decryption method
 

@@ -21,21 +21,18 @@ class TestADFGX(unittest.TestCase):
 
     key = (
         u"cargo",
-        # u"ключ",
-        u"schlüssel",
+        u"schlussel",
         u"clave",
     )
 
     plaintext = (
         u"attackatonce",
-        # u"текст",
         u"textnachtricht",
         u"unmensaiedetexto",
     )
 
     ciphertext = (
         u"faxdfadddgdgfffafaxafafx",
-        # u"dgxffaaaaa",
         u"gadggfaadxagfgggfggfdfgfdxfa",
         u"fxaxgfgdggaxfffdgagxafaxxgffaagg",
     )

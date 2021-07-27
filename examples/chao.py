@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 from secretpy import Chao, CryptMachine, alphabets
-from secretpy.cmdecorators import UpperCase, SaveSpaces
+from secretpy.cmdecorators import UpperCase, SaveAll
 
 
 def encdec(machine, plaintext):
@@ -16,7 +16,7 @@ def encdec(machine, plaintext):
 alphabet = "ptlnbqdeoysfavzkgjrihwxumc"  # RIGHT WHEEL PT
 key = "hxuczvamdslkpefjrigtwobnyq"       # LEFT WHEEL CT
 
-cm = SaveSpaces(UpperCase(CryptMachine(Chao(), key)))
+cm = UpperCase(SaveAll(CryptMachine(Chao(), key)))
 cm.set_alphabet(alphabet)
 
 plaintext = "well done is better than well said"

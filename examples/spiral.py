@@ -1,14 +1,14 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
 
-from secretpy import ColumnarTransposition, CryptMachine, alphabets as al
-from secretpy.cmdecorators import SaveAll, Block
+from secretpy import Spiral, CryptMachine, alphabets as al
+from secretpy.cmdecorators import SaveAll, Block, UpperCase
 
 
-cipher = ColumnarTransposition()
+cipher = Spiral()
+key = 5
 alphabet = al.GERMAN
 plaintext = u"schweißgequältvomödentextzürnttypografjakob"
-key = u"schlüssel"
 
 print(plaintext)
 enc = cipher.encrypt(plaintext, key, alphabet)
@@ -25,8 +25,15 @@ def encdec(machine, plaintext):
     print(machine.decrypt(enc))
 
 
-key = "manykeys"
 cm0 = CryptMachine(cipher, key)
+
+cm = cm0
+cm = UpperCase(Block(cm0))
+key = 5
+cm.set_key(key)
+cm.set_alphabet(al.ENGLISH)
+plaintext = "WE ARE DISCOVERED FLEE AT ONCE"
+encdec(cm, plaintext)
 
 cm = cm0
 cm.set_alphabet(al.ENGLISH)
@@ -41,38 +48,42 @@ cm = SaveAll(cm0)
 plaintext = "I love non-alphabet characters. These are : ^,&@$~(*;?&#. That's it!"
 encdec(cm, plaintext)
 
-cm.set_alphabet(al.JAPANESE_HIRAGANA)
-cm.set_key(u"だやぎへ")
-plaintext = u"text あい だやぎへぐゆぢ"
-encdec(cm, plaintext)
-
 cm.set_alphabet(al.ENGLISH_SQUARE_IJ)
-cm.set_key(u"keyj")
 plaintext = "ENGLISH_SQUARE_IJ doesn't change Ii to Jj because it's a transposition cipher!"
 encdec(cm, plaintext)
 
+cm.set_alphabet(al.JAPANESE_HIRAGANA)
+cm.set_key(4)
+plaintext = u"text あい だやぎへぐゆぢ"
+encdec(cm, plaintext)
+
+
 '''
 schweißgequältvomödentextzürnttypografjakob
-cuenfgmzghäntjwlttaeöürsqdraivxpoßotobeteyk
+kobagttevqewhcsiuonztrafjonxdtegßämtüypreöl
 schweißgequältvomödentextzürnttypografjakob
 ================================================================================
+WE ARE DISCOVERED FLEE AT ONCE
+TONCE ADOER AEWDV FLEEE CSIER
+WEAREDISCOVEREDFLEEATONCE
+================================================================================
 I don't love non-alphabet characters and uppercase. I will remove all of them: ^,&@$~(*;?&#.
-dnbcuemfllhsrlamtacreieeieaadseoooetpiotvhrnarlnntepwvhopaacll
+emhlmiapsatpntnodilohccapsloloftaewcurrelevonahtneelverirdeaba
 idontlovenonalphabetcharactersanduppercaseiwillremoveallofthem
 ================================================================================
 This text is divided by blocks of length 5!
-hsboe iontv letid shidy ftekt siblx dcg
+gthns bdsts ihted elofl ekyii txido cbv
 thistextisdividedbyblocksoflength
 ================================================================================
 I love non-alphabet characters. These are : ^,&@$~(*;?&#. That's it!
-L lhse nbc-steaaeai acrrtopatt. Nteai vhr : ^,&@$~(*;?&#. Hhoe't es!
+T itsr rel-evolinpt asehatseee. Abano hcc : ^,&@$~(*;?&#. Tarh't ha!
 I love non-alphabet characters. These are : ^,&@$~(*;?&#. That's it!
 ================================================================================
-text あい だやぎへぐゆぢ
-text だぐ あぎぢやゆいへ
-text あい だやぎへぐゆぢ
+ENGLISH_SQUARE_IJ doesn't change Ii to Jj because it's a transposition cipher!
+HERPIPT_EETNNJ_UI lgnes'a dtgoci Ro on Ci tsasbia si'q s hrocejatasins ujihee!
+ENGLISH_SQUARE_IJ doesn't change Ii to Jj because it's a transposition cipher!
 ================================================================================
-ENGLISH_SQUARE_IJ doesn't change Ii to Jj because it's a transposition cipher!
-NSUIECG_TBUTRP_TC elsrd'n aijcea Ns op Ei qeotnij ai't s inhghajsheoes saoiir!
-ENGLISH_SQUARE_IJ doesn't change Ii to Jj because it's a transposition cipher!
+text あい だやぎへぐゆぢ
+text ぢゆ やだいあぎへぐ
+text あい だやぎへぐゆぢ
 '''
