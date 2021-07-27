@@ -9,7 +9,7 @@ from .ciphers import (
     ColumnarTransposition, FourSquare, Gronsfeld, Keyword,
     MyszkowskiTransposition, Nihilist, SimpleSubstitution,
     Playfair, Porta, Polybius, Rot13, Rot18, Rot47, Rot5,
-    Scytale, ThreeSquare, Trifid, TwoSquare, Vigenere, Vic,
+    Scytale, Spiral, ThreeSquare, Trifid, TwoSquare, Vigenere, Vic,
     Zigzag)
 
 __all__ = [
@@ -20,6 +20,6 @@ __all__ = [
     "Chao", "ColumnarTransposition", "FourSquare", "Gronsfeld",
     "Keyword", "MyszkowskiTransposition",
     "Nihilist", "SimpleSubstitution", "Playfair", "Porta", "Polybius",
-    "Rot13", "Rot18", "Rot47", "Rot5", "Scytale", "ThreeSquare",
+    "Rot13", "Rot18", "Rot47", "Rot5", "Scytale", "Spiral", "ThreeSquare",
     "Trifid", "TwoSquare", "Vigenere", "Vic", "Zigzag",
 ]
