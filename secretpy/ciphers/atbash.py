@@ -1,5 +1,6 @@
 #!/usr/bin/python
 from secretpy import alphabets as al
+from .affine import Affine
 
 
 class Atbash:
@@ -7,16 +8,7 @@ class Atbash:
     The Atbash Cipher
     """
 
-    def __crypt(self, alphabet, text):
-        subst = {c: alphabet[len(alphabet) - i - 1][0] for i, letters in enumerate(alphabet) for c in letters}
-        res = []
-        try:
-            for t in text:
-                res.append(subst[t])
-        except ValueError:
-            wrchar = t.encode('utf-8')
-            raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
-        return "".join(res)
+    __affine = Affine()
 
     def encrypt(self, text, key=None, alphabet=al.ENGLISH):
         """
@@ -32,7 +24,8 @@ class Atbash:
         :return: text
         :rtype: string
         """
-        return self.__crypt(alphabet, text)
+        new_key = (-1, -1)
+        return self.__affine.encrypt(text, new_key, alphabet)
 
     def decrypt(self, text, key=None, alphabet=al.ENGLISH):
         """
@@ -48,4 +41,5 @@ class Atbash:
         :return: text
         :rtype: string
         """
-        return self.__crypt(alphabet, text)
+        new_key = (-1, -1)
+        return self.__affine.decrypt(text, new_key, alphabet)

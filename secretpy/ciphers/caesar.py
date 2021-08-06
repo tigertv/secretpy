@@ -1,29 +1,15 @@
 #!/usr/bin/python
 # -*- encoding: utf-8 -*-
-
 import secretpy.alphabets as al
-from itertools import chain
+from .affine import Affine
 
 
 class Caesar:
     """
-    The Caesar Cipher
+    The Caesar Cipher (Shift, Additive)
     """
 
-    def __crypt(self, key, text, alphabet):
-        # key should be between 0 and len(alphabet)
-        key %= len(alphabet)
-        # prepare alphabet for substitution
-        ch = chain(range(key, len(alphabet)), range(key))
-        subst = {c: alphabet[i][0] for i, letters in zip(ch, alphabet) for c in letters}
-        res = []
-        for c in text:
-            try:
-                res.append(subst[c])
-            except KeyError:
-                wrchar = c.encode('utf-8')
-                raise Exception("Can't find char '" + wrchar + "' of text in alphabet!")
-        return u"".join(res)
+    __affine = Affine()
 
     def encrypt(self, text, key=3, alphabet=al.ENGLISH):
         """
@@ -39,7 +25,8 @@ class Caesar:
         :return: encrypted text
         :rtype: string
         """
-        return self.__crypt(key, text, alphabet)
+        new_key = (1, key)
+        return self.__affine.encrypt(text, new_key, alphabet)
 
     def decrypt(self, text, key=3, alphabet=al.ENGLISH):
         """
@@ -55,4 +42,5 @@ class Caesar:
         :return: decrypted text
         :rtype: string
         """
-        return self.__crypt(-key, text, alphabet)
+        new_key = (1, key)
+        return self.__affine.decrypt(text, new_key, alphabet)
