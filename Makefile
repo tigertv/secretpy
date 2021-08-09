@@ -31,6 +31,9 @@ test2: setup.py
 test3: setup.py
 	python3 setup.py test
 
+flake:
+	flake8 ./ --ignore=E501
+
 upload: 
 	python -m twine upload dist/*
 
